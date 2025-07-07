@@ -1,0 +1,301 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Clock, Heart, MessageCircle } from 'lucide-react';
+
+const BlogSection: React.FC = () => {
+  const [savedPosts, setSavedPosts] = useState<number[]>([]);
+  const [expandedAuthor, setExpandedAuthor] = useState<number | null>(null);
+
+  const featuredPosts = [
+    {
+      id: 1,
+      title: 'The Importance of Wasting Time',
+      excerpt: 'In a culture that preaches capitalizing on every single moment, wasting time can provide peace and relief',
+      author: {
+        name: 'Stephan Joppich',
+        role: 'Productivity Expert',
+        bio: 'Author of "The Art of Doing Nothing" and founder of Mindful Productivity Institute',
+        avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+      },
+      column: 'Pragmatic Wisdom',
+      date: '2024-04-05',
+      readTime: '10 min',
+      likes: '7K',
+      comments: '426',
+      image: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 2,
+      title: 'How to Learn a Language: The Complete System That Actually Works',
+      excerpt: '20 Science-Based Principles and Strategies for Building Fluency — From a Linguist, Language Teacher, and Polyglot',
+      author: {
+        name: 'Viktoria Verde, PhD',
+        role: 'Linguistics Professor',
+        bio: 'Author of "Language Hacking" and creator of the Verde Method for language acquisition',
+        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+      },
+      column: 'Language Lab',
+      date: '2024-05-21',
+      readTime: '15 min',
+      likes: '3.9K',
+      comments: '116',
+      image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 3,
+      title: 'Why It\'s. So. Hard. To. Focus.',
+      excerpt: 'And what to do about annoying distractions',
+      author: {
+        name: 'Daniel Goleman',
+        role: 'Neuroscience Researcher',
+        bio: 'Author of "Focus: The Hidden Driver of Excellence" and leading expert in attention science',
+        avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+      },
+      column: 'Mind Matters',
+      date: '2024-06-15',
+      readTime: '8 min',
+      likes: '5.2K',
+      comments: '342',
+      image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+    }
+  ];
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
+  const toggleSavePost = (postId: number) => {
+    setSavedPosts(prev => 
+      prev.includes(postId) 
+        ? prev.filter(id => id !== postId) 
+        : [...prev, postId]
+    );
+  };
+
+  const toggleAuthorDetails = (postId: number) => {
+    setExpandedAuthor(prev => prev === postId ? null : postId);
+  };
+
+  return (
+    <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
+            Our <span className="text-orange-500">Blogs</span>
+          </h2>
+        </motion.div>
+
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {/* Featured Posts (Left) */}
+          <div className="lg:col-span-2">
+            <h3 className="text-2xl font-bold text-slate-800 mb-6">Featured Articles</h3>
+            <div className="space-y-8">
+              {featuredPosts.map((post) => (
+                <motion.div
+                  key={post.id}
+                  className="group cursor-pointer bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition-shadow"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex gap-5">
+                    {/* Content on the left */}
+                    <div className="flex-1">
+                      {/* Author Info */}
+                      <div className="flex items-center gap-3 mb-2">
+                        <button 
+                          onClick={() => toggleAuthorDetails(post.id)}
+                          className="flex-shrink-0"
+                        >
+                          <img 
+                            src={post.author.avatar} 
+                            alt={post.author.name}
+                            className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-orange-400 transition-all"
+                          />
+                        </button>
+                        <div className="text-xs text-slate-600">
+                          <span>In </span>
+                          <span className="font-semibold text-slate-700">{post.column}</span>
+                          <span> by </span>
+                          <button 
+                            onClick={() => toggleAuthorDetails(post.id)}
+                            className="font-medium text-slate-700 hover:text-orange-500"
+                          >
+                            {post.author.name}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Author Details Popup */}
+                      {expandedAuthor === post.id && (
+                        <div className="bg-white p-3 rounded-lg shadow-md mb-3 border border-slate-200 text-sm">
+                          <div className="flex items-start gap-3">
+                            <img 
+                              src={post.author.avatar} 
+                              alt={post.author.name}
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
+                            <div>
+                              <h4 className="font-bold text-slate-800">{post.author.name}</h4>
+                              <p className="text-xs text-orange-500">{post.author.role}</p>
+                              <p className="text-xs text-slate-600 mt-1">{post.author.bio}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Post Content */}
+                      <h4 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-500 transition-colors">
+                        {post.title}
+                      </h4>
+                      
+                      <p className="text-sm text-slate-600 mb-3">{post.excerpt}</p>
+                      
+                      {/* Post Actions and Metadata */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3 text-xs text-slate-500">
+                          <div className="flex items-center gap-1">
+                            <Calendar size={12} className="text-orange-400" />
+                            <span>{formatDate(post.date)}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock size={12} className="text-orange-400" />
+                            <span>{post.readTime}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-3">
+                          <button className="flex items-center gap-1 text-xs text-slate-500 hover:text-orange-500">
+                            <Heart size={14} />
+                            <span>{post.likes}</span>
+                          </button>
+                          <button className="flex items-center gap-1 text-xs text-slate-500 hover:text-orange-500">
+                            <MessageCircle size={14} />
+                            <span>{post.comments}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Image on the right */}
+                    <div className="flex-shrink-0 w-32 h-32 rounded-lg overflow-hidden relative">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="absolute w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Recent Posts (Right) */}
+          <div className="lg:col-span-1">
+            <h3 className="text-2xl font-bold text-slate-800 mb-6">Popular Reads</h3>
+            
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden sticky top-6">
+              {/* Featured Image Card with Text Overlay */}
+              <a href="/blog/featured" className="block group relative">
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    alt="Featured Blog Post"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-5">
+                    <div>
+                      <span className="text-xs font-medium text-orange-400 mb-1 block">Editor's Pick</span>
+                      <h3 className="text-xl font-bold text-white">The Ultimate Guide to Productivity</h3>
+                      <div className="flex items-center gap-2 text-xs text-white/80 mt-2">
+                        <span>June 12, 2024</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              
+              <div className="p-6">
+                <h4 className="text-lg font-semibold text-slate-800 mb-4">Recent Posts</h4>
+                
+                <div className="space-y-4 mb-6">
+                  {featuredPosts.slice(0, 3).map((post) => (
+                    <div key={`recent-${post.id}`} className="flex gap-3 items-start pb-3 border-b border-slate-100">
+                      <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden relative">
+                        <img 
+                          src={post.image} 
+                          alt={post.title}
+                          className="absolute w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-semibold text-slate-800 line-clamp-2">{post.title}</h5>
+                        <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
+                          <span>{formatDate(post.date)}</span>
+                          <span>•</span>
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+
+                {/* Last Updated Section */}
+                <div className="flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-4">
+                  <div className="flex items-center gap-1">
+                    <Clock size={12} className="text-orange-400" />
+                    <span>Last updated: {new Date().toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}</span>
+                  </div>
+                  <span className="text-slate-400">•</span>
+                  <div className="flex items-center gap-1">
+                    <span>{featuredPosts.length} articles</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* View All Button */}
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <motion.a
+            href="/blog"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+            whileHover={{ scale: 1.05 }}
+          >
+            View All Articles
+          </motion.a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default BlogSection;
