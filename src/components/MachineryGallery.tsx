@@ -27,7 +27,7 @@ const MACHINES: Machine[] = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: '/src/assets/rough-terrain.png',
+    img: '/rough-terrain.png',
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -35,14 +35,14 @@ const MACHINES: Machine[] = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: '/src/assets/truck-cranes.jpeg',
+    img: '/truck-cranes.jpeg',
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
   },
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: '/src/assets/pick-n-carry.png',
+    img: '/pick-n-carry.png',
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -50,7 +50,7 @@ const MACHINES: Machine[] = [
   {
     id: 'grove',
     title: 'Grove™ Range',
-    img: '/src/assets/grove-range.png',
+    img: '/grove-range.png',
     specs: ['Telescopic boom', 'Full-power lift', '300 t max'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -58,28 +58,28 @@ const MACHINES: Machine[] = [
   {
     id: 'crawler',
     title: 'Crawler Crane',
-    img: '/src/assets/crawler-cranes.png',
+    img: '/crawler-cranes.png',
     specs: ['Mud-friendly', '400 t max', 'Wide tracks'],
     price: '$420,000',
   },
   {
     id: 'reachstacker',
     title: 'ReachStacker',
-    img: '/src/assets/reachstackers.png',
+    img: '/reachstackers.png',
     specs: ['Container lift', '45 t', 'Port-grade power'],
     price: '$150,000',
   },
   {
     id: 'forklift',
     title: 'Forklift Truck',
-    img: '/src/assets/forklift.png',
+    img: '/forklift.png',
     specs: ['Warehouse pro', '3 t lift', 'Electric / Diesel'],
     price: '$45,000',
   },
   {
     id: 'boom-lift',
     title: 'Boom Lift',
-    img: '/src/assets/boomlifts.png',
+    img: '/boomlifts.png',
     specs: ['45 m reach', 'Hybrid drive', '360° rotation'],
     price: '$75,000',
     tag: 'NEW',
@@ -87,7 +87,7 @@ const MACHINES: Machine[] = [
   {
     id: 'articulating',
     title: 'Articulating Crane',
-    img: '/src/assets/articulating.jpg',
+    img: '/articulating.jpg',
     specs: ['Truck mounted', '20 t', 'Flexible boom'],
     price: '$110,000',
   },
@@ -145,15 +145,15 @@ const ProductCard: FC<{ m: Machine }> = ({ m }) => {
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           style={{ mixBlendMode: 'multiply' }}
         />
-        
+
         {/* Title overlay - always visible */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-10">
           <h3 className="text-lg font-bold text-white">{m.title}</h3>
         </div>
-        
-        {/* Get Quote Button - appears at bottom-right on hover */}
-        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-          <button className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all transform translate-x-2 group-hover:translate-x-0">
+
+        {/* Get Quote Button - always visible now */}
+        <div className="absolute bottom-3 right-3 z-20">
+          <button className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all">
             <Mail className="h-3.5 w-3.5" />
             Get Quote
           </button>
@@ -163,8 +163,9 @@ const ProductCard: FC<{ m: Machine }> = ({ m }) => {
       {/* Tag Badge */}
       {m.tag && <TagBadge label={m.tag} />}
     </motion.li>
-  )
+  );
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                               MAIN SECTION                                 */
@@ -182,15 +183,25 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        <motion.span
-          className="inline-block px-6 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg text-sm font-semibold mb-4 shadow-md"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          PREMIUM MACHINERY
-        </motion.span>
+<motion.span
+  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+  initial={{ 
+    opacity: 0,
+    letterSpacing: "-0.05em" // Starts condensed
+  }}
+  whileInView={{
+    opacity: 1,
+    letterSpacing: "0.02em", // Slightly expands
+  }}
+  transition={{ 
+    duration: 0.8,
+    delay: 0.2,
+    ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
+  }}
+  viewport={{ once: true, margin: "-20%" }}
+>
+  PREMIUM MACHINERY
+</motion.span>
         <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight">
           Industrial <span className="text-orange-500">Equipment</span>
         </h2>

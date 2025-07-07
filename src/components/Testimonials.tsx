@@ -1,222 +1,210 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect } from 'react';
+
 
 const Testimonials: React.FC = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<{ id: number; row: 'top' | 'bottom'; position: { left: number; top: number } } | null>(null);
 
-  // The rest of your component code is already using currentTestimonial and setCurrentTestimonial,
-  // so no changes are needed for their usage.
-
-  const testimonials = [
-    {
-      id: 1,
-      name: 'Rajesh Kumar',
-      position: 'Project Director',
-      company: 'Larsen & Toubro',
-      image: 'https://media.licdn.com/dms/image/v2/D5603AQHrZL_pxUPJLQ/profile-displayphoto-shrink_400_400/B56ZQ.wuwKGoAk-/0/1736219750055?e=1756944000&v=beta&t=exi09wNmV1il18tNqHLhk4fI8k9_ZptWfiOzGERq0SY',
-      rating: 5,
-      text: "TIL India's cranes have been instrumental in our metro rail projects across the country. Their reliability and after-sales support are unmatched in the industry.",
-      project: 'Chennai Metro Phase II',
-      location: 'Tamil Nadu'
-    },
-    {
-      id: 2,
-      name: 'Priya Sharma',
-      position: 'Operations Head',
-      company: 'Gammon India',
-      image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
-      rating: 5,
-      text: "We've been using TIL's material handling equipment for over a decade. Their products withstand the toughest Indian job site conditions while maintaining efficiency.",
-      project: 'Mumbai Coastal Road',
-      location: 'Maharashtra'
-    },
-    {
-      id: 3,
-      name: 'Amit Patel',
-      position: 'Construction Manager',
-      company: 'Shapoorji Pallonji',
-      image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150',
-      rating: 5,
-      text: "TIL's crawler cranes have been vital for our high-rise projects. The combination of Indian engineering with global standards gives us confidence in every lift.",
-      project: 'Bangalore Tech Park',
-      location: 'Karnataka'
-    },
-    {
-      id: 4,
-      name: 'Sunita Reddy',
-      position: 'Plant Manager',
-      company: 'UltraTech Cement',
-      image: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=150',
-      rating: 5,
-      text: "TIL's reach stackers and forklifts have significantly improved our material handling efficiency at all our plants. Their service network covers even our remote locations.",
-      project: 'Plant Modernization',
-      location: 'Andhra Pradesh'
+  const topRowRef = useRef<HTMLDivElement>(null);
+  const bottomRowRef = useRef<HTMLDivElement>(null);
+  const hoverCardRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      expandedCard &&
+      hoverCardRef.current &&
+      !hoverCardRef.current.contains(event.target as Node)
+    ) {
+      setExpandedCard(null);
     }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [expandedCard]);
+
+
+
+  const topTestimonials = [
+    { id: 1, name: 'Sarah Johnson', position: 'Marketing Director', company: 'TechCorp', image: 'https://randomuser.me/api/portraits/women/44.jpg', rating: 5, text: "This service transformed our digital presence. Our engagement metrics doubled within weeks of implementation." },
+    { id: 2, name: 'Michael Chen', position: 'CTO', company: 'StartUp Labs', image: 'https://randomuser.me/api/portraits/men/32.jpg', rating: 4, text: "Reliable and scalable solution that grew with our business needs. Excellent support team." },
+    { id: 3, name: 'Emma Williams', position: 'Product Manager', company: 'DesignHub', image: 'https://randomuser.me/api/portraits/women/63.jpg', rating: 5, text: "Intuitive interface and powerful features. Our team adopted it with minimal training." },
+    { id: 4, name: 'David Kim', position: 'Operations Lead', company: 'LogiChain', image: 'https://randomuser.me/api/portraits/men/71.jpg', rating: 5, text: "Streamlined our entire workflow. The automation features saved us hundreds of hours monthly." },
   ];
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  const bottomTestimonials = [
+    { id: 5, name: 'Neeraj Arora', position: 'Master Coach', company: 'Skill91', image: 'https://randomuser.me/api/portraits/men/75.jpg', rating: 5, text: "With 800K+ YouTube subscribers, I can confidently say this platform has all elements needed for successful online coaching businesses." },
+    { id: 6, name: 'Priya Patel', position: 'Edupreneur', company: 'MathMagic', image: 'https://randomuser.me/api/portraits/women/25.jpg', rating: 5, text: "Created 12 courses with 50K+ students. The platform makes content delivery and student engagement seamless." },
+    { id: 7, name: 'Rajesh Kumar', position: 'Project Director', company: 'L&T Construction', image: 'https://randomuser.me/api/portraits/men/45.jpg', rating: 5, text: "Our metro rail projects rely on this equipment. The durability and performance are unmatched in the industry." },
+    { id: 8, name: 'Ananya Singh', position: 'CEO', company: 'CodeYoung', image: 'https://randomuser.me/api/portraits/women/15.jpg', rating: 4, text: "Perfect solution for our coding bootcamps. Students love the interactive learning features and clean interface." },
+  ];
+
+  const doubledTop = [...topTestimonials, ...topTestimonials];
+  const doubledBottom = [...bottomTestimonials, ...bottomTestimonials];
+
+  const handleReadMoreClick = (e: React.MouseEvent, testimonial: any, row: 'top' | 'bottom') => {
+    const rect = (e.currentTarget as HTMLDivElement).closest('.testimonial-card')?.getBoundingClientRect();
+    if (!rect) return;
+
+    const alreadyExpanded = expandedCard?.id === testimonial.id;
+    if (alreadyExpanded) {
+      setExpandedCard(null);
+    } else {
+      setExpandedCard({
+        id: testimonial.id,
+        row,
+        position: { left: rect.left, top: rect.top },
+      });
+    }
   };
 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const shouldPause = hovered || expandedCard !== null;
 
   return (
-    <section className="pt-24 pb-20 bg-white text-gray-900 relative overflow-hidden"> {/* Updated line */}
-  {/* Decorative elements */}
-  <div className="absolute inset-0 opacity-5">
-    <div className="absolute inset-0" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-    }} />
-  </div>
-
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.span
-            className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold mb-4 tracking-wider uppercase"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            CLIENT TESTIMONIALS
-          </motion.span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-            Trusted by India's Infrastructure Leaders
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hear from our valued customers about how TIL's equipment powers India's growth
-          </p>
-        </motion.div>
-
-        {/* Main Testimonial */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 p-3 bg-white border border-gray-200 rounded-full hover:bg-blue-50 transition-all duration-300 z-10 shadow-md hover:shadow-lg"
-          >
-            <ChevronLeft size={20} className="text-blue-600" />
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 p-3 bg-white border border-gray-200 rounded-full hover:bg-blue-50 transition-all duration-300 z-10 shadow-md hover:shadow-lg"
-          >
-            <ChevronRight size={20} className="text-blue-600" />
-          </button>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentTestimonial}
-              className="bg-white rounded-xl p-8 md:p-12 border border-gray-200 shadow-lg"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                {/* Customer Info */}
-                <div className="text-center lg:text-left">
-                  <motion.img
-                    src={testimonials[currentTestimonial].image}
-                    alt={testimonials[currentTestimonial].name}
-                    className="w-20 h-20 rounded-full mx-auto lg:mx-0 mb-4 object-cover border-2 border-blue-500/30"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  />
-                  <h3 className="text-xl font-bold mb-1">{testimonials[currentTestimonial].name}</h3>
-                  <p className="text-blue-600 font-medium mb-1 text-sm">{testimonials[currentTestimonial].position}</p>
-                  <p className="text-gray-600 text-sm mb-3">{testimonials[currentTestimonial].company}</p>
-                  
-                  {/* Rating */}
-                  <div className="flex justify-center lg:justify-start space-x-1 mb-4">
-                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} size={16} className="text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="bg-blue-50 rounded-lg p-3 text-sm border border-blue-100">
-                    <div className="font-medium text-blue-600 mb-1">Key Project:</div>
-                    <div className="mb-2">{testimonials[currentTestimonial].project}</div>
-                    <div className="text-gray-500">{testimonials[currentTestimonial].location}</div>
-                  </div>
-                </div>
-
-                {/* Testimonial Text */}
-                <div className="lg:col-span-2">
-                  <Quote size={40} className="text-blue-400 mb-6 mx-auto lg:mx-0 opacity-80" />
-                  <motion.blockquote
-                    className="text-lg md:text-xl leading-relaxed text-gray-700"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    "{testimonials[currentTestimonial].text}"
-                  </motion.blockquote>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Testimonial Indicators */}
-          <div className="flex justify-center space-x-3 mt-8">
-            {testimonials.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setCurrentTestimonial(index)}
-                className={`w-2.5 h-2.5 rounded-full ${
-                  index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
-                }`}
-                animate={{
-                  width: index === currentTestimonial ? 24 : 10
-                }}
-                transition={{ duration: 0.3 }}
-            />
-            ))}
-          </div>
-        </div>
-
-        {/* Customer Logos */}
-        <motion.div
-          className="mt-16 pt-16 border-t border-gray-200"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-center text-gray-500 mb-8 text-sm uppercase tracking-wider">Trusted by India's leading companies</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {['L&T Construction', 'Gammon India', 'Shapoorji Pallonji', 'UltraTech Cement'].map((company, index) => (
-              <motion.div
-                key={company}
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="bg-gray-50 rounded-lg p-4 h-16 flex items-center justify-center border border-gray-200 hover:border-blue-200 transition-all shadow-sm">
-                  <span className="font-bold text-sm text-gray-700">{company}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+    <section className="bg-gradient-to-b from-gray-50 to-white py-16 w-full overflow-hidden relative">
+      <div className="w-full px-4 text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">What Our Clients Say</h2>
+        <p className="text-lg text-gray-600">Trusted by professionals and industry leaders worldwide</p>
       </div>
+
+      {/* Top Row */}
+      <div
+        className="relative w-full overflow-hidden mb-16"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div
+          ref={topRowRef}
+          className={`flex gap-6 w-max animate-scroll-left whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
+        >
+          {doubledTop.map((testimonial, i) => (
+            <div key={`top-${i}`} className="relative h-auto">
+              <TestimonialCard
+                testimonial={testimonial}
+                onReadMore={(e) => handleReadMoreClick(e, testimonial, 'top')}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Row */}
+      <div
+        className="relative w-full overflow-hidden mt-16"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div
+          ref={bottomRowRef}
+          className={`flex gap-6 w-max animate-scroll-right whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
+        >
+          {doubledBottom.map((testimonial, i) => (
+            <div key={`bottom-${i}`} className="relative h-auto">
+              <TestimonialCard
+                testimonial={testimonial}
+                onReadMore={(e) => handleReadMoreClick(e, testimonial, 'bottom')}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Expanded Hover Card */}
+      <AnimatePresence>
+        {expandedCard && (
+          <motion.div
+            ref={hoverCardRef}  // 👈 Add this line
+            initial={{ opacity: 0, y: expandedCard.row === 'top' ? -10 : 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: expandedCard.row === 'top' ? -10 : 10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed z-30 w-[380px]"
+            style={{
+              left: expandedCard.position.left,
+              top:
+                expandedCard.row === 'top'
+                  ? expandedCard.position.top + 208
+                  : expandedCard.position.top - 208,
+            }}
+          >
+            <HoverCardContent
+              testimonial={[...topTestimonials, ...bottomTestimonials].find((t) => t.id === expandedCard.id)!}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style>{`
+        .animate-scroll-left {
+          animation: scroll-left 30s linear infinite;
+        }
+        .animate-scroll-right {
+          animation: scroll-right 30s linear infinite;
+        }
+        .pause {
+          animation-play-state: paused;
+        }
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 };
+
+const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseEvent) => void }> = ({ testimonial, onReadMore }) => (
+  <div className="testimonial-card w-[380px] bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+    <div className="flex items-center mb-4">
+      <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-blue-100" />
+      <div className="text-left">
+        <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
+        <p className="text-sm text-blue-600 font-medium">{testimonial.position} | {testimonial.company}</p>
+      </div>
+    </div>
+    <div className="flex mb-3">
+      {Array(testimonial.rating).fill(0).map((_, j) => <Star key={j} size={16} className="text-yellow-400 fill-current" />)}
+    </div>
+    <p className="text-gray-700 text-base mb-4 leading-relaxed line-clamp-3 overflow-hidden">
+      "{testimonial.text}"
+    </p>
+    <div onClick={onReadMore} className="text-xs text-blue-500 font-medium cursor-pointer select-none">Read full review →</div>
+  </div>
+);
+
+const HoverCardContent: React.FC<{ testimonial: any }> = ({ testimonial }) => (
+  <div className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 shadow-lg">
+    <div className="flex items-center mb-4">
+      <img 
+        src={testimonial.image} 
+        alt={testimonial.name} 
+        className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-amber-400/30" 
+      />
+      <div className="text-left">
+        <h3 className="font-bold text-white">{testimonial.name}</h3>
+        <p className="text-sm text-amber-400/80 font-medium">
+          {testimonial.position} | {testimonial.company}
+        </p>
+      </div>
+    </div>
+    <div className="flex mb-3">
+      {Array(testimonial.rating).fill(0).map((_, j) => (
+        <Star key={j} size={16} className="text-amber-400 fill-current" />
+      ))}
+    </div>
+    <p className="text-gray-300 text-base mb-4 leading-relaxed whitespace-normal">
+      "{testimonial.text}"
+    </p>
+  </div>
+);
 
 export default Testimonials;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Phone, 
   Mail, 
@@ -10,10 +10,18 @@ import {
   Linkedin, 
   Youtube,
   ArrowRight,
-  Clock
+  Clock,
+  ChevronRight,
+  X
 } from 'lucide-react';
 
 const SleekFooter: React.FC = () => {
+  const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
+
+  const toggleEmergency = () => {
+    setIsEmergencyOpen(!isEmergencyOpen);
+  };
+
   const footerLinks = {
     'Products': [
       'Excavators',
@@ -56,31 +64,106 @@ const SleekFooter: React.FC = () => {
     { icon: Youtube, href: '#', label: 'YouTube' }
   ];
 
-  const offices = [
-    {
-      city: 'New York',
-      address: '123 Industrial Ave, NY 10001',
-      phone: '+1 (555) 123-4567',
-      email: 'ny@heavytech.com'
-    },
-    {
-      city: 'London',
-      address: '456 Construction St, London EC1A 1BB',
-      phone: '+44 20 7123 4567',
-      email: 'london@heavytech.com'
-    },
-    {
-      city: 'Singapore',
-      address: '789 Engineering Blvd, Singapore 018956',
-      phone: '+65 6123 4567',
-      email: 'singapore@heavytech.com'
-    }
-  ];
-
   return (
-   <footer className="bg-slate-950 text-white">
-  {/* Main Footer Content */}
-  <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-16">
+    <footer className="bg-slate-950 text-white relative">
+      {/* Floating Emergency Button - Right Side */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
+        >
+          <motion.button
+            onClick={toggleEmergency}
+            className={`flex items-center justify-center rounded-full p-4 shadow-lg ${
+              isEmergencyOpen 
+                ? 'bg-gradient-to-r from-amber-400'
+                : 'bg-gradient-to-r from-amber-400 to-orange-500'
+            } transition-colors`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Emergency support"
+          >
+            {isEmergencyOpen ? (
+              <X size={20} className="text-white" />
+            ) : (
+              <Phone size={20} className="text-white" />
+            )}
+          </motion.button>
+
+          <AnimatePresence>
+            {isEmergencyOpen && (
+              <motion.div
+                className="absolute bottom-full right-0 mb-3 w-72 bg-slate-900 rounded-xl shadow-xl overflow-hidden border border-slate-700"
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              >
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-bold text-white text-lg flex items-center">
+                      <Phone size={18} className="mr-2" />
+                      <span>Emergency Support</span>
+                    </h3>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm text-slate-300 mb-1">24/7 Technical Assistance</p>
+                      <a 
+                        href="tel:+18004328911" 
+                        className="text-xl font-bold text-white hover:text-red-300 transition-colors block"
+                      >
+                        +1 (800) HEAVY-911
+                      </a>
+                    </div>
+                    
+                    <div className="flex items-center space-x-2 text-sm text-slate-400">
+                      <Clock size={14} />
+                      <span>Available round the clock</span>
+                    </div>
+                    
+                    <div className="pt-2">
+                      <p className="text-sm text-slate-300 mb-2">Regional Emergency Contacts:</p>
+                      <ul className="space-y-2 text-sm">
+                        <li>
+                          <a href="tel:+911234567890" className="text-slate-300 hover:text-white flex items-center">
+                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            India: +91 123 456 7890
+                          </a>
+                        </li>
+                        <li>
+                          <a href="tel:+442012345678" className="text-slate-300 hover:text-white flex items-center">
+                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            UK: +44 20 1234 5678
+                          </a>
+                        </li>
+                        <li>
+                          <a href="tel:+6561234567" className="text-slate-300 hover:text-white flex items-center">
+                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            Singapore: +65 6123 4567
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="bg-slate-800 px-5 py-3 border-t border-slate-700">
+                  <p className="text-xs text-slate-400">
+                    For immediate equipment breakdowns or safety concerns
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Company Info & Newsletter */}
           <div className="lg:col-span-1">
@@ -92,7 +175,6 @@ const SleekFooter: React.FC = () => {
             >
               {/* Logo */}
               <div className="flex items-center space-x-1 mb-6">
-
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -162,19 +244,19 @@ const SleekFooter: React.FC = () => {
                 >
                   <h4 className="font-medium mb-4 text-orange-400 text-sm uppercase tracking-wider">{category}</h4>
                   <ul className="space-y-2.5">
-                      {links.map((link, linkIndex) => (
-                        <motion.li
-                          key={link}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: 0.1 + linkIndex * 0.05 }}
-                          viewport={{ once: true, margin: "-20px" }}
-                        >
-                          <a href="#" className="text-slate-300 hover:text-white transition-colors text-sm hover:underline underline-offset-4 decoration-orange-400">
-                            {link}
-                          </a>
-                        </motion.li>
-                      ))}
+                    {links.map((link, linkIndex) => (
+                      <motion.li
+                        key={link}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 + linkIndex * 0.05 }}
+                        viewport={{ once: true, margin: "-20px" }}
+                      >
+                        <a href="#" className="text-slate-300 hover:text-white transition-colors text-sm hover:underline underline-offset-4 decoration-orange-400">
+                          {link}
+                        </a>
+                      </motion.li>
+                    ))}
                   </ul>
                 </motion.div>
               ))}
@@ -189,29 +271,13 @@ const SleekFooter: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              {/* Emergency Hotline */}
-              <div className="bg-gradient-to-br from-red-600 to-rose-600 rounded-xl p-6 mb-6 shadow-lg">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Phone size={20} className="text-white" />
-                  <div>
-                    <h4 className="font-bold text-white text-sm uppercase tracking-wider">24/7 Emergency</h4>
-                    <p className="text-red-100 text-xs">Technical Support</p>
-                  </div>
-                </div>
-                <div className="text-xl font-bold text-white mb-2 tracking-tight">+1 (800) HEAVY-911</div>
-                <div className="flex items-center space-x-2 text-red-100 text-xs">
-                  <Clock size={12} />
-                  <span>Available 24/7</span>
-                </div>
-              </div>
-
               {/* Download Brochure */}
               <motion.button
-                  className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl p-4 mb-6 group"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
-                  }}
+                className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl p-4 mb-6 group"
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
+                }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center space-x-3">
@@ -230,26 +296,32 @@ const SleekFooter: React.FC = () => {
                 <h4 className="font-medium text-orange-400 mb-3 text-sm uppercase tracking-wider">Quick Contact</h4>
                 <div className="flex items-center space-x-3 text-sm">
                   <Mail size={14} className="text-slate-400" />
-                  <span className="text-slate-300 hover:text-white transition-colors">mktg-til@tilindia.com</span>
+                  <a href="mailto:mktg-til@tilindia.com" className="text-slate-300 hover:text-white transition-colors">
+                    mktg-til@tilindia.com
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm">
                   <Phone size={14} className="text-slate-400" />
-                  <span className="text-slate-300 hover:text-white transition-colors">+91 033 6633 2000</span>
+                  <a href="tel:+9103366332000" className="text-slate-300 hover:text-white transition-colors">
+                    +91 033 6633 2000
+                  </a>
                 </div>
                 <div className="flex items-start space-x-3 text-sm">
                   <MapPin size={14} className="text-slate-400 mt-0.5" />
-                  <span className="text-slate-300 hover:text-white transition-colors">Taratolla Road, Garden Reach<br />Kolkata 700 024, West Bengal</span>
+                  <span className="text-slate-300 hover:text-white transition-colors">
+                    Taratolla Road, Garden Reach<br />
+                    Kolkata 700 024, West Bengal
+                  </span>
                 </div>
               </div>
             </motion.div>
           </div>
         </div>
-          
       </div>
 
       {/* Bottom Bar */}
- <div className="border-t border-slate-800">
-    <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-6">
+      <div className="border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-xs text-slate-400">
               © 2025 Tractors India Limited. All rights reserved.

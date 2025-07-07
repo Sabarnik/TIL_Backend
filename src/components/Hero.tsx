@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   return (
     <div 
       className="relative h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ backgroundImage: "url('/src/assets/image.jpg')" }}
+      style={{ backgroundImage: "url('/image.jpg')" }}
     >
       {/* Lighter Gradient Overlay for Better Model Visibility */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/20 z-10" />

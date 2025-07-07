@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 import * as THREE from 'three';
 
 // Preload the CAT excavator model
-useGLTF.preload('/src/assets/models/caterpillar.glb');
+useGLTF.preload('/models/caterpillar.glb');
 
 // Loading Component
 const Loader = () => {
@@ -38,7 +38,7 @@ const Loader = () => {
 const ExcavatorModel = () => {
   const groupRef = useRef<THREE.Group>(null);
   const modelRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF('/src/assets/models/caterpillar.glb');
+  const { scene } = useGLTF('/models/caterpillar.glb');
 
   // Professional material definitions
   const materials = {

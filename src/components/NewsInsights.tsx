@@ -32,7 +32,7 @@ const NewsInsights: React.FC = () => {
       id: 3,
       title: 'Partnership with Leading Construction Giants',
       excerpt: 'Strategic partnerships with top construction companies to deliver innovative solutions for mega infrastructure projects.',
-      image: 'https://images.unsplash.com/photo-1581093196270-1a1a6dab75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       date: '2024-01-05',
       readTime: '4 min read',
       category: 'Partnerships',
@@ -83,7 +83,7 @@ const NewsInsights: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-16 bg-gray-200">
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
         {/* Header */}
         <motion.div
@@ -93,15 +93,25 @@ const NewsInsights: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.span
-            className="inline-block px-6 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg text-sm font-semibold mb-4 shadow-md"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            NEWS & INSIGHTS
-          </motion.span>
+<motion.span
+  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+  initial={{ 
+    opacity: 0,
+    letterSpacing: "-0.05em" // Starts condensed
+  }}
+  whileInView={{
+    opacity: 1,
+    letterSpacing: "0.02em", // Slightly expands
+  }}
+  transition={{ 
+    duration: 0.8,
+    delay: 0.2,
+    ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
+  }}
+  viewport={{ once: true, margin: "-20%" }}
+>
+  NEWS & INSIGHTS
+</motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
             Latest <span className="text-orange-500">Updates</span> From TIL
           </h2>

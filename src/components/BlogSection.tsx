@@ -82,6 +82,8 @@ const BlogSection: React.FC = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
+        
+        
         {/* Header */}
         <motion.div
           className="text-center mb-12"
@@ -90,8 +92,27 @@ const BlogSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
+          <motion.span
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+            initial={{ 
+              opacity: 0,
+              letterSpacing: "-0.05em" // Starts condensed
+            }}
+            whileInView={{
+              opacity: 1,
+              letterSpacing: "0.02em", // Slightly expands
+            }}
+            transition={{ 
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
+            }}
+            viewport={{ once: true, margin: "-20%" }}
+          >
+            BLOGS
+          </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
-            Our <span className="text-orange-500">Blogs</span>
+            Our <span className="text-orange-500">Content</span>
           </h2>
         </motion.div>
 

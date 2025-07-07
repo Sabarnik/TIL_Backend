@@ -7,7 +7,7 @@ import MachineryGallery from './components/MachineryGallery';
 import OurGlobalAssociates from './components/OurGlobalAssociates';
 import NewsInsights from './components/NewsInsights';
 import BlogSection from './components/BlogSection';
-import GlobalPresence from './components/GlobalPresence';
+import RegionalOffices from './components/RegionalOffices';
 import Testimonials from './components/Testimonials';
 import SleekFooter from './components/SleekFooter';
 
@@ -25,7 +25,7 @@ function App() {
         <MachineryGallery />
         <NewsInsights />
         <BlogSection />
-        <GlobalPresence />
+        <RegionalOffices/>
         <Testimonials />
       </main>
 

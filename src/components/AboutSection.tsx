@@ -37,16 +37,16 @@ const AboutSection: React.FC = () => {
         </motion.div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Text Content */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+        <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+  {/* Text Content */}
+  <motion.div 
+    className="lg:w-1/2"
+    initial={{ opacity: 0, x: -30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 h-full">
               <p className="text-slate-600 mb-6 leading-relaxed text-lg">
                 TIL Limited (formerly Tractors India Limited) was established in 1944 as India's 
                 first heavy equipment distributor. Today, as part of the Gainwell Group, we've 
@@ -94,24 +94,24 @@ const AboutSection: React.FC = () => {
 
           {/* Image Content */}
           <motion.div 
-            className="lg:w-1/2 lg:self-center"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="relative rounded-xl overflow-hidden shadow-xl aspect-[4/3]">
-              <motion.img
-                src="/src/assets/crawler-cranes.png"
-                alt="TIL Limited heavy equipment"
-                className="w-full h-full object-cover"
-                initial={{ scale: 1.05 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 1.5 }}
-                viewport={{ once: true }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+    className="lg:w-1/2"
+    initial={{ opacity: 0, x: 30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    <div className="relative rounded-xl overflow-hidden shadow-xl h-full min-h-[100%]">
+      <motion.img
+        src="/crawler-cranes.png"
+        alt="TIL Limited heavy equipment"
+        className="w-full h-full object-cover"
+        initial={{ scale: 1.05 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
