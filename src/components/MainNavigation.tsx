@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
   ChevronDown,
+  Eye,
   ChevronRight,
+  Calendar,
   Construction,
   Ship,
   Truck,
@@ -23,12 +25,14 @@ import {
   MessageSquare,
   Mail,
   Linkedin,
-  MessageCircle
+  MessageCircle,
+  FileText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('company');
+  const [activeItem, setActiveItem] = useState(null);
 
   const primaryCategories = [
     {
@@ -43,11 +47,11 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       icon: <Users className="w-4 h-4" />,
       description: 'Meet our executive team and board of directors'
     },
-        {
+    {
       id: 'milestones',
       name: 'Milestones',
       icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      description: 'Key achievements and historical moments'
     },
     {
       id: 'values',
@@ -55,7 +59,6 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       icon: <Star className="w-4 h-4" />,
       description: 'Our mission, vision, and core values'
     },
-
     {
       id: 'corporate',
       name: 'Corporate Social Responsibility',
@@ -66,21 +69,49 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       id: 'codeofconduct',
       name: 'Code of Conduct',
       icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      description: 'Our ethical guidelines and business practices'
     },
     {
       id: 'facilities',
       name: 'Facilities',
       icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      description: 'Our manufacturing plants and offices'
     }
   ];
 
   const submenuData = {
     'company': {
       items: [
-        'Company History', 'Milestones', 'Awards & Recognition', 'Global Presence',
-        'Manufacturing Facilities', 'Quality Standards', 'Certifications', 'Corporate Profile'
+        {
+          name: 'Company History',
+          description: 'Explore our 80+ years of engineering excellence',
+          image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Milestones',
+          description: 'Key achievements in our journey',
+          image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Awards & Recognition',
+          description: 'Industry accolades and certifications',
+          image: 'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Global Presence',
+          description: 'Our international footprint and partnerships',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Manufacturing Facilities',
+          description: 'State-of-the-art production plants',
+          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Quality Standards',
+          description: 'Our commitment to excellence',
+          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop&crop=center'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
@@ -92,8 +123,36 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     },
     'leadership': {
       items: [
-        'Board of Directors', 'Executive Team', 'Management Committee', 'Advisory Board',
-        'Regional Heads', 'Technical Experts', 'Innovation Leaders', 'Corporate Governance'
+        {
+          name: 'Board of Directors',
+          description: 'Meet our governing body and strategic advisors',
+          image: 'https://images.unsplash.com/photo-1560439514-e960a3ef5019?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Executive Team',
+          description: 'Our day-to-day leadership team',
+          image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Management Committee',
+          description: 'Department heads and functional leaders',
+          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Advisory Board',
+          description: 'Industry experts guiding our strategy',
+          image: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Regional Heads',
+          description: 'Leaders across our operational regions',
+          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Corporate Governance',
+          description: 'Our policies and governance framework',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
@@ -105,21 +164,67 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     },
     'milestones': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          name: 'Foundation & Early Years',
+          description: 'Our humble beginnings and initial successes',
+          image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Key Innovations',
+          description: 'Breakthrough products and technologies',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Expansion Phases',
+          description: 'Growth of our operations and facilities',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Strategic Partnerships',
+          description: 'Collaborations that shaped our journey',
+          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Recent Achievements',
+          description: 'Our latest accomplishments and awards',
+          image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=240&fit=crop&crop=center'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
+        image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=240&fit=crop&crop=center',
+        title: 'Our Journey',
+        description: 'Key milestones that define our growth and success in the industry.',
+        cta: 'View Timeline',
+        features: ['80+ Years', '100+ Innovations', 'Global Reach']
       }
     },
     'values': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          name: 'Mission Statement',
+          description: 'Our purpose and reason for being',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Vision 2030',
+          description: 'Our aspirations for the future',
+          image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Core Values',
+          description: 'Principles that guide our actions',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Ethics & Integrity',
+          description: 'Our commitment to doing business right',
+          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Customer Focus',
+          description: 'Putting our clients at the center',
+          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
@@ -131,34 +236,31 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     },
     'corporate': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
-      ],
-      media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
-      }
-    },
-    'codeofconduct': {
-      items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
-      ],
-      media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
-      }
-    },
-    'facilities': {
-      items: [
-        'Environmental Policy', 'Green Manufacturing', 'Carbon Footprint', 'Waste Management',
-        'Energy Efficiency', 'Sustainable Products', 'Community Impact', 'ESG Reports'
+        {
+          name: 'Environmental Policy',
+          description: 'Our commitment to sustainable operations',
+          image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Green Manufacturing',
+          description: 'Eco-friendly production processes',
+          image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Community Impact',
+          description: 'Initiatives that benefit local communities',
+          image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Employee Welfare',
+          description: 'Programs for our workforce wellbeing',
+          image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'ESG Reports',
+          description: 'Our environmental, social and governance performance',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=240&fit=crop&crop=center',
@@ -167,10 +269,78 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         cta: 'Green Initiatives',
         features: ['Carbon Neutral', 'Green Tech', 'Eco-Friendly']
       }
+    },
+    'codeofconduct': {
+      items: [
+        {
+          name: 'Business Ethics',
+          description: 'Our standards for ethical business practices',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Anti-Corruption',
+          description: 'Policies against bribery and corruption',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Compliance Framework',
+          description: 'Ensuring adherence to laws and regulations',
+          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Whistleblower Policy',
+          description: 'Reporting unethical behavior safely',
+          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
+        }
+      ],
+      media: {
+        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
+        title: 'Code of Conduct',
+        description: 'Our commitment to ethical business practices and corporate governance.',
+        cta: 'View Policy',
+        features: ['Ethical Standards', 'Compliance', 'Transparency']
+      }
+    },
+    'facilities': {
+      items: [
+        {
+          name: 'Kolkata Headquarters',
+          description: 'Our corporate office and main facility',
+          image: 'https://images.unsplash.com/photo-1582555142141-82061f60d3e8?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Manufacturing Plants',
+          description: 'State-of-the-art production facilities',
+          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'R&D Centers',
+          description: 'Innovation hubs driving product development',
+          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Regional Offices',
+          description: 'Our presence across India',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+        },
+        {
+          name: 'Training Centers',
+          description: 'Facilities for employee and customer education',
+          image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=240&fit=crop&crop=center'
+        }
+      ],
+      media: {
+        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center',
+        title: 'Our Facilities',
+        description: 'World-class manufacturing plants and offices supporting our operations.',
+        cta: 'Virtual Tour',
+        features: ['Modern Infrastructure', 'Advanced Equipment', 'Sustainable Design']
+      }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  const activeMedia = activeItem || currentSubmenu?.media;
 
   return (
     <motion.div
@@ -180,314 +350,16 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="overflow-hidden"
     >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
           {/* Left: Primary Categories */}
           <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
+            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
               <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                 About Us
               </h3>
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => setActiveCategory(category.id)}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-semibold text-sm ${
-                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                        }`}>
-                          {category.name}
-                        </div>
-                        <div className="text-xs text-gray-500 truncate">
-                          {category.description}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </div>
-          </div>
-
-          {/* Middle: Multi-Column Submenu */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
-              </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
-                {currentSubmenu?.items.map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    className="group px-3 py-2 rounded transition-all duration-200 w-full min-w-0
-                      hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]"
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.02 }}
-                    whileHover={{ scale: 1.01 }}
-                  >
-                    <div className="flex items-center justify-between min-w-0">
-                      <span className="text-gray-200 group-hover:text-yellow-400 font-medium text-sm truncate flex-1">
-                        {item}
-                      </span>
-                      <ChevronRight className="w-3 h-3 text-yellow-600 group-hover:text-yellow-400 transition-colors flex-shrink-0 ml-2" />
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Dynamic Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={currentSubmenu?.media.image}
-                    alt={currentSubmenu?.media.title}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {currentSubmenu?.media.title}
-                  </h4>
-                  <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                    {currentSubmenu?.media.description}
-                  </p>
-                  
-                  <div className="mb-4">
-                    <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
-                    <div className="space-y-1">
-                      {currentSubmenu?.media.features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                          <span className="text-gray-300 text-xs">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2 mt-auto">
-                    <motion.button 
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>{currentSubmenu?.media.cta}</span>
-                    </motion.button>
-                    
-                    <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
-                      <Download className="w-3 h-3" />
-                      <span>Download Brochure</span>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  type ProductItem = {
-    name: string;
-    image: string;
-    title: string;
-    description: string;
-    features: string[];
-  };
-  const [activeCategory, setActiveCategory] = useState('all-products');
-  const [hoveredItem, setHoveredItem] = useState<ProductItem | null>(null);
-
-  const primaryCategories = [
-    {
-    id: 'all-products',
-    name: 'TIL Range',
-    icon: <Package className="w-4 h-4" />,
-    description: 'Reliable lifting and handling for Indian industries.'
-  },
-  {
-    id: 'new-arrivals',
-    name: 'Manitowoc Range',
-    icon: <Zap className="w-4 h-4" />,
-    description: 'Heavy-duty cranes with global performance.'
-  },
-  {
-    id: 'best-sellers',
-    name: 'Hyster TIL Range',
-    icon: <Star className="w-4 h-4" />,
-    description: 'Reliable forklifts and handling systems from Hyster-TIL'
-  },
-  {
-    id: 'services',
-    name: 'Snorkel Range',
-    icon: <Settings className="w-4 h-4" />,
-    description: 'Aerial work platforms and access equipment by Snorkel'
-  }  ];
-const submenuData = {
-  'all-products': {
-    items: [
-      {
-        name: 'Truck Cranes',
-        image: '/truck-cranes.jpeg',
-        title: 'Truck Cranes',
-        description: 'High-capacity cranes ideal for tall construction sites.',
-        features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
-      },
-      {
-        name: 'Pick n Carry Cranes',
-        image: '/pick-n-carry.png',
-        title: 'Pick & Carry Cranes',
-        description: 'Mobile cranes suitable for fast on-site operations.',
-        features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
-      },
-      {
-        name: 'Rough Terrain Cranes',
-        image: '/rough-terrain.png',
-        title: 'Tower Cranes',
-        description: 'High-capacity cranes ideal for tall construction sites.',
-        features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
-      },
-      {
-        name: 'Articulating Cranes',
-        image: '/articulating.jpg',
-        title: 'Articulating Cranes',
-        description: 'Flexible, jointed cranes ideal for tight spaces.',
-        features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
-      }
-    ],
-    media: {
-      image: '/articulating.jpg',
-      title: 'Articulating Cranes',
-      description: 'Mobile cranes suitable for fast on-site operations.',
-      cta: 'View All Products',
-      features: ['Compact Footprint', 'Easy Maintenance', 'Multi-Angle Lifting']
-    }
-  },
-
-  'new-arrivals': {
-    items: [
-      {
-        name: 'Groove Range',
-        image: '/grove-range.png',
-        title: 'Groove Range',
-        description: 'Smart lifting solutions engineered for precision and durability.',
-        features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
-      },
-      {
-        name: 'Crawler Cranes',
-        image: '/crawler-cranes.png',
-        title: 'Crawler Cranes',
-        description: 'Robust tracked cranes for heavy-duty lifting on challenging terrains.',
-        features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
-      }
-    ],
-    media: {
-      image: '/crawler-cranes.png',
-      title: 'Latest Innovations',
-      description: 'Cutting-edge technology and smart features for enhanced productivity and safety in modern construction.',
-      cta: 'Explore New Tech',
-      features: ['Smart Telematics', 'Eco-Friendly Powertrain', 'IoT Integration']
-    }
-  },
-
-  'best-sellers': {
-    items: [
-      {
-        name: 'Forklift Trucks',
-        image: '/forklift.png',
-        title: 'Forklift Trucks',
-        description: 'Efficient material handling for warehouses and logistics hubs.',
-        features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
-      },
-      {
-        name: 'Reachstackers',
-        image: '/reachstackers.png',
-        title: 'Reachstackers',
-        description: 'Container handling equipment used in ports and yards.',
-        features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
-      }
-    ],
-    media: {
-      image: '/forklift.png',
-      title: 'Proven Performers',
-      description: 'Most trusted equipment by contractors across India. Reliable, efficient, and backed by comprehensive support.',
-      cta: 'Request Demo',
-      features: ['Uptime Guarantee', 'Nationwide Service Network', 'Spare Part Availability']
-    }
-  },
-
-  'services': {
-    items: [
-      {
-        name: 'Boom Lifts',
-        image: '/boomlifts.png',
-        title: 'Boom Lifts',
-        description: 'Elevated work platforms for maintenance and construction tasks.',
-        features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
-      }
-    ],
-    media: {
-      image: '/boomlifts.png',
-      title: 'Complete Support',
-      description: 'Comprehensive after-sales support including maintenance, genuine parts, and technical assistance.',
-      cta: 'Service Support',
-      features: ['Certified Engineers', 'Rapid On-Site Service', 'OEM Spare Assurance']
-    }
-  }
-};
-
-
- const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
-  const mediaToShow = hoveredItem || currentSubmenu?.media;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          
-          {/* LEFT: CATEGORIES */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Categories
-              </h3>
+            <div className="p-4 pt-0">
               <div className="space-y-1">
                 {primaryCategories.map((category) => (
                   <motion.div
@@ -499,7 +371,7 @@ const submenuData = {
                       }`}
                     onMouseEnter={() => {
                       setActiveCategory(category.id);
-                      setHoveredItem(null);
+                      setActiveItem(null);
                     }}
                     whileHover={{ x: 2 }}
                   >
@@ -528,52 +400,55 @@ const submenuData = {
             </div>
           </div>
 
-          {/* MIDDLE: ITEMS */}
+          {/* Middle: Location-style Items */}
           <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
+            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
               <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
+                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
               </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
+            </div>
+            <div className="p-4 pt-0">
+              <ul className="space-y-4">
                 {currentSubmenu?.items.map((item, index) => (
-                  <motion.a
+                  <li
                     key={index}
-                    href="#"
-                    onMouseEnter={() => setHoveredItem(item)}
-                    onMouseLeave={() => setHoveredItem(null)}
-                    className="group px-3 py-2 rounded transition-all duration-200 w-full min-w-0
-                      hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]"
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.02 }}
-                    whileHover={{ scale: 1.01 }}
+                    onMouseEnter={() => setActiveItem(item)}
+                    className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
                   >
-                    <div className="flex items-center justify-between min-w-0">
-                      <span className="text-gray-200 group-hover:text-yellow-400 font-medium text-sm truncate flex-1">
-                        {item.name}
-                      </span>
-                      <ChevronRight className="w-3 h-3 text-yellow-600 group-hover:text-yellow-400 transition-colors flex-shrink-0 ml-2" />
+                    <div className="pt-1">
+                      <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
                     </div>
-                  </motion.a>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                        {item.name}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">{item.description}</p>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 
-          {/* RIGHT: MEDIA PANEL */}
+          {/* Right: Dynamic Media Panel */}
           <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
+            <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                Details
+              </h3>
+            </div>
+            <div className="p-4 pt-0">
               <motion.div
-                key={mediaToShow?.title}
+                key={activeMedia?.title || activeMedia?.name}
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
+                className="p-4 flex flex-col"
               >
                 <div className="relative mb-3 overflow-hidden rounded">
                   <img
-                    src={mediaToShow?.image}
-                    alt={mediaToShow?.title}
+                    src={activeMedia?.image}
+                    alt={activeMedia?.title || activeMedia?.name}
                     className="w-full h-32 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -581,17 +456,17 @@ const submenuData = {
                 
                 <div className="flex-1 min-w-0">
                   <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {mediaToShow?.title}
+                    {activeMedia?.title || activeMedia?.name}
                   </h4>
                   <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                    {mediaToShow?.description}
+                    {activeMedia?.description}
                   </p>
                   
-                  {mediaToShow?.features && (
+                  {activeMedia?.features && (
                     <div className="mb-4">
                       <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
                       <div className="space-y-1">
-                        {mediaToShow.features.map((feature, index) => (
+                        {activeMedia.features.map((feature, index) => (
                           <div key={index} className="flex items-center space-x-2">
                             <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
                             <span className="text-gray-300 text-xs">{feature}</span>
@@ -601,14 +476,316 @@ const submenuData = {
                     </div>
                   )}
                   
-                  <div className="space-y-2 mt-auto">
+                  <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                     <motion.button 
                       className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
                       whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <Phone className="w-3 h-3" />
-                      <span>{hoveredItem ? 'Get Quote' : currentSubmenu?.media.cta}</span>
+                      <span>{activeMedia?.cta || 'Learn More'}</span>
+                    </motion.button>
+                    
+                    <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
+                      <Download className="w-3 h-3" />
+                      <span>Download Brochure</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const [activeCategory, setActiveCategory] = useState('all-products');
+  const [activeProduct, setActiveProduct] = useState(null);
+
+  const primaryCategories = [
+    {
+      id: 'all-products',
+      name: 'TIL Range',
+      icon: <Package className="w-4 h-4" />,
+      description: 'Reliable lifting and handling for Indian industries'
+    },
+    {
+      id: 'new-arrivals',
+      name: 'Manitowoc Range',
+      icon: <Zap className="w-4 h-4" />,
+      description: 'Heavy-duty cranes with global performance'
+    },
+    {
+      id: 'best-sellers',
+      name: 'Hyster TIL Range',
+      icon: <Star className="w-4 h-4" />,
+      description: 'Reliable forklifts and handling systems from Hyster-TIL'
+    },
+    {
+      id: 'services',
+      name: 'Snorkel Range',
+      icon: <Settings className="w-4 h-4" />,
+      description: 'Aerial work platforms and access equipment by Snorkel'
+    }
+  ];
+
+  const submenuData = {
+    'all-products': {
+      products: [
+        {
+          name: 'Truck Cranes',
+          description: 'High-capacity cranes ideal for tall construction sites',
+          image: '/truck-cranes.jpeg',
+          features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
+        },
+        {
+          name: 'Pick n Carry Cranes',
+          description: 'Mobile cranes suitable for fast on-site operations',
+          image: '/pick-n-carry.png',
+          features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
+        },
+        {
+          name: 'Rough Terrain Cranes',
+          description: 'Designed for challenging job site conditions',
+          image: '/rough-terrain.png',
+          features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
+        },
+        {
+          name: 'Articulating Cranes',
+          description: 'Flexible, jointed cranes ideal for tight spaces',
+          image: '/articulating.jpg',
+          features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
+        }
+      ],
+      media: {
+        image: '/articulating.jpg',
+        title: 'TIL Product Range',
+        description: 'Comprehensive lifting solutions for all your construction needs.',
+        cta: 'View All Products',
+        features: ['Durable Construction', 'Advanced Safety', 'Easy Maintenance']
+      }
+    },
+    'new-arrivals': {
+      products: [
+        {
+          name: 'Grove Range',
+          description: 'Smart lifting solutions engineered for precision and durability',
+          image: '/grove-range.png',
+          features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
+        },
+        {
+          name: 'Crawler Cranes',
+          description: 'Robust tracked cranes for heavy-duty lifting',
+          image: '/crawler-cranes.png',
+          features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
+        }
+      ],
+      media: {
+        image: '/crawler-cranes.png',
+        title: 'Latest Innovations',
+        description: 'Cutting-edge technology and smart features for enhanced productivity.',
+        cta: 'Explore New Tech',
+        features: ['Smart Telematics', 'Eco-Friendly Powertrain', 'IoT Integration']
+      }
+    },
+    'best-sellers': {
+      products: [
+        {
+          name: 'Forklift Trucks',
+          description: 'Efficient material handling for warehouses and logistics',
+          image: '/forklift.png',
+          features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
+        },
+        {
+          name: 'Reachstackers',
+          description: 'Container handling equipment for ports and yards',
+          image: '/reachstackers.png',
+          features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
+        }
+      ],
+      media: {
+        image: '/forklift.png',
+        title: 'Proven Performers',
+        description: 'Most trusted equipment by businesses across India.',
+        cta: 'Request Demo',
+        features: ['Uptime Guarantee', 'Nationwide Service', 'Spare Part Availability']
+      }
+    },
+    'services': {
+      products: [
+        {
+          name: 'Boom Lifts',
+          description: 'Elevated work platforms for maintenance and construction',
+          image: '/boomlifts.png',
+          features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
+        }
+      ],
+      media: {
+        image: '/boomlifts.png',
+        title: 'Complete Support',
+        description: 'Comprehensive after-sales support and services.',
+        cta: 'Service Support',
+        features: ['Certified Engineers', 'Rapid On-Site Service', 'OEM Spare Assurance']
+      }
+    }
+  };
+
+  const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  const activeMedia = activeProduct || currentSubmenu?.media;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="overflow-hidden"
+    >
+      {/* Added max-h-[70vh] and overflow-y-auto for the whole container */}
+      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+          
+          {/* Left: Categories */}
+          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
+            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                Product Categories
+              </h3>
+            </div>
+            <div className="p-4 pt-0">
+              <div className="space-y-1">
+                {primaryCategories.map((category) => (
+                  <motion.div
+                    key={category.id}
+                    className={`cursor-pointer transition-all duration-200 rounded w-full
+                      ${activeCategory === category.id
+                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                      }`}
+                    onMouseEnter={() => {
+                      setActiveCategory(category.id);
+                      setActiveProduct(null);
+                    }}
+                    whileHover={{ x: 2 }}
+                  >
+                    <div className="flex items-center space-x-3 px-3 py-2.5">
+                      <div className={`p-1.5 rounded flex-shrink-0 ${
+                        activeCategory === category.id 
+                          ? 'bg-yellow-500 text-black' 
+                          : 'bg-gray-700 text-yellow-400'
+                      }`}>
+                        {category.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className={`font-semibold text-sm ${
+                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                        }`}>
+                          {category.name}
+                        </div>
+                        <div className="text-xs text-gray-500 truncate">
+                          {category.description}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Middle: Product Items */}
+          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
+            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
+              </h3>
+            </div>
+            <div className="p-4 pt-0">
+              <ul className="space-y-4">
+                {currentSubmenu?.products.map((product, index) => (
+                  <li
+                    key={index}
+                    onMouseEnter={() => setActiveProduct(product)}
+                    className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                  >
+                    <div className="pt-1">
+                      <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                        {product.name}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">{product.description}</p>
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {product.features.map((feature, i) => (
+                          <span key={i} className="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right: Dynamic Media Panel */}
+          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+            <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                Details
+              </h3>
+            </div>
+            <div className="p-4 pt-0">
+              <motion.div
+                key={activeMedia?.title || activeMedia?.name}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-4 flex flex-col"
+              >
+                <div className="relative mb-3 overflow-hidden rounded">
+                  <img
+                    src={activeMedia?.image}
+                    alt={activeMedia?.title || activeMedia?.name}
+                    className="w-full h-32 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-bold text-base text-yellow-400 mb-2">
+                    {activeMedia?.title || activeMedia?.name}
+                  </h4>
+                  <p className="text-gray-300 mb-3 leading-relaxed text-xs">
+                    {activeMedia?.description}
+                  </p>
+                  
+                  {activeMedia?.features && (
+                    <div className="mb-4">
+                      <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
+                      <div className="space-y-1">
+                        {activeMedia.features.map((feature, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                            <span className="text-gray-300 text-xs">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                    <motion.button 
+                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>{activeProduct ? 'Get Quote' : activeMedia?.cta}</span>
                     </motion.button>
                     
                     <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
@@ -620,7 +797,6 @@ const submenuData = {
               </motion.div>
             </div>
           </div>
-
         </div>
       </div>
     </motion.div>
@@ -813,296 +989,372 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
 
 
 const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const [activeCategory, setActiveCategory] = useState('media');
+  console.log('MediaMegamenu component rendering...');
+  
+  const [activeCategory, setActiveCategory] = useState('blogs');
+  console.log('Active category:', activeCategory);
 
   const primaryCategories = [
     {
       id: 'blogs',
       name: 'Blogs',
       icon: <Building className="w-4 h-4" />,
-      description: 'Our heritage and leadership in construction equipment'
+      description: 'Industry insights and company updates'
     },
     {
       id: 'video',
       name: 'Videos',
       icon: <Users className="w-4 h-4" />,
-      description: 'Meet our executive team and board of directors'
+      description: 'Product demos and company highlights'
     },
-        {
+    {
       id: 'news',
       name: 'News',
       icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      description: 'Latest company announcements'
     },
     {
       id: 'til',
       name: 'TIL@bauma2024',
       icon: <Star className="w-4 h-4" />,
-      description: 'Our mission, vision, and core values'
+      description: 'Trade show highlights and innovations'
     },
-
     {
       id: 'events',
       name: 'Events',
-      icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      icon: <Calendar className="w-4 h-4" />,
+      description: 'Upcoming events and exhibitions'
     },
     {
       id: 'press',
       name: 'Press Release',
-      icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      icon: <FileText className="w-4 h-4" />,
+      description: 'Official press announcements'
     },
     {
       id: 'downloads',
       name: 'Downloads',
-      icon: <Shield className="w-4 h-4" />,
-      description: 'Environmental responsibility and green initiatives'
+      icon: <Download className="w-4 h-4" />,
+      description: 'Brochures and technical documents'
     }
   ];
 
-  const submenuData = {
+   const submenuData = {
     'blogs': {
       items: [
-        'Company History', 'Milestones', 'Awards & Recognition', 'Global Presence',
-        'Manufacturing Facilities', 'Quality Standards', 'Certifications', 'Corporate Profile'
+        {
+          title: 'Company History',
+          description: 'Tracing our 80+ years of industrial excellence and innovation.',
+          image: 'https://images.unsplash.com/photo-1600880292089-90e6a803b4f0?w=400&h=240&fit=crop&crop=center',
+          link: '/blogs/company-history'
+        },
+        {
+          title: 'Industry Insights',
+          description: 'Expert analysis on construction equipment trends.',
+          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=240&fit=crop&crop=center',
+          link: '/blogs/industry-insights'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
         title: 'Our Legacy',
         description: '80+ years of engineering excellence in construction and material handling equipment.',
-        cta: 'Learn More',
+        cta: 'Read Our Stories',
         features: ['80+ Years Experience', 'Global Presence', 'ISO Certified']
       }
     },
     'video': {
       items: [
-        'Board of Directors', 'Executive Team', 'Management Committee', 'Advisory Board',
-        'Regional Heads', 'Technical Experts', 'Innovation Leaders', 'Corporate Governance'
+        {
+          title: 'Product Demonstrations',
+          description: 'See our equipment in action across various applications.',
+          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
+          link: '/videos/product-demos'
+        }
       ],
       media: {
         image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
-        title: 'Leadership Team',
-        description: 'Experienced leaders driving innovation and growth in the construction industry.',
-        cta: 'Meet Our Team',
-        features: ['Industry Veterans', 'Global Experience', 'Innovation Focus']
+        title: 'Video Library',
+        description: 'Comprehensive collection of product demos, interviews, and company highlights.',
+        cta: 'Watch Videos',
+        features: ['HD Quality', 'Multiple Languages', 'Mobile Optimized']
       }
     },
     'news': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          title: 'Latest Press Release',
+          description: 'Recent company announcements and updates.',
+          image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+          link: '/news/press-release'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
+        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+        title: 'Latest News',
+        description: 'Stay informed with our latest announcements and industry updates.',
+        cta: 'Read News',
+        features: ['Breaking News', 'Industry Analysis', 'Market Insights']
       }
     },
     'til': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          title: 'Bauma 2024 Highlights',
+          description: 'Key moments from the world\'s largest construction trade fair.',
+          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+          link: '/til/bauma-highlights'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
+        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+        title: 'TIL@bauma2024',
+        description: 'Discover innovations and highlights from Bauma 2024.',
+        cta: 'Explore TIL',
+        features: ['Innovation Showcase', 'Live Demos', 'Expert Talks']
       }
     },
     'events': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          title: 'Upcoming Trade Shows',
+          description: 'Join us at major industry exhibitions worldwide.',
+          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+          link: '/events/trade-shows'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
+        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+        title: 'Upcoming Events',
+        description: 'Join us at our upcoming events and exhibitions worldwide.',
+        cta: 'View Events',
+        features: ['Global Events', 'Expert Sessions', 'Networking']
       }
     },
     'press': {
       items: [
-        'Mission Statement', 'Vision 2030', 'Core Values', 'Ethics & Integrity',
-        'Customer Focus', 'Innovation Culture', 'Safety First', 'Quality Commitment'
+        {
+          title: 'Official Announcements',
+          description: 'Latest press releases and company statements.',
+          image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+          link: '/press/announcements'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
+        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+        title: 'Press Releases',
+        description: 'Official company announcements and press statements.',
+        cta: 'Read Press',
+        features: ['Official News', 'Media Kit', 'Contact Info']
       }
     },
     'downloads': {
       items: [
-        'Environmental Policy', 'Green Manufacturing', 'Carbon Footprint', 'Waste Management',
-        'Energy Efficiency', 'Sustainable Products', 'Community Impact', 'ESG Reports'
+        {
+          title: 'Product Brochures',
+          description: 'Comprehensive product information and specifications.',
+          image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=240&fit=crop&crop=center',
+          link: '/downloads/brochures'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=240&fit=crop&crop=center',
-        title: 'Sustainability',
-        description: 'Leading the way in environmentally responsible manufacturing and operations.',
-        cta: 'Green Initiatives',
-        features: ['Carbon Neutral', 'Green Tech', 'Eco-Friendly']
+        image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=240&fit=crop&crop=center',
+        title: 'Downloads',
+        description: 'Access our comprehensive library of brochures and technical documents.',
+        cta: 'Browse Downloads',
+        features: ['Product Specs', 'User Manuals', 'Technical Guides']
       }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  console.log('Current submenu data:', currentSubmenu);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          {/* Left: Primary Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                About Us
-              </h3>
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => setActiveCategory(category.id)}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-semibold text-sm ${
-                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                        }`}>
-                          {category.name}
+  // Safe hover handler with debouncing
+  const handleCategoryHover = (categoryId: string) => {
+    console.log('Category hovered:', categoryId);
+    try {
+      setActiveCategory(categoryId);
+      console.log('Category set successfully to:', categoryId);
+    } catch (error) {
+      console.error('Error setting category on hover:', error);
+    }
+  };
+
+  console.log('Rendering MediaMegamenu with activeCategory:', activeCategory);
+
+  try {
+    return (
+      <div className="overflow-hidden">
+        <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+            
+            {/* Left Panel: Primary Categories with Hover Navigation */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Media Center
+                </h3>
+                <div className="max-h-80 overflow-y-auto pr-2">
+                  <div className="space-y-1">
+                    {primaryCategories.map((category) => {
+                      console.log('Rendering category:', category.name);
+                      return (
+                        <div
+                          key={category.id}
+                          className={`cursor-pointer transition-all duration-200 rounded w-full
+                            ${activeCategory === category.id
+                              ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(255,193,7,0.1)] border border-yellow-500/30'
+                              : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                            }`}
+                          onMouseEnter={() => handleCategoryHover(category.id)}
+                          onMouseLeave={() => {
+                            // Optional: Add a small delay before reverting
+                            // setTimeout(() => setActiveCategory('blogs'), 100);
+                          }}
+                        >
+                          <div className="flex items-center space-x-3 px-3 py-3">
+                            <div className={`p-2 rounded-lg flex-shrink-0 transition-all duration-200 ${
+                              activeCategory === category.id 
+                                ? 'bg-yellow-500 text-black shadow-lg' 
+                                : 'bg-gray-700 text-yellow-400'
+                            }`}>
+                              {category.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className={`font-semibold text-sm transition-colors duration-200 ${
+                                activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                              }`}>
+                                {category.name}
+                              </div>
+                              <div className="text-xs text-gray-500 truncate mt-0.5">
+                                {category.description}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-xs text-gray-500 truncate">
-                          {category.description}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Middle: Multi-Column Submenu */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
-              </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
-                {currentSubmenu?.items.map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    className="group px-3 py-2 rounded transition-all duration-200 w-full min-w-0
-                      hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]"
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.02 }}
-                    whileHover={{ scale: 1.01 }}
-                  >
-                    <div className="flex items-center justify-between min-w-0">
-                      <span className="text-gray-200 group-hover:text-yellow-400 font-medium text-sm truncate flex-1">
-                        {item}
-                      </span>
-                      <ChevronRight className="w-3 h-3 text-yellow-600 group-hover:text-yellow-400 transition-colors flex-shrink-0 ml-2" />
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Dynamic Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={currentSubmenu?.media.image}
-                    alt={currentSubmenu?.media.title}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      );
+                    })}
+                  </div>
                 </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {currentSubmenu?.media.title}
-                  </h4>
-                  <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                    {currentSubmenu?.media.description}
-                  </p>
-                  
-                  <div className="mb-4">
-                    <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
-                    <div className="space-y-1">
-                      {currentSubmenu?.media.features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                          <span className="text-gray-300 text-xs">{feature}</span>
+              </div>
+            </div>
+
+            {/* Middle Panel: Card-based Submenu Items with Scroll */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Content'}
+                </h3>
+                <div className="max-h-96 overflow-y-auto pr-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {currentSubmenu?.items.map((item, index) => {
+                      console.log('Rendering item:', item.title);
+                      return (
+                        <div
+                          key={index}
+                          className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300"
+                        >
+                          <a href={item.link} className="block h-full">
+                            <div className="h-24 overflow-hidden relative">
+                              <img 
+                                src={item.image} 
+                                alt={item.title} 
+                                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                                onError={(e) => {
+                                  console.error('Image failed to load:', item.image);
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            </div>
+                            <div className="p-3">
+                              <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                                {item.title}
+                              </h4>
+                              <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+                                {item.description}
+                              </p>
+                            </div>
+                          </a>
                         </div>
-                      ))}
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Panel: Dynamic Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+              <div className="p-4">
+                <div className="h-full flex flex-col">
+                  <div className="relative mb-4 overflow-hidden rounded-lg shadow-lg">
+                    <img
+                      src={currentSubmenu?.media.image}
+                      alt={currentSubmenu?.media.title}
+                      className="w-full h-36 object-cover"
+                      onError={(e) => {
+                        console.error('Media image failed to load:', currentSubmenu?.media.image);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-2 left-3 right-3">
+                      <h4 className="font-bold text-white text-sm">
+                        {currentSubmenu?.media.title}
+                      </h4>
                     </div>
                   </div>
                   
-                  <div className="space-y-2 mt-auto">
-                    <motion.button 
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>{currentSubmenu?.media.cta}</span>
-                    </motion.button>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-gray-300 mb-4 leading-relaxed text-sm">
+                      {currentSubmenu?.media.description}
+                    </p>
                     
-                    <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
-                      <Download className="w-3 h-3" />
-                      <span>Download Brochure</span>
-                    </button>
+                    <div className="mb-6">
+                      <h5 className="font-semibold text-yellow-400 mb-3 text-sm">Key Features:</h5>
+                      <div className="space-y-2">
+                        {currentSubmenu?.media.features.map((feature, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                            <span className="text-gray-300 text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3 mt-auto">
+                      <button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
+                        <Eye className="w-4 h-4" />
+                        <span>Explore {primaryCategories.find(c => c.id === activeCategory)?.name}</span>
+                      </button>
+                      
+                      <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2">
+                        <Download className="w-4 h-4" />
+                        <span>Download Resources</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </motion.div>
-  );
+    );
+  } catch (error) {
+    console.error('Error rendering MediaMegamenu:', error);
+    return (
+      <div className="p-4 bg-red-100 border border-red-400 text-red-700">
+        <h3>Error in MediaMegamenu</h3>
+        <p>Component failed to render. Check console for details.</p>
+      </div>
+    );
+  }
 };
+
+
 
 const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('life');
@@ -1335,6 +1587,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
 const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('locations');
+  const [activeLocation, setActiveLocation] = useState(null);
 
   const primaryCategories = [
     { id: 'locations', name: 'Locations', icon: <Mountain className="w-4 h-4" /> },
@@ -1344,26 +1597,51 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const submenuData = {
     'locations': {
       points: [
-        'Kolkata',
-        'Chennai',
-        'Delhi NCR ',
-        'Mumbai ',
-        'Singrauli'
+        {
+          name: 'Kolkata',
+          image: 'https://images.unsplash.com/photo-1582555142141-82061f60d3e8?w=400&h=240&fit=crop&crop=center',
+          title: 'Kolkata',
+          description: 'Corporate headquarters of TIL, located in the heart of the city.',
+          cta: 'View Kolkata Office'
+        },
+        {
+          name: 'Chennai',
+          image: 'https://images.unsplash.com/photo-1583832928827-2c4f22b9724b?w=400&h=240&fit=crop&crop=center',
+          title: 'Chennai',
+          description: 'Serving the southern region with excellence.',
+          cta: 'View Chennai Office'
+        },
+        {
+          name: 'Delhi NCR',
+          image: 'https://images.unsplash.com/photo-1558089687-f282ffcbc12d?w=400&h=240&fit=crop&crop=center',
+          title: 'Delhi NCR ',
+          description: 'Our strategic presence in the capital region.',
+          cta: 'View Delhi NCR Office'
+        },
+        {
+          name: 'Mumbai',
+          image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=240&fit=crop&crop=center',
+          title: 'Mumbai',
+          description: 'West zone operational hub for TIL.',
+          cta: 'View Mumbai Office'
+        },
+        {
+          name: 'Singrauli',
+          image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=240&fit=crop&crop=center',
+          title: 'Singrauli',
+          description: 'Industrial logistics and support in central India.',
+          cta: 'View Singrauli Depot'
+        }
       ],
-      media: {
-        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Offices',
-        description: 'Find us across India with regional support in major cities and industrial zones.',
-        cta: 'View on Map'
-      }
+      media: {} // fallback not used when dynamic hover is active
     },
     'inquiry': {
       contacts: [
-  { label: 'WhatsApp', value: '+91 89815 30153', icon: <MessageCircle className="w-5 h-5 text-green-400" /> },
-  { label: 'Email', value: 'mktg-til@tilindia.com', icon: <Mail className="w-5 h-5 text-blue-400" /> },
-  { label: 'Phone', value: '+91 033 6633 2000', icon: <Phone className="w-5 h-5 text-yellow-400" /> },
-  { label: 'LinkedIn', value: 'https://www.linkedin.com/company/til-limited-ind/', icon: <Linkedin className="w-5 h-5 text-[#0A66C2]" /> }
-],
+        { label: 'WhatsApp', value: '+91 89815 30153', icon: <MessageCircle className="w-5 h-5 text-green-400" /> },
+        { label: 'Email', value: 'mktg-til@tilindia.com', icon: <Mail className="w-5 h-5 text-blue-400" /> },
+        { label: 'Phone', value: '+91 033 6633 2000', icon: <Phone className="w-5 h-5 text-yellow-400" /> },
+        { label: 'LinkedIn', value: 'https://www.linkedin.com/company/til-limited-ind/', icon: <Linkedin className="w-5 h-5 text-[#0A66C2]" /> }
+      ],
       media: {
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
         title: 'Get In Touch',
@@ -1374,6 +1652,9 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  const activeMedia = activeCategory === 'locations'
+    ? activeLocation || currentSubmenu.points[0]
+    : currentSubmenu.media;
 
   return (
     <motion.div
@@ -1401,7 +1682,12 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
                         : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
                       }`}
-                    onMouseEnter={() => setActiveCategory(category.id)}
+                    onMouseEnter={() => {
+                      setActiveCategory(category.id);
+                      if (category.id === 'locations') {
+                        setActiveLocation(currentSubmenu.points[0]);
+                      }
+                    }}
                     whileHover={{ x: 2 }}
                   >
                     <div className="flex items-center space-x-3 px-3 py-2.5">
@@ -1424,85 +1710,83 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </div>
           </div>
 
-          {/* Middle: Info Panel (Bullet Style) */}
+          {/* Middle: Info List */}
           <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
             <div className="p-4">
               <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                 {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Contact'}
               </h3>
 
-              {/* Conditional Rendering */}
               {activeCategory === 'inquiry' ? (
-               <ul className="space-y-3 text-gray-200 text-sm">
-  {currentSubmenu?.contacts.map((contact, index) => {
-    const isPhone = contact.label.toLowerCase().includes('phone');
-    const isEmail = contact.label.toLowerCase().includes('email');
-    const isWhatsApp = contact.label.toLowerCase().includes('whatsapp');
-    const isLinkedIn = contact.label.toLowerCase().includes('linkedin');
+                <ul className="space-y-3 text-gray-200 text-sm">
+                  {currentSubmenu?.contacts.map((contact, index) => {
+                    const isPhone = contact.label.toLowerCase().includes('phone');
+                    const isEmail = contact.label.toLowerCase().includes('email');
+                    const isWhatsApp = contact.label.toLowerCase().includes('whatsapp');
+                    const isLinkedIn = contact.label.toLowerCase().includes('linkedin');
 
-    let href = '#';
-    if (isPhone) href = `tel:${contact.value}`;
-    else if (isEmail) href = `mailto:${contact.value}`;
-    else if (isWhatsApp) href = `https://wa.me/${contact.value.replace(/\D/g, '')}`;
-    else if (isLinkedIn) href = contact.value;
+                    let href = '#';
+                    if (isPhone) href = `tel:${contact.value}`;
+                    else if (isEmail) href = `mailto:${contact.value}`;
+                    else if (isWhatsApp) href = `https://wa.me/${contact.value.replace(/\D/g, '')}`;
+                    else if (isLinkedIn) href = contact.value;
 
-    return (
-      <li key={index}>
-        <a
-          href={href}
-          target={isLinkedIn || isWhatsApp ? "_blank" : "_self"}
-          rel={isLinkedIn || isWhatsApp ? "noopener noreferrer" : ""}
-          className="flex items-center space-x-3 hover:text-yellow-300 transition-colors"
-          aria-label={`Contact via ${contact.label}`}
-        >
-          <div>{contact.icon}</div>
-          <div>
-            <span className="block font-medium text-gray-300">{contact.label}</span>
-            <span className="text-yellow-400 underline underline-offset-2">{contact.value}</span>
-          </div>
-        </a>
-      </li>
-    );
-  })}
-</ul>
-
+                    return (
+                      <li key={index}>
+                        <a
+                          href={href}
+                          target={isLinkedIn || isWhatsApp ? "_blank" : "_self"}
+                          rel={isLinkedIn || isWhatsApp ? "noopener noreferrer" : ""}
+                          className="flex items-center space-x-3 hover:text-yellow-300 transition-colors"
+                          aria-label={`Contact via ${contact.label}`}
+                        >
+                          <div>{contact.icon}</div>
+                          <div>
+                            <span className="block font-medium text-gray-300">{contact.label}</span>
+                            <span className="text-yellow-400 underline underline-offset-2">{contact.value}</span>
+                          </div>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
               ) : (
                 <ul className="space-y-4">
-  {currentSubmenu?.points.map((location, index) => (
-    <li
-      key={index}
-      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20"
-    >
-      <div className="pt-1">
-       <svg
-  xmlns="http://www.w3.org/2000/svg"
-  className="w-5 h-5 text-yellow-500 flex-shrink-0"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
-  strokeWidth={1.5}
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
-  />
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
-  />
-</svg>
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
-          {location}
-        </p>
-      </div>
-    </li>
-  ))}
-</ul>
-
+                  {currentSubmenu?.points.map((location, index) => (
+                    <li
+                      key={index}
+                      onMouseEnter={() => setActiveLocation(location)}
+                      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                    >
+                      <div className="pt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          {location.name}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           </div>
@@ -1511,7 +1795,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
             <div className="p-4">
               <motion.div
-                key={activeCategory}
+                key={activeMedia?.title || activeMedia?.name}
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
@@ -1519,8 +1803,8 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               >
                 <div className="relative mb-3 overflow-hidden rounded">
                   <img
-                    src={currentSubmenu?.media.image}
-                    alt={currentSubmenu?.media.title}
+                    src={activeMedia?.image}
+                    alt={activeMedia?.title || activeMedia?.name}
                     className="w-full h-32 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -1528,19 +1812,21 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
                 <div className="flex-1 min-w-0">
                   <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {currentSubmenu?.media.title}
+                    {activeMedia?.title || activeMedia?.name}
                   </h4>
                   <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                    {currentSubmenu?.media.description}
+                    {activeMedia?.description}
                   </p>
 
-                  <motion.button 
-                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {currentSubmenu?.media.cta}
-                  </motion.button>
+                  {activeMedia?.cta && (
+                    <motion.button
+                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {activeMedia?.cta}
+                    </motion.button>
+                  )}
                 </div>
               </motion.div>
             </div>
