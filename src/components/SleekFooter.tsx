@@ -182,9 +182,9 @@ const SleekFooter: React.FC = () => {
                 >
                   <a href="/" className="flex items-center">
                     <img 
-                      src="/src/assets/logo.png" 
+                      src="/logo1.png" 
                       alt="TIL India" 
-                      className="h-10 w-auto brightness-0 invert"
+                      className="h-15 w-auto brightness-0 invert"
                     />
                   </a>
                 </motion.div>

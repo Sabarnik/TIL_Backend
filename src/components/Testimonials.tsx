@@ -3,7 +3,6 @@ import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 
-
 const Testimonials: React.FC = () => {
   const [hovered, setHovered] = useState(false);
   const [expandedCard, setExpandedCard] = useState<{ id: number; row: 'top' | 'bottom'; position: { left: number; top: number } } | null>(null);
@@ -11,24 +10,23 @@ const Testimonials: React.FC = () => {
   const topRowRef = useRef<HTMLDivElement>(null);
   const bottomRowRef = useRef<HTMLDivElement>(null);
   const hoverCardRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      expandedCard &&
-      hoverCardRef.current &&
-      !hoverCardRef.current.contains(event.target as Node)
-    ) {
-      setExpandedCard(null);
-    }
-  };
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        expandedCard &&
+        hoverCardRef.current &&
+        !hoverCardRef.current.contains(event.target as Node)
+      ) {
+        setExpandedCard(null);
+      }
+    };
 
-  document.addEventListener('mousedown', handleClickOutside);
-  return () => {
-    document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, [expandedCard]);
-
-
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [expandedCard]);
 
   const topTestimonials = [
     { id: 1, name: 'Sarah Johnson', position: 'Marketing Director', company: 'TechCorp', image: 'https://randomuser.me/api/portraits/women/44.jpg', rating: 5, text: "This service transformed our digital presence. Our engagement metrics doubled within weeks of implementation." },
@@ -48,6 +46,7 @@ const Testimonials: React.FC = () => {
   const doubledBottom = [...bottomTestimonials, ...bottomTestimonials];
 
   const handleReadMoreClick = (e: React.MouseEvent, testimonial: any, row: 'top' | 'bottom') => {
+    e.stopPropagation();
     const rect = (e.currentTarget as HTMLDivElement).closest('.testimonial-card')?.getBoundingClientRect();
     if (!rect) return;
 
@@ -74,7 +73,7 @@ const Testimonials: React.FC = () => {
 
       {/* Top Row */}
       <div
-        className="relative w-full overflow-hidden mb-16"
+        className="relative w-full overflow-hidden mb-5" // gap below
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -95,7 +94,7 @@ const Testimonials: React.FC = () => {
 
       {/* Bottom Row */}
       <div
-        className="relative w-full overflow-hidden mt-16"
+        className="relative w-full overflow-hidden mt-5" // gap above
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -118,7 +117,7 @@ const Testimonials: React.FC = () => {
       <AnimatePresence>
         {expandedCard && (
           <motion.div
-            ref={hoverCardRef}  // 👈 Add this line
+            ref={hoverCardRef}
             initial={{ opacity: 0, y: expandedCard.row === 'top' ? -10 : 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: expandedCard.row === 'top' ? -10 : 10 }}
@@ -177,7 +176,15 @@ const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseE
     <p className="text-gray-700 text-base mb-4 leading-relaxed line-clamp-3 overflow-hidden">
       "{testimonial.text}"
     </p>
-    <div onClick={onReadMore} className="text-xs text-blue-500 font-medium cursor-pointer select-none">Read full review →</div>
+    <div 
+      onClick={(e) => {
+        e.stopPropagation();
+        onReadMore(e);
+      }} 
+      className="text-xs text-blue-500 font-medium cursor-pointer select-none"
+    >
+      Read full review →
+    </div>
   </div>
 );
 

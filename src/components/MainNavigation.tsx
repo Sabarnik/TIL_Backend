@@ -85,36 +85,36 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Company History',
           description: 'Explore our 80+ years of engineering excellence',
-          image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center'
+          image: '/company-history.jpg'
         },
         {
           name: 'Milestones',
           description: 'Key achievements in our journey',
-          image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=240&fit=crop&crop=center'
+          image: '/milestones.jpg'
         },
         {
           name: 'Awards & Recognition',
           description: 'Industry accolades and certifications',
-          image: 'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=400&h=240&fit=crop&crop=center'
+          image: '/awards.jpg'
         },
         {
           name: 'Global Presence',
           description: 'Our international footprint and partnerships',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+          image: '/global-presence.jpg'
         },
         {
           name: 'Manufacturing Facilities',
           description: 'State-of-the-art production plants',
-          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center'
+          image: '/manufacturing.jpg'
         },
         {
           name: 'Quality Standards',
           description: 'Our commitment to excellence',
-          image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop&crop=center'
+          image: '/quality-standards.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
+        image: '/company-banner.jpg',
         title: 'Our Legacy',
         description: '80+ years of engineering excellence in construction and material handling equipment.',
         cta: 'Learn More',
@@ -126,36 +126,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Board of Directors',
           description: 'Meet our governing body and strategic advisors',
-          image: 'https://images.unsplash.com/photo-1560439514-e960a3ef5019?w=400&h=240&fit=crop&crop=center'
+          image: '/board-directors.jpg'
         },
         {
           name: 'Executive Team',
           description: 'Our day-to-day leadership team',
-          image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=240&fit=crop&crop=center'
+          image: '/executive-team.jpg'
         },
         {
           name: 'Management Committee',
           description: 'Department heads and functional leaders',
-          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+          image: '/management-committee.jpg'
         },
         {
           name: 'Advisory Board',
           description: 'Industry experts guiding our strategy',
-          image: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Regional Heads',
-          description: 'Leaders across our operational regions',
-          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Corporate Governance',
-          description: 'Our policies and governance framework',
-          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+          image: '/advisory-board.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
+        image: '/leadership-banner.jpg',
         title: 'Leadership Team',
         description: 'Experienced leaders driving innovation and growth in the construction industry.',
         cta: 'Meet Our Team',
@@ -167,31 +157,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Foundation & Early Years',
           description: 'Our humble beginnings and initial successes',
-          image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=240&fit=crop&crop=center'
+          image: '/foundation.jpg'
         },
         {
           name: 'Key Innovations',
           description: 'Breakthrough products and technologies',
-          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=240&fit=crop&crop=center'
+          image: '/innovations.jpg'
         },
         {
           name: 'Expansion Phases',
           description: 'Growth of our operations and facilities',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Strategic Partnerships',
-          description: 'Collaborations that shaped our journey',
-          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+          image: '/expansion.jpg'
         },
         {
           name: 'Recent Achievements',
           description: 'Our latest accomplishments and awards',
-          image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=240&fit=crop&crop=center'
+          image: '/achievements.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=240&fit=crop&crop=center',
+        image: '/milestones-banner.jpg',
         title: 'Our Journey',
         description: 'Key milestones that define our growth and success in the industry.',
         cta: 'View Timeline',
@@ -203,31 +188,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Mission Statement',
           description: 'Our purpose and reason for being',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+          image: '/mission.jpg'
         },
         {
           name: 'Vision 2030',
           description: 'Our aspirations for the future',
-          image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=240&fit=crop&crop=center'
+          image: '/vision.jpg'
         },
         {
           name: 'Core Values',
           description: 'Principles that guide our actions',
-          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+          image: '/values.jpg'
         },
         {
           name: 'Ethics & Integrity',
           description: 'Our commitment to doing business right',
-          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Customer Focus',
-          description: 'Putting our clients at the center',
-          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
+          image: '/ethics.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
+        image: '/values-banner.jpg',
         title: 'Our Values',
         description: 'Committed to excellence, innovation, and sustainable growth.',
         cta: 'Our Philosophy',
@@ -239,31 +219,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Environmental Policy',
           description: 'Our commitment to sustainable operations',
-          image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=240&fit=crop&crop=center'
+          image: '/environmental.jpg'
         },
         {
           name: 'Green Manufacturing',
           description: 'Eco-friendly production processes',
-          image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=240&fit=crop&crop=center'
+          image: '/green-manufacturing.jpg'
         },
         {
           name: 'Community Impact',
           description: 'Initiatives that benefit local communities',
-          image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=240&fit=crop&crop=center'
+          image: '/community.jpg'
         },
         {
           name: 'Employee Welfare',
           description: 'Programs for our workforce wellbeing',
-          image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'ESG Reports',
-          description: 'Our environmental, social and governance performance',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+          image: '/employee-welfare.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=240&fit=crop&crop=center',
+        image: '/csr-banner.jpg',
         title: 'Sustainability',
         description: 'Leading the way in environmentally responsible manufacturing and operations.',
         cta: 'Green Initiatives',
@@ -275,26 +250,21 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Business Ethics',
           description: 'Our standards for ethical business practices',
-          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center'
+          image: '/ethics.jpg'
         },
         {
           name: 'Anti-Corruption',
           description: 'Policies against bribery and corruption',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
+          image: '/anti-corruption.jpg'
         },
         {
           name: 'Compliance Framework',
           description: 'Ensuring adherence to laws and regulations',
-          image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Whistleblower Policy',
-          description: 'Reporting unethical behavior safely',
-          image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=240&fit=crop&crop=center'
+          image: '/compliance.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=240&fit=crop&crop=center',
+        image: '/conduct-banner.jpg',
         title: 'Code of Conduct',
         description: 'Our commitment to ethical business practices and corporate governance.',
         cta: 'View Policy',
@@ -306,31 +276,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Kolkata Headquarters',
           description: 'Our corporate office and main facility',
-          image: 'https://images.unsplash.com/photo-1582555142141-82061f60d3e8?w=400&h=240&fit=crop&crop=center'
+          image: '/hq.jpg'
         },
         {
           name: 'Manufacturing Plants',
           description: 'State-of-the-art production facilities',
-          image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center'
+          image: '/plants.jpg'
         },
         {
           name: 'R&D Centers',
           description: 'Innovation hubs driving product development',
-          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=240&fit=crop&crop=center'
+          image: '/rd-centers.jpg'
         },
         {
           name: 'Regional Offices',
           description: 'Our presence across India',
-          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=240&fit=crop&crop=center'
-        },
-        {
-          name: 'Training Centers',
-          description: 'Facilities for employee and customer education',
-          image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=240&fit=crop&crop=center'
+          image: '/regional-offices.jpg'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=240&fit=crop&crop=center',
+        image: '/facilities-banner.jpg',
         title: 'Our Facilities',
         description: 'World-class manufacturing plants and offices supporting our operations.',
         cta: 'Virtual Tour',
@@ -343,161 +308,188 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const activeMedia = activeItem || currentSubmenu?.media;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          {/* Left: Primary Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                About Us
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => {
-                      setActiveCategory(category.id);
-                      setActiveItem(null);
-                    }}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-semibold text-sm ${
-                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+    <>
+      <style>{`
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+            
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  About Us
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => {
+                        setActiveCategory(category.id);
+                        setActiveItem(null);
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-2.5">
+                        <div className={`p-1.5 rounded flex-shrink-0 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black' 
+                            : 'bg-gray-700 text-yellow-400'
                         }`}>
-                          {category.name}
+                          {category.icon}
                         </div>
-                        <div className="text-xs text-gray-500 truncate">
-                          {category.description}
+                        <div className="flex-1 min-w-0">
+                          <div className={`font-semibold text-sm ${
+                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                          }`}>
+                            {category.name}
+                          </div>
+                          <div className="text-xs text-gray-500 truncate">
+                            {category.description}
+                          </div>
                         </div>
                       </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle: Items */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <ul className="space-y-4">
+                  {currentSubmenu?.items.map((item, index) => (
+                    <li
+                      key={index}
+                      onMouseEnter={() => setActiveItem(item)}
+                      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                    >
+                      <div className="pt-1">
+                        <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          {item.name}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">{item.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right: Details */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Details
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeMedia?.title || activeMedia?.name}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-4 flex flex-col"
+                >
+                  <div className="relative mb-3 overflow-hidden rounded">
+                    <img
+                      src={activeMedia?.image}
+                      alt={activeMedia?.title || activeMedia?.name}
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      {activeMedia?.title || activeMedia?.name}
+                    </h4>
+                    <p className="text-gray-300 mb-3 leading-relaxed text-xs">
+                      {activeMedia?.description}
+                    </p>
+                    
+                    {activeMedia?.features && (
+                      <div className="mb-4">
+                        <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
+                        <div className="space-y-1">
+                          {activeMedia.features.map((feature, index) => (
+                            <div key={index} className="flex items-center space-x-2">
+                              <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                              <span className="text-gray-300 text-xs">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                      <motion.button 
+                        className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                        whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Phone className="w-3 h-3" />
+                        <span>{activeMedia?.cta || 'Learn More'}</span>
+                      </motion.button>
+                      
+                      <button 
+                        className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
+                        onClick={onClose}
+                      >
+                        <Download className="w-3 h-3" />
+                        <span>Download Brochure</span>
+                      </button>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-
-          {/* Middle: Location-style Items */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <ul className="space-y-4">
-                {currentSubmenu?.items.map((item, index) => (
-                  <li
-                    key={index}
-                    onMouseEnter={() => setActiveItem(item)}
-                    className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
-                  >
-                    <div className="pt-1">
-                      <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
-                        {item.name}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-1">{item.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right: Dynamic Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Details
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <motion.div
-                key={activeMedia?.title || activeMedia?.name}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={activeMedia?.image}
-                    alt={activeMedia?.title || activeMedia?.name}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {activeMedia?.title || activeMedia?.name}
-                  </h4>
-                  <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                    {activeMedia?.description}
-                  </p>
-                  
-                  {activeMedia?.features && (
-                    <div className="mb-4">
-                      <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
-                      <div className="space-y-1">
-                        {activeMedia.features.map((feature, index) => (
-                          <div key={index} className="flex items-center space-x-2">
-                            <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                            <span className="text-gray-300 text-xs">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
-                    <motion.button 
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>{activeMedia?.cta || 'Learn More'}</span>
-                    </motion.button>
-                    
-                    <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
-                      <Download className="w-3 h-3" />
-                      <span>Download Brochure</span>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
@@ -636,170 +628,192 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const activeMedia = activeProduct || currentSubmenu?.media;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      {/* Added max-h-[70vh] and overflow-y-auto for the whole container */}
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          
-          {/* Left: Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Product Categories
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => {
-                      setActiveCategory(category.id);
-                      setActiveProduct(null);
-                    }}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-semibold text-sm ${
-                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+    <>
+      <style>{`
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+            
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Product Categories
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => {
+                        setActiveCategory(category.id);
+                        setActiveProduct(null);
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-2.5">
+                        <div className={`p-1.5 rounded flex-shrink-0 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black' 
+                            : 'bg-gray-700 text-yellow-400'
                         }`}>
-                          {category.name}
+                          {category.icon}
                         </div>
-                        <div className="text-xs text-gray-500 truncate">
-                          {category.description}
+                        <div className="flex-1 min-w-0">
+                          <div className={`font-semibold text-sm ${
+                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                          }`}>
+                            {category.name}
+                          </div>
+                          <div className="text-xs text-gray-500 truncate">
+                            {category.description}
+                          </div>
                         </div>
                       </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle: Product Items */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <ul className="space-y-4">
+                  {currentSubmenu?.products.map((product, index) => (
+                    <li
+                      key={index}
+                      onMouseEnter={() => setActiveProduct(product)}
+                      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                    >
+                      <div className="pt-1">
+                        <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          {product.name}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">{product.description}</p>
+                        <div className="mt-2 flex flex-wrap gap-1">
+                          {product.features.map((feature, i) => (
+                            <span key={i} className="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right: Dynamic Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Details
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeMedia?.title || activeMedia?.name}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-4 flex flex-col"
+                >
+                  <div className="relative mb-3 overflow-hidden rounded">
+                    <img
+                      src={activeMedia?.image}
+                      alt={activeMedia?.title || activeMedia?.name}
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      {activeMedia?.title || activeMedia?.name}
+                    </h4>
+                    <p className="text-gray-300 mb-3 leading-relaxed text-xs">
+                      {activeMedia?.description}
+                    </p>
+                    
+                    {activeMedia?.features && (
+                      <div className="mb-4">
+                        <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
+                        <div className="space-y-1">
+                          {activeMedia.features.map((feature, index) => (
+                            <div key={index} className="flex items-center space-x-2">
+                              <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
+                              <span className="text-gray-300 text-xs">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                      <motion.button 
+                        className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                        whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Phone className="w-3 h-3" />
+                        <span>{activeProduct ? 'Get Quote' : activeMedia?.cta}</span>
+                      </motion.button>
+                      
+                      <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
+                        <Download className="w-3 h-3" />
+                        <span>Download Specs</span>
+                      </button>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-
-          {/* Middle: Product Items */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <ul className="space-y-4">
-                {currentSubmenu?.products.map((product, index) => (
-                  <li
-                    key={index}
-                    onMouseEnter={() => setActiveProduct(product)}
-                    className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
-                  >
-                    <div className="pt-1">
-                      <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
-                        {product.name}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-1">{product.description}</p>
-                      <div className="mt-2 flex flex-wrap gap-1">
-                        {product.features.map((feature, i) => (
-                          <span key={i} className="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right: Dynamic Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Details
-              </h3>
-            </div>
-            <div className="p-4 pt-0">
-              <motion.div
-                key={activeMedia?.title || activeMedia?.name}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={activeMedia?.image}
-                    alt={activeMedia?.title || activeMedia?.name}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {activeMedia?.title || activeMedia?.name}
-                  </h4>
-                  <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                    {activeMedia?.description}
-                  </p>
-                  
-                  {activeMedia?.features && (
-                    <div className="mb-4">
-                      <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
-                      <div className="space-y-1">
-                        {activeMedia.features.map((feature, index) => (
-                          <div key={index} className="flex items-center space-x-2">
-                            <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
-                            <span className="text-gray-300 text-xs">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
-                    <motion.button 
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>{activeProduct ? 'Get Quote' : activeMedia?.cta}</span>
-                    </motion.button>
-                    
-                    <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
-                      <Download className="w-3 h-3" />
-                      <span>Download Specs</span>
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
@@ -886,7 +900,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="overflow-hidden"
     >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
           
           {/* Left: Categories */}
@@ -1186,7 +1200,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   try {
     return (
       <div className="overflow-hidden">
-        <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
           <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
             
             {/* Left Panel: Primary Categories with Hover Navigation */}
@@ -1195,7 +1209,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   Media Center
                 </h3>
-                <div className="max-h-80 overflow-y-auto pr-2">
+                <div className="max-h-[70vh] overflow-y-auto scroll-hover  pr-2">
                   <div className="space-y-1">
                     {primaryCategories.map((category) => {
                       console.log('Rendering category:', category.name);
@@ -1246,7 +1260,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Content'}
                 </h3>
-                <div className="max-h-96 overflow-y-auto pr-2">
+                <div className="max-h-[70vh] overflow-y-auto scroll-hover pr-2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {currentSubmenu?.items.map((item, index) => {
                       console.log('Rendering item:', item.title);
@@ -1466,7 +1480,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="overflow-hidden"
     >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
           
           {/* Left Panel: Career Categories */}
@@ -1664,7 +1678,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       transition={{ duration: 0.2, ease: 'easeOut' }}
       className="overflow-hidden"
     >
-      <div className="px-6 md:px-12 xl:px-20 bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
+      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
 
           {/* Left: Categories */}
@@ -1866,7 +1880,6 @@ const MainNavigation: React.FC = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: 'Home', hasSubmenu: false },
     { name: 'About Us', hasSubmenu: true },
     { name: 'Products', hasSubmenu: true },
     { name: 'Customer Support', hasSubmenu: true },

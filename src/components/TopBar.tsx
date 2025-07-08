@@ -37,9 +37,9 @@ const TopBar: React.FC = () => {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <img 
-              src="/logo.png" 
+              src="/logo1.png" 
               alt="TIL India" 
-              className="h-10 w-auto brightness-0 invert"
+              className="h-15 w-auto brightness-0 invert"
             />
           </motion.a>
 

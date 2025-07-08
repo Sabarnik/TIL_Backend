@@ -41,28 +41,42 @@
   color: #888;
 }
 
-/* Add to your global CSS file or index.css */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar for better UX */
+/* Scrollbar default hidden look */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fbbf24;
-  border-radius: 4px;
+  background-color: transparent;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+.scroll-hover:hover::-webkit-scrollbar-thumb,
+.scroll-hover:active::-webkit-scrollbar-thumb,
+.scroll-hover::-webkit-scrollbar-thumb:vertical {
+  background-color: rgba(234, 179, 8, 0.2);
 }
+
+.scroll-hover:active::-webkit-scrollbar-thumb {
+  background-color: rgba(234, 179, 8, 0.4);
+}
+
+/* Firefox support */
+.scroll-hover {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scroll-hover:hover {
+  scrollbar-color: rgba(234, 179, 8, 0.2) transparent;
+}
+
 
 /* Text shadow for better readability */
 .text-shadow-lg {

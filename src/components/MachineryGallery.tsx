@@ -134,37 +134,71 @@ const ProductCard: FC<{ m: Machine }> = ({ m }) => {
   return (
     <motion.li
       variants={cardV}
-      whileHover={{ scale: 1.02 }}
-      className="relative h-48 rounded-xl overflow-hidden transition-transform duration-300 group shadow-lg hover:shadow-xl bg-white border border-gray-200"
+      whileHover={{ scale: 1.03 }}
+      className="relative w-full aspect-[4/3] rounded-xl overflow-hidden transition-all duration-300 group shadow-lg hover:shadow-xl bg-white m-1.5"
     >
+      {/* Background fade layer */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500 z-0" />
+      
       {/* Image Container */}
-      <div className="w-full h-full bg-gray-100 flex items-center justify-center relative overflow-hidden">
-        <img
-          src={m.img}
-          alt={m.title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          style={{ mixBlendMode: 'multiply' }}
-        />
-
-        {/* Title overlay - always visible */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-10">
-          <h3 className="text-lg font-bold text-white">{m.title}</h3>
+      <div className="w-full h-full bg-gray-50 flex items-center justify-center relative">
+        {/* Main image area */}
+        <div className="w-full h-full flex items-center justify-center">
+          <img
+            src={m.img}
+            alt={m.title}
+            className="max-h-full max-w-full object-contain transition-all duration-500 group-hover:scale-[1.02]"
+          />
         </div>
 
-        {/* Get Quote Button - always visible now */}
-        <div className="absolute bottom-3 right-3 z-20">
-          <button className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-all">
-            <Mail className="h-3.5 w-3.5" />
-            Get Quote
-          </button>
+        {/* Instagram-style overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 z-10">
+          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div className="flex justify-between items-end">
+              <h3 className="text-xl font-bold text-white drop-shadow-md">{m.title}</h3>
+              <button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-md hover:scale-105 active:scale-95">
+                <Mail className="h-4 w-4" />
+                Get Quote
+              </button>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {m.specs.map((spec, i) => (
+                <span 
+                  key={i} 
+                  className="text-xs text-white/90 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10"
+                >
+                  {spec}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Tag Badge */}
-      {m.tag && <TagBadge label={m.tag} />}
+      {/* Prominent Tag/Label - Top Left with fade-in */}
+      {m.tag && (
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.3 }}
+          className={`absolute top-0 left-0 z-20 px-4 py-2 rounded-br-xl shadow-lg ${
+            m.tag.toLowerCase() === 'new' 
+              ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 text-white' 
+              : 'bg-gradient-to-br from-amber-500 to-amber-600 text-white'
+          }`}
+        >
+          <span className="text-sm font-bold uppercase tracking-wider drop-shadow-md">
+            {m.tag}
+          </span>
+          {/* Decorative notch */}
+          <div className="absolute -bottom-[5px] left-0 w-0 h-0 
+            border-l-[5px] border-l-transparent
+            border-t-[5px] ${m.tag.toLowerCase() === 'new' ? 'border-t-emerald-600' : 'border-t-amber-600'}"></div>
+        </motion.div>
+      )}
     </motion.li>
-  );
-}
+  )
+};
 
 
 /* -------------------------------------------------------------------------- */
@@ -173,69 +207,69 @@ const ProductCard: FC<{ m: Machine }> = ({ m }) => {
 const MachineryGallery: FC<{ products?: Machine[] }> = ({
   products = MACHINES,
 }) => (
-  <section className="py-16 bg-gray-50">
-    <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
-      {/* Header */}
+  <section className="py-8 md:py-16 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Header - Simplified for mobile */}
       <motion.div
-        className="text-center mb-12"
+        className="text-center mb-8 md:mb-12"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-<motion.span
-  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
-  initial={{ 
-    opacity: 0,
-    letterSpacing: "-0.05em" // Starts condensed
-  }}
-  whileInView={{
-    opacity: 1,
-    letterSpacing: "0.02em", // Slightly expands
-  }}
-  transition={{ 
-    duration: 0.8,
-    delay: 0.2,
-    ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
-  }}
-  viewport={{ once: true, margin: "-20%" }}
->
-  PREMIUM MACHINERY
-</motion.span>
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight">
+        <motion.span
+          className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+          initial={{ 
+            opacity: 0,
+            letterSpacing: "-0.05em"
+          }}
+          whileInView={{
+            opacity: 1,
+            letterSpacing: "0.02em",
+          }}
+          transition={{ 
+            duration: 0.8,
+            delay: 0.2,
+            ease: [0.16, 0.77, 0.47, 0.97]
+          }}
+          viewport={{ once: true, margin: "-20%" }}
+        >
+          PREMIUM MACHINERY
+        </motion.span>
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-3 md:mb-4 tracking-tight">
           Industrial <span className="text-orange-500">Equipment</span>
         </h2>
-        <div className="w-24 h-1 bg-orange-400 mx-auto rounded-full"></div>
-        <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600">
+        <div className="w-20 md:w-24 h-1 bg-orange-400 mx-auto rounded-full"></div>
+        <p className="mt-4 md:mt-6 mx-auto max-w-2xl text-base md:text-lg text-gray-600">
           High-performance machinery solutions with flexible financing options.
         </p>
       </motion.div>
 
-      {/* Grid */}
+      {/* Instagram-style Grid */}
       <motion.ul
         variants={gridV}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-120px' }}
-        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {products.map((m) => (
           <ProductCard key={m.id} m={m} />
         ))}
       </motion.ul>
 
-      {/* CTA */}
+      {/* CTA - Centered and full-width on mobile */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
         viewport={{ once: true }}
-        className="mt-16 text-center"
+        className="mt-12 md:mt-16 text-center"
       >
         <motion.a
           href="#"
           whileHover={{ scale: 1.05 }}
-          className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-8 py-4 text-lg font-semibold text-white shadow-md hover:shadow-lg"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-semibold text-white shadow-md hover:shadow-lg w-full max-w-xs md:w-auto"
         >
           Request Custom Quote <ArrowRight className="h-5 w-5" />
         </motion.a>
