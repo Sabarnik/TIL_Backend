@@ -85,7 +85,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Company History',
           description: 'Explore our 80+ years of engineering excellence',
-          image: '/company-history.jpg'
+          image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         },
         {
           name: 'Milestones',
@@ -276,7 +276,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Kolkata Headquarters',
           description: 'Our corporate office and main facility',
-          image: '/hq.jpg'
+          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         },
         {
           name: 'Manufacturing Plants',
@@ -310,6 +310,10 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <>
       <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
           height: 4px;
@@ -337,11 +341,11 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto scroll-hover">
-          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
             
             {/* Left: Categories */}
-            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   About Us
@@ -389,7 +393,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </div>
 
             {/* Middle: Items */}
-            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
@@ -418,8 +422,8 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Right: Details */}
-            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+        {/* Right: Details */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   Details
@@ -630,6 +634,10 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <>
       <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
           height: 4px;
@@ -657,11 +665,11 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 max-h-[70vh] overflow-y-auto scroll-hover">
-          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
             
-            {/* Left: Categories */}
-            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+            {/* Left: Categories - Updated with consistent scroll */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   Product Categories
@@ -708,8 +716,8 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Middle: Product Items */}
-            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 max-h-[70vh] overflow-y-auto scroll-hover">
+            {/* Middle: Product Items - Updated with consistent scroll */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
@@ -745,8 +753,8 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Right: Dynamic Media Panel */}
-            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
+            {/* Right: Dynamic Media Panel - Updated with consistent scroll */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   Details
@@ -801,7 +809,10 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         <span>{activeProduct ? 'Get Quote' : activeMedia?.cta}</span>
                       </motion.button>
                       
-                      <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2">
+                      <button 
+                        className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
+                        onClick={onClose}
+                      >
                         <Download className="w-3 h-3" />
                         <span>Download Specs</span>
                       </button>
@@ -819,6 +830,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
 const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('heavy-industries');
+  const [activePoint, setActivePoint] = useState(null);
 
   const primaryCategories = [
     { id: 'heavy-industries', name: 'Maintenance Contract', icon: <Mountain className="w-4 h-4" /> },
@@ -830,14 +842,34 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
   const submenuData = {
     'heavy-industries': {
       points: [
-        'Annual Service Contracts to minimize downtime and ensure preventive care',
-        'Pre-Purchase Consultancy to guide optimal equipment investment decisions',
-        'Quick Parts Delivery through a wide and responsive supply network',
-        'Pan-India On-Site Support with qualified engineers on call',
-        'Rebuild & Refurbishment Services for extended equipment lifecycle'
+        {
+          name: 'Annual Service Contracts',
+          description: 'Minimize downtime and ensure preventive care with our comprehensive contracts',
+          image: '/maintenance.jpg'
+        },
+        {
+          name: 'Pre-Purchase Consultancy',
+          description: 'Expert guidance for optimal equipment investment decisions',
+          image: '/consultancy.jpg'
+        },
+        {
+          name: 'Quick Parts Delivery',
+          description: 'Wide and responsive supply network for fast delivery',
+          image: '/parts-delivery.jpg'
+        },
+        {
+          name: 'Pan-India On-Site Support',
+          description: 'Qualified engineers available on call across India',
+          image: '/onsite-support.jpg'
+        },
+        {
+          name: 'Rebuild & Refurbishment',
+          description: 'Services to extend your equipment lifecycle',
+          image: '/rebuild.jpg'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=400&h=240&fit=crop&crop=center',
+        image: '/maintenance-banner.jpg',
         title: 'Maintenance Contracts',
         description: 'Keep your machines in peak condition with our comprehensive annual maintenance services.',
         cta: 'Download Brochure'
@@ -845,14 +877,34 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
     },
     'infrastructure': {
       points: [
-        'Authentic TIL Parts for safety, reliability, and longer equipment life',
-        'Real-Time Inventory Control with advanced Warehouse Management System',
-        'Wide Range Availability — filters, oils, fluids, undercarriage components & more',
-        'Expert Support from trained product specialists for the right-fit solutions',
-        'ERP-Enabled Central Warehouse at Dankuni for seamless nationwide fulfillment'
+        {
+          name: 'Authentic TIL Parts',
+          description: 'Genuine parts for safety, reliability, and longer equipment life',
+          image: '/authentic-parts.jpg'
+        },
+        {
+          name: 'Real-Time Inventory',
+          description: 'Advanced Warehouse Management System for parts tracking',
+          image: '/inventory.jpg'
+        },
+        {
+          name: 'Wide Range Availability',
+          description: 'Filters, oils, fluids, undercarriage components & more',
+          image: '/parts-range.jpg'
+        },
+        {
+          name: 'Expert Support',
+          description: 'Trained product specialists for the right-fit solutions',
+          image: '/expert-support.jpg'
+        },
+        {
+          name: 'ERP-Enabled Warehouse',
+          description: 'Central warehouse at Dankuni for nationwide fulfillment',
+          image: '/warehouse.jpg'
+        }
       ],
       media: {
-        image: '/parts-warehouse.png',
+        image: '/parts-banner.jpg',
         title: 'Parts & Warehouse',
         description: 'Rapid access to critical parts with optimized logistics and warehouse coverage.',
         cta: 'Check Availability'
@@ -860,144 +912,257 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
     },
     'specialized': {
       points: [
-        'Boost ROI & Safety with skilled operators who unlock full machine potential',
-        'Hands-On Training in basic operations and scheduled maintenance',
-        'Customized Modules to suit operator and maintenance staff needs',
-        'Minimized Downtime through better handling and issue prevention',
-        'Competitive Edge with enhanced knowledge, confidence, and efficiency'
+        {
+          name: 'Operator Training',
+          description: 'Boost ROI & Safety with skilled operators who unlock full machine potential',
+          image: '/operator-training.jpg'
+        },
+        {
+          name: 'Hands-On Training',
+          description: 'Practical sessions in basic operations and scheduled maintenance',
+          image: '/hands-on.jpg'
+        },
+        {
+          name: 'Customized Modules',
+          description: 'Training tailored to operator and maintenance staff needs',
+          image: '/custom-training.jpg'
+        },
+        {
+          name: 'Downtime Prevention',
+          description: 'Minimize downtime through better handling and issue prevention',
+          image: '/downtime.jpg'
+        },
+        {
+          name: 'Competitive Edge',
+          description: 'Enhanced knowledge, confidence, and efficiency for your team',
+          image: '/competitive-edge.jpg'
+        }
       ],
       media: {
-        image: '/training.jpg',
+        image: '/training-banner.jpg',
         title: 'Training Programs',
         description: 'Empower your workforce with certified technical and operator training.',
-        cta: 'Traning Calender'
+        cta: 'Training Calendar'
       }
     },
     'energy': {
       points: [
-        '📍Kolkata',
-        '📍Chennai',
-        '📍Delhi NCR',
-        '📍Mumbai',
-        '📍Singrauli'
+        {
+          name: 'Kolkata Service Center',
+          description: 'Full-service support for Eastern India operations',
+          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+          name: 'Chennai Service Center',
+          description: 'Comprehensive support for Southern region',
+          image: 'https://plus.unsplash.com/premium_photo-1697729444936-8c6a6f643312?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+          name: 'Delhi NCR Service Center',
+          description: 'Strategic support hub for Northern India',
+          image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+          name: 'Mumbai Service Center',
+          description: 'West zone operational support center',
+          image: 'https://images.unsplash.com/photo-1580581096469-8afb38d3dbd5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        },
+        {
+          name: 'Singrauli Service Depot',
+          description: 'Industrial logistics and support in central India',
+          image: '/singrauli-service.jpg'
+        }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=240&fit=crop&crop=center',
+        image: '/locations-banner.jpg',
         title: 'Service Locations',
-        description: 'Our digital backbone supports you with high-redundancy servers and real-time data access.',
+        description: 'Our nationwide network of service centers and support facilities.',
         cta: 'View Network'
       }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  const activeMedia = activePoint || currentSubmenu?.media;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          
-          {/* Left: Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Support Categories
-              </h3>
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => setActiveCategory(category.id)}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
+    <>
+      <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
+            
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Support Categories
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => {
+                        setActiveCategory(category.id);
+                        setActivePoint(currentSubmenu.points[0]);
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-2.5">
+                        <div className={`p-1.5 rounded flex-shrink-0 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black' 
+                            : 'bg-gray-700 text-yellow-400'
+                        }`}>
+                          {category.icon}
+                        </div>
+                        <span className={`font-semibold text-sm ${
+                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                        }`}>
+                          {category.name}
+                        </span>
                       </div>
-                      <span className={`font-semibold text-sm ${
-                        activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                      }`}>
-                        {category.name}
-                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle: Point-wise Info - Updated to match Contact Us style */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Support Info'}
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <ul className="space-y-4">
+                  {currentSubmenu?.points.map((point, index) => (
+                    <li
+                      key={index}
+                      onMouseEnter={() => setActivePoint(point)}
+                      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                    >
+                      <div className="pt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
+                          />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          {point.name}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">{point.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right: Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Details
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeMedia?.title || activeMedia?.name}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-4 flex flex-col"
+                >
+                  <div className="relative mb-3 overflow-hidden rounded">
+                    <img
+                      src={activeMedia?.image}
+                      alt={activeMedia?.title || activeMedia?.name}
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      {activeMedia?.title || activeMedia?.name}
+                    </h4>
+                    <p className="text-gray-300 mb-3 leading-relaxed text-xs">
+                      {activeMedia?.description}
+                    </p>
+                    
+                    <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                      <motion.button 
+                        className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Phone className="w-3 h-3" />
+                        <span>{activeMedia?.cta || 'Learn More'}</span>
+                      </motion.button>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-
-          {/* Middle: Point-wise Info */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Support Info'}
-              </h3>
-              <ul className="space-y-2 list-disc list-inside text-gray-200 text-sm">
-                {currentSubmenu?.points.map((point, index) => (
-                  <li key={index} className="hover:text-yellow-400 transition duration-200">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right: Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={currentSubmenu?.media.image}
-                    alt={currentSubmenu?.media.title}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {currentSubmenu?.media.title}
-                  </h4>
-                  <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                    {currentSubmenu?.media.description}
-                  </p>
-                  
-                  <motion.button 
-                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {currentSubmenu?.media.cta}
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
-          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
@@ -1059,7 +1224,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Company History',
           description: 'Tracing our 80+ years of industrial excellence and innovation.',
-          image: 'https://images.unsplash.com/photo-1600880292089-90e6a803b4f0?w=400&h=240&fit=crop&crop=center',
+          image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           link: '/blogs/company-history'
         },
         {
@@ -1197,121 +1362,146 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   console.log('Rendering MediaMegamenu with activeCategory:', activeCategory);
 
-  try {
-    return (
-      <div className="overflow-hidden">
-        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+  return (
+    <>
+      <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
             
-            {/* Left Panel: Primary Categories with Hover Navigation */}
-            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-              <div className="p-4">
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   Media Center
                 </h3>
-                <div className="max-h-[70vh] overflow-y-auto scroll-hover  pr-2">
-                  <div className="space-y-1">
-                    {primaryCategories.map((category) => {
-                      console.log('Rendering category:', category.name);
-                      return (
-                        <div
-                          key={category.id}
-                          className={`cursor-pointer transition-all duration-200 rounded w-full
-                            ${activeCategory === category.id
-                              ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(255,193,7,0.1)] border border-yellow-500/30'
-                              : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                            }`}
-                          onMouseEnter={() => handleCategoryHover(category.id)}
-                          onMouseLeave={() => {
-                            // Optional: Add a small delay before reverting
-                            // setTimeout(() => setActiveCategory('blogs'), 100);
-                          }}
-                        >
-                          <div className="flex items-center space-x-3 px-3 py-3">
-                            <div className={`p-2 rounded-lg flex-shrink-0 transition-all duration-200 ${
-                              activeCategory === category.id 
-                                ? 'bg-yellow-500 text-black shadow-lg' 
-                                : 'bg-gray-700 text-yellow-400'
-                            }`}>
-                              {category.icon}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className={`font-semibold text-sm transition-colors duration-200 ${
-                                activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                              }`}>
-                                {category.name}
-                              </div>
-                              <div className="text-xs text-gray-500 truncate mt-0.5">
-                                {category.description}
-                              </div>
-                            </div>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(255,193,7,0.1)] border border-yellow-500/30'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => setActiveCategory(category.id)}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-3">
+                        <div className={`p-2 rounded-lg flex-shrink-0 transition-all duration-200 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black shadow-lg' 
+                            : 'bg-gray-700 text-yellow-400'
+                        }`}>
+                          {category.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className={`font-semibold text-sm transition-colors duration-200 ${
+                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                          }`}>
+                            {category.name}
+                          </div>
+                          <div className="text-xs text-gray-500 truncate mt-0.5">
+                            {category.description}
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Middle Panel: Card-based Submenu Items with Scroll */}
-            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-              <div className="p-4">
+            {/* Middle: Card-based Items */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                   {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Content'}
                 </h3>
-                <div className="max-h-[70vh] overflow-y-auto scroll-hover pr-2">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {currentSubmenu?.items.map((item, index) => {
-                      console.log('Rendering item:', item.title);
-                      return (
-                        <div
-                          key={index}
-                          className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300"
-                        >
-                          <a href={item.link} className="block h-full">
-                            <div className="h-24 overflow-hidden relative">
-                              <img 
-                                src={item.image} 
-                                alt={item.title} 
-                                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                                onError={(e) => {
-                                  console.error('Image failed to load:', item.image);
-                                  e.currentTarget.style.display = 'none';
-                                }}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                            </div>
-                            <div className="p-3">
-                              <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
-                                {item.title}
-                              </h4>
-                              <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
-                                {item.description}
-                              </p>
-                            </div>
-                          </a>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {currentSubmenu?.items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300"
+                    >
+                      <a href={item.link} className="block h-full">
+                        <div className="h-24 overflow-hidden relative">
+                          <img 
+                            src={item.image} 
+                            alt={item.title} 
+                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                         </div>
-                      );
-                    })}
-                  </div>
+                        <div className="p-3">
+                          <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                            {item.title}
+                          </h4>
+                          <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+                            {item.description}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Right Panel: Dynamic Media Panel */}
-            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-              <div className="p-4">
-                <div className="h-full flex flex-col">
+            {/* Right: Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Highlights
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col h-full"
+                >
                   <div className="relative mb-4 overflow-hidden rounded-lg shadow-lg">
                     <img
                       src={currentSubmenu?.media.image}
                       alt={currentSubmenu?.media.title}
                       className="w-full h-36 object-cover"
-                      onError={(e) => {
-                        console.error('Media image failed to load:', currentSubmenu?.media.image);
-                        e.currentTarget.style.display = 'none';
-                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                     <div className="absolute bottom-2 left-3 right-3">
@@ -1338,7 +1528,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       </div>
                     </div>
                     
-                    <div className="space-y-3 mt-auto">
+                    <div className="space-y-3 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-3 -mx-4 px-4">
                       <button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
                         <Eye className="w-4 h-4" />
                         <span>Explore {primaryCategories.find(c => c.id === activeCategory)?.name}</span>
@@ -1350,28 +1540,20 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  } catch (error) {
-    console.error('Error rendering MediaMegamenu:', error);
-    return (
-      <div className="p-4 bg-red-100 border border-red-400 text-red-700">
-        <h3>Error in MediaMegamenu</h3>
-        <p>Component failed to render. Check console for details.</p>
-      </div>
-    );
-  }
+      </motion.div>
+    </>
+  );
 };
-
 
 
 const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('life');
+  const [activePoint, setActivePoint] = useState<{name: string, description: string, image: string} | null>(null);
 
   const primaryCategories = [
     { id: 'life', name: 'Life @TIL', icon: <Mountain className="w-4 h-4" /> },
@@ -1383,10 +1565,26 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const submenuData = {
     'life': {
       points: [
-        'Inclusive and collaborative work culture',
-        'Flexible working hours and hybrid options',
-        'Employee wellness & mental health initiatives',
-        'Recognition programs and team outings'
+        {
+          name: 'Inclusive Culture',
+          description: 'Collaborative work environment that values diversity',
+          image: '/culture.jpg'
+        },
+        {
+          name: 'Flexible Work',
+          description: 'Hybrid options and adaptable working hours',
+          image: '/flexible-work.jpg'
+        },
+        {
+          name: 'Wellness Programs',
+          description: 'Initiatives supporting mental and physical health',
+          image: '/wellness.jpg'
+        },
+        {
+          name: 'Recognition',
+          description: 'Programs celebrating employee achievements',
+          image: '/recognition.jpg'
+        }
       ],
       media: {
         image: '/life.jpg',
@@ -1395,207 +1593,311 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         cta: 'Explore Culture'
       }
     },
-   'team': {
-  members: [
-    {
-      name: 'Pinaki Niyogy',
-      title: 'Chief Executive Officer',
-      image: '/pinaki.jpg'
+    'team': {
+      members: [
+        {
+          name: 'Pinaki Niyogy',
+          title: 'Chief Executive Officer',
+          image: '/pinaki.jpg'
+        },
+        {
+          name: 'Arvind Rishi',
+          title: 'AVP- Sales & After Market',
+          image: '/arvind.jpeg'
+        },
+        {
+          name: 'Mr. Kanhaiya Gupta',
+          title: 'Chief Financial Officer',
+          image: '/Kanhaiya.png'
+        },
+        {
+          name: 'Ms. Shamita Nandi',
+          title: 'Chief Human Resource Officer',
+          image: '/Shamita.png'
+        },
+        {
+          name: 'Chandrani Chatterjee',
+          title: 'Company Secretary',
+          image: '/chandrani.jpg'
+        },
+        {
+          name: 'Mr. Saikat Bagchi',
+          title: 'Head - Supply Chain & Commercial',
+          image: '/saiket.png'
+        },
+        {
+          name: 'Rishabh P Nair',
+          title: 'Head Of Brand, Content & PR',
+          image: '/Risabh.png'
+        }
+      ],
+      media: {
+        image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
+        title: 'Meet Our Team',
+        description: 'Get to know the passionate minds building the future of infrastructure.',
+        cta: 'Meet the Team'
+      }
     },
-    {
-      name: 'Arvind Rishi',
-      title: 'AVP- Sales & After Market',
-      image: '/arvind.jpeg'
-    },
-    {
-      name: 'Mr. Kanhaiya Gupta',
-      title: 'Chief Financial Officer',
-      image: '/Kanhaiya.png'
-    },
-    {
-      name: 'Ms. Shamita Nandi',
-      title: 'Chief Human Resource Officer',
-      image: '/Shamita.png'
-    },
-    {
-      name: 'Chandrani Chatterjee',
-      title: 'Company Secretary',
-      image: '/chandrani.jpg'
-    },
-    {
-      name: 'Mr. Saikat Bagchi',
-      title: 'Head - Supply Chain & Commercial',
-      image: '/saiket.png'
-    },
-    {
-      name: 'Rishabh P Nair',
-      title: 'Head Of Brand, Content & PR',
-      image: '/Risabh.png'
-    }
-  ],
-  media: {
-    image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
-    title: 'Meet Our Team',
-    description: 'Get to know the passionate minds building the future of infrastructure.',
-    cta: 'Meet the Team'
-  }
-},
     'vacant': {
       points: [
-        'Open roles across engineering, sales, and operations',
-        'Campus placement and intern programs',
-        'Quick and transparent hiring process',
-        'Career growth with structured L&D paths'
+        {
+          name: 'Open Roles',
+          description: 'Positions across engineering, sales, and operations',
+          image: '/open-roles.jpg'
+        },
+        {
+          name: 'Campus Programs',
+          description: 'Placement and intern opportunities for students',
+          image: '/campus.jpg'
+        },
+        {
+          name: 'Hiring Process',
+          description: 'Quick and transparent recruitment journey',
+          image: '/hiring.jpg'
+        },
+        {
+          name: 'Career Growth',
+          description: 'Structured learning and development paths',
+          image: '/growth.jpg'
+        }
       ],
       media: {
         image: '/job.jpg',
         title: 'Current Openings',
-        description: 'Explore vacancies and apply to be a part of TIL’s next chapter.',
+        description: "Explore vacancies and apply to be a part of TIL's next chapter.",
         cta: 'View Jobs'
       }
     },
     'equal': {
       points: [
-        'Diversity & inclusion across all departments',
-        'Zero-tolerance for discrimination or bias',
-        'Women in leadership initiatives',
-        'Accessible workplace and inclusive policies'
+        {
+          name: 'Diversity & Inclusion',
+          description: 'Commitment across all departments and levels',
+          image: '/diversity.jpg'
+        },
+        {
+          name: 'Zero Tolerance',
+          description: 'Against discrimination or bias of any kind',
+          image: '/zero-tolerance.jpg'
+        },
+        {
+          name: 'Women Leadership',
+          description: 'Initiatives to promote gender equality',
+          image: '/women-leadership.jpg'
+        },
+        {
+          name: 'Accessibility',
+          description: 'Inclusive workplace policies and facilities',
+          image: '/accessibility.jpg'
+        }
       ],
       media: {
         image: '/equal.jpg',
         title: 'Equal Opportunity',
-        description: 'We’re committed to an inclusive, safe, and diverse work environment.',
+        description: 'We are committed to an inclusive, safe, and diverse work environment.',
         cta: 'Our Policy'
       }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+  const activeMedia = activePoint || currentSubmenu?.media;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
-      className="overflow-hidden"
-    >
-      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
-          
-          {/* Left Panel: Career Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Career Focus
-              </h3>
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => setActiveCategory(category.id)}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
+    <>
+      <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
+            
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Career Focus
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => {
+                        setActiveCategory(category.id);
+                        if (category.id !== 'team') {
+                          setActivePoint(currentSubmenu.points[0]);
+                        }
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-2.5">
+                        <div className={`p-1.5 rounded flex-shrink-0 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black' 
+                            : 'bg-gray-700 text-yellow-400'
+                        }`}>
+                          {category.icon}
+                        </div>
+                        <span className={`font-semibold text-sm ${
+                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                        }`}>
+                          {category.name}
+                        </span>
                       </div>
-                      <span className={`font-semibold text-sm ${
-                        activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                      }`}>
-                        {category.name}
-                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle: Content */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Details'}
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                {activeCategory === 'team' ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {currentSubmenu?.members?.map((member, index) => (
+                      <div key={index} className="text-center">
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-20 h-20 mx-auto rounded-full object-cover shadow-lg border-2 border-yellow-500"
+                        />
+                        <h4 className="mt-3 text-sm font-semibold text-yellow-400">{member.name}</h4>
+                        <p className="text-xs text-gray-400">{member.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <ul className="space-y-4">
+                    {currentSubmenu?.points?.map((point, index) => (
+                      <li
+                        key={index}
+                        onMouseEnter={() => setActivePoint(point)}
+                        className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                      >
+                        <div className="pt-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                            {point.name}
+                          </p>
+                          <p className="text-xs text-gray-400 mt-1">{point.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+
+            {/* Right: Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Highlights
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeMedia?.title || activeMedia?.name}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col h-full"
+                >
+                  <div className="relative mb-3 overflow-hidden rounded">
+                    <img
+                      src={activeMedia?.image}
+                      alt={activeMedia?.title || activeMedia?.name}
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      {activeMedia?.title || activeMedia?.name}
+                    </h4>
+                    <p className="text-gray-300 mb-4 leading-relaxed text-xs">
+                      {activeMedia?.description}
+                    </p>
+                    
+                    <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                      <motion.button 
+                        className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {activeMedia?.cta}
+                      </motion.button>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-
-          {/* Middle Panel: Bullet Points */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Details'}
-              </h3>
-              {activeCategory === 'team' ? (
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-    {currentSubmenu?.members?.map((member, index) => (
-      <div key={index} className="text-center">
-        <img
-          src={member.image}
-          alt={member.name}
-          className="w-20 h-20 mx-auto rounded-full object-cover shadow-lg border-2 border-yellow-500"
-        />
-        <h4 className="mt-3 text-sm font-semibold text-yellow-400">{member.name}</h4>
-        <p className="text-xs text-gray-400">{member.title}</p>
-      </div>
-    ))}
-  </div>
-) : (
-  <ul className="space-y-2 list-disc list-inside text-gray-200 text-sm">
-    {currentSubmenu?.points?.map((point, index) => (
-      <li key={index} className="hover:text-yellow-400 transition duration-200">
-        {point}
-      </li>
-    ))}
-  </ul>
-)}
-
-            </div>
-          </div>
-
-          {/* Right Panel: Dynamic Media */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
-              <motion.div
-                key={activeCategory}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={currentSubmenu?.media.image}
-                    alt={currentSubmenu?.media.title}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {currentSubmenu?.media.title}
-                  </h4>
-                  <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                    {currentSubmenu?.media.description}
-                  </p>
-                  
-                  <motion.button 
-                    className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {currentSubmenu?.media.cta}
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
@@ -1613,28 +1915,28 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Kolkata',
-          image: 'https://images.unsplash.com/photo-1582555142141-82061f60d3e8?w=400&h=240&fit=crop&crop=center',
+          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           title: 'Kolkata',
           description: 'Corporate headquarters of TIL, located in the heart of the city.',
           cta: 'View Kolkata Office'
         },
         {
           name: 'Chennai',
-          image: 'https://images.unsplash.com/photo-1583832928827-2c4f22b9724b?w=400&h=240&fit=crop&crop=center',
+          image: 'https://plus.unsplash.com/premium_photo-1697729444936-8c6a6f643312?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           title: 'Chennai',
           description: 'Serving the southern region with excellence.',
           cta: 'View Chennai Office'
         },
         {
           name: 'Delhi NCR',
-          image: 'https://images.unsplash.com/photo-1558089687-f282ffcbc12d?w=400&h=240&fit=crop&crop=center',
+          image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           title: 'Delhi NCR ',
           description: 'Our strategic presence in the capital region.',
           cta: 'View Delhi NCR Office'
         },
         {
           name: 'Mumbai',
-          image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=240&fit=crop&crop=center',
+          image: 'https://images.unsplash.com/photo-1580581096469-8afb38d3dbd5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
           title: 'Mumbai',
           description: 'West zone operational hub for TIL.',
           cta: 'View Mumbai Office'
@@ -1671,184 +1973,220 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     : currentSubmenu.media;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
-      className="overflow-hidden"
-    >
-      <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-0">
+    <>
+      <style>{`
+        .mega-menu-height {
+          height: 50vh;
+          max-height: 50vh;
+        }
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
 
-          {/* Left: Categories */}
-          <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                Contact Channels
-              </h3>
-              <div className="space-y-1">
-                {primaryCategories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className={`cursor-pointer transition-all duration-200 rounded w-full
-                      ${activeCategory === category.id
-                        ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                        : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                      }`}
-                    onMouseEnter={() => {
-                      setActiveCategory(category.id);
-                      if (category.id === 'locations') {
-                        setActiveLocation(currentSubmenu.points[0]);
-                      }
-                    }}
-                    whileHover={{ x: 2 }}
-                  >
-                    <div className="flex items-center space-x-3 px-3 py-2.5">
-                      <div className={`p-1.5 rounded flex-shrink-0 ${
-                        activeCategory === category.id 
-                          ? 'bg-yellow-500 text-black' 
-                          : 'bg-gray-700 text-yellow-400'
-                      }`}>
-                        {category.icon}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
+          <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
+            
+            {/* Left: Categories */}
+            <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Contact Channels
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <div className="space-y-1">
+                  {primaryCategories.map((category) => (
+                    <motion.div
+                      key={category.id}
+                      className={`cursor-pointer transition-all duration-200 rounded w-full
+                        ${activeCategory === category.id
+                          ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                        }`}
+                      onMouseEnter={() => {
+                        setActiveCategory(category.id);
+                        if (category.id === 'locations') {
+                          setActiveLocation(currentSubmenu.points[0]);
+                        }
+                      }}
+                      whileHover={{ x: 2 }}
+                    >
+                      <div className="flex items-center space-x-3 px-3 py-2.5">
+                        <div className={`p-1.5 rounded flex-shrink-0 ${
+                          activeCategory === category.id 
+                            ? 'bg-yellow-500 text-black' 
+                            : 'bg-gray-700 text-yellow-400'
+                        }`}>
+                          {category.icon}
+                        </div>
+                        <span className={`font-semibold text-sm ${
+                          activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                        }`}>
+                          {category.name}
+                        </span>
                       </div>
-                      <span className={`font-semibold text-sm ${
-                        activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
-                      }`}>
-                        {category.name}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle: Info List */}
+            <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Contact'}
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                {activeCategory === 'inquiry' ? (
+                  <ul className="space-y-3 text-gray-200 text-sm">
+                    {currentSubmenu?.contacts.map((contact, index) => {
+                      const isPhone = contact.label.toLowerCase().includes('phone');
+                      const isEmail = contact.label.toLowerCase().includes('email');
+                      const isWhatsApp = contact.label.toLowerCase().includes('whatsapp');
+                      const isLinkedIn = contact.label.toLowerCase().includes('linkedin');
+
+                      let href = '#';
+                      if (isPhone) href = `tel:${contact.value}`;
+                      else if (isEmail) href = `mailto:${contact.value}`;
+                      else if (isWhatsApp) href = `https://wa.me/${contact.value.replace(/\D/g, '')}`;
+                      else if (isLinkedIn) href = contact.value;
+
+                      return (
+                        <li key={index}>
+                          <a
+                            href={href}
+                            target={isLinkedIn || isWhatsApp ? "_blank" : "_self"}
+                            rel={isLinkedIn || isWhatsApp ? "noopener noreferrer" : ""}
+                            className="flex items-center space-x-3 hover:text-yellow-300 transition-colors"
+                            aria-label={`Contact via ${contact.label}`}
+                          >
+                            <div>{contact.icon}</div>
+                            <div>
+                              <span className="block font-medium text-gray-300">{contact.label}</span>
+                              <span className="text-yellow-400 underline underline-offset-2">{contact.value}</span>
+                            </div>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <ul className="space-y-4">
+                    {currentSubmenu?.points.map((location, index) => (
+                      <li
+                        key={index}
+                        onMouseEnter={() => setActiveLocation(location)}
+                        className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                      >
+                        <div className="pt-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                            {location.name}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+
+            {/* Right: Dynamic Media Panel */}
+            <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+              <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  Details
+                </h3>
+              </div>
+              <div className="p-4 pt-0">
+                <motion.div
+                  key={activeMedia?.title || activeMedia?.name}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex flex-col h-full"
+                >
+                  <div className="relative mb-3 overflow-hidden rounded">
+                    <img
+                      src={activeMedia?.image}
+                      alt={activeMedia?.title || activeMedia?.name}
+                      className="w-full h-32 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      {activeMedia?.title || activeMedia?.name}
+                    </h4>
+                    <p className="text-gray-300 mb-4 leading-relaxed text-xs">
+                      {activeMedia?.description}
+                    </p>
+
+                    {activeMedia?.cta && (
+                      <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                        <motion.button
+                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          {activeMedia?.cta}
+                        </motion.button>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
-
-          {/* Middle: Info List */}
-          <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0">
-            <div className="p-4">
-              <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Contact'}
-              </h3>
-
-              {activeCategory === 'inquiry' ? (
-                <ul className="space-y-3 text-gray-200 text-sm">
-                  {currentSubmenu?.contacts.map((contact, index) => {
-                    const isPhone = contact.label.toLowerCase().includes('phone');
-                    const isEmail = contact.label.toLowerCase().includes('email');
-                    const isWhatsApp = contact.label.toLowerCase().includes('whatsapp');
-                    const isLinkedIn = contact.label.toLowerCase().includes('linkedin');
-
-                    let href = '#';
-                    if (isPhone) href = `tel:${contact.value}`;
-                    else if (isEmail) href = `mailto:${contact.value}`;
-                    else if (isWhatsApp) href = `https://wa.me/${contact.value.replace(/\D/g, '')}`;
-                    else if (isLinkedIn) href = contact.value;
-
-                    return (
-                      <li key={index}>
-                        <a
-                          href={href}
-                          target={isLinkedIn || isWhatsApp ? "_blank" : "_self"}
-                          rel={isLinkedIn || isWhatsApp ? "noopener noreferrer" : ""}
-                          className="flex items-center space-x-3 hover:text-yellow-300 transition-colors"
-                          aria-label={`Contact via ${contact.label}`}
-                        >
-                          <div>{contact.icon}</div>
-                          <div>
-                            <span className="block font-medium text-gray-300">{contact.label}</span>
-                            <span className="text-yellow-400 underline underline-offset-2">{contact.value}</span>
-                          </div>
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : (
-                <ul className="space-y-4">
-                  {currentSubmenu?.points.map((location, index) => (
-                    <li
-                      key={index}
-                      onMouseEnter={() => setActiveLocation(location)}
-                      className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
-                    >
-                      <div className="pt-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-5 h-5 text-yellow-500 flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={1.5}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
-                          />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
-                          {location.name}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-
-          {/* Right: Dynamic Media Panel */}
-          <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0">
-            <div className="p-4">
-              <motion.div
-                key={activeMedia?.title || activeMedia?.name}
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-4 h-full flex flex-col"
-              >
-                <div className="relative mb-3 overflow-hidden rounded">
-                  <img
-                    src={activeMedia?.image}
-                    alt={activeMedia?.title || activeMedia?.name}
-                    className="w-full h-32 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-bold text-base text-yellow-400 mb-2">
-                    {activeMedia?.title || activeMedia?.name}
-                  </h4>
-                  <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                    {activeMedia?.description}
-                  </p>
-
-                  {activeMedia?.cta && (
-                    <motion.button
-                      className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {activeMedia?.cta}
-                    </motion.button>
-                  )}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

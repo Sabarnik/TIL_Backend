@@ -22,11 +22,21 @@ const AboutSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <motion.span
-            className="inline-block px-6 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg text-sm font-semibold mb-4 shadow-md"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+            initial={{ 
+              opacity: 0,
+              letterSpacing: "-0.05em" // Starts condensed
+            }}
+            whileInView={{
+              opacity: 1,
+              letterSpacing: "0.02em", // Slightly expands
+            }}
+            transition={{ 
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
+            }}
+            viewport={{ once: true, margin: "-20%" }}
           >
             OUR LEGACY
           </motion.span>

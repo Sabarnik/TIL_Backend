@@ -73,7 +73,7 @@ const Testimonials: React.FC = () => {
 
       {/* Top Row */}
       <div
-        className="relative w-full overflow-hidden mb-5" // gap below
+        className="relative w-full overflow-hidden mb-4" // gap below
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -94,7 +94,7 @@ const Testimonials: React.FC = () => {
 
       {/* Bottom Row */}
       <div
-        className="relative w-full overflow-hidden mt-5" // gap above
+        className="relative w-full overflow-hidden mt-4" // gap above
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
