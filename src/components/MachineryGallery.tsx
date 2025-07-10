@@ -97,10 +97,24 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Gradient margin effect */}
+      <motion.div
+        className="absolute inset-0 rounded-xl pointer-events-none"
+        style={{
+          background: 'linear-gradient(to right, #f59e0b, #f97316)',
+          padding: '2px',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="w-full h-full bg-white rounded-lg" />
+      </motion.div>
+
       <img
         src={machine.img}
         alt={machine.title}
-        className="w-full h-full object-contain bg-white p-4"
+        className="w-full h-full object-contain bg-white p-4 relative z-0"
       />
 
       {/* Title inside card */}
@@ -142,22 +156,6 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
         <Mail size={12} />
         Get Quote
       </motion.button>
-
-      {/* Infinity loop animation */}
-      <motion.div
-        className="absolute inset-0 border-2 border-amber-400 rounded-xl pointer-events-none"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{
-          opacity: isHovered ? 0.3 : 0,
-          scale: isHovered ? 1 : 0.95
-        }}
-        transition={{ 
-          duration: 0.3,
-          repeat: isHovered ? Infinity : 0,
-          repeatType: "reverse",
-          repeatDelay: 0.5
-        }}
-      />
 
       {/* Hover overlay with details */}
       <motion.div
