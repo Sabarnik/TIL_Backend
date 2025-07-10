@@ -311,8 +311,8 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -635,8 +635,8 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -989,8 +989,8 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -1166,11 +1166,11 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
   );
 };
 
-
 const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   console.log('MediaMegamenu component rendering...');
   
   const [activeCategory, setActiveCategory] = useState('blogs');
+  const [selectedVideo, setSelectedVideo] = useState(null);
   console.log('Active category:', activeCategory);
 
   const primaryCategories = [
@@ -1218,77 +1218,183 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   ];
 
-   const submenuData = {
+  const submenuData = {
     'blogs': {
       items: [
         {
-          title: 'Company History',
-          description: 'Tracing our 80+ years of industrial excellence and innovation.',
-          image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-          link: '/blogs/company-history'
+          title: 'How to Buy a Reachstacker? 6 Factors to Consider',
+          description: 'When comparing reachstackers, the specifications listed on paper are only the first step. If you..',
+          image: '/blog1.png',
+          link: '/blogs/reachstacker-buying-guide',
+          type: 'blog',
+          date: '2024-12-15'
         },
         {
-          title: 'Industry Insights',
-          description: 'Expert analysis on construction equipment trends.',
-          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=240&fit=crop&crop=center',
-          link: '/blogs/industry-insights'
-        }
+          title: '6 Powerful Cranes Used in Modern Construction',
+          description: 'Let\'s be real—on any serious construction site, cranes aren\'t treated as just any other machine...',
+          image: '/blog2.jpg',
+          link: '/blogs/modern-construction-cranes',
+          type: 'blog',
+          date: '2024-12-10'
+        },
+        {
+          title: '7 Proven Ways Rough Terrain Cranes Power Up Business Efficiency',
+          description: 'In the world of construction and heavy lifting, the right equipment isn\'t just helpful—it\'s business critical...',
+          image: '/blog3.jpg',
+          link: '/blogs/rough-terrain-crane-efficiency',
+          type: 'blog',
+          date: '2024-12-05'
+        },
+        {
+          title: 'The Ultimate Rough Terrain Cranes Guide in 2025 For Your Next Project',
+          description: 'When you picture a Rough Terrain crane, you probably imagine a beastly machine...',
+          image: '/blog4.jpg',
+          link: '/blogs/rough-terrain-cranes-guide-2025',
+          type: 'blog',
+          date: '2024-11-28'
+        },
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
-        title: 'Our Legacy',
-        description: '80+ years of engineering excellence in construction and material handling equipment.',
-        cta: 'Read Our Stories',
-        features: ['80+ Years Experience', 'Global Presence', 'ISO Certified']
+        image: '/blog-hero.jpg',
+        title: 'Industry Insights',
+        description: 'Stay ahead with our expert analysis, equipment guides, and industry best practices.',
+        cta: 'Read All Blogs',
+        features: ['Expert Analysis', 'Equipment Guides', 'Industry Trends']
       }
     },
     'video': {
       items: [
         {
-          title: 'Product Demonstrations',
-          description: 'See our equipment in action across various applications.',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
-          link: '/videos/product-demos'
+          title: 'Why Operators Prefer Hyster TIL ReachStackers',
+          description: 'What’s it like to operate a Hyster TIL ReachStacker in one of India’s busiest logistics hubs?',
+          videoId: 'RDgU-xTDyZc',
+          embedUrl: 'https://www.youtube.com/embed/RDgU-xTDyZc',
+          thumbnail: '/video1.jpg',
+          link: 'https://youtu.be/RDgU-xTDyZc',
+          type: 'youtube',
+          duration: '4:32'
+        },
+        {
+          title: 'How Hyster-TIL’s Reach Stacker Revolutionizing Material Handling | TIL Limited',
+          description: 'Join us as Mr. Rajesh Wazarkar, MD of Hyster India, shares his favorite features of TIL’s new High Series Reach Stacker...',
+          videoId: 'ABC123XYZ',
+          embedUrl: 'https://www.youtube.com/embed/ABC123XYZ',
+          thumbnail: '/video2.jpg',
+          link: 'https://youtu.be/wavwFvrs128',
+          type: 'youtube',
+          duration: '8:15'
+        },
+        {
+          title: 'How TIL Built India’s First Mobile Crane | Factory Tour',
+          description: 'In this exclusive conversation with Mr. Jayanta Kumar Patra, Production Head at TIL Limited, we trace the incredible journey of our factory...',
+          videoId: 'DEF456GHI',
+          embedUrl: 'https://www.youtube.com/embed/DEF456GHI',
+          thumbnail: '/video3.jpg',
+          link: 'https://youtu.be/omGk8PMTtX8',
+          type: 'youtube',
+          duration: '6:45'
+        },
+        {
+          title: 'How TIL Hyster ReachStacker Redefines Material Handling ft Ben Newey',
+          description: 'Revolutionizing Material Handling! In this exclusive interview, Ben Newey, VP of Sales & Marketing APIC at Hyster-Yale Materials Handling...',
+          videoId: 'JKL789MNO',
+          embedUrl: 'https://www.youtube.com/embed/JKL789MNO',
+          thumbnail: '/video4.jpg',
+          link: 'https://youtu.be/aAM7PIMA25k',
+          type: 'youtube',
+          duration: '5:20'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=240&fit=crop&crop=center',
+        image: '/video-hero.jpg',
         title: 'Video Library',
-        description: 'Comprehensive collection of product demos, interviews, and company highlights.',
-        cta: 'Watch Videos',
+        description: 'Comprehensive collection of product demos, training videos, and customer testimonials.',
+        cta: 'Watch All Videos',
         features: ['HD Quality', 'Multiple Languages', 'Mobile Optimized']
       }
     },
     'news': {
       items: [
         {
-          title: 'Latest Press Release',
-          description: 'Recent company announcements and updates.',
-          image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
-          link: '/news/press-release'
+          title: 'Smart Manufacturing and Enterprises',
+          description: 'We will launch new cranes and forklifts in next 4 years',
+          image: '/news1.png',
+          link: '/news/new-manufacturing-facility',
+          type: 'news',
+          date: '2024-12-20'
+        },
+        {
+          title: 'NDTV',
+          description: 'TIL Forms Strategic Business Unit Supporting Its Defence Portfolio Read mo...',
+          image: '/news2.jpg',
+          link: '/news/strategic-partnership',
+          type: 'news',
+          date: '2024-12-18'
+        },
+        {
+          title: 'EPC&I',
+          description: 'Built to Meet the Toughest Demands',
+          image: '/news3.png',
+          link: '/news/innovation-award',
+          type: 'news',
+          date: '2024-12-15'
+        },
+        {
+          title: 'Equipment Times',
+          description: 'Handling The Future! MHE\'s Role in Construction & Infrastructure',
+          image: '/news4.png',
+          link: '/news/q4-2024-results',
+          type: 'news',
+          date: '2024-12-12'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+        image: '/news-hero.jpg',
         title: 'Latest News',
-        description: 'Stay informed with our latest announcements and industry updates.',
-        cta: 'Read News',
+        description: 'Stay informed with our latest announcements, partnerships, and industry developments.',
+        cta: 'Read All News',
         features: ['Breaking News', 'Industry Analysis', 'Market Insights']
       }
     },
     'til': {
       items: [
         {
-          title: 'Bauma 2024 Highlights',
-          description: 'Key moments from the world\'s largest construction trade fair.',
-          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
-          link: '/til/bauma-highlights'
+          title: 'Construction And Architecture Magazine',
+          description: 'FUELING INNOVATION AND GROWTH IN INDIA\'S MATERIAL HANDLING AND CONSTRUCTION...',
+          image: '/til1.png',
+          link: '/til/bauma-2024-highlights',
+          type: 'event',
+          date: '2024-10-15'
+        },
+        {
+          title: 'Construction And Architecture Magazine',
+          description: 'TIL: A LEGACY OF INNOVATION AND STRATEGIC GROWTH IN MATERIAL HANDLING AT BA...',
+          image: '/til2.jpeg',
+          link: '/til/smart-crane-controls',
+          type: 'event',
+          date: '2024-10-12'
+        },
+        {
+          title: 'BAUMA 2024',
+          description: 'We are committed to increasing local manufacturing in India.',
+          image: '/til3.jpg',
+          link: '/til/sustainability-initiatives',
+          type: 'event',
+          date: '2024-10-10'
+        },
+        {
+          title: 'Construction Week',
+          description: 'Bauma ConExpo India 2024: TIL debuts Snorkel A62JRT articulating boom lift',
+          image: '/til4.jpg',
+          link: '/til/customer-experience-center',
+          type: 'event',
+          date: '2024-10-08'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+        image: '/til-hero.jpg',
         title: 'TIL@bauma2024',
-        description: 'Discover innovations and highlights from Bauma 2024.',
+        description: 'Discover innovations and highlights from Bauma 2024 and our ongoing technology initiatives.',
         cta: 'Explore TIL',
         features: ['Innovation Showcase', 'Live Demos', 'Expert Talks']
       }
@@ -1296,51 +1402,127 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     'events': {
       items: [
         {
-          title: 'Upcoming Trade Shows',
-          description: 'Join us at major industry exhibitions worldwide.',
-          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
-          link: '/events/trade-shows'
+          title: 'TIL Annual Picnic',
+          image: '/event1.jpeg',
+          link: '/events/conexpo-2025',
+          date: '2025-03-14',
+        },
+        {
+          title: 'Republic day 2025 celebration at TIL',
+          image: '/event2.jpeg',
+          link: '/events/operator-training-workshop',
+    
+          date: '2025-02-20',
+        },
+        {
+          title: 'TIL 49th AGM',
+          image: '/event3.jpg',
+          link: '/events/infrastructure-summit',
+
+          date: '2025-02-15',
+        },
+        {
+          title: 'Viswakarma Puja 2024',
+          image: '/event4.jpg',
+          link: '/events/customer-appreciation',
+          date: '2025-01-30',
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=240&fit=crop&crop=center',
+        image: '/events-hero.jpg',
         title: 'Upcoming Events',
-        description: 'Join us at our upcoming events and exhibitions worldwide.',
-        cta: 'View Events',
+        description: 'Join us at our upcoming events, trade shows, and training sessions worldwide.',
+        cta: 'View All Events',
         features: ['Global Events', 'Expert Sessions', 'Networking']
       }
     },
     'press': {
       items: [
         {
-          title: 'Official Announcements',
-          description: 'Latest press releases and company statements.',
-          image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
-          link: '/press/announcements'
+          title: 'TIL Limited Reports Record Q4 2024 Performance',
+          description: 'Official press release detailing financial results and growth milestones.',
+          image: '/press1.jpg',
+          link: '/press/q4-2024-performance',
+          type: 'press',
+          date: '2024-12-22'
+        },
+        {
+          title: 'New CEO Appointment Announcement',
+          description: 'Leadership transition and strategic vision for the company\'s future.',
+          image: '/press2.jpg',
+          link: '/press/new-ceo-appointment',
+          type: 'press',
+          date: '2024-12-20'
+        },
+        {
+          title: 'Environmental Sustainability Initiative Launch',
+          description: 'Commitment to carbon neutrality and sustainable manufacturing practices.',
+          image: '/press3.jpg',
+          link: '/press/sustainability-initiative',
+          type: 'press',
+          date: '2024-12-18'
+        },
+        {
+          title: 'International Expansion Plans Revealed',
+          description: 'Strategic expansion into new markets and establishment of regional offices.',
+          image: '/press4.jpg',
+          link: '/press/international-expansion',
+          type: 'press',
+          date: '2024-12-15'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=240&fit=crop&crop=center',
+        image: '/press-hero.jpg',
         title: 'Press Releases',
-        description: 'Official company announcements and press statements.',
-        cta: 'Read Press',
+        description: 'Official company announcements, press statements, and media resources.',
+        cta: 'View All Press',
         features: ['Official News', 'Media Kit', 'Contact Info']
       }
     },
     'downloads': {
       items: [
         {
-          title: 'Product Brochures',
-          description: 'Comprehensive product information and specifications.',
-          image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=240&fit=crop&crop=center',
-          link: '/downloads/brochures'
+          title: 'Product Catalog 2025',
+          description: 'Comprehensive catalog featuring our complete range of construction equipment.',
+          image: '/download1.jpg',
+          link: '/downloads/product-catalog-2025.pdf',
+          type: 'catalog',
+          fileSize: '15.2 MB',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Crane Safety Manual',
+          description: 'Essential safety guidelines and best practices for crane operation.',
+          image: '/download2.jpg',
+          link: '/downloads/crane-safety-manual.pdf',
+          type: 'manual',
+          fileSize: '8.7 MB',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Technical Specifications Sheet',
+          description: 'Detailed technical specifications for all equipment models.',
+          image: '/download3.jpg',
+          link: '/downloads/technical-specifications.pdf',
+          type: 'specifications',
+          fileSize: '12.4 MB',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Maintenance Guidelines',
+          description: 'Comprehensive maintenance schedules and procedures for optimal performance.',
+          image: '/download4.jpg',
+          link: '/downloads/maintenance-guidelines.pdf',
+          type: 'guide',
+          fileSize: '6.8 MB',
+          fileType: 'PDF'
         }
       ],
       media: {
-        image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=240&fit=crop&crop=center',
+        image: '/downloads-hero.jpg',
         title: 'Downloads',
-        description: 'Access our comprehensive library of brochures and technical documents.',
-        cta: 'Browse Downloads',
+        description: 'Access our comprehensive library of brochures, manuals, and technical documents.',
+        cta: 'Browse All Downloads',
         features: ['Product Specs', 'User Manuals', 'Technical Guides']
       }
     }
@@ -1360,14 +1542,23 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   };
 
+  // Video modal handler
+  const openVideoModal = (item: any) => {
+    setSelectedVideo(item);
+  };
+
+  const closeVideoModal = () => {
+    setSelectedVideo(null);
+  };
+
   console.log('Rendering MediaMegamenu with activeCategory:', activeCategory);
 
-  return (
+ return (
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -1444,7 +1635,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Middle: Card-based Items */}
+            {/* Middle: Content Items */}
             <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -1452,37 +1643,158 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </h3>
               </div>
               <div className="p-4 pt-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {currentSubmenu?.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300"
-                    >
-                      <a href={item.link} className="block h-full">
-                        <div className="h-24 overflow-hidden relative">
-                          <img 
-                            src={item.image} 
-                            alt={item.title} 
-                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                        </div>
-                        <div className="p-3">
-                          <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
-                            {item.title}
-                          </h4>
-                          <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
-                            {item.description}
-                          </p>
-                        </div>
-                      </a>
+                {activeCategory === 'press' ? (
+                  // Special Press Release Table Layout
+                  <div className="bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden">
+                    {/* Table Header */}
+                    <div className="grid grid-cols-12 bg-yellow-500 text-black font-bold text-sm">
+                      <div className="col-span-8 px-4 py-3 border-r border-yellow-600">
+                        Details
+                      </div>
+                      <div className="col-span-4 px-4 py-3">
+                        Actions
+                      </div>
                     </div>
-                  ))}
-                </div>
+                    
+                    {/* Table Rows */}
+                    <div className="divide-y divide-gray-700/40">
+                      {currentSubmenu?.items.map((item, index) => (
+                        <div key={index} className="grid grid-cols-12 hover:bg-gray-700/20 transition-colors duration-200">
+                          <div className="col-span-8 px-4 py-3 border-r border-gray-700/40">
+                            <div className="text-sm font-medium text-gray-200 mb-1">
+                              {item.title}
+                            </div>
+                            {item.description && (
+                              <div className="text-xs text-gray-400 leading-relaxed">
+                                {item.description}
+                              </div>
+                            )}
+                          </div>
+                          <div className="col-span-4 px-4 py-3 flex items-center space-x-2">
+                            <button className="flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 text-xs transition-colors duration-200">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg>
+                              <span>View</span>
+                            </button>
+                            <span className="text-gray-500">|</span>
+                            <button className="flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 text-xs transition-colors duration-200">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
+                              <span>Download Document</span>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  // Regular Card Layout for Other Sections
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {currentSubmenu?.items.map((item, index) => (
+                      <div
+                        key={index}
+                        className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300"
+                      >
+                        {item.type === 'youtube' ? (
+                          // YouTube Video Card
+                          <div 
+                            className="cursor-pointer h-full"
+                            onClick={() => openVideoModal(item)}
+                          >
+                            <div className="h-32 overflow-hidden relative">
+                              <img 
+                                src={item.thumbnail} 
+                                alt={item.title} 
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                style={{ objectPosition: 'top center' }}
+                              />
+                              
+                              {/* Play Button Overlay */}
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-all duration-300">
+                                <div className="bg-red-600 hover:bg-red-700 rounded-full p-3 transform group-hover:scale-110 transition-all duration-300 shadow-lg">
+                                  <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                  </svg>
+                                </div>
+                              </div>
+                              
+                              {/* Duration Badge */}
+                              {item.duration && (
+                                <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                                  {item.duration}
+                                </div>
+                              )}
+                              
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                            </div>
+                            <div className="p-3">
+                              <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                                {item.title}
+                              </h4>
+                              <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ) : (
+                          // Regular Content Card
+                          <a href={item.link} className="block h-full">
+                            <div className="h-32 overflow-hidden relative">
+                              <img 
+                                src={item.image} 
+                                alt={item.title} 
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                style={{ objectPosition: 'top center' }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                              
+                              {/* Content Type Badge */}
+                              {item.type && (
+                                <div className="absolute top-2 left-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded font-semibold uppercase">
+                                  {item.type}
+                                </div>
+                              )}
+                              
+                              {/* Date Badge */}
+                              {item.date && (
+                                <div className="absolute top-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                                  {new Date(item.date).toLocaleDateString()}
+                                </div>
+                              )}
+                              
+                              {/* File Info for Downloads */}
+                              {item.fileSize && (
+                                <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                                  {item.fileType} • {item.fileSize}
+                                </div>
+                              )}
+                            </div>
+                            <div className="p-3">
+                              <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                                {item.title}
+                              </h4>
+                              <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+                                {item.description}
+                              </p>
+                              {item.location && (
+                                <p className="text-xs text-yellow-500 mt-1">
+                                  📍 {item.location}
+                                </p>
+                              )}
+                            </div>
+                          </a>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Right: Media Panel */}
+            {/* Right: Media Panel - remains the same */}
             <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -1501,7 +1813,8 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <img
                       src={currentSubmenu?.media.image}
                       alt={currentSubmenu?.media.title}
-                      className="w-full h-36 object-cover"
+                      className="w-full h-40 object-cover"
+                      style={{ objectPosition: 'top center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                     <div className="absolute bottom-2 left-3 right-3">
@@ -1531,7 +1844,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <div className="space-y-3 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-3 -mx-4 px-4">
                       <button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
                         <Eye className="w-4 h-4" />
-                        <span>Explore {primaryCategories.find(c => c.id === activeCategory)?.name}</span>
+                        <span>{currentSubmenu?.media.cta}</span>
                       </button>
                       
                       <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2">
@@ -1546,9 +1859,46 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           </div>
         </div>
       </motion.div>
+
+      {/* Video Modal - remains the same */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={closeVideoModal}>
+          <div className="bg-[#1c2128] rounded-lg overflow-hidden max-w-4xl w-full" onClick={e => e.stopPropagation()}>
+            <div className="relative">
+              <iframe 
+                width="100%" 
+                height="400" 
+                src={selectedVideo.embedUrl}
+                title={selectedVideo.title}
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="w-full"
+              />
+              <button 
+                className="absolute top-2 right-2 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-all duration-200"
+                onClick={closeVideoModal}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="p-4">
+              <h3 className="text-lg font-bold text-yellow-400 mb-2">{selectedVideo.title}</h3>
+              <p className="text-gray-300 text-sm">{selectedVideo.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
+
+
+
+
 
 
 const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
@@ -1707,8 +2057,8 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -1976,8 +2326,8 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     <>
       <style>{`
         .mega-menu-height {
-          height: 50vh;
-          max-height: 50vh;
+          height: 60vh;
+          max-height: 60vh;
         }
         .scroll-hover::-webkit-scrollbar {
           width: 4px;
@@ -2242,7 +2592,7 @@ const MainNavigation: React.FC = () => {
         style={{ marginTop: isScrolled ? '53px' : '60px' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-20">
-          <div className="flex h-14">
+          <div className="flex h-14 overflow-x-hidden whitespace-nowrap">
             {navItems.map((item) => (
               <div
                 key={item.name}

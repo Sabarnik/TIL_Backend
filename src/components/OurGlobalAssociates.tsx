@@ -4,12 +4,11 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const OurGlobalAssociates = () => {
-
-const ref = useRef(null);
-const isInView = useInView(ref, {
-  amount: 0.2,   // Use 'amount' instead of 'threshold'
-  once: true,
-});
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    amount: 0.2,
+    once: true,
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,109 +46,119 @@ const isInView = useInView(ref, {
   };
 
   const logos = [
-    { name: 'GROVE', src: '/GROOVE.jpg' },
-    { name: 'HYSTER', src: '/HYSTER.jpg' },
-    { name: 'MANITOWOC', src: '/MANITOWOC.jpg' },
-    { name: 'SNORKEL', src: '/SNORKEL.jpg' },
+    { name: 'GROVE', src: '/clogo1.png' },
+    { name: 'HYSTER', src: '/clogo2.png' },
+    { name: 'MANITOWOC', src: '/clogo3.png' },
+    { name: 'SNORKEL', src: '/clogo4.png' },
   ];
 
- return (
-  <section className="relative bg-cover bg-center py-16 overflow-hidden">
-    {/* Background Image with Fixed Parallax Effect */}
-    <div 
-      className="absolute inset-0 z-0"
-      style={{
-        backgroundImage: "url('/global.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
-        willChange: 'transform',
-      }}
-    />
-    
-    {/* Lighter Dark Overlay */}
-    <div className="absolute inset-0 bg-black/30 z-0" />
-    
-    {/* Lighter Gradient Overlay for Better Text Contrast */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 z-0" />
+  return (
+    <section className="relative bg-cover bg-center py-16 overflow-hidden">
+      {/* Background Image with Fixed Parallax Effect */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/global.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          willChange: 'transform',
+        }}
+      />
+      
+      {/* Lighter Dark Overlay */}
+      <div className="absolute inset-0 bg-black/30 z-0" />
+      
+      {/* Lighter Gradient Overlay for Better Text Contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 z-0" />
 
-    {/* Content Container */}
-    <div className="relative z-10 max-w-6xl mx-auto px-6">
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="text-center"
-      >
-        {/* Top Tagline */}
-        <motion.p
-          variants={itemVariants}
-          className="text-xs uppercase tracking-wide text-yellow-400 mb-3"
-        >
-          Customer at its core … since 1944.
-        </motion.p>
-
-        {/* Section Heading */}
-        <motion.h2
-          variants={itemVariants}
-          className="text-3xl md:text-4xl font-bold text-white mb-4"
-        >
-          Our <span className="text-yellow-400">Global</span> Associates
-        </motion.h2>
-
-        {/* Divider */}
+      {/* Content Container */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
-          variants={itemVariants}
-          className="w-12 h-0.5 bg-yellow-400 rounded-full mx-auto mb-5"
-        />
-
-        {/* Paragraph */}
-        <motion.p
-          variants={itemVariants}
-          className="max-w-2xl mx-auto text-base text-white/90 leading-relaxed mb-8"
-        >
-          We strive to uphold excellence in design and manufacturing by partnering 
-          with internationally renowned associates, enabling us to elevate our 
-          infra-equipment manufacturing capabilities to a global scale. With our 
-          steadfast commitment to quality and customer centricity, we aim to deliver 
-          exceptional solutions that meet the demands of the global market.
-        </motion.p>
-
-        {/* Logo Grid */}
-        <motion.div
+          ref={ref}
           variants={containerVariants}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center"
         >
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo.name}
-              variants={logoVariants}
-              className="flex items-center justify-center p-3 rounded-lg transition-all duration-300"
-            >
-              <img
-                src={logo.src}
-                alt={`${logo.name} logo`}
-                className="h-10 mx-auto object-contain opacity-100 transition-opacity duration-300"
-              />
-              <span 
-                className="text-white font-semibold text-sm hidden"
-                style={{ display: 'none' }}
+          {/* Top Tagline */}
+          <motion.p
+            variants={itemVariants}
+            className="text-xs uppercase tracking-wide text-yellow-400 mb-3"
+          >
+            Customer at its core … since 1944.
+          </motion.p>
+
+          {/* Section Heading */}
+          <motion.h2
+            variants={itemVariants}
+            className="text-3xl md:text-4xl font-bold text-white mb-4"
+          >
+            Our <span className="text-yellow-400">Global</span> Associates
+          </motion.h2>
+
+          {/* Divider */}
+          <motion.div
+            variants={itemVariants}
+            className="w-12 h-0.5 bg-yellow-400 rounded-full mx-auto mb-5"
+          />
+
+          {/* Paragraph */}
+          <motion.p
+            variants={itemVariants}
+            className="max-w-2xl mx-auto text-base text-white/90 leading-relaxed mb-12"
+          >
+            We strive to uphold excellence in design and manufacturing by partnering 
+            with internationally renowned associates, enabling us to elevate our 
+            infra-equipment manufacturing capabilities to a global scale. With our 
+            steadfast commitment to quality and customer centricity, we aim to deliver 
+            exceptional solutions that meet the demands of the global market.
+          </motion.p>
+
+          {/* Logo Grid - Lighter glass effect */}
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
+          >
+            {logos.map((logo, index) => (
+              <motion.div
+                key={logo.name}
+                variants={logoVariants}
+                className="group flex items-center justify-center bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:bg-white/15 hover:border-yellow-400/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-400/10"
+                style={{
+                  width: '140px',
+                  height: '100px',
+                  margin: '0 auto'
+                }}
               >
-                {logo.name}
-              </span>
-            </motion.div>
-          ))}
+                <div className="flex items-center justify-center w-full h-full p-4">
+                  <img
+                    src={logo.src}
+                    alt={`${logo.name} logo`}
+                    className={`max-w-full max-h-full object-contain transition-all duration-300 ${
+                      logo.name === 'HYSTER' 
+                        ? 'filter grayscale brightness-75' 
+                        : 'filter brightness-0 invert'
+                    } group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0`}
+                    style={{
+                      width: 'auto',
+                      height: 'auto',
+                      maxWidth: '120px',
+                      maxHeight: '80px'
+                    }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
 
-    {/* Optional: Subtle bottom fade */}
-    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/10 to-transparent z-0" />
-  </section>
-);
-
+      {/* Optional: Subtle bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/10 to-transparent z-0" />
+    </section>
+  );
 };
 
 export default OurGlobalAssociates;
