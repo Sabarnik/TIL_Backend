@@ -315,122 +315,181 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
             </span>
           </motion.div>
 
-          <div
-            ref={containerRef}
-            className="relative h-[300px] md:h-[450px] flex items-center justify-center"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeaveCapture={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div
-              className="relative w-full h-full"
-              style={{ perspective: '1000px' }}
-            >
-              <motion.div
-                animate={{ rotateY: -getAngle(activeIndex) }}
-                transition={{ 
-                  duration: 1.5, 
-                  ease: [0.32, 0.72, 0, 1],
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20
-                }}
-                className="absolute w-full h-full"
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+          {/* Mobile simple carousel */}
+          <div className="md:hidden">
+            <div className="relative h-[300px] flex items-center justify-center overflow-hidden">
+              <div className="flex w-full h-full items-center justify-center">
+                <ProductCard machine={products[activeIndex]} isActive={true} />
+              </div>
+              
+              {/* Mobile arrows */}
+              <button
+                className="absolute left-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 active:scale-95 transition-transform"
+                onClick={() =>
+                  setActiveIndex((prev) => (prev - 1 + totalItems) % totalItems)
+                }
+                aria-label="Previous machine"
               >
-                {products.map((machine, index) => {
-                  const angle = getAngle(index)
-                  const transform = `rotateY(${angle}deg) translateZ(${radius}px)`
-                  const isActive = index === activeIndex
-
-                  return (
-                    <div
-                      key={machine.id}
-                      style={{
-                        transform,
-                        transformStyle: 'preserve-3d',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        width: '16rem',
-                        height: '16rem',
-                        margin: '-8rem 0 0 -8rem',
-                      }}
-                    >
-                      <ProductCard machine={machine} isActive={isActive} />
-                    </div>
-                  )
-                })}
-              </motion.div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-gray-700"
+                >
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                className="absolute right-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 active:scale-95 transition-transform"
+                onClick={() =>
+                  setActiveIndex((prev) => (prev + 1) % totalItems)
+                }
+                aria-label="Next machine"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-gray-700"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
             </div>
-
-            {/* Arrows - hidden on mobile */}
-            <button
-              className="hidden md:block absolute left-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
-              onClick={() =>
-                setActiveIndex((prev) => (prev - 1 + totalItems) % totalItems)
-              }
-              aria-label="Previous machine"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-gray-700"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              className="hidden md:block absolute right-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
-              onClick={() =>
-                setActiveIndex((prev) => (prev + 1) % totalItems)
-              }
-              aria-label="Next machine"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-gray-700"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+            
+            {/* Mobile indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {products.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === activeIndex ? 'bg-amber-500' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to item ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Mobile indicators */}
-          <div className="md:hidden flex justify-center mt-6 space-x-2">
-            {products.map((_, index) => (
+          {/* Desktop 3D carousel */}
+          <div className="hidden md:block">
+            <div
+              ref={containerRef}
+              className="relative h-[450px] flex items-center justify-center"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeaveCapture={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div
+                className="relative w-full h-full"
+                style={{ perspective: '1000px' }}
+              >
+                <motion.div
+                  animate={{ rotateY: -getAngle(activeIndex) }}
+                  transition={{ 
+                    duration: 1.5, 
+                    ease: [0.32, 0.72, 0, 1],
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20
+                  }}
+                  className="absolute w-full h-full"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  {products.map((machine, index) => {
+                    const angle = getAngle(index)
+                    const transform = `rotateY(${angle}deg) translateZ(${radius}px)`
+                    const isActive = index === activeIndex
+
+                    return (
+                      <div
+                        key={machine.id}
+                        style={{
+                          transform,
+                          transformStyle: 'preserve-3d',
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          width: '16rem',
+                          height: '16rem',
+                          margin: '-8rem 0 0 -8rem',
+                        }}
+                      >
+                        <ProductCard machine={machine} isActive={isActive} />
+                      </div>
+                    )
+                  })}
+                </motion.div>
+              </div>
+
+              {/* Desktop arrows */}
               <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-amber-500' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to item ${index + 1}`}
-              />
-            ))}
+                className="absolute left-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
+                onClick={() =>
+                  setActiveIndex((prev) => (prev - 1 + totalItems) % totalItems)
+                }
+                aria-label="Previous machine"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-gray-700"
+                >
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                className="absolute right-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
+                onClick={() =>
+                  setActiveIndex((prev) => (prev + 1) % totalItems)
+                }
+                aria-label="Next machine"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-gray-700"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                  
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -33,6 +33,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('company');
   const [activeItem, setActiveItem] = useState(null);
+  const [rightPanelContent, setRightPanelContent] = useState(null);
 
   const primaryCategories = [
     {
@@ -79,7 +80,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   ];
 
-  const submenuData = {
+ const submenuData = {
     'company': {
       items: [
         {
@@ -90,7 +91,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Milestones',
           description: 'Key achievements in our journey',
-          image: '/milestones.jpg'
+          image: '/milestone.png'
         },
         {
           name: 'Awards & Recognition',
@@ -114,7 +115,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/company-banner.jpg',
+        image: '/legacy.jpg',
         title: 'Our Legacy',
         description: '80+ years of engineering excellence in construction and material handling equipment.',
         cta: 'Learn More',
@@ -145,7 +146,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/leadership-banner.jpg',
+        image: '/leadership.jpg',
         title: 'Leadership Team',
         description: 'Experienced leaders driving innovation and growth in the construction industry.',
         cta: 'Meet Our Team',
@@ -176,7 +177,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/milestones-banner.jpg',
+        image: '/milestone.png',
         title: 'Our Journey',
         description: 'Key milestones that define our growth and success in the industry.',
         cta: 'View Timeline',
@@ -207,7 +208,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/values-banner.jpg',
+        image: '/vision.jpg',
         title: 'Our Values',
         description: 'Committed to excellence, innovation, and sustainable growth.',
         cta: 'Our Philosophy',
@@ -238,7 +239,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/csr-banner.jpg',
+        image: '/social.jpg',
         title: 'Sustainability',
         description: 'Leading the way in environmentally responsible manufacturing and operations.',
         cta: 'Green Initiatives',
@@ -264,7 +265,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/conduct-banner.jpg',
+        image: '/code_of_conduct.png',
         title: 'Code of Conduct',
         description: 'Our commitment to ethical business practices and corporate governance.',
         cta: 'View Policy',
@@ -295,7 +296,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/facilities-banner.jpg',
+        image: '/facilities.jpg',
         title: 'Our Facilities',
         description: 'World-class manufacturing plants and offices supporting our operations.',
         cta: 'Virtual Tour',
@@ -304,8 +305,12 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   };
 
+  // Initialize right panel content
+  useEffect(() => {
+    setRightPanelContent(submenuData[activeCategory as keyof typeof submenuData]?.media);
+  }, [activeCategory]);
+
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
-  const activeMedia = activeItem || currentSubmenu?.media;
 
   return (
     <>
@@ -363,7 +368,11 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         }`}
                       onMouseEnter={() => {
                         setActiveCategory(category.id);
-                        setActiveItem(null);
+                        setRightPanelContent(submenuData[category.id as keyof typeof submenuData]?.media);
+                      }}
+                      onClick={() => {
+                        setActiveCategory(category.id);
+                        setRightPanelContent(submenuData[category.id as keyof typeof submenuData]?.media);
                       }}
                       whileHover={{ x: 2 }}
                     >
@@ -405,6 +414,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <li
                       key={index}
                       onMouseEnter={() => setActiveItem(item)}
+                      onMouseLeave={() => setActiveItem(null)}
                       className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
                     >
                       <div className="pt-1">
@@ -422,7 +432,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-        {/* Right: Details */}
+            {/* Right: Details */}
             <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -431,7 +441,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
               <div className="p-4 pt-0">
                 <motion.div
-                  key={activeMedia?.title || activeMedia?.name}
+                  key={rightPanelContent?.title}
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
@@ -439,8 +449,8 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 >
                   <div className="relative mb-3 overflow-hidden rounded">
                     <img
-                      src={activeMedia?.image}
-                      alt={activeMedia?.title || activeMedia?.name}
+                      src={rightPanelContent?.image}
+                      alt={rightPanelContent?.title}
                       className="w-full h-32 object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -448,17 +458,17 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-base text-yellow-400 mb-2">
-                      {activeMedia?.title || activeMedia?.name}
+                      {rightPanelContent?.title}
                     </h4>
                     <p className="text-gray-300 mb-3 leading-relaxed text-xs">
-                      {activeMedia?.description}
+                      {rightPanelContent?.description}
                     </p>
                     
-                    {activeMedia?.features && (
+                    {rightPanelContent?.features && (
                       <div className="mb-4">
                         <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
                         <div className="space-y-1">
-                          {activeMedia.features.map((feature, index) => (
+                          {rightPanelContent.features.map((feature, index) => (
                             <div key={index} className="flex items-center space-x-2">
                               <Award className="w-3 h-3 text-yellow-500 flex-shrink-0" />
                               <span className="text-gray-300 text-xs">{feature}</span>
@@ -475,7 +485,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         whileTap={{ scale: 0.98 }}
                       >
                         <Phone className="w-3 h-3" />
-                        <span>{activeMedia?.cta || 'Learn More'}</span>
+                        <span>{rightPanelContent?.cta || 'Learn More'}</span>
                       </motion.button>
                       
                       <button 
@@ -844,34 +854,29 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
       points: [
         {
           name: 'Annual Service Contracts',
-          description: 'Minimize downtime and ensure preventive care with our comprehensive contracts',
-          image: '/maintenance.jpg'
+          description: 'Minimize downtime and ensure preventive care with our comprehensive contracts'
         },
         {
           name: 'Pre-Purchase Consultancy',
-          description: 'Expert guidance for optimal equipment investment decisions',
-          image: '/consultancy.jpg'
+          description: 'Expert guidance for optimal equipment investment decisions'
         },
         {
           name: 'Quick Parts Delivery',
-          description: 'Wide and responsive supply network for fast delivery',
-          image: '/parts-delivery.jpg'
+          description: 'Wide and responsive supply network for fast delivery'
         },
         {
           name: 'Pan-India On-Site Support',
-          description: 'Qualified engineers available on call across India',
-          image: '/onsite-support.jpg'
+          description: 'Qualified engineers available on call across India'
         },
         {
           name: 'Rebuild & Refurbishment',
-          description: 'Services to extend your equipment lifecycle',
-          image: '/rebuild.jpg'
+          description: 'Services to extend your equipment lifecycle'
         }
       ],
       media: {
-        image: '/maintenance-banner.jpg',
+        image: '/maintenance.jpg',
         title: 'Maintenance Contracts',
-        description: 'Keep your machines in peak condition with our comprehensive annual maintenance services.',
+        description: 'Keep your machines in peak condition with our comprehensive annual maintenance services. Our expert technicians provide preventive care, emergency support, and lifecycle management to maximize your equipment uptime and ROI.',
         cta: 'Download Brochure'
       }
     },
@@ -879,34 +884,29 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
       points: [
         {
           name: 'Authentic TIL Parts',
-          description: 'Genuine parts for safety, reliability, and longer equipment life',
-          image: '/authentic-parts.jpg'
+          description: 'Genuine parts for safety, reliability, and longer equipment life'
         },
         {
           name: 'Real-Time Inventory',
-          description: 'Advanced Warehouse Management System for parts tracking',
-          image: '/inventory.jpg'
+          description: 'Advanced Warehouse Management System for parts tracking'
         },
         {
           name: 'Wide Range Availability',
-          description: 'Filters, oils, fluids, undercarriage components & more',
-          image: '/parts-range.jpg'
+          description: 'Filters, oils, fluids, undercarriage components & more'
         },
         {
           name: 'Expert Support',
-          description: 'Trained product specialists for the right-fit solutions',
-          image: '/expert-support.jpg'
+          description: 'Trained product specialists for the right-fit solutions'
         },
         {
           name: 'ERP-Enabled Warehouse',
-          description: 'Central warehouse at Dankuni for nationwide fulfillment',
-          image: '/warehouse.jpg'
+          description: 'Central warehouse at Dankuni for nationwide fulfillment'
         }
       ],
       media: {
         image: '/parts-banner.jpg',
         title: 'Parts & Warehouse',
-        description: 'Rapid access to critical parts with optimized logistics and warehouse coverage.',
+        description: 'Rapid access to critical parts with optimized logistics and warehouse coverage. Our centralized inventory system ensures authentic TIL parts are available when you need them most.',
         cta: 'Check Availability'
       }
     },
@@ -914,34 +914,29 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
       points: [
         {
           name: 'Operator Training',
-          description: 'Boost ROI & Safety with skilled operators who unlock full machine potential',
-          image: '/operator-training.jpg'
+          description: 'Boost ROI & Safety with skilled operators who unlock full machine potential'
         },
         {
           name: 'Hands-On Training',
-          description: 'Practical sessions in basic operations and scheduled maintenance',
-          image: '/hands-on.jpg'
+          description: 'Practical sessions in basic operations and scheduled maintenance'
         },
         {
           name: 'Customized Modules',
-          description: 'Training tailored to operator and maintenance staff needs',
-          image: '/custom-training.jpg'
+          description: 'Training tailored to operator and maintenance staff needs'
         },
         {
           name: 'Downtime Prevention',
-          description: 'Minimize downtime through better handling and issue prevention',
-          image: '/downtime.jpg'
+          description: 'Minimize downtime through better handling and issue prevention'
         },
         {
           name: 'Competitive Edge',
-          description: 'Enhanced knowledge, confidence, and efficiency for your team',
-          image: '/competitive-edge.jpg'
+          description: 'Enhanced knowledge, confidence, and efficiency for your team'
         }
       ],
       media: {
         image: '/training-banner.jpg',
         title: 'Training Programs',
-        description: 'Empower your workforce with certified technical and operator training.',
+        description: 'Empower your workforce with certified technical and operator training. Our comprehensive modules cover safety protocols, operational efficiency, and maintenance best practices.',
         cta: 'Training Calendar'
       }
     },
@@ -950,40 +945,44 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         {
           name: 'Kolkata Service Center',
           description: 'Full-service support for Eastern India operations',
-          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          image: '/Kolkata.avif'
         },
         {
           name: 'Chennai Service Center',
           description: 'Comprehensive support for Southern region',
-          image: 'https://plus.unsplash.com/premium_photo-1697729444936-8c6a6f643312?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          image: '/chennai.avif'
         },
         {
           name: 'Delhi NCR Service Center',
           description: 'Strategic support hub for Northern India',
-          image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          image: '/delhi.avif'
         },
         {
           name: 'Mumbai Service Center',
           description: 'West zone operational support center',
-          image: 'https://images.unsplash.com/photo-1580581096469-8afb38d3dbd5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          image: '/mumbai.avif'
         },
         {
           name: 'Singrauli Service Depot',
           description: 'Industrial logistics and support in central India',
-          image: '/singrauli-service.jpg'
+          image: '/singrauli.jpeg'
         }
       ],
       media: {
-        image: '/locations-banner.jpg',
+        image: '/location-banner.png',
         title: 'Service Locations',
-        description: 'Our nationwide network of service centers and support facilities.',
+        description: 'Our nationwide network of service centers and support facilities ensures prompt response times and local expertise across all major industrial regions in India.',
         cta: 'View Network'
       }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
-  const activeMedia = activePoint || currentSubmenu?.media;
+  
+  // Conditional media selection: dynamic for Service Locations, static for others
+  const activeMedia = activeCategory === 'energy' && activePoint 
+    ? activePoint 
+    : currentSubmenu?.media;
 
   return (
     <>
@@ -1041,7 +1040,8 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                         }`}
                       onMouseEnter={() => {
                         setActiveCategory(category.id);
-                        setActivePoint(currentSubmenu.points[0]);
+                        // Reset activePoint when switching categories
+                        setActivePoint(null);
                       }}
                       whileHover={{ x: 2 }}
                     >
@@ -1065,7 +1065,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
               </div>
             </div>
 
-            {/* Middle: Point-wise Info - Updated to match Contact Us style */}
+            {/* Middle: Point-wise Info */}
             <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -1077,7 +1077,12 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                   {currentSubmenu?.points.map((point, index) => (
                     <li
                       key={index}
-                      onMouseEnter={() => setActivePoint(point)}
+                      onMouseEnter={() => {
+                        // Only set activePoint for Service Locations (energy)
+                        if (activeCategory === 'energy') {
+                          setActivePoint(point);
+                        }
+                      }}
                       className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
                     >
                       <div className="pt-1">
@@ -1122,7 +1127,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
               </div>
               <div className="p-4 pt-0">
                 <motion.div
-                  key={activeMedia?.title || activeMedia?.name}
+                  key={activeCategory === 'energy' ? (activeMedia?.name || activeCategory) : activeCategory}
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
@@ -1165,6 +1170,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
     </>
   );
 };
+
 
 const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   console.log('MediaMegamenu component rendering...');
@@ -1255,7 +1261,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         },
       ],
       media: {
-        image: '/blog-hero.jpg',
+        image: '/Media-page.jpg',
         title: 'Industry Insights',
         description: 'Stay ahead with our expert analysis, equipment guides, and industry best practices.',
         cta: 'Read All Blogs',
@@ -1306,7 +1312,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/video-hero.jpg',
+        image: '/Media-page.jpg',
         title: 'Video Library',
         description: 'Comprehensive collection of product demos, training videos, and customer testimonials.',
         cta: 'Watch All Videos',
@@ -1349,7 +1355,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/news-hero.jpg',
+        image: '/Media-page.jpg',
         title: 'Latest News',
         description: 'Stay informed with our latest announcements, partnerships, and industry developments.',
         cta: 'Read All News',
@@ -1392,7 +1398,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/til-hero.jpg',
+        image: '/Media-page.jpg',
         title: 'TIL@bauma2024',
         description: 'Discover innovations and highlights from Bauma 2024 and our ongoing technology initiatives.',
         cta: 'Explore TIL',
@@ -1429,7 +1435,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/events-hero.jpg',
+        image: '/Media-page.jpg',
         title: 'Upcoming Events',
         description: 'Join us at our upcoming events, trade shows, and training sessions worldwide.',
         cta: 'View All Events',
@@ -1472,7 +1478,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/press-hero.jpg',
+        image: '/media.jpg',
         title: 'Press Releases',
         description: 'Official company announcements, press statements, and media resources.',
         cta: 'View All Press',
@@ -1482,45 +1488,58 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     'downloads': {
       items: [
         {
-          title: 'Product Catalog 2025',
-          description: 'Comprehensive catalog featuring our complete range of construction equipment.',
-          image: '/download1.jpg',
+          title: 'Rough Terrain Cranes',
+          image: '/rough-terrain.png',
           link: '/downloads/product-catalog-2025.pdf',
-          type: 'catalog',
-          fileSize: '15.2 MB',
           fileType: 'PDF'
         },
         {
-          title: 'Crane Safety Manual',
-          description: 'Essential safety guidelines and best practices for crane operation.',
-          image: '/download2.jpg',
+          title: 'Truck Cranes',
+          image: '/truck-cranes.jpeg',
           link: '/downloads/crane-safety-manual.pdf',
-          type: 'manual',
-          fileSize: '8.7 MB',
           fileType: 'PDF'
         },
         {
-          title: 'Technical Specifications Sheet',
-          description: 'Detailed technical specifications for all equipment models.',
-          image: '/download3.jpg',
-          link: '/downloads/technical-specifications.pdf',
-          type: 'specifications',
-          fileSize: '12.4 MB',
+          title: 'Pick-n-Carry Crane',
+          image: '/pick-n-carry.png',
+          link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
-          title: 'Maintenance Guidelines',
-          description: 'Comprehensive maintenance schedules and procedures for optimal performance.',
-          image: '/download4.jpg',
-          link: '/downloads/maintenance-guidelines.pdf',
-          type: 'guide',
-          fileSize: '6.8 MB',
+          title: 'Grove™ Range',
+          image: '/grove-range.png',
+          link: '/downloads/crane-safety-manual.pdf',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Crawler Crane',
+          image: '/crawler-cranes.png',
+          link: '/downloads/crane-safety-manual.pdf',
+          fileType: 'PDF'
+        },
+        {
+          title: 'ReachStacker',
+          image: '/reachstackers.png',
+          link: '/downloads/crane-safety-manual.pdf',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Forklift Truck',
+          image: '/forklift.png',
+          link: '/downloads/crane-safety-manual.pdf',
+          fileType: 'PDF'
+        },
+        {
+          title: 'Boom Lift',
+          image: '/boomlifts.png',
+          link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         }
+        
       ],
       media: {
-        image: '/downloads-hero.jpg',
-        title: 'Downloads',
+        image: '/free.jpeg',
+        title: 'TIL Coffee Table Book',
         description: 'Access our comprehensive library of brochures, manuals, and technical documents.',
         cta: 'Browse All Downloads',
         features: ['Product Specs', 'User Manuals', 'Technical Guides']
@@ -1590,7 +1609,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         <div className="bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 mega-menu-height overflow-y-auto scroll-hover">
           <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
             
-            {/* Left: Categories */}
+            {/* Left: Categories - remains the same */}
             <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -1643,8 +1662,60 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 </h3>
               </div>
               <div className="p-4 pt-0">
-                {activeCategory === 'press' ? (
-                  // Special Press Release Table Layout
+                {activeCategory === 'downloads' ? (
+                  // MODIFIED Downloads Section - Better Image Fitting
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {currentSubmenu?.items.map((item, index) => (
+                      <a
+                        key={index}
+                        href={item.link}
+                        className="group bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-lg transition-all duration-300 flex flex-col"
+                      >
+                        {/* Improved Image Container */}
+                        <div className="relative bg-white p-4 flex items-center justify-center min-h-[120px]">
+                          <img 
+                            src={item.image} 
+                            alt={item.title} 
+                            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                            style={{ 
+                              maxHeight: '100px',
+                              width: 'auto',
+                              height: 'auto'
+                            }}
+                          />
+                          
+                          {/* Download Icon Overlay */}
+                          <div className="absolute top-2 right-2 bg-yellow-500 text-black rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <Download className="w-3 h-3" />
+                          </div>
+                          
+                          {/* File Type Badge */}
+                          {item.fileType && (
+                            <div className="absolute bottom-2 left-2 bg-black/80 text-white text-xs px-2 py-1 rounded font-semibold">
+                              {item.fileType}
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Content Section */}
+                        <div className="p-3 flex-1 flex flex-col justify-between">
+                          <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors duration-200 text-center leading-tight mb-2">
+                            {item.title}
+                          </h4>
+                          
+                          {/* Download Button */}
+                          <div className="mt-auto pt-2 border-t border-gray-700/40">
+                            <div className="flex items-center justify-center space-x-1 text-xs text-gray-400 group-hover:text-yellow-400 transition-colors duration-200">
+                              <Download className="w-3 h-3" />
+                              <span>Download</span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                ) : activeCategory === 'press' ? (
+                  // Press Release Table Layout - remains the same
                   <div className="bg-[#1c2128] border border-gray-700/40 rounded-lg overflow-hidden">
                     {/* Table Header */}
                     <div className="grid grid-cols-12 bg-yellow-500 text-black font-bold text-sm">
@@ -1691,7 +1762,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     </div>
                   </div>
                 ) : (
-                  // Regular Card Layout for Other Sections
+                  // Regular Card Layout for Other Sections - remains the same
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {currentSubmenu?.items.map((item, index) => (
                       <div
@@ -1794,7 +1865,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Right: Media Panel - remains the same */}
+            {/* Right: Media Panel - remains exactly the same */}
             <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -1860,7 +1931,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         </div>
       </motion.div>
 
-      {/* Video Modal - remains the same */}
+      {/* Video Modal - remains exactly the same */}
       {selectedVideo && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={closeVideoModal}>
           <div className="bg-[#1c2128] rounded-lg overflow-hidden max-w-4xl w-full" onClick={e => e.stopPropagation()}>
@@ -1896,14 +1967,8 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   );
 };
 
-
-
-
-
-
 const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('life');
-  const [activePoint, setActivePoint] = useState<{name: string, description: string, image: string} | null>(null);
 
   const primaryCategories = [
     { id: 'life', name: 'Life @TIL', icon: <Mountain className="w-4 h-4" /> },
@@ -1917,29 +1982,25 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Inclusive Culture',
-          description: 'Collaborative work environment that values diversity',
-          image: '/culture.jpg'
+          description: 'Collaborative work environment that values diversity'
         },
         {
           name: 'Flexible Work',
-          description: 'Hybrid options and adaptable working hours',
-          image: '/flexible-work.jpg'
+          description: 'Hybrid options and adaptable working hours'
         },
         {
           name: 'Wellness Programs',
-          description: 'Initiatives supporting mental and physical health',
-          image: '/wellness.jpg'
+          description: 'Initiatives supporting mental and physical health'
         },
         {
           name: 'Recognition',
-          description: 'Programs celebrating employee achievements',
-          image: '/recognition.jpg'
+          description: 'Programs celebrating employee achievements'
         }
       ],
       media: {
         image: '/life.jpg',
         title: 'Life @TIL',
-        description: 'Work-life balance, diversity, and innovation thrive in our dynamic culture.',
+        description: 'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
         cta: 'Explore Culture'
       }
     },
@@ -1984,7 +2045,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       media: {
         image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
         title: 'Meet Our Team',
-        description: 'Get to know the passionate minds building the future of infrastructure.',
+        description: 'Get to know the passionate minds building the future of infrastructure. Our leadership team brings decades of experience and innovation.',
         cta: 'Meet the Team'
       }
     },
@@ -1992,29 +2053,25 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Open Roles',
-          description: 'Positions across engineering, sales, and operations',
-          image: '/open-roles.jpg'
+          description: 'Positions across engineering, sales, and operations'
         },
         {
           name: 'Campus Programs',
-          description: 'Placement and intern opportunities for students',
-          image: '/campus.jpg'
+          description: 'Placement and intern opportunities for students'
         },
         {
           name: 'Hiring Process',
-          description: 'Quick and transparent recruitment journey',
-          image: '/hiring.jpg'
+          description: 'Quick and transparent recruitment journey'
         },
         {
           name: 'Career Growth',
-          description: 'Structured learning and development paths',
-          image: '/growth.jpg'
+          description: 'Structured learning and development paths'
         }
       ],
       media: {
         image: '/job.jpg',
         title: 'Current Openings',
-        description: "Explore vacancies and apply to be a part of TIL's next chapter.",
+        description: "Explore vacancies and apply to be a part of TIL's next chapter. We offer competitive packages and growth opportunities across all departments.",
         cta: 'View Jobs'
       }
     },
@@ -2022,36 +2079,31 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Diversity & Inclusion',
-          description: 'Commitment across all departments and levels',
-          image: '/diversity.jpg'
+          description: 'Commitment across all departments and levels'
         },
         {
           name: 'Zero Tolerance',
-          description: 'Against discrimination or bias of any kind',
-          image: '/zero-tolerance.jpg'
+          description: 'Against discrimination or bias of any kind'
         },
         {
           name: 'Women Leadership',
-          description: 'Initiatives to promote gender equality',
-          image: '/women-leadership.jpg'
+          description: 'Initiatives to promote gender equality'
         },
         {
           name: 'Accessibility',
-          description: 'Inclusive workplace policies and facilities',
-          image: '/accessibility.jpg'
+          description: 'Inclusive workplace policies and facilities'
         }
       ],
       media: {
         image: '/equal.jpg',
         title: 'Equal Opportunity',
-        description: 'We are committed to an inclusive, safe, and diverse work environment.',
+        description: 'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
         cta: 'Our Policy'
       }
     }
   };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
-  const activeMedia = activePoint || currentSubmenu?.media;
 
   return (
     <>
@@ -2107,12 +2159,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
                           : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
                         }`}
-                      onMouseEnter={() => {
-                        setActiveCategory(category.id);
-                        if (category.id !== 'team') {
-                          setActivePoint(currentSubmenu.points[0]);
-                        }
-                      }}
+                      onMouseEnter={() => setActiveCategory(category.id)}
                       whileHover={{ x: 2 }}
                     >
                       <div className="flex items-center space-x-3 px-3 py-2.5">
@@ -2162,8 +2209,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     {currentSubmenu?.points?.map((point, index) => (
                       <li
                         key={index}
-                        onMouseEnter={() => setActivePoint(point)}
-                        className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                        className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20"
                       >
                         <div className="pt-1">
                           <svg
@@ -2187,7 +2233,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           </svg>
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          <p className="text-sm font-semibold text-gray-100">
                             {point.name}
                           </p>
                           <p className="text-xs text-gray-400 mt-1">{point.description}</p>
@@ -2199,7 +2245,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
 
-            {/* Right: Media Panel */}
+            {/* Right: Media Panel - Only changes with left menu */}
             <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
               <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
                 <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
@@ -2208,7 +2254,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
               <div className="p-4 pt-0">
                 <motion.div
-                  key={activeMedia?.title || activeMedia?.name}
+                  key={activeCategory}
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
@@ -2216,8 +2262,8 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 >
                   <div className="relative mb-3 overflow-hidden rounded">
                     <img
-                      src={activeMedia?.image}
-                      alt={activeMedia?.title || activeMedia?.name}
+                      src={currentSubmenu?.media?.image}
+                      alt={currentSubmenu?.media?.title}
                       className="w-full h-32 object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -2225,10 +2271,10 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-base text-yellow-400 mb-2">
-                      {activeMedia?.title || activeMedia?.name}
+                      {currentSubmenu?.media?.title}
                     </h4>
                     <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                      {activeMedia?.description}
+                      {currentSubmenu?.media?.description}
                     </p>
                     
                     <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
@@ -2237,7 +2283,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        {activeMedia?.cta}
+                        {currentSubmenu?.media?.cta}
                       </motion.button>
                     </div>
                   </div>
@@ -2250,6 +2296,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     </>
   );
 };
+
 
 const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('locations');
@@ -2265,35 +2312,35 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Kolkata',
-          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          image: '/Kolkata.avif',
           title: 'Kolkata',
           description: 'Corporate headquarters of TIL, located in the heart of the city.',
           cta: 'View Kolkata Office'
         },
         {
           name: 'Chennai',
-          image: 'https://plus.unsplash.com/premium_photo-1697729444936-8c6a6f643312?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          image: '/chennai.avif',
           title: 'Chennai',
           description: 'Serving the southern region with excellence.',
           cta: 'View Chennai Office'
         },
         {
           name: 'Delhi NCR',
-          image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          image: '/delhi.avif',
           title: 'Delhi NCR ',
           description: 'Our strategic presence in the capital region.',
           cta: 'View Delhi NCR Office'
         },
         {
           name: 'Mumbai',
-          image: 'https://images.unsplash.com/photo-1580581096469-8afb38d3dbd5?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          image: '/mumbai.avif',
           title: 'Mumbai',
           description: 'West zone operational hub for TIL.',
           cta: 'View Mumbai Office'
         },
         {
           name: 'Singrauli',
-          image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=240&fit=crop&crop=center',
+          image: '/singrauli.jpeg',
           title: 'Singrauli',
           description: 'Industrial logistics and support in central India.',
           cta: 'View Singrauli Depot'
