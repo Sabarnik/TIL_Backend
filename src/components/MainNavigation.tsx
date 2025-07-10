@@ -2242,7 +2242,7 @@ const MainNavigation: React.FC = () => {
         style={{ marginTop: isScrolled ? '53px' : '60px' }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-20">
-          <div className="flex h-14">
+          <div className="flex h-14 overflow-x-auto whitespace-nowrap">
             {navItems.map((item) => (
               <div
                 key={item.name}
