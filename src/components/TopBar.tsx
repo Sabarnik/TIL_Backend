@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const TopBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,48 +81,16 @@ const TopBar: React.FC = () => {
               </button>
             </div>
 
-            {/* Get Quote Button */}
+            {/* Get Quote Button - Now visible on all screen sizes */}
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 193, 7, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="hidden sm:block bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black px-6 py-2 rounded-md font-bold text-sm transition-all duration-200 shadow-lg border border-yellow-400"
+              className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black px-4 py-2 md:px-6 md:py-2 rounded-md font-bold text-sm transition-all duration-200 shadow-lg border border-yellow-400"
             >
               GET QUOTE
             </motion.button>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-300 hover:text-yellow-400 transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        <motion.div
-          initial={false}
-          animate={isMobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden bg-gray-800 border-t border-gray-700"
-        >
-          <div className="py-4 space-y-3">
-            <div className="flex items-center space-x-2 text-gray-300 px-4">
-              <MessageCircle className="w-4 h-4" />
-              <span className="text-sm">WhatsApp: +91 98765 43210</span>
-            </div>
-            <div className="flex items-center space-x-2 text-gray-300 px-4">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm">Hotline: +91 11 2345 6789</span>
-            </div>
-            <div className="px-4">
-              <button className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-black py-2 rounded-md font-bold text-sm transition-all">
-                GET QUOTE
-              </button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </motion.div>
   );
