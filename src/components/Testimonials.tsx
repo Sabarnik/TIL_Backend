@@ -29,17 +29,17 @@ const Testimonials: React.FC = () => {
   }, [expandedCard]);
 
   const topTestimonials = [
-    { id: 1, name: 'Sarah Johnson', position: 'Marketing Director', company: 'TechCorp', image: 'https://randomuser.me/api/portraits/women/44.jpg', rating: 5, text: "This service transformed our digital presence. Our engagement metrics doubled within weeks of implementation." },
-    { id: 2, name: 'Michael Chen', position: 'CTO', company: 'StartUp Labs', image: 'https://randomuser.me/api/portraits/men/32.jpg', rating: 4, text: "Reliable and scalable solution that grew with our business needs. Excellent support team." },
-    { id: 3, name: 'Emma Williams', position: 'Product Manager', company: 'DesignHub', image: 'https://randomuser.me/api/portraits/women/63.jpg', rating: 5, text: "Intuitive interface and powerful features. Our team adopted it with minimal training." },
-    { id: 4, name: 'David Kim', position: 'Operations Lead', company: 'LogiChain', image: 'https://randomuser.me/api/portraits/men/71.jpg', rating: 5, text: "Streamlined our entire workflow. The automation features saved us hundreds of hours monthly." },
+    { id: 1, name: 'Sarah Johnson', position: 'Marketing Director', company: 'TechCorp', image: 'https://randomuser.me/api/portraits/women/44.jpg', rating: 5, text: "TIL's equipment revolutionized our construction projects. The reliability and performance exceeded our expectations." },
+    { id: 2, name: 'Michael Chen', position: 'CTO', company: 'StartUp Labs', image: 'https://randomuser.me/api/portraits/men/32.jpg', rating: 4, text: "We've been using TIL cranes for 5 years. Their durability in harsh conditions is unmatched in the industry." },
+    { id: 3, name: 'Emma Williams', position: 'Project Manager', company: 'DesignHub', image: 'https://randomuser.me/api/portraits/women/63.jpg', rating: 5, text: "The technical support from TIL is exceptional. They've helped us optimize our equipment usage significantly." },
+    { id: 4, name: 'David Kim', position: 'Operations Lead', company: 'LogiChain', image: 'https://randomuser.me/api/portraits/men/71.jpg', rating: 5, text: "TIL's reach stackers have transformed our port operations. The efficiency gains have been remarkable." },
   ];
 
   const bottomTestimonials = [
-    { id: 5, name: 'Neeraj Arora', position: 'Master Coach', company: 'Skill91', image: 'https://randomuser.me/api/portraits/men/75.jpg', rating: 5, text: "With 800K+ YouTube subscribers, I can confidently say this platform has all elements needed for successful online coaching businesses." },
-    { id: 6, name: 'Priya Patel', position: 'Edupreneur', company: 'MathMagic', image: 'https://randomuser.me/api/portraits/women/25.jpg', rating: 5, text: "Created 12 courses with 50K+ students. The platform makes content delivery and student engagement seamless." },
-    { id: 7, name: 'Rajesh Kumar', position: 'Project Director', company: 'L&T Construction', image: 'https://randomuser.me/api/portraits/men/45.jpg', rating: 5, text: "Our metro rail projects rely on this equipment. The durability and performance are unmatched in the industry." },
-    { id: 8, name: 'Ananya Singh', position: 'CEO', company: 'CodeYoung', image: 'https://randomuser.me/api/portraits/women/15.jpg', rating: 4, text: "Perfect solution for our coding bootcamps. Students love the interactive learning features and clean interface." },
+    { id: 5, name: 'Neeraj Arora', position: 'Construction Head', company: 'InfraBuild', image: 'https://randomuser.me/api/portraits/men/75.jpg', rating: 5, text: "With 15 years in construction, I can confidently say TIL's equipment is the backbone of our major projects." },
+    { id: 6, name: 'Priya Patel', position: 'Site Engineer', company: 'Metro Rail Corp', image: 'https://randomuser.me/api/portraits/women/25.jpg', rating: 5, text: "The precision of TIL's cranes is crucial for our metro rail projects. Their safety features are industry-leading." },
+    { id: 7, name: 'Rajesh Kumar', position: 'Project Director', company: 'L&T Construction', image: 'https://randomuser.me/api/portraits/men/45.jpg', rating: 5, text: "Our metro rail projects rely on TIL equipment. The durability and performance are unmatched in the industry." },
+    { id: 8, name: 'Ananya Singh', position: 'Plant Manager', company: 'SteelWorks', image: 'https://randomuser.me/api/portraits/women/15.jpg', rating: 4, text: "TIL's material handling solutions have streamlined our steel plant operations with minimal downtime." },
   ];
 
   const doubledTop = [...topTestimonials, ...topTestimonials];
@@ -65,15 +65,45 @@ const Testimonials: React.FC = () => {
   const shouldPause = hovered || expandedCard !== null;
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-16 w-full overflow-hidden relative">
-      <div className="w-full px-4 text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">What Our Clients Say</h2>
-        <p className="text-lg text-gray-600">Trusted by professionals and industry leaders worldwide</p>
-      </div>
+    <section className="bg-gradient-to-b from-gray-50 to-white py-16 w-full overflow-hidden relative" style={{ fontFamily: 'Arial, sans-serif' }}>
+       <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.span
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
+            initial={{ 
+              opacity: 0,
+              letterSpacing: "-0.05em"
+            }}
+            whileInView={{
+              opacity: 1,
+              letterSpacing: "0.02em",
+            }}
+            transition={{ 
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.16, 0.77, 0.47, 0.97]
+            }}
+            viewport={{ once: true, margin: "-20%" }}
+          >
+            A LEGACY OF EXCELLENCE
+          </motion.span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            What Our <span className="text-[#F1B434]">Clients Say</span>
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
+          <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600 leading-relaxed">
+            Find our offices across India with dedicated support teams ready to assist you.
+          </p>
+        </motion.div>
 
       {/* Top Row */}
       <div
-        className="relative w-full overflow-hidden mb-4" // gap below
+        className="relative w-full overflow-hidden mb-4"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -94,7 +124,7 @@ const Testimonials: React.FC = () => {
 
       {/* Bottom Row */}
       <div
-        className="relative w-full overflow-hidden mt-4" // gap above
+        className="relative w-full overflow-hidden mt-4"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -162,16 +192,21 @@ const Testimonials: React.FC = () => {
 };
 
 const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseEvent) => void }> = ({ testimonial, onReadMore }) => (
-  <div className="testimonial-card w-[380px] bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300">
+  <div 
+    className="testimonial-card w-[380px] bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+    style={{ fontFamily: 'Arial, sans-serif' }}
+  >
     <div className="flex items-center mb-4">
-      <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-blue-100" />
+      <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-yellow-100" />
       <div className="text-left">
-        <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
-        <p className="text-sm text-blue-600 font-medium">{testimonial.position} | {testimonial.company}</p>
+        <h3 className="font-bold text-gray-800" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
+        <p className="text-sm text-yellow-600 font-medium">{testimonial.position} | {testimonial.company}</p>
       </div>
     </div>
     <div className="flex mb-3">
-      {Array(testimonial.rating).fill(0).map((_, j) => <Star key={j} size={16} className="text-yellow-400 fill-current" />)}
+      {Array(testimonial.rating).fill(0).map((_, j) => (
+        <Star key={j} size={16} className="text-yellow-500 fill-current" />
+      ))}
     </div>
     <p className="text-gray-700 text-base mb-4 leading-relaxed line-clamp-3 overflow-hidden">
       "{testimonial.text}"
@@ -181,7 +216,7 @@ const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseE
         e.stopPropagation();
         onReadMore(e);
       }} 
-      className="text-xs text-blue-500 font-medium cursor-pointer select-none"
+      className="text-xs text-yellow-600 font-medium cursor-pointer select-none hover:text-yellow-700 transition-colors"
     >
       Read full review →
     </div>
@@ -189,23 +224,26 @@ const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseE
 );
 
 const HoverCardContent: React.FC<{ testimonial: any }> = ({ testimonial }) => (
-  <div className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 shadow-lg">
+  <div 
+    className="bg-gradient-to-r from-[#0f1419] to-[#1a2233] border border-yellow-500/20 rounded-xl p-6 shadow-lg"
+    style={{ fontFamily: 'Arial, sans-serif' }}
+  >
     <div className="flex items-center mb-4">
       <img 
         src={testimonial.image} 
         alt={testimonial.name} 
-        className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-amber-400/30" 
+        className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-yellow-400/30" 
       />
       <div className="text-left">
-        <h3 className="font-bold text-white">{testimonial.name}</h3>
-        <p className="text-sm text-amber-400/80 font-medium">
+        <h3 className="font-bold text-white" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
+        <p className="text-sm text-yellow-400/80 font-medium">
           {testimonial.position} | {testimonial.company}
         </p>
       </div>
     </div>
     <div className="flex mb-3">
       {Array(testimonial.rating).fill(0).map((_, j) => (
-        <Star key={j} size={16} className="text-amber-400 fill-current" />
+        <Star key={j} size={16} className="text-yellow-400 fill-current" />
       ))}
     </div>
     <p className="text-gray-300 text-base mb-4 leading-relaxed whitespace-normal">

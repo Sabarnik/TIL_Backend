@@ -22,8 +22,8 @@ const TopBar: React.FC = () => {
       transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl h-14' 
-          : 'bg-gray-900 h-16'
+          ? 'bg-[#000] h-14' 
+          : 'bg-[#000] h-16'
       } border-b border-yellow-500/20`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 h-full">
@@ -76,7 +76,7 @@ const TopBar: React.FC = () => {
               </button>
 
               {/* Search Icon */}
-              <button className="p-2 text-gray-300 hover:text-yellow-400 transition-colors">
+              <button className="p-2 text-white hover:text-yellow-400 transition-colors">
                 <Search className="w-5 h-5" />
               </button>
             </div>
@@ -85,7 +85,7 @@ const TopBar: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255, 193, 7, 0.4)" }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-black px-4 py-2 md:px-6 md:py-2 rounded-md font-bold text-sm transition-all duration-200 shadow-lg border border-yellow-400"
+              className="bg-gradient-to-r to-[#fbb53d] from-[#eae2b0] hover:scale-110 text-black px-4 py-2 md:px-6 md:py-2 rounded-md font-bold text-sm transition-all duration-200 shadow-lg border border-yellow-400"
             >
               GET QUOTE
             </motion.button>

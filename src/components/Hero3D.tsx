@@ -34,29 +34,45 @@ const Hero3D: React.FC = () => {
       {/* Slideshow container */}
       <div className="relative z-20 w-full h-full">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={currentImageIndex}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <img 
-              src={images[currentImageIndex].src} 
-              alt="Heavy Equipment"
-              className={`w-auto object-contain ${
-                images[currentImageIndex].src === '/rough-terrain-crane.png' 
-                  ? 'h-[210vh] max-w-[210vw]' 
-                  : 'h-[70vh] max-w-[80vw]'
-              } ${images[currentImageIndex].className}`}
-              style={{
-                height: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '95vh' : '80vh',
-                maxWidth: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '95vw' : '90vw',
-                objectFit: 'contain'
-              }}
-            />
-          </motion.div>
+        <motion.div
+  key={currentImageIndex}
+  initial={{ opacity: 0, x: 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  exit={{ opacity: 0, x: -50 }}
+  transition={{ duration: 1 }}
+  className="absolute inset-0 flex items-center justify-center"
+>
+  <div className="relative flex items-center justify-center">
+  {/* Subtle blurred shadow behind image */}
+  <div
+    className="absolute z-0 blur-3xl opacity-40"
+    style={{
+      width: images[currentImageIndex].src === '/rough-terrain-crane.png' ? 'w-full' : 'w-full',
+      height: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '75vh' : '50vh',
+      backgroundImage: `url(${images[currentImageIndex].src})`,
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      filter: 'blur(60px)',
+    }}
+  />
+    <img 
+      src={images[currentImageIndex].src} 
+      alt="Heavy Equipment"
+      className={`w-auto object-contain pr-6 relative z-10 ${
+        images[currentImageIndex].src === '/rough-terrain-crane.png' 
+          ? 'h-[75vh] max-w-[85vw]' 
+          : 'h-[60vh] max-w-full'
+      } ${images[currentImageIndex].className}`}
+      style={{
+        paddingLeft: '1.5rem',
+        height: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '75vh' : '50vh',
+        maxWidth: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '85vw' : '70vw',
+        objectFit: 'contain'
+      }}
+    />
+  </div>
+</motion.div>
         </AnimatePresence>
 
         {/* Enhanced shadow effect */}

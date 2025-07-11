@@ -15,36 +15,38 @@ const AboutSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 xl:px-20">
         {/* Header */}
         <motion.div
-          className="text-center mb-8 md:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-sm sm:text-base md:text-lg font-bold tracking-tight"
-            initial={{ 
-              opacity: 0,
-              letterSpacing: "-0.05em"
-            }}
-            whileInView={{
-              opacity: 1,
-              letterSpacing: "0.02em",
-            }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97]
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-          >
-            OUR LEGACY
-          </motion.span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 tracking-tight leading-tight">
-            Building India's Infrastructure <span className="text-orange-500">Since 1944</span>
-          </h2>
-          <div className="w-16 md:w-24 h-1 bg-orange-400 mx-auto rounded-full"></div>
-        </motion.div>
+                  className="text-center mb-12"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <motion.span
+                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
+                    initial={{ 
+                      opacity: 0,
+                      letterSpacing: "-0.05em"
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      letterSpacing: "0.02em",
+                    }}
+                    transition={{ 
+                      duration: 0.8,
+                      delay: 0.2,
+                      ease: [0.16, 0.77, 0.47, 0.97]
+                    }}
+                    viewport={{ once: true, margin: "-20%" }}
+                  >
+                    OUR LEGACY
+                  </motion.span>
+                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Building India's Infrastructure <span className="text-[#F1B434]">Since 1944</span>
+                  </h2>
+                  <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
+                  <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600 leading-relaxed">
+                  </p>
+                </motion.div>
 
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch">

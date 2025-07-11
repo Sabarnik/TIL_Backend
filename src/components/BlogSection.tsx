@@ -9,54 +9,54 @@ const BlogSection: React.FC = () => {
   const featuredPosts = [
     {
       id: 1,
-      title: 'The Importance of Wasting Time',
-      excerpt: 'In a culture that preaches capitalizing on every single moment, wasting time can provide peace and relief',
+      title: 'The Future of Heavy Machinery in Construction',
+      excerpt: 'Exploring how innovative technologies are transforming the construction equipment industry',
       author: {
-        name: 'Stephan Joppich',
-        role: 'Productivity Expert',
-        bio: 'Author of "The Art of Doing Nothing" and founder of Mindful Productivity Institute',
+        name: 'Rajesh Kumar',
+        role: 'Chief Engineer',
+        bio: 'With 15 years experience in heavy machinery development and innovation',
         avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
       },
-      column: 'Pragmatic Wisdom',
+      column: 'Industry Insights',
       date: '2024-04-05',
       readTime: '10 min',
       likes: '7K',
       comments: '426',
-      image: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 2,
-      title: 'How to Learn a Language: The Complete System That Actually Works',
-      excerpt: '20 Science-Based Principles and Strategies for Building Fluency — From a Linguist, Language Teacher, and Polyglot',
+      title: 'Sustainable Practices in Equipment Manufacturing',
+      excerpt: 'How TIL is leading the way in eco-friendly heavy equipment production',
       author: {
-        name: 'Viktoria Verde, PhD',
-        role: 'Linguistics Professor',
-        bio: 'Author of "Language Hacking" and creator of the Verde Method for language acquisition',
+        name: 'Priya Sharma',
+        role: 'Sustainability Officer',
+        bio: 'Head of Environmental Initiatives at TIL with a focus on green manufacturing',
         avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
       },
-      column: 'Language Lab',
+      column: 'Green Tech',
       date: '2024-05-21',
       readTime: '15 min',
       likes: '3.9K',
       comments: '116',
-      image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 3,
-      title: 'Why It\'s. So. Hard. To. Focus.',
-      excerpt: 'And what to do about annoying distractions',
+      title: 'Safety Innovations in Heavy Equipment Operation',
+      excerpt: 'New technologies making construction sites safer for operators and workers',
       author: {
-        name: 'Daniel Goleman',
-        role: 'Neuroscience Researcher',
-        bio: 'Author of "Focus: The Hidden Driver of Excellence" and leading expert in attention science',
+        name: 'Amit Patel',
+        role: 'Safety Director',
+        bio: 'Developed award-winning safety protocols for heavy machinery operations',
         avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
       },
-      column: 'Mind Matters',
+      column: 'Safety First',
       date: '2024-06-15',
       readTime: '8 min',
       likes: '5.2K',
       comments: '342',
-      image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
     }
   ];
 
@@ -80,9 +80,8 @@ const BlogSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-16 bg-gradient-to-b from-[#f8f9fa] to-white">
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
-        
         
         {/* Header */}
         <motion.div
@@ -93,34 +92,38 @@ const BlogSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
             initial={{ 
               opacity: 0,
-              letterSpacing: "-0.05em" // Starts condensed
+              letterSpacing: "-0.05em"
             }}
             whileInView={{
               opacity: 1,
-              letterSpacing: "0.02em", // Slightly expands
+              letterSpacing: "0.02em",
             }}
             transition={{ 
               duration: 0.8,
               delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
+              ease: [0.16, 0.77, 0.47, 0.97]
             }}
             viewport={{ once: true, margin: "-20%" }}
           >
-            BLOGS
+            INDUSTRY INSIGHTS
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
-            Our <span className="text-orange-500">Content</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            TIL <span className="text-[#F1B434]">Blog</span>
           </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
+          <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600 leading-relaxed">
+            Stay updated with the latest trends, innovations, and news in the heavy equipment industry.
+          </p>
         </motion.div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Featured Posts (Left) */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-slate-800 mb-6">Featured Articles</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Featured Articles</h3>
             <div className="space-y-8">
               {featuredPosts.map((post) => (
                 <motion.div
@@ -143,16 +146,16 @@ const BlogSection: React.FC = () => {
                           <img 
                             src={post.author.avatar} 
                             alt={post.author.name}
-                            className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-orange-400 transition-all"
+                            className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-[#F1B434] transition-all"
                           />
                         </button>
-                        <div className="text-xs text-slate-600">
+                        <div className="text-xs text-gray-600">
                           <span>In </span>
-                          <span className="font-semibold text-slate-700">{post.column}</span>
+                          <span className="font-semibold text-gray-700">{post.column}</span>
                           <span> by </span>
                           <button 
                             onClick={() => toggleAuthorDetails(post.id)}
-                            className="font-medium text-slate-700 hover:text-orange-500"
+                            className="font-medium text-gray-700 hover:text-[#F1B434]"
                           >
                             {post.author.name}
                           </button>
@@ -161,7 +164,7 @@ const BlogSection: React.FC = () => {
 
                       {/* Author Details Popup */}
                       {expandedAuthor === post.id && (
-                        <div className="bg-white p-3 rounded-lg shadow-md mb-3 border border-slate-200 text-sm">
+                        <div className="bg-white p-3 rounded-lg shadow-md mb-3 border border-gray-200 text-sm">
                           <div className="flex items-start gap-3">
                             <img 
                               src={post.author.avatar} 
@@ -169,40 +172,40 @@ const BlogSection: React.FC = () => {
                               className="w-10 h-10 rounded-full object-cover"
                             />
                             <div>
-                              <h4 className="font-bold text-slate-800">{post.author.name}</h4>
-                              <p className="text-xs text-orange-500">{post.author.role}</p>
-                              <p className="text-xs text-slate-600 mt-1">{post.author.bio}</p>
+                              <h4 className="font-bold text-gray-800">{post.author.name}</h4>
+                              <p className="text-xs text-[#F1B434]">{post.author.role}</p>
+                              <p className="text-xs text-gray-600 mt-1">{post.author.bio}</p>
                             </div>
                           </div>
                         </div>
                       )}
 
                       {/* Post Content */}
-                      <h4 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-orange-500 transition-colors">
+                      <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#F1B434] transition-colors">
                         {post.title}
                       </h4>
                       
-                      <p className="text-sm text-slate-600 mb-3">{post.excerpt}</p>
+                      <p className="text-sm text-gray-600 mb-3">{post.excerpt}</p>
                       
                       {/* Post Actions and Metadata */}
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-slate-500">
+                        <div className="flex items-center gap-3 text-xs text-gray-500">
                           <div className="flex items-center gap-1">
-                            <Calendar size={12} className="text-orange-400" />
+                            <Calendar size={12} className="text-[#F1B434]" />
                             <span>{formatDate(post.date)}</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <Clock size={12} className="text-orange-400" />
+                            <Clock size={12} className="text-[#F1B434]" />
                             <span>{post.readTime}</span>
                           </div>
                         </div>
                         
                         <div className="flex items-center gap-3">
-                          <button className="flex items-center gap-1 text-xs text-slate-500 hover:text-orange-500">
+                          <button className="flex items-center gap-1 text-xs text-gray-500 hover:text-[#F1B434]">
                             <Heart size={14} />
                             <span>{post.likes}</span>
                           </button>
-                          <button className="flex items-center gap-1 text-xs text-slate-500 hover:text-orange-500">
+                          <button className="flex items-center gap-1 text-xs text-gray-500 hover:text-[#F1B434]">
                             <MessageCircle size={14} />
                             <span>{post.comments}</span>
                           </button>
@@ -226,21 +229,21 @@ const BlogSection: React.FC = () => {
 
           {/* Recent Posts (Right) */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold text-slate-800 mb-6">Popular Reads</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Popular Reads</h3>
             
             <div className="bg-white rounded-xl shadow-lg overflow-hidden sticky top-6">
               {/* Featured Image Card with Text Overlay */}
               <a href="/blog/featured" className="block group relative">
                 <div className="relative w-full h-48 overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
                     alt="Featured Blog Post"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-5">
                     <div>
-                      <span className="text-xs font-medium text-orange-400 mb-1 block">Editor's Pick</span>
-                      <h3 className="text-xl font-bold text-white">The Ultimate Guide to Productivity</h3>
+                      <span className="text-xs font-medium text-[#F1B434] mb-1 block">Editor's Pick</span>
+                      <h3 className="text-xl font-bold text-white">The Future of Construction Technology</h3>
                       <div className="flex items-center gap-2 text-xs text-white/80 mt-2">
                         <span>June 12, 2024</span>
                         <span>•</span>
@@ -252,11 +255,11 @@ const BlogSection: React.FC = () => {
               </a>
               
               <div className="p-6">
-                <h4 className="text-lg font-semibold text-slate-800 mb-4">Recent Posts</h4>
+                <h4 className="text-lg font-semibold text-gray-800 mb-4">Recent Posts</h4>
                 
                 <div className="space-y-4 mb-6">
                   {featuredPosts.slice(0, 3).map((post) => (
-                    <div key={`recent-${post.id}`} className="flex gap-3 items-start pb-3 border-b border-slate-100">
+                    <div key={`recent-${post.id}`} className="flex gap-3 items-start pb-3 border-b border-gray-100">
                       <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden relative">
                         <img 
                           src={post.image} 
@@ -265,8 +268,8 @@ const BlogSection: React.FC = () => {
                         />
                       </div>
                       <div>
-                        <h5 className="text-sm font-semibold text-slate-800 line-clamp-2">{post.title}</h5>
-                        <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
+                        <h5 className="text-sm font-semibold text-gray-800 line-clamp-2">{post.title}</h5>
+                        <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
                           <span>{formatDate(post.date)}</span>
                           <span>•</span>
                           <span>{post.readTime}</span>
@@ -276,11 +279,10 @@ const BlogSection: React.FC = () => {
                   ))}
                 </div>
                 
-
                 {/* Last Updated Section */}
-                <div className="flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-4">
+                <div className="flex items-center justify-between text-xs text-gray-500 border-t border-gray-100 pt-4">
                   <div className="flex items-center gap-1">
-                    <Clock size={12} className="text-orange-400" />
+                    <Clock size={12} className="text-[#F1B434]" />
                     <span>Last updated: {new Date().toLocaleDateString('en-US', { 
                       month: 'short', 
                       day: 'numeric',
@@ -288,7 +290,7 @@ const BlogSection: React.FC = () => {
                       minute: '2-digit'
                     })}</span>
                   </div>
-                  <span className="text-slate-400">•</span>
+                  <span className="text-gray-400">•</span>
                   <div className="flex items-center gap-1">
                     <span>{featuredPosts.length} articles</span>
                   </div>
@@ -308,7 +310,7 @@ const BlogSection: React.FC = () => {
         >
           <motion.a
             href="/blog"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
             whileHover={{ scale: 1.05 }}
           >
             View All Articles

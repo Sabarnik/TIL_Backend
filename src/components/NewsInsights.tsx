@@ -7,7 +7,7 @@ const NewsInsights: React.FC = () => {
     // Featured News (Left Column - Vertical Split)
     {
       id: 1,
-      title: 'HeavyTech Launches Revolutionary Electric Excavator Series',
+      title: 'TIL Launches Revolutionary Electric Excavator Series',
       excerpt: 'Our new electric excavator line delivers 40% more efficiency while reducing emissions by 90%, setting new industry standards.',
       image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       date: '2024-01-15',
@@ -18,7 +18,7 @@ const NewsInsights: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Global Expansion: New Manufacturing Facility in Southeast Asia',
+      title: 'Global Expansion: New TIL Manufacturing Facility in Southeast Asia',
       excerpt: 'Strategic investment of $200M in our new facility will serve growing Asian markets with locally manufactured equipment.',
       image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       date: '2024-01-10',
@@ -30,7 +30,7 @@ const NewsInsights: React.FC = () => {
     // Right Column News (Now 3 blocks)
     {
       id: 3,
-      title: 'Partnership with Leading Construction Giants',
+      title: 'TIL Partners with Leading Construction Giants',
       excerpt: 'Strategic partnerships with top construction companies to deliver innovative solutions for mega infrastructure projects.',
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       date: '2024-01-05',
@@ -41,7 +41,7 @@ const NewsInsights: React.FC = () => {
     },
     {
       id: 4,
-      title: 'Industry 4.0: Smart Machinery with IoT Integration',
+      title: 'Industry 4.0: TIL Smart Machinery with IoT Integration',
       excerpt: 'Advanced IoT sensors and AI-powered analytics transform equipment monitoring and predictive maintenance.',
       image: 'https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       date: '2023-12-28',
@@ -52,8 +52,8 @@ const NewsInsights: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Sustainability Milestone: Carbon Neutral Certification',
-      excerpt: 'HeavyTech achieves carbon neutral status across all European operations ahead of schedule.',
+      title: 'TIL Achieves Sustainability Milestone: Carbon Neutral Certification',
+      excerpt: 'TIL achieves carbon neutral status across all European operations ahead of schedule.',
       image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       date: '2023-12-15',
       readTime: '3 min read',
@@ -63,7 +63,7 @@ const NewsInsights: React.FC = () => {
     },
     {
       id: 6,
-      title: 'Employee Innovation Program Launched',
+      title: 'TIL Launches Employee Innovation Program',
       excerpt: 'New $10M initiative to fund employee-driven R&D projects with potential for commercialization.',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       date: '2023-12-10',
@@ -83,7 +83,7 @@ const NewsInsights: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-200">
+    <section className="py-16 bg-[#f8f9fa]">
       <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20">
         {/* Header */}
         <motion.div
@@ -93,29 +93,29 @@ const NewsInsights: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-<motion.span
-  className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
-  initial={{ 
-    opacity: 0,
-    letterSpacing: "-0.05em" // Starts condensed
-  }}
-  whileInView={{
-    opacity: 1,
-    letterSpacing: "0.02em", // Slightly expands
-  }}
-  transition={{ 
-    duration: 0.8,
-    delay: 0.2,
-    ease: [0.16, 0.77, 0.47, 0.97] // Smooth bounce-out
-  }}
-  viewport={{ once: true, margin: "-20%" }}
->
-  NEWS & INSIGHTS
-</motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
-            Latest <span className="text-orange-500">Updates</span> From TIL
+          <motion.span
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
+            initial={{ 
+              opacity: 0,
+              letterSpacing: "-0.05em"
+            }}
+            whileInView={{
+              opacity: 1,
+              letterSpacing: "0.02em",
+            }}
+            transition={{ 
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.16, 0.77, 0.47, 0.97]
+            }}
+            viewport={{ once: true, margin: "-20%" }}
+          >
+            NEWS & INSIGHTS
+          </motion.span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            Latest <span className="text-[#F1B434]">Updates</span> From TIL
           </h2>
-          <div className="w-24 h-1 bg-orange-400 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full"></div>
         </motion.div>
 
         {/* Aligned News Grid */}
@@ -136,14 +136,14 @@ const NewsInsights: React.FC = () => {
                   alt={article.title} 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
-                  <span className="inline-block px-3 py-1 text-sm font-semibold text-white bg-orange-600 rounded-full mb-3 w-fit">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2233]/90 via-[#1a2233]/50 to-transparent flex flex-col justify-end p-6">
+                  <span className="inline-block px-3 py-1 text-sm font-semibold text-white bg-[#F1B434] rounded-full mb-3 w-fit">
                     {article.category}
                   </span>
                   <h3 className="text-xl font-bold text-white mb-2">{article.title}</h3>
-                  <p className="text-slate-200 mb-4 text-sm">{article.excerpt}</p>
+                  <p className="text-gray-200 mb-4 text-sm">{article.excerpt}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300">{formatDate(article.date)} • {article.readTime}</span>
+                    <span className="text-xs text-gray-300">{formatDate(article.date)} • {article.readTime}</span>
                     <motion.a
                       href="#"
                       className="flex items-center text-white font-medium group text-sm"
@@ -176,17 +176,17 @@ const NewsInsights: React.FC = () => {
                   alt={article.title} 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
-                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-orange-600 rounded-full mb-2 w-fit">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2233]/90 via-[#1a2233]/50 to-transparent flex flex-col justify-end p-6">
+                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-[#F1B434] rounded-full mb-2 w-fit">
                     {article.category}
                   </span>
                   <h3 className="text-lg font-bold text-white mb-1">{article.title}</h3>
-                  <p className="text-slate-200 text-sm mb-2">{article.excerpt}</p>
+                  <p className="text-gray-200 text-sm mb-2">{article.excerpt}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300">{formatDate(article.date)} • {article.readTime}</span>
+                    <span className="text-xs text-gray-300">{formatDate(article.date)} • {article.readTime}</span>
                     <motion.a
                       href="#"
-                      className="flex items-center text-orange-300 text-sm font-medium group"
+                      className="flex items-center text-[#FFE352] text-sm font-medium group"
                       whileHover={{ x: 5 }}
                     >
                       <span className="group-hover:underline">Read</span>
@@ -213,16 +213,16 @@ const NewsInsights: React.FC = () => {
                   alt={article.title} 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent flex flex-col justify-end p-4">
-                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-orange-600 rounded-full mb-2 w-fit">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2233]/90 via-[#1a2233]/50 to-transparent flex flex-col justify-end p-4">
+                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-[#F1B434] rounded-full mb-2 w-fit">
                     {article.category}
                   </span>
                   <h3 className="text-base font-bold text-white mb-1">{article.title}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300">{formatDate(article.date)} • {article.readTime}</span>
+                    <span className="text-xs text-gray-300">{formatDate(article.date)} • {article.readTime}</span>
                     <motion.a
                       href="#"
-                      className="flex items-center text-orange-300 text-xs font-medium group"
+                      className="flex items-center text-[#FFE352] text-xs font-medium group"
                       whileHover={{ x: 5 }}
                     >
                       <span className="group-hover:underline">Read</span>
@@ -249,17 +249,17 @@ const NewsInsights: React.FC = () => {
                   alt={article.title} 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent flex flex-col justify-end p-6">
-                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-orange-600 rounded-full mb-2 w-fit">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2233]/90 via-[#1a2233]/50 to-transparent flex flex-col justify-end p-6">
+                  <span className="inline-block px-2 py-1 text-xs font-semibold text-white bg-[#F1B434] rounded-full mb-2 w-fit">
                     {article.category}
                   </span>
                   <h3 className="text-lg font-bold text-white mb-1">{article.title}</h3>
-                  <p className="text-slate-200 text-sm mb-2">{article.excerpt}</p>
+                  <p className="text-gray-200 text-sm mb-2">{article.excerpt}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300">{formatDate(article.date)} • {article.readTime}</span>
+                    <span className="text-xs text-gray-300">{formatDate(article.date)} • {article.readTime}</span>
                     <motion.a
                       href="#"
-                      className="flex items-center text-orange-300 text-sm font-medium group"
+                      className="flex items-center text-[#FFE352] text-sm font-medium group"
                       whileHover={{ x: 5 }}
                     >
                       <span className="group-hover:underline">Read</span>
@@ -282,7 +282,7 @@ const NewsInsights: React.FC = () => {
         >
           <motion.a
             href="/news"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
             whileHover={{ scale: 1.05 }}
           >
             View All News Articles

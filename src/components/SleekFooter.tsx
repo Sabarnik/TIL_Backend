@@ -65,7 +65,7 @@ const SleekFooter: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-slate-950 text-white relative">
+    <footer className="bg-[#0f1419] text-white relative">
       {/* Floating Emergency Button - Right Side */}
       <div className="fixed bottom-6 right-6 z-50">
         <motion.div
@@ -78,8 +78,8 @@ const SleekFooter: React.FC = () => {
             onClick={toggleEmergency}
             className={`flex items-center justify-center rounded-full p-4 shadow-lg ${
               isEmergencyOpen 
-                ? 'bg-gradient-to-r from-amber-400'
-                : 'bg-gradient-to-r from-amber-400 to-orange-500'
+                ? 'bg-[#F1B434]'
+                : 'bg-gradient-to-r from-[#F1B434] to-[#FFE352]'
             } transition-colors`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -95,7 +95,7 @@ const SleekFooter: React.FC = () => {
           <AnimatePresence>
             {isEmergencyOpen && (
               <motion.div
-                className="absolute bottom-full right-0 mb-3 w-72 bg-slate-900 rounded-xl shadow-xl overflow-hidden border border-slate-700"
+                className="absolute bottom-full right-0 mb-3 w-72 bg-[#1a2233] rounded-xl shadow-xl overflow-hidden border border-[#F1B434]/20"
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -104,7 +104,7 @@ const SleekFooter: React.FC = () => {
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-bold text-white text-lg flex items-center">
-                      <Phone size={18} className="mr-2" />
+                      <Phone size={18} className="mr-2 text-[#F1B434]" />
                       <span>Emergency Support</span>
                     </h3>
                   </div>
@@ -114,14 +114,14 @@ const SleekFooter: React.FC = () => {
                       <p className="text-sm text-slate-300 mb-1">24/7 Technical Assistance</p>
                       <a 
                         href="tel:+18004328911" 
-                        className="text-xl font-bold text-white hover:text-red-300 transition-colors block"
+                        className="text-xl font-bold text-white hover:text-[#FFE352] transition-colors block"
                       >
                         +1 (800) HEAVY-911
                       </a>
                     </div>
                     
                     <div className="flex items-center space-x-2 text-sm text-slate-400">
-                      <Clock size={14} />
+                      <Clock size={14} className="text-[#F1B434]" />
                       <span>Available round the clock</span>
                     </div>
                     
@@ -130,19 +130,19 @@ const SleekFooter: React.FC = () => {
                       <ul className="space-y-2 text-sm">
                         <li>
                           <a href="tel:+911234567890" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
                             India: +91 123 456 7890
                           </a>
                         </li>
                         <li>
                           <a href="tel:+442012345678" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
                             UK: +44 20 1234 5678
                           </a>
                         </li>
                         <li>
                           <a href="tel:+6561234567" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-red-400" />
+                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
                             Singapore: +65 6123 4567
                           </a>
                         </li>
@@ -151,7 +151,7 @@ const SleekFooter: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-slate-800 px-5 py-3 border-t border-slate-700">
+                <div className="bg-[#1a2233] px-5 py-3 border-t border-[#F1B434]/20">
                   <p className="text-xs text-slate-400">
                     For immediate equipment breakdowns or safety concerns
                   </p>
@@ -201,14 +201,14 @@ const SleekFooter: React.FC = () => {
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-orange-500 transition-all"
+                    className="flex-1 px-3 py-2 bg-[#1a2233] border border-[#F1B434]/20 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-[#F1B434] focus:border-[#F1B434] transition-all"
                   />
                   <motion.button
-                    className="bg-gradient-to-br from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 p-2 rounded-lg transition-all"
+                    className="bg-gradient-to-br from-[#F1B434] to-[#FFE352] hover:from-[#F1B434] hover:to-[#FFE352]/90 p-2 rounded-lg transition-all"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} className="text-white" />
                   </motion.button>
                 </div>
               </div>
@@ -219,7 +219,7 @@ const SleekFooter: React.FC = () => {
                   <motion.a
                     key={social.label}
                     href={social.href}
-                    className="w-9 h-9 bg-slate-900 hover:bg-gradient-to-br hover:from-orange-600 hover:to-amber-600 rounded-lg flex items-center justify-center transition-all border border-slate-700"
+                    className="w-9 h-9 bg-[#1a2233] hover:bg-gradient-to-br hover:from-[#F1B434] hover:to-[#FFE352] rounded-lg flex items-center justify-center transition-all border border-[#F1B434]/20"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label={social.label}
@@ -242,7 +242,7 @@ const SleekFooter: React.FC = () => {
                   transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <h4 className="font-medium mb-4 text-orange-400 text-sm uppercase tracking-wider">{category}</h4>
+                  <h4 className="font-medium mb-4 text-[#F1B434] text-sm uppercase tracking-wider">{category}</h4>
                   <ul className="space-y-2.5">
                     {links.map((link, linkIndex) => (
                       <motion.li
@@ -252,7 +252,7 @@ const SleekFooter: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.1 + linkIndex * 0.05 }}
                         viewport={{ once: true, margin: "-20px" }}
                       >
-                        <a href="#" className="text-slate-300 hover:text-white transition-colors text-sm hover:underline underline-offset-4 decoration-orange-400">
+                        <a href="#" className="text-slate-300 hover:text-white transition-colors text-sm hover:underline underline-offset-4 decoration-[#F1B434]">
                           {link}
                         </a>
                       </motion.li>
@@ -273,7 +273,7 @@ const SleekFooter: React.FC = () => {
             >
               {/* Download Brochure */}
               <motion.button
-                className="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-xl p-4 mb-6 group"
+                className="w-full bg-[#1a2233] hover:bg-[#1a2233]/90 border border-[#F1B434]/20 rounded-xl p-4 mb-6 group"
                 whileHover={{ 
                   scale: 1.02,
                   boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
@@ -281,8 +281,8 @@ const SleekFooter: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center space-x-3">
-                  <div className="bg-slate-800 group-hover:bg-orange-500 p-2 rounded-lg transition-all">
-                    <Download size={16} className="text-orange-400 group-hover:text-white transition-colors" />
+                  <div className="bg-[#1a2233] group-hover:bg-[#F1B434] p-2 rounded-lg transition-all">
+                    <Download size={16} className="text-[#F1B434] group-hover:text-white transition-colors" />
                   </div>
                   <div className="text-left">
                     <div className="font-medium text-sm">Product Catalog</div>
@@ -293,21 +293,21 @@ const SleekFooter: React.FC = () => {
 
               {/* Quick Contact */}
               <div className="space-y-2.5">
-                <h4 className="font-medium text-orange-400 mb-3 text-sm uppercase tracking-wider">Quick Contact</h4>
+                <h4 className="font-medium text-[#F1B434] mb-3 text-sm uppercase tracking-wider">Quick Contact</h4>
                 <div className="flex items-center space-x-3 text-sm">
-                  <Mail size={14} className="text-slate-400" />
+                  <Mail size={14} className="text-[#F1B434]" />
                   <a href="mailto:mktg-til@tilindia.com" className="text-slate-300 hover:text-white transition-colors">
                     mktg-til@tilindia.com
                   </a>
                 </div>
                 <div className="flex items-center space-x-3 text-sm">
-                  <Phone size={14} className="text-slate-400" />
+                  <Phone size={14} className="text-[#F1B434]" />
                   <a href="tel:+9103366332000" className="text-slate-300 hover:text-white transition-colors">
                     +91 033 6633 2000
                   </a>
                 </div>
                 <div className="flex items-start space-x-3 text-sm">
-                  <MapPin size={14} className="text-slate-400 mt-0.5" />
+                  <MapPin size={14} className="text-[#F1B434] mt-0.5" />
                   <span className="text-slate-300 hover:text-white transition-colors">
                     Taratolla Road, Garden Reach<br />
                     Kolkata 700 024, West Bengal
@@ -320,7 +320,7 @@ const SleekFooter: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
+      <div className="border-t border-[#F1B434]/20">
         <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-xs text-slate-400">
@@ -329,21 +329,21 @@ const SleekFooter: React.FC = () => {
             <div className="flex space-x-6 text-xs text-slate-400">
               <motion.a 
                 href="#" 
-                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-orange-400" 
+                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-[#F1B434]" 
                 whileHover={{ y: -1 }}
               >
                 Privacy Policy
               </motion.a>
               <motion.a 
                 href="#" 
-                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-orange-400" 
+                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-[#F1B434]" 
                 whileHover={{ y: -1 }}
               >
                 Terms of Service
               </motion.a>
               <motion.a 
                 href="#" 
-                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-orange-400" 
+                className="hover:text-white transition-colors hover:underline underline-offset-4 decoration-[#F1B434]" 
                 whileHover={{ y: -1 }}
               >
                 Cookie Policy

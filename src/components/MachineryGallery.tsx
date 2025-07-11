@@ -101,7 +101,7 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
       <motion.div
         className="absolute inset-0 rounded-xl pointer-events-none"
         style={{
-          background: 'linear-gradient(to right, #f59e0b, #f97316)',
+          background: 'linear-gradient(to right, #F1B434, #FFE352)',
           padding: '2px',
         }}
         initial={{ opacity: 0 }}
@@ -119,7 +119,7 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
 
       {/* Title inside card */}
       <motion.span
-        className="absolute top-4 left-0 right-0 inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight text-center"
+        className="absolute top-4 left-0 right-0 inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight text-center"
         initial={{ 
           opacity: 0,
           letterSpacing: "-0.05em"
@@ -143,10 +143,10 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
           isHovered ? 'bottom-4 right-4' : 'bottom-4 left-1/2 -translate-x-1/2'
         }`}
         style={{
-          background: 'linear-gradient(to right, #f59e0b, #f97316)'
+          background: 'linear-gradient(to right, #F1B434, #FFE352)'
         }}
         whileHover={{
-          background: 'linear-gradient(to right, #f97316, #f59e0b)'
+          background: 'linear-gradient(to right, #FFE352, #F1B434)'
         }}
         transition={{
           duration: 0.3,
@@ -164,13 +164,13 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a2233]/90 via-[#1a2233]/50 to-transparent" />
         
         <div className="relative z-10 space-y-2">
           <ul className="text-gray-100 font-sans text-xs space-y-1">
             {machine.specs.map((spec, i) => (
               <li key={i} className="flex items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F1B434] mr-2"></span>
                 {spec}
               </li>
             ))}
@@ -263,11 +263,11 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
   }
 
   return (
-    <section className="py-8 md:py-16 bg-gradient-to-b from-gray-100 to-gray-200 overflow-hidden">
+    <section className="py-8 md:py-16 bg-gradient-to-b from-[#f8f9fa] to-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
           <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 text-lg font-bold tracking-tight"
+            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
             initial={{ 
               opacity: 0,
               letterSpacing: "-0.05em"
@@ -285,12 +285,15 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
           >
             PREMIUM MACHINERY
           </motion.span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            Our Machinery Collection
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            Our Machinery <span className="text-[#F1B434]">Collection</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+           <div className="w-24 h-1 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full"></div>
+
+          <p className="text-[#1a2233]/80 max-w-2xl mx-auto text-sm md:text-base">
             Explore our premium range of heavy machinery designed for performance and durability
           </p>
+          
         </div>
 
         <div className="relative">
@@ -305,11 +308,11 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
             <span
               className={`text-xs font-bold px-3 py-1 rounded-full ${
                 products[activeIndex].tag === 'NEW'
-                  ? 'bg-gradient-to-r from-green-400 to-green-600'
+                  ? 'bg-[#F1B434] text-white'
                   : products[activeIndex].tag === 'POPULAR'
-                  ? 'bg-gradient-to-r from-blue-400 to-blue-600'
-                  : 'bg-gradient-to-r from-purple-400 to-purple-600'
-              } text-white shadow-md`}
+                  ? 'bg-[#1a2233] text-white'
+                  : 'bg-[#FFE352] text-[#1a2233]'
+              } shadow-md`}
             >
               {products[activeIndex].tag}
             </span>
@@ -324,7 +327,7 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
               
               {/* Mobile arrows */}
               <button
-                className="absolute left-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 active:scale-95 transition-transform"
+                className="absolute left-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-[#F1B434]/10 active:scale-95 transition-transform"
                 onClick={() =>
                   setActiveIndex((prev) => (prev - 1 + totalItems) % totalItems)
                 }
@@ -340,13 +343,13 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-[#1a2233]"
                 >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
               <button
-                className="absolute right-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 active:scale-95 transition-transform"
+                className="absolute right-2 z-20 bg-white p-2 rounded-full shadow-lg hover:bg-[#F1B434]/10 active:scale-95 transition-transform"
                 onClick={() =>
                   setActiveIndex((prev) => (prev + 1) % totalItems)
                 }
@@ -362,7 +365,7 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-[#1a2233]"
                 >
                   <path d="M9 18l6-6-6-6" />
                 </svg>
@@ -376,7 +379,7 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
                   key={index}
                   onClick={() => setActiveIndex(index)}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    index === activeIndex ? 'bg-amber-500' : 'bg-gray-300'
+                    index === activeIndex ? 'bg-[#F1B434]' : 'bg-[#1a2233]/20'
                   }`}
                   aria-label={`Go to item ${index + 1}`}
                 />
@@ -445,7 +448,7 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
 
               {/* Desktop arrows */}
               <button
-                className="absolute left-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
+                className="absolute left-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-[#F1B434]/10 hover:scale-110 active:scale-95 transition-transform"
                 onClick={() =>
                   setActiveIndex((prev) => (prev - 1 + totalItems) % totalItems)
                 }
@@ -461,13 +464,13 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-[#1a2233]"
                 >
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </button>
               <button
-                className="absolute right-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-gray-100 hover:scale-110 active:scale-95 transition-transform"
+                className="absolute right-4 z-20 bg-white p-3 rounded-full shadow-lg hover:bg-[#F1B434]/10 hover:scale-110 active:scale-95 transition-transform"
                 onClick={() =>
                   setActiveIndex((prev) => (prev + 1) % totalItems)
                 }
@@ -483,10 +486,9 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-[#1a2233]"
                 >
                   <path d="M9 18l6-6-6-6" />
-                  
                 </svg>
               </button>
             </div>

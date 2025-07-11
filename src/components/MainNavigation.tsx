@@ -387,7 +387,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <div>
@@ -414,7 +414,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Left: Categories */}
               <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     About Us
                   </h3>
                 </div>
@@ -442,13 +442,13 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <div className={`p-1.5 rounded flex-shrink-0 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className={`font-semibold text-sm ${
-                              activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                              activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                             }`}>
                               {category.name}
                             </div>
@@ -466,7 +466,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Middle: Items */}
               <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Information'}
                   </h3>
                 </div>
@@ -483,7 +483,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
                             {item.name}
                           </p>
                           <p className="text-xs text-gray-400 mt-1">{item.description}</p>
@@ -497,7 +497,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Right: Details */}
               <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Details
                   </h3>
                 </div>
@@ -519,7 +519,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
                         {rightPanelContent?.title}
                       </h4>
                       <p className="text-gray-300 mb-3 leading-relaxed text-xs">
@@ -528,7 +528,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       
                       {rightPanelContent?.features && (
                         <div className="mb-4">
-                          <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
+                          <h5 className="font-semibold text-[#fbb53d] mb-2 text-xs">Key Features:</h5>
                           <div className="space-y-1">
                             {rightPanelContent.features.map((feature, index) => (
                               <div key={index} className="flex items-center space-x-2">
@@ -542,7 +542,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       
                       <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                         <motion.button 
-                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
                           whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -551,7 +551,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         </motion.button>
                         
                         <button 
-                          className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
+                          className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-[#fbb53d] py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
                           onClick={onClose}
                         >
                           <Download className="w-3 h-3" />
@@ -778,7 +778,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <div>
@@ -805,7 +805,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Left: Categories */}
               <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Product Categories
                   </h3>
                 </div>
@@ -829,13 +829,13 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <div className={`p-1.5 rounded flex-shrink-0 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className={`font-semibold text-sm ${
-                              activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                              activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                             }`}>
                               {category.name}
                             </div>
@@ -853,7 +853,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Middle: Product Items */}
               <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Products'}
                   </h3>
                 </div>
@@ -869,13 +869,13 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <ChevronRight className="w-4 h-4 text-yellow-500 flex-shrink-0" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
                             {product.name}
                           </p>
                           <p className="text-xs text-gray-400 mt-1">{product.description}</p>
                           <div className="mt-2 flex flex-wrap gap-1">
                             {product.features.map((feature, i) => (
-                              <span key={i} className="text-xs bg-yellow-500/10 text-yellow-400 px-2 py-0.5 rounded">
+                              <span key={i} className="text-xs bg-yellow-500/10 text-[#fbb53d] px-2 py-0.5 rounded">
                                 {feature}
                               </span>
                             ))}
@@ -890,7 +890,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Right: Dynamic Media Panel */}
               <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Details
                   </h3>
                 </div>
@@ -912,7 +912,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
                         {activeMedia?.title || activeMedia?.name}
                       </h4>
                       <p className="text-gray-300 mb-3 leading-relaxed text-xs">
@@ -921,7 +921,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       
                       {activeMedia?.features && (
                         <div className="mb-4">
-                          <h5 className="font-semibold text-yellow-400 mb-2 text-xs">Key Features:</h5>
+                          <h5 className="font-semibold text-[#fbb53d] mb-2 text-xs">Key Features:</h5>
                           <div className="space-y-1">
                             {activeMedia.features.map((feature, index) => (
                               <div key={index} className="flex items-center space-x-2">
@@ -935,7 +935,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       
                       <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                         <motion.button 
-                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
                           whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255, 193, 7, 0.3)" }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -944,7 +944,7 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         </motion.button>
                         
                         <button 
-                          className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
+                          className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-[#fbb53d] py-1.5 px-3 rounded font-semibold text-xs transition-all duration-200 flex items-center justify-center space-x-2"
                           onClick={onClose}
                         >
                           <Download className="w-3 h-3" />
@@ -1182,7 +1182,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <span className="text-gray-200 font-medium">
@@ -1204,7 +1204,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
               {/* Left: Categories */}
               <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Support Categories
                   </h3>
                 </div>
@@ -1229,12 +1229,12 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                           <div className={`p-1.5 rounded flex-shrink-0 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <span className={`font-semibold text-sm ${
-                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                            activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                           }`}>
                             {category.name}
                           </span>
@@ -1248,7 +1248,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
               {/* Middle: Point-wise Info */}
               <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Support Info'}
                   </h3>
                 </div>
@@ -1287,7 +1287,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                           </svg>
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                          <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
                             {point.name}
                           </p>
                           <p className="text-xs text-gray-400 mt-1">{point.description}</p>
@@ -1301,7 +1301,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
               {/* Right: Media Panel */}
               <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Details
                   </h3>
                 </div>
@@ -1323,7 +1323,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
                         {activeMedia?.title || activeMedia?.name}
                       </h4>
                       <p className="text-gray-300 mb-4 leading-relaxed text-xs">
@@ -1332,7 +1332,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
                       
                       <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                         <motion.button 
-                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -1826,7 +1826,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <div>
@@ -1855,7 +1855,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Left: Categories */}
               <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Media Center
                   </h3>
                 </div>
@@ -1876,13 +1876,13 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <div className={`p-2 rounded-lg flex-shrink-0 transition-all duration-200 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black shadow-lg' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className={`font-semibold text-sm transition-colors duration-200 ${
-                              activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                              activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                             }`}>
                               {category.name}
                             </div>
@@ -1900,7 +1900,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Middle: Content Items */}
               <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Content'}
                   </h3>
                 </div>
@@ -1938,12 +1938,12 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           </div>
                           
                           <div className="p-3 flex-1 flex flex-col justify-between">
-                            <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 transition-colors duration-200 text-center leading-tight mb-2">
+                            <h4 className="text-sm font-semibold text-[#fbb53d] group-hover:text-yellow-300 transition-colors duration-200 text-center leading-tight mb-2">
                               {item.title}
                             </h4>
                             
                             <div className="mt-auto pt-2 border-t border-gray-700/40">
-                              <div className="flex items-center justify-center space-x-1 text-xs text-gray-400 group-hover:text-yellow-400 transition-colors duration-200">
+                              <div className="flex items-center justify-center space-x-1 text-xs text-gray-400 group-hover:text-[#fbb53d] transition-colors duration-200">
                                 <Download className="w-3 h-3" />
                                 <span>Download</span>
                               </div>
@@ -1978,7 +1978,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                               )}
                             </div>
                             <div className="col-span-4 px-4 py-3 flex items-center space-x-2">
-                              <button className="flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 text-xs transition-colors duration-200">
+                              <button className="flex items-center space-x-1 text-[#fbb53d] hover:text-yellow-300 text-xs transition-colors duration-200">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -1986,7 +1986,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 <span>View</span>
                               </button>
                               <span className="text-gray-500">|</span>
-                              <button className="flex items-center space-x-1 text-yellow-400 hover:text-yellow-300 text-xs transition-colors duration-200">
+                              <button className="flex items-center space-x-1 text-[#fbb53d] hover:text-yellow-300 text-xs transition-colors duration-200">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
@@ -2036,7 +2036,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                               </div>
                               <div className="p-3">
-                                <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                                <h4 className="text-sm font-semibold text-[#fbb53d] group-hover:text-yellow-300 mb-1 transition-colors duration-200">
                                   {item.title}
                                 </h4>
                                 <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
@@ -2075,7 +2075,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 )}
                               </div>
                               <div className="p-3">
-                                <h4 className="text-sm font-semibold text-yellow-400 group-hover:text-yellow-300 mb-1 transition-colors duration-200">
+                                <h4 className="text-sm font-semibold text-[#fbb53d] group-hover:text-yellow-300 mb-1 transition-colors duration-200">
                                   {item.title}
                                 </h4>
                                 <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
@@ -2099,7 +2099,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Right: Media Panel */}
               <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Highlights
                   </h3>
                 </div>
@@ -2132,7 +2132,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       </p>
                       
                       <div className="mb-6">
-                        <h5 className="font-semibold text-yellow-400 mb-3 text-sm">Key Features:</h5>
+                        <h5 className="font-semibold text-[#fbb53d] mb-3 text-sm">Key Features:</h5>
                         <div className="space-y-2">
                           {currentSubmenu?.media.features.map((feature, index) => (
                             <div key={index} className="flex items-center space-x-2">
@@ -2144,12 +2144,12 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       </div>
                       
                       <div className="space-y-3 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-3 -mx-4 px-4">
-                        <button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
+                        <button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2.5 px-4 rounded-lg font-bold text-sm transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg">
                           <Eye className="w-4 h-4" />
                           <span>{currentSubmenu?.media.cta}</span>
                         </button>
                         
-                        <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-400 py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2">
+                        <button className="w-full border border-yellow-500/50 hover:bg-yellow-500/10 text-[#fbb53d] py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 flex items-center justify-center space-x-2">
                           <Download className="w-4 h-4" />
                           <span>Download Resources</span>
                         </button>
@@ -2189,7 +2189,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </button>
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-bold text-yellow-400 mb-2">{selectedVideo.title}</h3>
+              <h3 className="text-lg font-bold text-[#fbb53d] mb-2">{selectedVideo.title}</h3>
               <p className="text-gray-300 text-sm">{selectedVideo.description}</p>
             </div>
           </div>
@@ -2409,7 +2409,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <span className="text-gray-200 font-medium">
@@ -2431,7 +2431,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Left: Categories */}
               <div className="col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Career Focus
                   </h3>
                 </div>
@@ -2452,12 +2452,12 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <div className={`p-1.5 rounded flex-shrink-0 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <span className={`font-semibold text-sm ${
-                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                            activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                           }`}>
                             {category.name}
                           </span>
@@ -2471,7 +2471,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Middle: Content */}
               <div className="col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Details'}
                   </h3>
                 </div>
@@ -2485,7 +2485,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             alt={member.name}
                             className="w-20 h-20 mx-auto rounded-full object-cover shadow-lg border-2 border-yellow-500"
                           />
-                          <h4 className="mt-3 text-sm font-semibold text-yellow-400">{member.name}</h4>
+                          <h4 className="mt-3 text-sm font-semibold text-[#fbb53d]">{member.name}</h4>
                           <p className="text-xs text-gray-400">{member.title}</p>
                         </div>
                       ))}
@@ -2534,7 +2534,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Right: Media Panel */}
               <div className="col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Highlights
                   </h3>
                 </div>
@@ -2556,7 +2556,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
                         {currentSubmenu?.media?.title}
                       </h4>
                       <p className="text-gray-300 mb-4 leading-relaxed text-xs">
@@ -2565,7 +2565,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       
                       <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                         <motion.button 
-                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -2666,7 +2666,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         { 
           label: 'Phone', 
           value: '+91 033 6633 2000', 
-          icon: <Phone className="w-5 h-5 text-yellow-400" />,
+          icon: <Phone className="w-5 h-5 text-[#fbb53d]" />,
           description: 'Direct phone support during business hours'
         },
         { 
@@ -2749,7 +2749,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="text-yellow-400">
+                        <div className="text-[#fbb53d]">
                           {category.icon}
                         </div>
                         <span className="text-gray-200 font-medium">
@@ -2771,7 +2771,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Left: Categories */}
               <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Contact Channels
                   </h3>
                 </div>
@@ -2797,12 +2797,12 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                           <div className={`p-1.5 rounded flex-shrink-0 ${
                             activeCategory === category.id 
                               ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-yellow-400'
+                              : 'bg-gray-700 text-[#fbb53d]'
                           }`}>
                             {category.icon}
                           </div>
                           <span className={`font-semibold text-sm ${
-                            activeCategory === category.id ? 'text-yellow-400' : 'text-gray-200'
+                            activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
                           }`}>
                             {category.name}
                           </span>
@@ -2816,7 +2816,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Middle: Info List */}
               <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Contact'}
                   </h3>
                 </div>
@@ -2851,11 +2851,11 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                                 className="block hover:text-yellow-300 transition-colors"
                                 aria-label={`Contact via ${contact.label}`}
                               >
-                                <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                                <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
                                   {contact.label}
                                 </p>
                                 <p className="text-xs text-gray-400 mt-1">{contact.description}</p>
-                                <p className="text-xs text-yellow-400 mt-1 underline underline-offset-2">
+                                <p className="text-xs text-[#fbb53d] mt-1 underline underline-offset-2">
                                   {contact.value}
                                 </p>
                               </a>
@@ -2894,7 +2894,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                             </svg>
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-gray-100 hover:text-yellow-400 transition">
+                            <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
                               {location.name}
                             </p>
                             <p className="text-xs text-gray-400 mt-1">{location.description}</p>
@@ -2909,7 +2909,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               {/* Right: Dynamic Media Panel */}
               <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
                 <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-yellow-400 mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
                     Details
                   </h3>
                 </div>
@@ -2931,7 +2931,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-yellow-400 mb-2">
+                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
                         {activeMedia?.title || activeMedia?.name}
                       </h4>
                       <p className="text-gray-300 mb-4 leading-relaxed text-xs">
@@ -2941,7 +2941,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       {activeMedia?.cta && (
                         <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
                           <motion.button
-                            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                           >
@@ -3103,7 +3103,7 @@ const MainNavigation: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrollingDown && !isMobileMenuOpen ? '-translate-y-full' : 'translate-y-0'
         } ${
-          isScrolled ? 'bg-[#1a2233]/85 backdrop-blur-md shadow-2xl' : 'bg-[#1a2233]'
+          isScrolled ? 'bg-[#1a2233]/85 backdrop-blur-md shadow-2xl' : 'bg-[#ffffff14]'
         }`}
         style={{ marginTop: isScrolled ? '53px' : '60px' }}
       >
@@ -3120,8 +3120,8 @@ const MainNavigation: React.FC = () => {
                 <motion.button 
                   className={`flex items-center justify-center space-x-1 px-4 font-bold text-sm uppercase tracking-wide transition-all duration-200 w-full h-full ${
                     activeMenu === item.name 
-                      ? 'bg-yellow-500 text-black'
-                      : 'text-gray-200 hover:text-white hover:bg-gray-600'
+                      ? 'bg-[#fbb53d] text-[#000]'
+                      : 'text-[#fbb53d] hover:text-black hover:bg-[#fbb53d]'
                   }`}
                   whileHover={{ scale: 1.005 }}
                   whileTap={{ scale: 0.995 }}
@@ -3273,8 +3273,8 @@ const MainNavigation: React.FC = () => {
                         onClick={() => item.hasSubmenu && handleMobileMenuClick(item.name)}
                         className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-left transition-all duration-200 ${
                           activeMenu === item.name
-                            ? 'text-yellow-400 bg-gray-800'
-                            : 'text-gray-300 hover:text-yellow-400 hover:bg-gray-800'
+                            ? 'text-[#fbb53d] bg-gray-800'
+                            : 'text-gray-300 hover:text-[#fbb53d] hover:bg-gray-800'
                         }`}
                         disabled={!item.hasSubmenu}
                       >
