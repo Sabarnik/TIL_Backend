@@ -34,7 +34,7 @@ const MACHINES = [
   {
     id: 'all-terrain',
     title: 'All-Terrain Crane',
-    img: '/all-terrain.png',
+    img: '/grove-range.png',
     specs: ['High speed', '120 t capacity', '60 m boom'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -43,7 +43,7 @@ const MACHINES = [
   {
     id: 'crawler-crane',
     title: 'Crawler Crane',
-    img: '/crawler-crane.png',
+    img: '/crawler-cranes.png',
     specs: ['Heavy lifting', '400 t capacity', 'Stable platform'],
     price: '$500,000',
     tag: 'FEATURED',
@@ -52,7 +52,7 @@ const MACHINES = [
   {
     id: 'tower-crane',
     title: 'Tower Crane',
-    img: '/tower-crane.png',
+    img: '/tower-crane.jpg',
     specs: ['High rise', '20 t capacity', '80 m reach'],
     price: '$280,000',
     tag: 'NEW',
@@ -250,6 +250,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
   const [isSearching, setIsSearching] = useState(false);
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [manuallySelectedFilter, setManuallySelectedFilter] = useState(false);
   const [loadedItems, setLoadedItems] = useState<{[key: string]: number}>({
     machine: 3,
     news: 3,
@@ -265,6 +266,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
     blog: BLOG_POSTS.slice(0, 3),
     investor: INVESTOR_RELATIONS.slice(0, 3)
   };
+  
 
   useEffect(() => {
     if (isOpen) {
@@ -294,37 +296,64 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
   }, [isOpen]);
 
   useEffect(() => {
-    if (searchQuery.trim() === '') {
-      setSearchResults([]);
-      setSuggestions([]);
-      setIsSearching(false);
-      return;
-    }
+    const rawQuery = searchQuery.toLowerCase().trim();
+    const query = rawQuery.endsWith('s') ? rawQuery.slice(0, -1) : rawQuery;
+
+    const keywordMap: { [key: string]: string } = {
+      product: 'machine',
+      products: 'machine',
+      machine: 'machine',
+      machines: 'machine',
+      blog: 'blog',
+      blogs: 'blog',
+      news: 'news',
+      new: 'news',
+      investor: 'investor',
+      investors: 'investor'
+    };
+
+    // Only set filter from query if no active filter is already set
+   // FIXED
+     // Auto-apply filter only if not already manually set
+    if (!manuallySelectedFilter) {
+  if (keywordMap[rawQuery]) {
+    setActiveFilter(keywordMap[rawQuery]);
+  } else if (searchQuery.trim() === '') {
+    setActiveFilter(null);
+  }
+}
+
+
 
     const filteredSuggestions = SUGGESTIONS.filter(suggestion =>
-      suggestion.text.toLowerCase().includes(searchQuery.toLowerCase())
+      suggestion.text.toLowerCase().includes(query)
     );
     setSuggestions(filteredSuggestions);
 
     setIsSearching(true);
+
     const timer = setTimeout(() => {
-      const query = searchQuery.toLowerCase();
       let filteredData = ALL_DATA;
 
+      // Apply filter based on current category
       if (activeFilter && activeFilter !== 'all') {
         filteredData = filteredData.filter(item => item.type === activeFilter);
       }
 
+      // Apply keyword filter only if searchQuery has text
+    if (query !== '' && !keywordMap[rawQuery]) {
       filteredData = filteredData.filter(item =>
         item.title.toLowerCase().includes(query) ||
         (item.excerpt && item.excerpt.toLowerCase().includes(query)) ||
-        (item.specs && item.specs.some((spec: string) => spec.toLowerCase().includes(query)))
+        (item.specs && item.specs.some((spec: string) => spec.toLowerCase().includes(query))) ||
+        (item.category && item.category.toLowerCase().includes(query))
       );
-      
+    }
+
+
       setSearchResults(filteredData);
       setIsSearching(false);
-      //setShowAllResults(false);
-    }, 500);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [searchQuery, activeFilter]);
@@ -345,12 +374,13 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
     }
     inputRef.current?.focus();
   };
-
   const clearSearch = () => {
     setSearchQuery('');
     setActiveFilter(null);
+    setManuallySelectedFilter(false); // reset manual tracking
     inputRef.current?.focus();
   };
+
 
   const handleScroll = (direction: 'up' | 'down') => {
     if (resultsRef.current) {
@@ -371,6 +401,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
   };
 
   const displayedResults = showAllResults ? searchResults : searchResults.slice(0, 3);
+
 
   const MachineSkeleton = () => (
     <div className="result-card">
@@ -512,7 +543,10 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
               {CATEGORIES.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveFilter(category.id === 'all' ? null : category.id)}
+                  onClick={() => {
+                    setManuallySelectedFilter(true); // mark as manually clicked
+                    setActiveFilter(category.id === 'all' ? null : category.id);
+                  }}
                   className={`text-xs px-3 py-1.5 rounded-full border transition-colors whitespace-nowrap ${
                     (activeFilter === category.id || (!activeFilter && category.id === 'all'))
                       ? 'bg-[#F1B434]/10 text-[#F1B434] border-[#F1B434]/20'
@@ -529,7 +563,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                 ref={resultsRef}
                 className="mt-4 pr-2 mega-menu-height scroll-hover overflow-y-auto"
               >
-                {searchQuery ? (
+                {searchQuery || activeFilter ? (
                   <>
                     {activeFilter && (
                       <div className="flex items-center gap-2 mb-3">
@@ -608,6 +642,16 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                             </button>
                           </div>
                         )}
+                        {searchResults.length > 3 && showAllResults && (
+                          <div className="flex gap-2 mt-4">
+                            <button 
+                              onClick={() => setShowAllResults(false)}
+                              className="text-sm text-[#F1B434] hover:underline"
+                            >
+                              Show less
+                            </button>
+                          </div>
+                        )}
                       </>
                     ) : (
                       <div className="text-gray-400 text-sm py-4 text-center">
@@ -633,29 +677,41 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                             </motion.div>
                           ))}
                         </div>
-                        {MACHINES.length > loadedItems.machine && (
+                        {MACHINES.length > 3 && (
                           <div className="flex gap-2 mt-3">
-                            <button 
-                              onClick={() => loadMoreItems('machine')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              See more products
-                            </button>
-                            <span className="text-gray-500">|</span>
-                            <button 
-                              onClick={() => viewAllItems('machine')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              View all products
-                            </button>
+                            {loadedItems.machine <= 3 ? (
+                              <>
+                                <button 
+                                  onClick={() => loadMoreItems('machine')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  See more products
+                                </button>
+                                <span className="text-gray-500">|</span>
+                                <button 
+                                  onClick={() => viewAllItems('machine')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  View all products
+                                </button>
+                              </>
+                            ) : (
+                              <button 
+                                onClick={() => setLoadedItems(prev => ({ ...prev, machine: 3 }))}
+                                className="text-sm text-[#F1B434] hover:underline"
+                              >
+                                Show less
+                              </button>
+                            )}
                           </div>
                         )}
+
                       </div>
 
                       <div>
                         <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-3">News</h3>
                         <div className="results-grid gap-4">
-                          {DEFAULT_CARDS.news.slice(0, loadedItems.news).map((item) => (
+                          {NEWS.slice(0, loadedItems.news).map((item) => (
                             <motion.div
                               key={`news-${item.id}`}
                               initial={{ opacity: 0, x: 10 }}
@@ -665,29 +721,41 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                             </motion.div>
                           ))}
                         </div>
-                        {NEWS.length > loadedItems.news && (
+                        {NEWS.length > 3 && (
                           <div className="flex gap-2 mt-3">
-                            <button 
-                              onClick={() => loadMoreItems('news')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              See more news
-                            </button>
-                            <span className="text-gray-500">|</span>
-                            <button 
-                              onClick={() => viewAllItems('news')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              View all news
-                            </button>
+                            {loadedItems.news <= 3 ? (
+                              <>
+                                <button 
+                                  onClick={() => loadMoreItems('news')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  See more news
+                                </button>
+                                <span className="text-gray-500">|</span>
+                                <button 
+                                  onClick={() => viewAllItems('news')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  View all news
+                                </button>
+                              </>
+                            ) : (
+                              <button 
+                                onClick={() => setLoadedItems(prev => ({ ...prev, news: 3 }))}
+                                className="text-sm text-[#F1B434] hover:underline"
+                              >
+                                Show less
+                              </button>
+                            )}
                           </div>
                         )}
+
                       </div>
 
                       <div>
                         <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-3">Blogs</h3>
                         <div className="results-grid gap-4">
-                          {DEFAULT_CARDS.blog.slice(0, loadedItems.blog).map((item) => (
+                          {BLOG_POSTS.slice(0, loadedItems.blog).map((item) => (
                             <motion.div
                               key={`blog-${item.id}`}
                               initial={{ opacity: 0, x: 10 }}
@@ -697,29 +765,41 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                             </motion.div>
                           ))}
                         </div>
-                        {BLOG_POSTS.length > loadedItems.blog && (
+                        {BLOG_POSTS.length > 3 && (
                           <div className="flex gap-2 mt-3">
-                            <button 
-                              onClick={() => loadMoreItems('blog')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              See more blogs
-                            </button>
-                            <span className="text-gray-500">|</span>
-                            <button 
-                              onClick={() => viewAllItems('blog')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              View all blogs
-                            </button>
+                            {loadedItems.blog <= 3 ? (
+                              <>
+                                <button 
+                                  onClick={() => loadMoreItems('blog')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  See more blogs
+                                </button>
+                                <span className="text-gray-500">|</span>
+                                <button 
+                                  onClick={() => viewAllItems('blog')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  View all blogs
+                                </button>
+                              </>
+                            ) : (
+                              <button 
+                                onClick={() => setLoadedItems(prev => ({ ...prev, blog: 3 }))}
+                                className="text-sm text-[#F1B434] hover:underline"
+                              >
+                                Show less
+                              </button>
+                            )}
                           </div>
                         )}
+
                       </div>
 
                       <div>
                         <h3 className="text-xs uppercase tracking-wider text-gray-500 mb-3">Investor Relations</h3>
                         <div className="results-grid gap-4">
-                          {DEFAULT_CARDS.investor.slice(0, loadedItems.investor).map((item) => (
+                          {INVESTOR_RELATIONS.slice(0, loadedItems.investor).map((item) => (
                             <motion.div
                               key={`investor-${item.id}`}
                               initial={{ opacity: 0, x: 10 }}
@@ -729,23 +809,35 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
                             </motion.div>
                           ))}
                         </div>
-                        {INVESTOR_RELATIONS.length > loadedItems.investor && (
+                        {INVESTOR_RELATIONS.length > 3 && (
                           <div className="flex gap-2 mt-3">
-                            <button 
-                              onClick={() => loadMoreItems('investor')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              See more documents
-                            </button>
-                            <span className="text-gray-500">|</span>
-                            <button 
-                              onClick={() => viewAllItems('investor')}
-                              className="text-sm text-[#F1B434] hover:underline"
-                            >
-                              View all documents
-                            </button>
+                            {loadedItems.investor <= 3 ? (
+                              <>
+                                <button 
+                                  onClick={() => loadMoreItems('investor')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  See more documents
+                                </button>
+                                <span className="text-gray-500">|</span>
+                                <button 
+                                  onClick={() => viewAllItems('investor')}
+                                  className="text-sm text-[#F1B434] hover:underline"
+                                >
+                                  View all documents
+                                </button>
+                              </>
+                            ) : (
+                              <button 
+                                onClick={() => setLoadedItems(prev => ({ ...prev, investor: 3 }))}
+                                className="text-sm text-[#F1B434] hover:underline"
+                              >
+                                Show less
+                              </button>
+                            )}
                           </div>
                         )}
+
                       </div>
                     </div>
                   </div>
