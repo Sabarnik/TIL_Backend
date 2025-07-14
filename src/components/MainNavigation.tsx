@@ -359,13 +359,14 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+     <div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -566,6 +567,7 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           )}
         </div>
       </motion.div>
+      </div>
     </>
   );
 };
@@ -750,13 +752,14 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+<div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -959,10 +962,293 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           )}
         </div>
       </motion.div>
+      </div>
     </>
   );
 };
 
+const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const [activeCategory, setActiveCategory] = useState('corporate-governance');
+  const [activePoint, setActivePoint] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const categories = [
+    { id: 'corporate-governance', name: 'Corporate Governance' },
+    { id: 'shareholders-information', name: 'Shareholders Information' },
+    { id: 'financials', name: 'Financials' },
+    { id: 'notice', name: 'Notice' },
+  ];
+
+  const submenuData = {
+    'corporate-governance': {
+      points: [
+        { name: 'Board of Directors', description: 'Overview of board members and their roles' },
+        { name: 'Committee Charters', description: 'Governance committees and their mandates' },
+        { name: 'Policies', description: 'Corporate policies and guidelines' },
+        { name: 'Annual Reports', description: 'Download annual reports and disclosures' },
+      ],
+      media: {
+        image: '/corporate-governance.jpg',
+        title: 'Corporate Governance',
+        description:
+          'TIL is committed to maintaining the highest standards of corporate governance and ethics, ensuring transparency and accountability to our stakeholders.',
+        cta: 'Learn More',
+      },
+    },
+    'shareholders-information': {
+      points: [
+        { name: 'Shareholding Pattern', description: 'Current shareholding distribution' },
+        { name: 'Dividend History', description: 'Details of dividend payouts' },
+        { name: 'Annual General Meeting', description: 'Information on upcoming and past AGMs' },
+        { name: 'Registrar & Transfer Agent', description: 'Contact info for shareholder services' },
+      ],
+      media: {
+        image: '/shareholders.jpg',
+        title: 'Shareholders Information',
+        description:
+          'Access detailed information for shareholders including ownership patterns, dividends, and investor services.',
+        cta: 'Investor Services',
+      },
+    },
+    financials: {
+      points: [
+        { name: 'Quarterly Results', description: 'Latest quarterly financial statements' },
+        { name: 'Audited Financials', description: 'Annual audited financial reports' },
+        { name: 'Stock Price Information', description: 'Historical and current stock prices' },
+        { name: 'Credit Ratings', description: 'Credit rating details and reports' },
+      ],
+      media: {
+        image: '/financials.jpg',
+        title: 'Financials',
+        description:
+          'Stay updated with TIL’s financial performance through detailed reports and market data.',
+        cta: 'View Reports',
+      },
+    },
+    notice: {
+      points: [
+        { name: 'Regulatory Filings', description: 'Important statutory filings and disclosures' },
+        { name: 'Press Releases', description: 'Latest news and announcements' },
+        { name: 'Corporate Announcements', description: 'Updates on company developments' },
+        { name: 'Investor Alerts', description: 'Alerts and notifications for investors' },
+      ],
+      media: {
+        image: '/notice.jpg',
+        title: 'Notice',
+        description:
+          'Keep track of important notices, press releases, and official communications from TIL.',
+        cta: 'View Notices',
+      },
+    },
+  };
+
+  const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
+
+  return (
+    <>
+      <style>{`
+        .mega-menu-height {
+          height: 60vh;
+          max-height: 60vh;
+        }
+        .mobile-menu-height {
+          height: auto;
+          max-height: 50vh;
+        }
+        .scroll-hover::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .scroll-hover::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scroll-hover::-webkit-scrollbar-thumb {
+          background: transparent;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        .scroll-hover:hover::-webkit-scrollbar-thumb {
+          background: rgba(255, 193, 7, 0.3);
+        }
+        .scroll-hover::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 193, 7, 0.5);
+        }
+      `}</style>
+
+      <div onMouseLeave={onClose}>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+          className="overflow-hidden"
+        >
+          <div
+            className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
+              isMobile ? 'mobile-menu-height' : 'mega-menu-height'
+            } overflow-y-auto scroll-hover`}
+          >
+            {/* Mobile View */}
+            {isMobile ? (
+              <div className="p-4">
+                <div className="space-y-2">
+                  {categories.map((category) => (
+                    <motion.button
+                      key={category.id}
+                      className="w-full text-left px-4 py-3 rounded-lg bg-gray-800/40 hover:bg-yellow-500/10 border-l-4 border-yellow-500 transition-all duration-200"
+                      onClick={() => {
+                        console.log(`Selected: ${category.name}`);
+                      }}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <span className="text-gray-200 font-medium">{category.name}</span>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              // Desktop View
+              <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full min-h-0">
+                {/* Left: Categories */}
+                <div className="lg:col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      Investor Relations
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    <div className="space-y-1">
+                      {categories.map((category) => (
+                        <motion.div
+                          key={category.id}
+                          className={`cursor-pointer transition-all duration-200 rounded w-full ${
+                            activeCategory === category.id
+                              ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                              : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                          }`}
+                          onMouseEnter={() => {
+                            setActiveCategory(category.id);
+                            setActivePoint(null);
+                          }}
+                          whileHover={{ x: 2 }}
+                        >
+                          <div className="flex items-center space-x-3 px-3 py-2.5">
+                            <span
+                              className={`font-semibold text-sm ${
+                                activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
+                              }`}
+                            >
+                              {category.name}
+                            </span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Middle: Points */}
+                <div className="lg:col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      {categories.find((cat) => cat.id === activeCategory)?.name || 'Details'}
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    <ul className="space-y-4">
+                      {currentSubmenu?.points.map((point, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20 cursor-pointer"
+                        >
+                          <div className="pt-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={1.5}
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-100 hover:text-[#fbb53d] transition">
+                              {point.name}
+                            </p>
+                            <p className="text-xs text-gray-400 mt-1">{point.description}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right: Media */}
+                <div className="lg:col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      Details
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    <motion.div
+                      key={activeCategory}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col h-full"
+                    >
+                      <div className="relative mb-3 overflow-hidden rounded">
+                        <img
+                          src={currentSubmenu?.media.image}
+                          alt={currentSubmenu?.media.title}
+                          className="w-full h-32 object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-base text-[#fbb53d] mb-2">
+                          {currentSubmenu?.media.title}
+                        </h4>
+                        <p className="text-gray-300 mb-4 leading-relaxed text-xs">
+                          {currentSubmenu?.media.description}
+                        </p>
+
+                        <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                          <motion.button
+                            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <Phone className="w-3 h-3" />
+                            <span>{currentSubmenu?.media.cta || 'Learn More'}</span>
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </>
+  );
+};
 
 const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('heavy-industries');
@@ -1154,13 +1440,14 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+<div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -1348,6 +1635,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
           )}
         </div>
       </motion.div>
+      </div>
     </>
   );
 };
@@ -1798,13 +2086,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+<div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -2162,6 +2451,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           )}
         </div>
       </motion.div>
+      </div>
 
       {/* Video Modal */}
       {selectedVideo && (
@@ -2381,13 +2671,14 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+ <div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -2580,6 +2871,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           )}
         </div>
       </motion.div>
+      </div>
     </>
   );
 };
@@ -2721,13 +3013,14 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        className="overflow-hidden"
-      >
+<div onMouseLeave={onClose}>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    className="overflow-hidden"
+  >
         <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
@@ -2957,6 +3250,7 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           )}
         </div>
       </motion.div>
+      </div>
     </>
   );
 };
@@ -3030,7 +3324,7 @@ const MainNavigation: React.FC = () => {
     { name: 'About Us', hasSubmenu: true },
     { name: 'Products', hasSubmenu: true },
     { name: 'Customer Support', hasSubmenu: true },
-    { name: 'Investor Relations', hasSubmenu: false },
+    { name: 'Investor Relations', hasSubmenu: true },
     { name: 'Media', hasSubmenu: true },
     { name: 'Careers', hasSubmenu: true },
     { name: 'Contact Us', hasSubmenu: true },
@@ -3069,6 +3363,8 @@ const MainNavigation: React.FC = () => {
         return <ProductsMegamenu onClose={closeHandler} />;
       case 'Customer Support':
         return <CustomerSupportMegamenu onClose={closeHandler} />;
+      case 'Investor Relations':
+        return <InvestorRelationsMegamenu onClose={closeHandler} />;
       case 'Media':
         return <MediaMegamenu onClose={closeHandler} />;
       case 'Careers':
