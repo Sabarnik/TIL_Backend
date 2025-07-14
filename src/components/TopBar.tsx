@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MessageCircle, Search, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSearch } from '../context/SearchContext';
 
 const TopBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { open: openSearch } = useSearch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +78,10 @@ const TopBar: React.FC = () => {
               </button>
 
               {/* Search Icon */}
-              <button className="p-2 text-white hover:text-yellow-400 transition-colors">
+              <button 
+                onClick={openSearch}
+                className="p-2 text-white hover:text-yellow-400 transition-colors"
+              >
                 <Search className="w-5 h-5" />
               </button>
             </div>

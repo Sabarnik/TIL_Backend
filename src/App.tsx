@@ -10,22 +10,23 @@ import BlogSection from './components/BlogSection';
 import RegionalOffices from './components/RegionalOffices';
 import Testimonials from './components/Testimonials';
 import SleekFooter from './components/SleekFooter';
-
+import { SearchProvider } from './context/SearchContext';
+import SearchModal from './components/SearchModal';
 function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <TopBar />
       <MainNavigation />
+      <SearchModal />
 
-      {/* Add padding-top to offset fixed TopBar + MainNavigation */}
       <main className="pt-[56px] lg:pt-[60px]">
         <Hero />
         <AboutSection />
-        <OurGlobalAssociates/>
+        <OurGlobalAssociates />
         <MachineryGallery />
         <NewsInsights />
         <BlogSection />
-        <RegionalOffices/>
+        <RegionalOffices />
         <Testimonials />
       </main>
 
