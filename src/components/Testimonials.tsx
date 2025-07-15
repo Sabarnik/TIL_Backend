@@ -45,22 +45,50 @@ const Testimonials: React.FC = () => {
   const doubledTop = [...topTestimonials, ...topTestimonials];
   const doubledBottom = [...bottomTestimonials, ...bottomTestimonials];
 
-  const handleReadMoreClick = (e: React.MouseEvent, testimonial: any, row: 'top' | 'bottom') => {
-    e.stopPropagation();
-    const rect = (e.currentTarget as HTMLDivElement).closest('.testimonial-card')?.getBoundingClientRect();
-    if (!rect) return;
+ const handleReadMoreClick = (
+  e: React.MouseEvent,
+  testimonial: any,
+  row: 'top' | 'bottom'
+) => {
+  e.stopPropagation();
 
-    const alreadyExpanded = expandedCard?.id === testimonial.id;
-    if (alreadyExpanded) {
-      setExpandedCard(null);
-    } else {
-      setExpandedCard({
-        id: testimonial.id,
-        row,
-        position: { left: rect.left, top: rect.top },
-      });
-    }
-  };
+  const rect = (e.currentTarget as HTMLDivElement)
+    .closest('.testimonial-card')
+    ?.getBoundingClientRect();
+  if (!rect) return;
+
+  const hoverCardHeight = 208; // approximate height of HoverCardContent
+  const spaceAbove = rect.top;
+  const spaceBelow =
+    window.innerHeight - (rect.top + rect.height);
+
+  let direction: 'up' | 'down';
+  if (spaceBelow >= hoverCardHeight) {
+    direction = 'down';
+  } else if (spaceAbove >= hoverCardHeight) {
+    direction = 'up';
+  } else {
+    direction =
+      spaceBelow > spaceAbove ? 'down' : 'up';
+  }
+
+  const alreadyExpanded =
+    expandedCard?.id === testimonial.id;
+  if (alreadyExpanded) {
+    setExpandedCard(null);
+  } else {
+    setExpandedCard({
+      id: testimonial.id,
+      row,
+      direction,
+      position: {
+        left: rect.left,
+        top: rect.top,
+        height: rect.height,
+      },
+    });
+  }
+};
 
   const shouldPause = hovered || expandedCard !== null;
 
@@ -156,9 +184,10 @@ const Testimonials: React.FC = () => {
             style={{
               left: expandedCard.position.left,
               top:
-                expandedCard.row === 'top'
-                  ? expandedCard.position.top + 208
-                  : expandedCard.position.top - 208,
+              expandedCard.direction === 'down'
+                ? expandedCard.position.top + expandedCard.position.height
+                : expandedCard.position.top - 208,
+
             }}
           >
             <HoverCardContent
