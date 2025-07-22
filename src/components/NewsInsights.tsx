@@ -93,27 +93,9 @@ const NewsInsights: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
-            initial={{ 
-              opacity: 0,
-              letterSpacing: "-0.05em"
-            }}
-            whileInView={{
-              opacity: 1,
-              letterSpacing: "0.02em",
-            }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97]
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-          >
-            NEWS & INSIGHTS
-          </motion.span>
+          
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Latest <span className="text-[#F1B434]">Updates</span> From TIL
+            TIL <span className="text-[#F1B434]">Limited</span> in the News
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full"></div>
         </motion.div>

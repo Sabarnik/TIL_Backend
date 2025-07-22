@@ -46,10 +46,10 @@ const OurGlobalAssociates = () => {
   };
 
   const logos = [
-    { name: 'GROVE', src: '/clogo1.png' },
-    { name: 'HYSTER', src: '/clogo2.png' },
-    { name: 'MANITOWOC', src: '/clogo3.png' },
-    { name: 'SNORKEL', src: '/clogo4.png' },
+    { name: 'GROVE', src: '/TIL/clogo1.png' },
+    { name: 'HYSTER', src: '/TIL/clogo2.png' },
+    { name: 'MANITOWOC', src: '/TIL/clogo3.png' },
+    { name: 'SNORKEL', src: '/TIL/clogo4.png' },
   ];
 
   return (
@@ -58,7 +58,7 @@ const OurGlobalAssociates = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/global.jpg')",
+          backgroundImage: "url('/TIL/global.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -82,13 +82,6 @@ const OurGlobalAssociates = () => {
           animate={isInView ? "visible" : "hidden"}
           className="text-center"
         >
-          {/* Top Tagline */}
-          <motion.p
-            variants={itemVariants}
-            className="text-xs uppercase tracking-wide text-yellow-400 mb-3"
-          >
-            Customer at its core … since 1944.
-          </motion.p>
 
           {/* Section Heading */}
           <motion.h2

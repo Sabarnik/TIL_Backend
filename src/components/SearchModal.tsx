@@ -7,7 +7,7 @@ const MACHINES = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: '/rough-terrain.png',
+    img: '/TIL/rough-terrain.png',
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -16,7 +16,7 @@ const MACHINES = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: '/truck-cranes.jpeg',
+    img: '/TIL/truck-cranes.jpeg',
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -25,7 +25,7 @@ const MACHINES = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: '/pick-n-carry.png',
+    img: '/TIL/pick-n-carry.png',
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -34,7 +34,7 @@ const MACHINES = [
   {
     id: 'all-terrain',
     title: 'All-Terrain Crane',
-    img: '/grove-range.png',
+    img: '/TIL/grove-range.png',
     specs: ['High speed', '120 t capacity', '60 m boom'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -43,7 +43,7 @@ const MACHINES = [
   {
     id: 'crawler-crane',
     title: 'Crawler Crane',
-    img: '/crawler-cranes.png',
+    img: '/TIL/crawler-cranes.png',
     specs: ['Heavy lifting', '400 t capacity', 'Stable platform'],
     price: '$500,000',
     tag: 'FEATURED',
@@ -52,7 +52,7 @@ const MACHINES = [
   {
     id: 'tower-crane',
     title: 'Tower Crane',
-    img: '/tower-crane.jpg',
+    img: '/TIL/tower-crane.jpg',
     specs: ['High rise', '20 t capacity', '80 m reach'],
     price: '$280,000',
     tag: 'NEW',

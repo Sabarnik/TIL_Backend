@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 interface OfficeInfo {
   location: string
   address?: string
+  image?: string
   contacts: {
     name: string
     position: string
@@ -18,6 +19,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Kolkata: {
     location: 'Kolkata',
     address: '1 Taratala Road, Garden Reach, Kolkata 700024, West Bengal',
+    image: 'kolkata.jpg',
     contacts: [
       {
         name: 'Amal Pal',
@@ -36,6 +38,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Chennai: {
     location: 'Chennai',
     address: 'Jhaver Plaza, 7th Floor 1-A, Nungambakkam High Road, Chennai 600 034, Tamil Nadu',
+    image: 'chennai.jpg',
     contacts: [
       {
         name: 'K.Maruthi Prasad',
@@ -54,6 +57,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   'Delhi NCR': {
     location: 'Delhi NCR',
     address: 'TIL Limited 801-802, 8th Floor, Kalbash Building, 26, Kasturba Gandhi Marg, New Delhi 110 001',
+    image: '/TIL/delhi.jpg',
     contacts: [
       {
         name: 'Laxmi Chandra Shukla',
@@ -72,6 +76,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Mumbai: {
     location: 'Mumbai',
     address: '702, The Affaires, Sector – 17, Sanpada New Mumbai, Maharashtra – 400705',
+    image: '/TIL/mumbai.jpg',
     contacts: [
       {
         name: 'Sibasish Mohapatra',
@@ -90,6 +95,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Singrauli: {
     location: 'Singrauli',
     address: 'Behind Shiv Mandir, Near Reliance Infrastructure, UG Colony, Singrauli 486 888, Dist Singrauli, M.P.',
+    image: '/TIL/singrauli.jpg',
     contacts: [
       {
         name: 'Shailesh Pratap Singh',
@@ -115,27 +121,8 @@ const RegionalOffices = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
-            initial={{ 
-              opacity: 0,
-              letterSpacing: "-0.05em"
-            }}
-            whileInView={{
-              opacity: 1,
-              letterSpacing: "0.02em",
-            }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97]
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-          >
-            OUR NETWORK
-          </motion.span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Regional <span className="text-[#F1B434]">Offices</span>
+            Our Facilities <span className="text-[#F1B434]">and Offices</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
           <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600 leading-relaxed">
@@ -175,26 +162,38 @@ const RegionalOffices = () => {
         >
           {/* Address Box */}
           {OFFICES[activeOffice].address && (
-            <div className="border border-gray-100 rounded-xl p-6 bg-white shadow-sm hover:shadow-md transition-shadow duration-300 flex items-start">
-              <div className="p-2 mr-4 bg-[#F1B434]/10 rounded-lg">
-                <svg className="w-6 h-6 text-[#F1B434]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"
-                  />
-                </svg>
+            <div className="border border-gray-100 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+              <div className="h-48 bg-gray-100 overflow-hidden">
+                <img 
+                  src={OFFICES[activeOffice].image} 
+                  alt={`${activeOffice} office`}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                  }}
+                />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Office Location</h3>
-                <p className="text-gray-600 leading-relaxed">{OFFICES[activeOffice].address}</p>
+              <div className="p-6 flex items-start">
+                <div className="p-2 mr-4 bg-[#F1B434]/10 rounded-lg">
+                  <svg className="w-6 h-6 text-[#F1B434]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Office Location</h3>
+                  <p className="text-gray-600 leading-relaxed">{OFFICES[activeOffice].address}</p>
+                </div>
               </div>
             </div>
           )}

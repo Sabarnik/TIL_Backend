@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, FileText } from 'lucide-react';
 import Hero3D from './Hero3D';
 
 const Hero: React.FC = () => {
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   return (
     <div 
       className="relative h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+      style={{ backgroundImage: "url('/TIL/hero-bg.jpg')" }}
     >
       {/* Dark Gradient Overlay */}
    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#355d73]/50 to-black/50 z-10 pointer-events-none" />
@@ -103,22 +103,31 @@ const Hero: React.FC = () => {
           className={`flex gap-3 ${isMobile ? 'flex-col w-full' : 'flex-col sm:flex-row'}`}
         >
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(241, 178, 0, 0.8)" }}
-            whileTap={{ scale: 0.95 }}
-            className={`group inline-flex items-center justify-center px-6 py-3 bg-gradient-to-l to-[#fbb53d] from-[#eae2b0] via-[#fbb53d]/60 text-black font-bold rounded-xl transition-all duration-300 shadow-xl border border-yellow-400/60 ${isMobile ? 'w-full' : ''}`}
-          >
-            <span className="text-sm lg:text-base">Explore Products</span>
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+                            whileHover={{ 
+                              scale: 1.05, 
+                              boxShadow: "0 0 40px rgba(241, 180, 52, 0.8)" // Using brand yellow
+                            }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`group inline-flex items-center justify-center px-6 py-3 bg-gradient-to-l to-[#f1b434] from-[#ffe353] via-[#f1b434]/60 text-black font-bold rounded-xl transition-all duration-300 shadow-xl border border-yellow-400/60 ${isMobile ? 'w-full' : ''}`}
+                            style={{ fontFamily: 'Arial, sans-serif' }}
+                          >
+                            <span className="text-sm lg:text-base">Explore Products</span>
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(0,0,0,0.85)", borderColor: "#F1B200" }}
-            whileTap={{ scale: 0.95 }}
-            className={`group inline-flex items-center justify-center px-6 py-3 border-2 border-white/80 bg-black/60 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-md hover:text-[#F1B200] shadow-xl ${isMobile ? 'w-full' : ''}`}
-          >
-            <Play className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-            <span className="text-sm lg:text-base">Watch Demo</span>
-          </motion.button>
+                            whileHover={{ 
+                              scale: 1.05, 
+                              backgroundColor: "rgba(0,0,0,0.85)", 
+                              borderColor: "#f1b434" // Using brand yellow
+                            }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`group inline-flex items-center justify-center px-6 py-3 border-2 border-white/80 bg-black/60 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-md hover:text-[#f1b434] shadow-xl ${isMobile ? 'w-full' : ''}`}
+                            style={{ fontFamily: 'Arial, sans-serif' }}
+                          >
+                            <FileText className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
+                            <span className="text-sm lg:text-base">Get Quote</span>
+                          </motion.button>
         </motion.div>
       </motion.div>
     </div>

@@ -4,16 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Hero3D: React.FC = () => {
   const images = [
     {
-      src: '/rough-terrain-crane.png',
+      src: '/TIL/rough-terrain-crane.png',
       className: 'filter brightness-110 contrast-110 saturate-110'
     },
     {
-      src: '/Grove_Range.png',
-      className: 'filter brightness-110 contrast-110 saturate-110 '
+      src: '/TIL/Grove_Range.png',
+      className: 'filter brightness-110 contrast-110 saturate-110'
     },
     {
-      src: '/ok3.png',
-      className: 'filter brightness-110 contrast-110 saturate-110 '
+      src: '/TIL/ok3.png',
+      className: 'filter brightness-110 contrast-110 saturate-110'
     },
   ];
 
@@ -34,45 +34,56 @@ const Hero3D: React.FC = () => {
       {/* Slideshow container */}
       <div className="relative z-20 w-full h-full">
         <AnimatePresence mode="wait">
-        <motion.div
-  key={currentImageIndex}
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: -50 }}
-  transition={{ duration: 1 }}
-  className="absolute inset-0 flex items-center justify-center"
->
-  <div className="relative flex items-center justify-center">
-  {/* Subtle blurred shadow behind image */}
-  <div
-    className="absolute z-0 blur-3xl opacity-40"
-    style={{
-      width: images[currentImageIndex].src === '/rough-terrain-crane.png' ? 'w-full' : 'w-full',
-      height: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '75vh' : '50vh',
-      backgroundImage: `url(${images[currentImageIndex].src})`,
-      backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      filter: 'blur(60px)',
-    }}
-  />
-    <img 
-      src={images[currentImageIndex].src} 
-      alt="Heavy Equipment"
-      className={`w-auto object-contain pr-6 relative z-10 ${
-        images[currentImageIndex].src === '/rough-terrain-crane.png' 
-          ? 'h-[75vh] max-w-[85vw]' 
-          : 'h-[60vh] max-w-full'
-      } ${images[currentImageIndex].className}`}
-      style={{
-        paddingLeft: '1.5rem',
-        height: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '75vh' : '50vh',
-        maxWidth: images[currentImageIndex].src === '/rough-terrain-crane.png' ? '85vw' : '70vw',
-        objectFit: 'contain'
-      }}
-    />
-  </div>
-</motion.div>
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="relative flex items-center justify-center">
+              {/* Subtle blurred shadow behind image */}
+              <div
+                className="absolute z-0 blur-3xl opacity-40"
+                style={{
+                  width: 'w-full',
+                  height: 
+                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '93.75vh' : // 75vh + 25%
+                    images[currentImageIndex].src === '/TIL/ok3.png' ? '82.5vh' : // 66vh + 25%
+                    '47.5vh',
+                  backgroundImage: `url(${images[currentImageIndex].src})`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  filter: 'blur(60px)',
+                }}
+              />
+              <img 
+                src={images[currentImageIndex].src} 
+                alt="Heavy Equipment"
+                className={`w-auto object-contain pr-6 relative z-10 ${
+                  images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' 
+                    ? 'h-[93.75vh] max-w-[106.25vw]' // 85vw + 25%
+                    : images[currentImageIndex].src === '/TIL/ok3.png'
+                    ? 'h-[82.5vh] max-w-[115.5vw]' // 92.4vw + 25%
+                    : 'h-[47.5vh] max-w-[66.5vw]'
+                } ${images[currentImageIndex].className}`}
+                style={{
+                  paddingLeft: '1.5rem',
+                  height: 
+                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '73.75vh' : 
+                    images[currentImageIndex].src === '/TIL/ok3.png' ? '65.5vh' : 
+                    '47.5vh',
+                  maxWidth: 
+                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '106.25vw' : 
+                    images[currentImageIndex].src === '/TIL/ok3.png' ? '115.5vw' : 
+                    '66.5vw',
+                  objectFit: 'contain'
+                }}
+              />
+            </div>
+          </motion.div>
         </AnimatePresence>
 
         {/* Enhanced shadow effect */}

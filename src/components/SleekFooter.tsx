@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FaWhatsapp } from "react-icons/fa";
 import { 
   Phone, 
   Mail, 
@@ -10,16 +11,28 @@ import {
   Linkedin, 
   Youtube,
   ArrowRight,
-  Clock,
-  ChevronRight,
-  X
+  MessageCircle
 } from 'lucide-react';
 
 const SleekFooter: React.FC = () => {
-  const [isEmergencyOpen, setIsEmergencyOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const toggleEmergency = () => {
-    setIsEmergencyOpen(!isEmergencyOpen);
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  const handleEmergencyClick = () => {
+    window.location.href = 'tel:+18004328911';
+  };
+
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/18004328911', '_blank');
   };
 
   const footerLinks = {
@@ -66,100 +79,29 @@ const SleekFooter: React.FC = () => {
 
   return (
     <footer className="bg-[#0f1419] text-white relative">
-      {/* Floating Emergency Button - Right Side */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, delay: 0.6 }}
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+        {/* WhatsApp Button - Original Green Color */}
+        <motion.button
+          onClick={handleWhatsAppClick}
+          className="flex items-center justify-center rounded-full p-4 shadow-lg bg-[#25D366] hover:bg-[#128C7E] transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="WhatsApp chat"
         >
-          <motion.button
-            onClick={toggleEmergency}
-            className={`flex items-center justify-center rounded-full p-4 shadow-lg ${
-              isEmergencyOpen 
-                ? 'bg-[#F1B434]'
-                : 'bg-gradient-to-r from-[#F1B434] to-[#FFE352]'
-            } transition-colors`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Emergency support"
-          >
-            {isEmergencyOpen ? (
-              <X size={20} className="text-white" />
-            ) : (
-              <Phone size={20} className="text-white" />
-            )}
-          </motion.button>
+          <FaWhatsapp size={24} className="text-white" />
+        </motion.button>
 
-          <AnimatePresence>
-            {isEmergencyOpen && (
-              <motion.div
-                className="absolute bottom-full right-0 mb-3 w-72 bg-[#1a2233] rounded-xl shadow-xl overflow-hidden border border-[#F1B434]/20"
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              >
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-bold text-white text-lg flex items-center">
-                      <Phone size={18} className="mr-2 text-[#F1B434]" />
-                      <span>Emergency Support</span>
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-sm text-slate-300 mb-1">24/7 Technical Assistance</p>
-                      <a 
-                        href="tel:+18004328911" 
-                        className="text-xl font-bold text-white hover:text-[#FFE352] transition-colors block"
-                      >
-                        +1 (800) HEAVY-911
-                      </a>
-                    </div>
-                    
-                    <div className="flex items-center space-x-2 text-sm text-slate-400">
-                      <Clock size={14} className="text-[#F1B434]" />
-                      <span>Available round the clock</span>
-                    </div>
-                    
-                    <div className="pt-2">
-                      <p className="text-sm text-slate-300 mb-2">Regional Emergency Contacts:</p>
-                      <ul className="space-y-2 text-sm">
-                        <li>
-                          <a href="tel:+911234567890" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
-                            India: +91 123 456 7890
-                          </a>
-                        </li>
-                        <li>
-                          <a href="tel:+442012345678" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
-                            UK: +44 20 1234 5678
-                          </a>
-                        </li>
-                        <li>
-                          <a href="tel:+6561234567" className="text-slate-300 hover:text-white flex items-center">
-                            <ChevronRight size={14} className="mr-1 text-[#F1B434]" />
-                            Singapore: +65 6123 4567
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-[#1a2233] px-5 py-3 border-t border-[#F1B434]/20">
-                  <p className="text-xs text-slate-400">
-                    For immediate equipment breakdowns or safety concerns
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        {/* Emergency Call Button */}
+        <motion.button
+          onClick={handleEmergencyClick}
+          className="flex items-center justify-center rounded-full p-4 shadow-lg bg-gradient-to-r from-[#F1B434] to-[#FFE352] hover:from-[#F1B434] hover:to-[#FFE352]/90 transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Emergency support"
+        >
+          <Phone size={20} className="text-white" />
+        </motion.button>
       </div>
 
       {/* Main Footer Content */}
@@ -182,7 +124,7 @@ const SleekFooter: React.FC = () => {
                 >
                   <a href="/" className="flex items-center">
                     <img 
-                      src="./logo1.png" 
+                      src="/TIL/logo1.png" 
                       alt="TIL India" 
                       className="h-15 w-auto brightness-0 invert"
                     />

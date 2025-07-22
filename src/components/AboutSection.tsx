@@ -4,7 +4,7 @@ import { Target, Shield, Building2, Globe } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
   const achievements = [
-    { icon: Target, value: '75+', label: 'Years Experience' },
+    { icon: Target, value: '80+', label: 'Years In Material Handling' },
     { icon: Shield, value: '95%', label: 'Customer Satisfaction' },
     { icon: Building2, value: '10K+', label: 'Equipment Delivered' },
     { icon: Globe, value: '25+', label: 'Countries Served' }
@@ -107,7 +107,7 @@ const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl h-64 sm:h-80 md:h-96 lg:h-full">
               <motion.img
-                src="/crawler-cranes.png"
+                src="/TIL/about.jpg"
                 alt="TIL Limited heavy equipment"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.05 }}

@@ -107,31 +107,31 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Milestones',
           description: 'Key achievements in our journey',
-          image: '/milestone.png'
+          image: '/TIL/milestone.png'
         },
         {
           name: 'Awards & Recognition',
           description: 'Industry accolades and certifications',
-          image: '/awards.jpg'
+          image: '/TIL/awards.jpg'
         },
         {
           name: 'Global Presence',
           description: 'Our international footprint and partnerships',
-          image: '/global-presence.jpg'
+          image: '/TIL/global-presence.jpg'
         },
         {
           name: 'Manufacturing Facilities',
           description: 'State-of-the-art production plants',
-          image: '/manufacturing.jpg'
+          image: '/TIL/manufacturing.jpg'
         },
         {
           name: 'Quality Standards',
           description: 'Our commitment to excellence',
-          image: '/quality-standards.jpg'
+          image: '/TIL/quality-standards.jpg'
         }
       ],
       media: {
-        image: '/legacy.jpg',
+        image: '/TIL/legacy.jpg',
         title: 'Our Legacy',
         description: '80+ years of engineering excellence in construction and material handling equipment.',
         cta: 'Learn More',
@@ -143,26 +143,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Board of Directors',
           description: 'Meet our governing body and strategic advisors',
-          image: '/board-directors.jpg'
+          image: '/TIL/board-directors.jpg'
         },
         {
           name: 'Executive Team',
           description: 'Our day-to-day leadership team',
-          image: '/executive-team.jpg'
+          image: '/TIL/executive-team.jpg'
         },
         {
           name: 'Management Committee',
           description: 'Department heads and functional leaders',
-          image: '/management-committee.jpg'
+          image: '/TIL/management-committee.jpg'
         },
         {
           name: 'Advisory Board',
           description: 'Industry experts guiding our strategy',
-          image: '/advisory-board.jpg'
+          image: '/TIL/advisory-board.jpg'
         }
       ],
       media: {
-        image: '/leadership.jpg',
+        image: '/TIL/leadership.jpg',
         title: 'Leadership Team',
         description: 'Experienced leaders driving innovation and growth in the construction industry.',
         cta: 'Meet Our Team',
@@ -174,26 +174,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Foundation & Early Years',
           description: 'Our humble beginnings and initial successes',
-          image: '/foundation.jpg'
+          image: '/TIL/foundation.jpg'
         },
         {
           name: 'Key Innovations',
           description: 'Breakthrough products and technologies',
-          image: '/innovations.jpg'
+          image: '/TIL/innovations.jpg'
         },
         {
           name: 'Expansion Phases',
           description: 'Growth of our operations and facilities',
-          image: '/expansion.jpg'
+          image: '/TIL/expansion.jpg'
         },
         {
           name: 'Recent Achievements',
           description: 'Our latest accomplishments and awards',
-          image: '/achievements.jpg'
+          image: '/TIL/achievements.jpg'
         }
       ],
       media: {
-        image: '/milestone.png',
+        image: '/TIL/milestone.png',
         title: 'Our Journey',
         description: 'Key milestones that define our growth and success in the industry.',
         cta: 'View Timeline',
@@ -205,26 +205,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Mission Statement',
           description: 'Our purpose and reason for being',
-          image: '/mission.jpg'
+          image: '/TIL/mission.jpg'
         },
         {
           name: 'Vision 2030',
           description: 'Our aspirations for the future',
-          image: '/vision.jpg'
+          image: '/TIL/vision.jpg'
         },
         {
           name: 'Core Values',
           description: 'Principles that guide our actions',
-          image: '/values.jpg'
+          image: '/TIL/values.jpg'
         },
         {
           name: 'Ethics & Integrity',
           description: 'Our commitment to doing business right',
-          image: '/ethics.jpg'
+          image: '/TIL/ethics.jpg'
         }
       ],
       media: {
-        image: '/vision.jpg',
+        image: '/TIL/vision.jpg',
         title: 'Our Values',
         description: 'Committed to excellence, innovation, and sustainable growth.',
         cta: 'Our Philosophy',
@@ -236,26 +236,26 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Environmental Policy',
           description: 'Our commitment to sustainable operations',
-          image: '/environmental.jpg'
+          image: '/TIL/environmental.jpg'
         },
         {
           name: 'Green Manufacturing',
           description: 'Eco-friendly production processes',
-          image: '/green-manufacturing.jpg'
+          image: '/TIL/green-manufacturing.jpg'
         },
         {
           name: 'Community Impact',
           description: 'Initiatives that benefit local communities',
-          image: '/community.jpg'
+          image: '/TIL/community.jpg'
         },
         {
           name: 'Employee Welfare',
           description: 'Programs for our workforce wellbeing',
-          image: '/employee-welfare.jpg'
+          image: '/TIL/employee-welfare.jpg'
         }
       ],
       media: {
-        image: '/social.jpg',
+        image: '/TIL/social.jpg',
         title: 'Sustainability',
         description: 'Leading the way in environmentally responsible manufacturing and operations.',
         cta: 'Green Initiatives',
@@ -267,21 +267,21 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Business Ethics',
           description: 'Our standards for ethical business practices',
-          image: '/ethics.jpg'
+          image: '/TIL/ethics.jpg'
         },
         {
           name: 'Anti-Corruption',
           description: 'Policies against bribery and corruption',
-          image: '/anti-corruption.jpg'
+          image: '/TIL/anti-corruption.jpg'
         },
         {
           name: 'Compliance Framework',
           description: 'Ensuring adherence to laws and regulations',
-          image: '/compliance.jpg'
+          image: '/TIL/compliance.jpg'
         }
       ],
       media: {
-        image: '/code_of_conduct.png',
+        image: '/TIL/code_of_conduct.png',
         title: 'Code of Conduct',
         description: 'Our commitment to ethical business practices and corporate governance.',
         cta: 'View Policy',
@@ -298,21 +298,21 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Manufacturing Plants',
           description: 'State-of-the-art production facilities',
-          image: '/plants.jpg'
+          image: '/TIL/plants.jpg'
         },
         {
           name: 'R&D Centers',
           description: 'Innovation hubs driving product development',
-          image: '/rd-centers.jpg'
+          image: '/TIL/rd-centers.jpg'
         },
         {
           name: 'Regional Offices',
           description: 'Our presence across India',
-          image: '/regional-offices.jpg'
+          image: '/TIL/regional-offices.jpg'
         }
       ],
       media: {
-        image: '/facilities.jpg',
+        image: '/TIL/facilities.jpg',
         title: 'Our Facilities',
         description: 'World-class manufacturing plants and offices supporting our operations.',
         cta: 'Virtual Tour',
@@ -623,30 +623,30 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Truck Cranes',
           description: 'High-capacity cranes ideal for tall construction sites',
-          image: '/truck-cranes.jpeg',
+          image: '/TIL/truck-cranes.jpeg',
           features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
         },
         {
           name: 'Pick n Carry Cranes',
           description: 'Mobile cranes suitable for fast on-site operations',
-          image: '/pick-n-carry.png',
+          image: '/TIL/pick-n-carry.png',
           features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
         },
         {
           name: 'Rough Terrain Cranes',
           description: 'Designed for challenging job site conditions',
-          image: '/rough-terrain.png',
+          image: '/TIL/rough-terrain.png',
           features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
         },
         {
           name: 'Articulating Cranes',
           description: 'Flexible, jointed cranes ideal for tight spaces',
-          image: '/articulating.jpg',
+          image: '/TIL/articulating.jpg',
           features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
         }
       ],
       media: {
-        image: '/articulating.jpg',
+        image: '/TIL/articulating.jpg',
         title: 'TIL Product Range',
         description: 'Comprehensive lifting solutions for all your construction needs.',
         cta: 'View All Products',
@@ -658,18 +658,18 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Grove Range',
           description: 'Smart lifting solutions engineered for precision and durability',
-          image: '/grove-range.png',
+          image: '/TIL/grove-range.png',
           features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
         },
         {
           name: 'Crawler Cranes',
           description: 'Robust tracked cranes for heavy-duty lifting',
-          image: '/crawler-cranes.png',
+          image: '/TIL/crawler-cranes.png',
           features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
         }
       ],
       media: {
-        image: '/crawler-cranes.png',
+        image: '/TIL/crawler-cranes.png',
         title: 'Latest Innovations',
         description: 'Cutting-edge technology and smart features for enhanced productivity.',
         cta: 'Explore New Tech',
@@ -681,18 +681,18 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Forklift Trucks',
           description: 'Efficient material handling for warehouses and logistics',
-          image: '/forklift.png',
+          image: '/TIL/forklift.png',
           features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
         },
         {
           name: 'Reachstackers',
           description: 'Container handling equipment for ports and yards',
-          image: '/reachstackers.png',
+          image: '/TIL/reachstackers.png',
           features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
         }
       ],
       media: {
-        image: '/forklift.png',
+        image: '/TIL/forklift.png',
         title: 'Proven Performers',
         description: 'Most trusted equipment by businesses across India.',
         cta: 'Request Demo',
@@ -704,12 +704,12 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Boom Lifts',
           description: 'Elevated work platforms for maintenance and construction',
-          image: '/boomlifts.png',
+          image: '/TIL/boomlifts.png',
           features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
         }
       ],
       media: {
-        image: '/boomlifts.png',
+        image: '/TIL/boomlifts.png',
         title: 'Complete Support',
         description: 'Comprehensive after-sales support and services.',
         cta: 'Service Support',
@@ -997,7 +997,7 @@ const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose 
         { name: 'Annual Reports', description: 'Download annual reports and disclosures' },
       ],
       media: {
-        image: '/corporate-governance.jpg',
+        image: '/TIL/corporate-governance.jpg',
         title: 'Corporate Governance',
         description:
           'TIL is committed to maintaining the highest standards of corporate governance and ethics, ensuring transparency and accountability to our stakeholders.',
@@ -1012,7 +1012,7 @@ const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose 
         { name: 'Registrar & Transfer Agent', description: 'Contact info for shareholder services' },
       ],
       media: {
-        image: '/shareholders.jpg',
+        image: '/TIL/shareholders.jpg',
         title: 'Shareholders Information',
         description:
           'Access detailed information for shareholders including ownership patterns, dividends, and investor services.',
@@ -1027,7 +1027,7 @@ const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose 
         { name: 'Credit Ratings', description: 'Credit rating details and reports' },
       ],
       media: {
-        image: '/financials.jpg',
+        image: '/TIL/financials.jpg',
         title: 'Financials',
         description:
           'Stay updated with TIL’s financial performance through detailed reports and market data.',
@@ -1042,7 +1042,7 @@ const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose 
         { name: 'Investor Alerts', description: 'Alerts and notifications for investors' },
       ],
       media: {
-        image: '/notice.jpg',
+        image: '/TIL/notice.jpg',
         title: 'Notice',
         description:
           'Keep track of important notices, press releases, and official communications from TIL.',
@@ -1299,7 +1299,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         }
       ],
       media: {
-        image: '/maintenance.jpg',
+        image: '/TIL/maintenance.jpg',
         title: 'Maintenance Contracts',
         description: 'Keep your machines in peak condition with our comprehensive annual maintenance services. Our expert technicians provide preventive care, emergency support, and lifecycle management to maximize your equipment uptime and ROI.',
         cta: 'Download Brochure'
@@ -1329,7 +1329,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         }
       ],
       media: {
-        image: '/parts-banner.jpg',
+        image: '/TIL/parts-banner.jpg',
         title: 'Parts & Warehouse',
         description: 'Rapid access to critical parts with optimized logistics and warehouse coverage. Our centralized inventory system ensures authentic TIL parts are available when you need them most.',
         cta: 'Check Availability'
@@ -1359,7 +1359,7 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         }
       ],
       media: {
-        image: '/training-banner.jpg',
+        image: '/TIL/training-banner.jpg',
         title: 'Training Programs',
         description: 'Empower your workforce with certified technical and operator training. Our comprehensive modules cover safety protocols, operational efficiency, and maintenance best practices.',
         cta: 'Training Calendar'
@@ -1370,31 +1370,31 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
         {
           name: 'Kolkata Service Center',
           description: 'Full-service support for Eastern India operations',
-          image: '/Kolkata.avif'
+          image: '/TIL/Kolkata.avif'
         },
         {
           name: 'Chennai Service Center',
           description: 'Comprehensive support for Southern region',
-          image: '/chennai.avif'
+          image: '/TIL/chennai.avif'
         },
         {
           name: 'Delhi NCR Service Center',
           description: 'Strategic support hub for Northern India',
-          image: '/delhi.avif'
+          image: '/TIL/delhi.avif'
         },
         {
           name: 'Mumbai Service Center',
           description: 'West zone operational support center',
-          image: '/mumbai.avif'
+          image: '/TIL/mumbai.avif'
         },
         {
           name: 'Singrauli Service Depot',
           description: 'Industrial logistics and support in central India',
-          image: '/singrauli.jpeg'
+          image: '/TIL/singrauli.jpeg'
         }
       ],
       media: {
-        image: '/location-banner.png',
+        image: '/TIL/location-banner.png',
         title: 'Service Locations',
         description: 'Our nationwide network of service centers and support facilities ensures prompt response times and local expertise across all major industrial regions in India.',
         cta: 'View Network'
@@ -1713,7 +1713,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'How to Buy a Reachstacker? 6 Factors to Consider',
           description: 'When comparing reachstackers, the specifications listed on paper are only the first step. If you..',
-          image: '/blog1.png',
+          image: '/TIL/blog1.png',
           link: '/blogs/reachstacker-buying-guide',
           type: 'blog',
           date: '2024-12-15'
@@ -1721,7 +1721,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: '6 Powerful Cranes Used in Modern Construction',
           description: 'Let\'s be real—on any serious construction site, cranes aren\'t treated as just any other machine...',
-          image: '/blog2.jpg',
+          image: '/TIL/blog2.jpg',
           link: '/blogs/modern-construction-cranes',
           type: 'blog',
           date: '2024-12-10'
@@ -1729,7 +1729,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: '7 Proven Ways Rough Terrain Cranes Power Up Business Efficiency',
           description: 'In the world of construction and heavy lifting, the right equipment isn\'t just helpful—it\'s business critical...',
-          image: '/blog3.jpg',
+          image: '/TIL/blog3.jpg',
           link: '/blogs/rough-terrain-crane-efficiency',
           type: 'blog',
           date: '2024-12-05'
@@ -1737,14 +1737,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'The Ultimate Rough Terrain Cranes Guide in 2025 For Your Next Project',
           description: 'When you picture a Rough Terrain crane, you probably imagine a beastly machine...',
-          image: '/blog4.jpg',
+          image: '/TIL/blog4.jpg',
           link: '/blogs/rough-terrain-cranes-guide-2025',
           type: 'blog',
           date: '2024-11-28'
         },
       ],
       media: {
-        image: '/Media-page.jpg',
+        image: '/TIL/Media-page.jpg',
         title: 'Industry Insights',
         description: 'Stay ahead with our expert analysis, equipment guides, and industry best practices.',
         cta: 'Read All Blogs',
@@ -1758,7 +1758,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           description: 'What’s it like to operate a Hyster TIL ReachStacker in one of India’s busiest logistics hubs?',
           videoId: 'RDgU-xTDyZc',
           embedUrl: 'https://www.youtube.com/embed/RDgU-xTDyZc',
-          thumbnail: '/video1.jpg',
+          thumbnail: '/TIL/video1.jpg',
           link: 'https://youtu.be/RDgU-xTDyZc',
           type: 'youtube',
           duration: '4:32'
@@ -1768,7 +1768,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           description: 'Join us as Mr. Rajesh Wazarkar, MD of Hyster India, shares his favorite features of TIL’s new High Series Reach Stacker...',
           videoId: 'ABC123XYZ',
           embedUrl: 'https://www.youtube.com/embed/ABC123XYZ',
-          thumbnail: '/video2.jpg',
+          thumbnail: '/TIL/video2.jpg',
           link: 'https://youtu.be/wavwFvrs128',
           type: 'youtube',
           duration: '8:15'
@@ -1778,7 +1778,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           description: 'In this exclusive conversation with Mr. Jayanta Kumar Patra, Production Head at TIL Limited, we trace the incredible journey of our factory...',
           videoId: 'DEF456GHI',
           embedUrl: 'https://www.youtube.com/embed/DEF456GHI',
-          thumbnail: '/video3.jpg',
+          thumbnail: '/TIL/video3.jpg',
           link: 'https://youtu.be/omGk8PMTtX8',
           type: 'youtube',
           duration: '6:45'
@@ -1788,14 +1788,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           description: 'Revolutionizing Material Handling! In this exclusive interview, Ben Newey, VP of Sales & Marketing APIC at Hyster-Yale Materials Handling...',
           videoId: 'JKL789MNO',
           embedUrl: 'https://www.youtube.com/embed/JKL789MNO',
-          thumbnail: '/video4.jpg',
+          thumbnail: '/TIL/video4.jpg',
           link: 'https://youtu.be/aAM7PIMA25k',
           type: 'youtube',
           duration: '5:20'
         }
       ],
       media: {
-        image: '/Media-page.jpg',
+        image: '/TIL/Media-page.jpg',
         title: 'Video Library',
         description: 'Comprehensive collection of product demos, training videos, and customer testimonials.',
         cta: 'Watch All Videos',
@@ -1807,7 +1807,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Smart Manufacturing and Enterprises',
           description: 'We will launch new cranes and forklifts in next 4 years',
-          image: '/news1.png',
+          image: '/TIL/news1.png',
           link: '/news/new-manufacturing-facility',
           type: 'news',
           date: '2024-12-20'
@@ -1815,7 +1815,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'NDTV',
           description: 'TIL Forms Strategic Business Unit Supporting Its Defence Portfolio Read mo...',
-          image: '/news2.jpg',
+          image: '/TIL/news2.jpg',
           link: '/news/strategic-partnership',
           type: 'news',
           date: '2024-12-18'
@@ -1823,7 +1823,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'EPC&I',
           description: 'Built to Meet the Toughest Demands',
-          image: '/news3.png',
+          image: '/TIL/news3.png',
           link: '/news/innovation-award',
           type: 'news',
           date: '2024-12-15'
@@ -1831,14 +1831,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Equipment Times',
           description: 'Handling The Future! MHE\'s Role in Construction & Infrastructure',
-          image: '/news4.png',
+          image: '/TIL/news4.png',
           link: '/news/q4-2024-results',
           type: 'news',
           date: '2024-12-12'
         }
       ],
       media: {
-        image: '/Media-page.jpg',
+        image: '/TIL/Media-page.jpg',
         title: 'Latest News',
         description: 'Stay informed with our latest announcements, partnerships, and industry developments.',
         cta: 'Read All News',
@@ -1850,7 +1850,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Construction And Architecture Magazine',
           description: 'FUELING INNOVATION AND GROWTH IN INDIA\'S MATERIAL HANDLING AND CONSTRUCTION...',
-          image: '/til1.png',
+          image: '/TIL/til1.png',
           link: '/til/bauma-2024-highlights',
           type: 'event',
           date: '2024-10-15'
@@ -1858,7 +1858,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Construction And Architecture Magazine',
           description: 'TIL: A LEGACY OF INNOVATION AND STRATEGIC GROWTH IN MATERIAL HANDLING AT BA...',
-          image: '/til2.jpeg',
+          image: '/TIL/til2.jpeg',
           link: '/til/smart-crane-controls',
           type: 'event',
           date: '2024-10-12'
@@ -1866,7 +1866,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'BAUMA 2024',
           description: 'We are committed to increasing local manufacturing in India.',
-          image: '/til3.jpg',
+          image: '/TIL/til3.jpg',
           link: '/til/sustainability-initiatives',
           type: 'event',
           date: '2024-10-10'
@@ -1874,14 +1874,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Construction Week',
           description: 'Bauma ConExpo India 2024: TIL debuts Snorkel A62JRT articulating boom lift',
-          image: '/til4.jpg',
+          image: '/TIL/til4.jpg',
           link: '/til/customer-experience-center',
           type: 'event',
           date: '2024-10-08'
         }
       ],
       media: {
-        image: '/Media-page.jpg',
+        image: '/TIL/Media-page.jpg',
         title: 'TIL@bauma2024',
         description: 'Discover innovations and highlights from Bauma 2024 and our ongoing technology initiatives.',
         cta: 'Explore TIL',
@@ -1892,33 +1892,33 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       items: [
         {
           title: 'TIL Annual Picnic',
-          image: '/event1.jpeg',
+          image: '/TIL/event1.jpeg',
           link: '/events/conexpo-2025',
           date: '2025-03-14',
         },
         {
           title: 'Republic day 2025 celebration at TIL',
-          image: '/event2.jpeg',
+          image: '/TIL/event2.jpeg',
           link: '/events/operator-training-workshop',
     
           date: '2025-02-20',
         },
         {
           title: 'TIL 49th AGM',
-          image: '/event3.jpg',
+          image: '/TIL/event3.jpg',
           link: '/events/infrastructure-summit',
 
           date: '2025-02-15',
         },
         {
           title: 'Viswakarma Puja 2024',
-          image: '/event4.jpg',
+          image: '/TIL/event4.jpg',
           link: '/events/customer-appreciation',
           date: '2025-01-30',
         }
       ],
       media: {
-        image: '/Media-page.jpg',
+        image: '/TIL/Media-page.jpg',
         title: 'Upcoming Events',
         description: 'Join us at our upcoming events, trade shows, and training sessions worldwide.',
         cta: 'View All Events',
@@ -1930,7 +1930,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'TIL Limited Reports Record Q4 2024 Performance',
           description: 'Official press release detailing financial results and growth milestones.',
-          image: '/press1.jpg',
+          image: '/TIL/press1.jpg',
           link: '/press/q4-2024-performance',
           type: 'press',
           date: '2024-12-22'
@@ -1938,7 +1938,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'New CEO Appointment Announcement',
           description: 'Leadership transition and strategic vision for the company\'s future.',
-          image: '/press2.jpg',
+          image: '/TIL/press2.jpg',
           link: '/press/new-ceo-appointment',
           type: 'press',
           date: '2024-12-20'
@@ -1946,7 +1946,7 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'Environmental Sustainability Initiative Launch',
           description: 'Commitment to carbon neutrality and sustainable manufacturing practices.',
-          image: '/press3.jpg',
+          image: '/TIL/press3.jpg',
           link: '/press/sustainability-initiative',
           type: 'press',
           date: '2024-12-18'
@@ -1954,14 +1954,14 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           title: 'International Expansion Plans Revealed',
           description: 'Strategic expansion into new markets and establishment of regional offices.',
-          image: '/press4.jpg',
+          image: '/TIL/press4.jpg',
           link: '/press/international-expansion',
           type: 'press',
           date: '2024-12-15'
         }
       ],
       media: {
-        image: '/media.jpg',
+        image: '/TIL/media.jpg',
         title: 'Press Releases',
         description: 'Official company announcements, press statements, and media resources.',
         cta: 'View All Press',
@@ -1972,56 +1972,56 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       items: [
         {
           title: 'Rough Terrain Cranes',
-          image: '/rough-terrain.png',
+          image: '/TIL/rough-terrain.png',
           link: '/downloads/product-catalog-2025.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Truck Cranes',
-          image: '/truck-cranes.jpeg',
-          link: '/downloads/crane-safety-manual.pdf',
+          image: '/TIL/truck-cranes.jpeg',
+          link: '/TIL/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Pick-n-Carry Crane',
-          image: '/pick-n-carry.png',
+          image: '/TIL/pick-n-carry.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Grove™ Range',
-          image: '/grove-range.png',
+          image: '/TIL/grove-range.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Crawler Crane',
-          image: '/crawler-cranes.png',
+          image: '/TIL/crawler-cranes.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'ReachStacker',
-          image: '/reachstackers.png',
+          image: '/TIL/reachstackers.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Forklift Truck',
-          image: '/forklift.png',
+          image: '/TIL/forklift.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         },
         {
           title: 'Boom Lift',
-          image: '/boomlifts.png',
+          image: '/TIL/boomlifts.png',
           link: '/downloads/crane-safety-manual.pdf',
           fileType: 'PDF'
         }
         
       ],
       media: {
-        image: '/free.jpeg',
+        image: '/TIL/free.jpeg',
         title: 'TIL Coffee Table Book',
         description: 'Access our comprehensive library of brochures, manuals, and technical documents.',
         cta: 'Browse All Downloads',
@@ -2533,7 +2533,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/life.jpg',
+        image: '/TIL/life.jpg',
         title: 'Life @TIL',
         description: 'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
         cta: 'Explore Culture'
@@ -2544,37 +2544,37 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {
           name: 'Pinaki Niyogy',
           title: 'Chief Executive Officer',
-          image: '/pinaki.jpg'
+          image: '/TIL/pinaki.jpg'
         },
         {
           name: 'Arvind Rishi',
           title: 'AVP- Sales & After Market',
-          image: '/arvind.jpeg'
+          image: '/TIL/arvind.jpeg'
         },
         {
           name: 'Mr. Kanhaiya Gupta',
           title: 'Chief Financial Officer',
-          image: '/Kanhaiya.png'
+          image: '/TIL/Kanhaiya.png'
         },
         {
           name: 'Ms. Shamita Nandi',
           title: 'Chief Human Resource Officer',
-          image: '/Shamita.png'
+          image: '/TIL/Shamita.png'
         },
         {
           name: 'Chandrani Chatterjee',
           title: 'Company Secretary',
-          image: '/chandrani.jpg'
+          image: '/TIL/chandrani.jpg'
         },
         {
           name: 'Mr. Saikat Bagchi',
           title: 'Head - Supply Chain & Commercial',
-          image: '/saiket.png'
+          image: '/TIL/saiket.png'
         },
         {
           name: 'Rishabh P Nair',
           title: 'Head Of Brand, Content & PR',
-          image: '/Risabh.png'
+          image: '/TIL/Risabh.png'
         }
       ],
       media: {
@@ -2630,7 +2630,7 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       ],
       media: {
-        image: '/equal.jpg',
+        image: '/TIL/equal.jpg',
         title: 'Equal Opportunity',
         description: 'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
         cta: 'Our Policy'
@@ -2905,35 +2905,35 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       points: [
         {
           name: 'Kolkata',
-          image: '/Kolkata.avif',
+          image: '/TIL/Kolkata.avif',
           title: 'Kolkata',
           description: 'Corporate headquarters of TIL, located in the heart of the city.',
           cta: 'View Kolkata Office'
         },
         {
           name: 'Chennai',
-          image: '/chennai.avif',
+          image: '/TIL/chennai.avif',
           title: 'Chennai',
           description: 'Serving the southern region with excellence.',
           cta: 'View Chennai Office'
         },
         {
           name: 'Delhi NCR',
-          image: '/delhi.avif',
+          image: '/TIL/delhi.avif',
           title: 'Delhi NCR ',
           description: 'Our strategic presence in the capital region.',
           cta: 'View Delhi NCR Office'
         },
         {
           name: 'Mumbai',
-          image: '/mumbai.avif',
+          image: '/TIL/mumbai.avif',
           title: 'Mumbai',
           description: 'West zone operational hub for TIL.',
           cta: 'View Mumbai Office'
         },
         {
           name: 'Singrauli',
-          image: '/singrauli.jpeg',
+          image: '/TIL/singrauli.jpeg',
           title: 'Singrauli',
           description: 'Industrial logistics and support in central India.',
           cta: 'View Singrauli Depot'

@@ -2,7 +2,7 @@
 
 import { type FC, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Mail } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export interface Machine {
   id: string
@@ -17,7 +17,7 @@ const MACHINES: Machine[] = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: '/rough-terrain.png',
+    img: '/TIL/rough-terrain.png',
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -25,7 +25,7 @@ const MACHINES: Machine[] = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: '/truck-cranes.jpeg',
+    img: '/TIL/truck-cranes.jpeg',
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -33,7 +33,7 @@ const MACHINES: Machine[] = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: '/pick-n-carry.png',
+    img: '/TIL/pick-n-carry.png',
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -41,7 +41,7 @@ const MACHINES: Machine[] = [
   {
     id: 'grove',
     title: 'Grove™ Range',
-    img: '/grove-range.png',
+    img: '/TIL/grove-range.png',
     specs: ['Telescopic boom', 'Full-power lift', '300 t max'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -49,7 +49,7 @@ const MACHINES: Machine[] = [
   {
     id: 'crawler',
     title: 'Crawler Crane',
-    img: '/crawler-cranes.png',
+    img: '/TIL/crawler-cranes.png',
     specs: ['Mud-friendly', '400 t max', 'Wide tracks'],
     price: '$420,000',
     tag: 'POPULAR',
@@ -57,7 +57,7 @@ const MACHINES: Machine[] = [
   {
     id: 'reachstacker',
     title: 'ReachStacker',
-    img: '/reachstackers.png',
+    img: '/TIL/reachstackers.png',
     specs: ['Container lift', '45 t', 'Port-grade power'],
     price: '$150,000',
     tag: 'POPULAR',
@@ -65,7 +65,7 @@ const MACHINES: Machine[] = [
   {
     id: 'forklift',
     title: 'Forklift Truck',
-    img: '/forklift.png',
+    img: '/TIL/forklift.png',
     specs: ['Warehouse pro', '3 t lift', 'Electric / Diesel'],
     price: '$45,000',
     tag: 'POPULAR',
@@ -73,7 +73,7 @@ const MACHINES: Machine[] = [
   {
     id: 'boom-lift',
     title: 'Boom Lift',
-    img: '/boomlifts.png',
+    img: '/TIL/boomlifts.png',
     specs: ['45 m reach', 'Hybrid drive', '360° rotation'],
     price: '$75,000',
     tag: 'NEW',
@@ -137,7 +137,7 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
         {machine.title}
       </motion.span>
 
-      {/* Always visible Get Quote button */}
+      {/* Always visible Explore Now button */}
       <motion.button
         className={`absolute flex items-center justify-center gap-1 text-white px-3 py-1.5 rounded-lg text-xs z-10 ${
           isHovered ? 'bottom-4 right-4' : 'bottom-4 left-1/2 -translate-x-1/2'
@@ -153,8 +153,8 @@ const ProductCard: FC<{ machine: Machine; isActive: boolean }> = ({
           ease: "easeInOut"
         }}
       >
-        <Mail size={12} />
-        Get Quote
+        <ArrowRight size={12} />
+        Explore Now
       </motion.button>
 
       {/* Hover overlay with details */}
@@ -266,27 +266,9 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
     <section className="py-8 md:py-16 bg-gradient-to-b from-[#f8f9fa] to-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8 md:mb-12">
-          <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
-            initial={{ 
-              opacity: 0,
-              letterSpacing: "-0.05em"
-            }}
-            whileInView={{
-              opacity: 1,
-              letterSpacing: "0.02em",
-            }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97]
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-          >
-            PREMIUM MACHINERY
-          </motion.span>
+          
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            Our Machinery <span className="text-[#F1B434]">Collection</span>
+            Our Product <span className="text-[#F1B434]">Portfolio</span>
           </h2>
            <div className="w-24 h-1 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full"></div>
 
