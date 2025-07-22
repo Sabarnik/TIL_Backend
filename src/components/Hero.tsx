@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
             >
-              HEAVY
+              ENGINEERING 
             </motion.span>
             <motion.span
               className="block text-[#fbb53d]"
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 1.1 }}
             >
-              DUTY
+              EXCELLENCE
             </motion.span>
             <motion.span
               className="block text-white text-2xl md:text-3xl lg:text-4xl font-light"
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3 }}
             >
-              Excellence
+              SINCE 1944
             </motion.span>
           </h1>
 
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5 }}
           >
-            Precision-engineered machinery for the world’s toughest jobs.
+            Through equipment you can trust.
           </motion.p>
         </motion.div>
 
