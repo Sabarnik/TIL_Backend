@@ -48,7 +48,7 @@ const OFFICES: Record<string, OfficeInfo> = {
       },
       {
         name: 'V.Jayanarasimhan',
-        position: 'Customer Supports',
+        position: 'Customer Support',
         phone: '+91 9790973502',
         email: 'Jaya.Narasimhan@tilindia.com'
       }
@@ -86,7 +86,7 @@ const OFFICES: Record<string, OfficeInfo> = {
       },
       {
         name: 'Surajit Dey',
-        position: 'Customer Supports',
+        position: 'Customer Support',
         phone: '+91 993001962',
         email: 'surajit.Dey@tilindia.com'
       }
@@ -99,7 +99,7 @@ const OFFICES: Record<string, OfficeInfo> = {
     contacts: [
       {
         name: 'Shailesh Pratap Singh',
-        position: 'Customer Supports',
+        position: 'Customer Support',
         phone: '+91 7878403811, 7275776484',
         email: 'Shailesh.PratapSingh@tilindla.com'
       }
