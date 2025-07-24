@@ -3,11 +3,13 @@ import { useSearch } from '../context/SearchContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search } from 'lucide-react';
 
-const MACHINES = [
+const IMAGE_BASE = __IMAGE_BASE_PATH__; // Safe because Vite replaces this at build time
+
+export const MACHINES = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: '/TIL/rough-terrain.png',
+    img: `${IMAGE_BASE}/rough-terrain.png`,
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -16,7 +18,7 @@ const MACHINES = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: '/TIL/truck-cranes.jpeg',
+    img: `${IMAGE_BASE}/truck-cranes.jpeg`,
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -25,7 +27,7 @@ const MACHINES = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: '/TIL/pick-n-carry.png',
+    img: `${IMAGE_BASE}/pick-n-carry.png`,
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -34,7 +36,7 @@ const MACHINES = [
   {
     id: 'all-terrain',
     title: 'All-Terrain Crane',
-    img: '/TIL/grove-range.png',
+    img: `${IMAGE_BASE}/grove-range.png`,
     specs: ['High speed', '120 t capacity', '60 m boom'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -43,7 +45,7 @@ const MACHINES = [
   {
     id: 'crawler-crane',
     title: 'Crawler Crane',
-    img: '/TIL/crawler-cranes.png',
+    img: `${IMAGE_BASE}/crawler-cranes.png`,
     specs: ['Heavy lifting', '400 t capacity', 'Stable platform'],
     price: '$500,000',
     tag: 'FEATURED',
@@ -52,7 +54,7 @@ const MACHINES = [
   {
     id: 'tower-crane',
     title: 'Tower Crane',
-    img: '/TIL/tower-crane.jpg',
+    img: `${IMAGE_BASE}/tower-crane.jpg`,
     specs: ['High rise', '20 t capacity', '80 m reach'],
     price: '$280,000',
     tag: 'NEW',

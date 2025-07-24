@@ -107,7 +107,7 @@ const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl h-64 sm:h-80 md:h-96 lg:h-full">
               <motion.img
-                src="/TIL/about.jpg"
+                src={`${__IMAGE_BASE_PATH__}/about.jpg`}
                 alt="TIL Limited heavy equipment"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.05 }}

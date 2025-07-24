@@ -31,7 +31,7 @@ import {
   X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+const IMAGE_BASE = __IMAGE_BASE_PATH__;
 
 const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('company');
@@ -96,230 +96,234 @@ const AboutMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   ];
 
-  const submenuData = {
-    'company': {
-      items: [
-        {
-          name: 'Company History',
-          description: 'Explore our 80+ years of engineering excellence',
-          image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-        },
-        {
-          name: 'Milestones',
-          description: 'Key achievements in our journey',
-          image: '/TIL/milestone.png'
-        },
-        {
-          name: 'Awards & Recognition',
-          description: 'Industry accolades and certifications',
-          image: '/TIL/awards.jpg'
-        },
-        {
-          name: 'Global Presence',
-          description: 'Our international footprint and partnerships',
-          image: '/TIL/global-presence.jpg'
-        },
-        {
-          name: 'Manufacturing Facilities',
-          description: 'State-of-the-art production plants',
-          image: '/TIL/manufacturing.jpg'
-        },
-        {
-          name: 'Quality Standards',
-          description: 'Our commitment to excellence',
-          image: '/TIL/quality-standards.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/legacy.jpg',
-        title: 'Our Legacy',
-        description: '80+ years of engineering excellence in construction and material handling equipment.',
-        cta: 'Learn More',
-        features: ['80+ Years Experience', 'Global Presence', 'ISO Certified']
+/* global __IMAGE_BASE_PATH__ */
+const IMAGE_BASE = __IMAGE_BASE_PATH__;
+
+const submenuData = {
+  company: {
+    items: [
+      {
+        name: 'Company History',
+        description: 'Explore our 80+ years of engineering excellence',
+        image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?...'
+      },
+      {
+        name: 'Milestones',
+        description: 'Key achievements in our journey',
+        image: `${IMAGE_BASE}/milestone.png`
+      },
+      {
+        name: 'Awards & Recognition',
+        description: 'Industry accolades and certifications',
+        image: `${IMAGE_BASE}/awards.jpg`
+      },
+      {
+        name: 'Global Presence',
+        description: 'Our international footprint and partnerships',
+        image: `${IMAGE_BASE}/global-presence.jpg`
+      },
+      {
+        name: 'Manufacturing Facilities',
+        description: 'State-of-the-art production plants',
+        image: `${IMAGE_BASE}/manufacturing.jpg`
+      },
+      {
+        name: 'Quality Standards',
+        description: 'Our commitment to excellence',
+        image: `${IMAGE_BASE}/quality-standards.jpg`
       }
-    },
-    'leadership': {
-      items: [
-        {
-          name: 'Board of Directors',
-          description: 'Meet our governing body and strategic advisors',
-          image: '/TIL/board-directors.jpg'
-        },
-        {
-          name: 'Executive Team',
-          description: 'Our day-to-day leadership team',
-          image: '/TIL/executive-team.jpg'
-        },
-        {
-          name: 'Management Committee',
-          description: 'Department heads and functional leaders',
-          image: '/TIL/management-committee.jpg'
-        },
-        {
-          name: 'Advisory Board',
-          description: 'Industry experts guiding our strategy',
-          image: '/TIL/advisory-board.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/leadership.jpg',
-        title: 'Leadership Team',
-        description: 'Experienced leaders driving innovation and growth in the construction industry.',
-        cta: 'Meet Our Team',
-        features: ['Industry Veterans', 'Global Experience', 'Innovation Focus']
-      }
-    },
-    'milestones': {
-      items: [
-        {
-          name: 'Foundation & Early Years',
-          description: 'Our humble beginnings and initial successes',
-          image: '/TIL/foundation.jpg'
-        },
-        {
-          name: 'Key Innovations',
-          description: 'Breakthrough products and technologies',
-          image: '/TIL/innovations.jpg'
-        },
-        {
-          name: 'Expansion Phases',
-          description: 'Growth of our operations and facilities',
-          image: '/TIL/expansion.jpg'
-        },
-        {
-          name: 'Recent Achievements',
-          description: 'Our latest accomplishments and awards',
-          image: '/TIL/achievements.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/milestone.png',
-        title: 'Our Journey',
-        description: 'Key milestones that define our growth and success in the industry.',
-        cta: 'View Timeline',
-        features: ['80+ Years', '100+ Innovations', 'Global Reach']
-      }
-    },
-    'values': {
-      items: [
-        {
-          name: 'Mission Statement',
-          description: 'Our purpose and reason for being',
-          image: '/TIL/mission.jpg'
-        },
-        {
-          name: 'Vision 2030',
-          description: 'Our aspirations for the future',
-          image: '/TIL/vision.jpg'
-        },
-        {
-          name: 'Core Values',
-          description: 'Principles that guide our actions',
-          image: '/TIL/values.jpg'
-        },
-        {
-          name: 'Ethics & Integrity',
-          description: 'Our commitment to doing business right',
-          image: '/TIL/ethics.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/vision.jpg',
-        title: 'Our Values',
-        description: 'Committed to excellence, innovation, and sustainable growth.',
-        cta: 'Our Philosophy',
-        features: ['Customer First', 'Innovation', 'Sustainability']
-      }
-    },
-    'corporate': {
-      items: [
-        {
-          name: 'Environmental Policy',
-          description: 'Our commitment to sustainable operations',
-          image: '/TIL/environmental.jpg'
-        },
-        {
-          name: 'Green Manufacturing',
-          description: 'Eco-friendly production processes',
-          image: '/TIL/green-manufacturing.jpg'
-        },
-        {
-          name: 'Community Impact',
-          description: 'Initiatives that benefit local communities',
-          image: '/TIL/community.jpg'
-        },
-        {
-          name: 'Employee Welfare',
-          description: 'Programs for our workforce wellbeing',
-          image: '/TIL/employee-welfare.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/social.jpg',
-        title: 'Sustainability',
-        description: 'Leading the way in environmentally responsible manufacturing and operations.',
-        cta: 'Green Initiatives',
-        features: ['Carbon Neutral', 'Green Tech', 'Eco-Friendly']
-      }
-    },
-    'codeofconduct': {
-      items: [
-        {
-          name: 'Business Ethics',
-          description: 'Our standards for ethical business practices',
-          image: '/TIL/ethics.jpg'
-        },
-        {
-          name: 'Anti-Corruption',
-          description: 'Policies against bribery and corruption',
-          image: '/TIL/anti-corruption.jpg'
-        },
-        {
-          name: 'Compliance Framework',
-          description: 'Ensuring adherence to laws and regulations',
-          image: '/TIL/compliance.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/code_of_conduct.png',
-        title: 'Code of Conduct',
-        description: 'Our commitment to ethical business practices and corporate governance.',
-        cta: 'View Policy',
-        features: ['Ethical Standards', 'Compliance', 'Transparency']
-      }
-    },
-    'facilities': {
-      items: [
-        {
-          name: 'Kolkata Headquarters',
-          description: 'Our corporate office and main facility',
-          image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-        },
-        {
-          name: 'Manufacturing Plants',
-          description: 'State-of-the-art production facilities',
-          image: '/TIL/plants.jpg'
-        },
-        {
-          name: 'R&D Centers',
-          description: 'Innovation hubs driving product development',
-          image: '/TIL/rd-centers.jpg'
-        },
-        {
-          name: 'Regional Offices',
-          description: 'Our presence across India',
-          image: '/TIL/regional-offices.jpg'
-        }
-      ],
-      media: {
-        image: '/TIL/facilities.jpg',
-        title: 'Our Facilities',
-        description: 'World-class manufacturing plants and offices supporting our operations.',
-        cta: 'Virtual Tour',
-        features: ['Modern Infrastructure', 'Advanced Equipment', 'Sustainable Design']
-      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/legacy.jpg`,
+      title: 'Our Legacy',
+      description: '80+ years of engineering excellence in construction and material handling equipment.',
+      cta: 'Learn More',
+      features: ['80+ Years Experience', 'Global Presence', 'ISO Certified']
     }
-  };
+  },
+  leadership: {
+    items: [
+      {
+        name: 'Board of Directors',
+        description: 'Meet our governing body and strategic advisors',
+        image: `${IMAGE_BASE}/board-directors.jpg`
+      },
+      {
+        name: 'Executive Team',
+        description: 'Our day-to-day leadership team',
+        image: `${IMAGE_BASE}/executive-team.jpg`
+      },
+      {
+        name: 'Management Committee',
+        description: 'Department heads and functional leaders',
+        image: `${IMAGE_BASE}/management-committee.jpg`
+      },
+      {
+        name: 'Advisory Board',
+        description: 'Industry experts guiding our strategy',
+        image: `${IMAGE_BASE}/advisory-board.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/leadership.jpg`,
+      title: 'Leadership Team',
+      description: 'Experienced leaders driving innovation and growth in the construction industry.',
+      cta: 'Meet Our Team',
+      features: ['Industry Veterans', 'Global Experience', 'Innovation Focus']
+    }
+  },
+  milestones: {
+    items: [
+      {
+        name: 'Foundation & Early Years',
+        description: 'Our humble beginnings and initial successes',
+        image: `${IMAGE_BASE}/foundation.jpg`
+      },
+      {
+        name: 'Key Innovations',
+        description: 'Breakthrough products and technologies',
+        image: `${IMAGE_BASE}/innovations.jpg`
+      },
+      {
+        name: 'Expansion Phases',
+        description: 'Growth of our operations and facilities',
+        image: `${IMAGE_BASE}/expansion.jpg`
+      },
+      {
+        name: 'Recent Achievements',
+        description: 'Our latest accomplishments and awards',
+        image: `${IMAGE_BASE}/achievements.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/milestone.png`,
+      title: 'Our Journey',
+      description: 'Key milestones that define our growth and success in the industry.',
+      cta: 'View Timeline',
+      features: ['80+ Years', '100+ Innovations', 'Global Reach']
+    }
+  },
+  values: {
+    items: [
+      {
+        name: 'Mission Statement',
+        description: 'Our purpose and reason for being',
+        image: `${IMAGE_BASE}/mission.jpg`
+      },
+      {
+        name: 'Vision 2030',
+        description: 'Our aspirations for the future',
+        image: `${IMAGE_BASE}/vision.jpg`
+      },
+      {
+        name: 'Core Values',
+        description: 'Principles that guide our actions',
+        image: `${IMAGE_BASE}/values.jpg`
+      },
+      {
+        name: 'Ethics & Integrity',
+        description: 'Our commitment to doing business right',
+        image: `${IMAGE_BASE}/ethics.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/vision.jpg`,
+      title: 'Our Values',
+      description: 'Committed to excellence, innovation, and sustainable growth.',
+      cta: 'Our Philosophy',
+      features: ['Customer First', 'Innovation', 'Sustainability']
+    }
+  },
+  corporate: {
+    items: [
+      {
+        name: 'Environmental Policy',
+        description: 'Our commitment to sustainable operations',
+        image: `${IMAGE_BASE}/environmental.jpg`
+      },
+      {
+        name: 'Green Manufacturing',
+        description: 'Eco-friendly production processes',
+        image: `${IMAGE_BASE}/green-manufacturing.jpg`
+      },
+      {
+        name: 'Community Impact',
+        description: 'Initiatives that benefit local communities',
+        image: `${IMAGE_BASE}/community.jpg`
+      },
+      {
+        name: 'Employee Welfare',
+        description: 'Programs for our workforce wellbeing',
+        image: `${IMAGE_BASE}/employee-welfare.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/social.jpg`,
+      title: 'Sustainability',
+      description: 'Leading the way in environmentally responsible manufacturing and operations.',
+      cta: 'Green Initiatives',
+      features: ['Carbon Neutral', 'Green Tech', 'Eco-Friendly']
+    }
+  },
+  codeofconduct: {
+    items: [
+      {
+        name: 'Business Ethics',
+        description: 'Our standards for ethical business practices',
+        image: `${IMAGE_BASE}/ethics.jpg`
+      },
+      {
+        name: 'Anti-Corruption',
+        description: 'Policies against bribery and corruption',
+        image: `${IMAGE_BASE}/anti-corruption.jpg`
+      },
+      {
+        name: 'Compliance Framework',
+        description: 'Ensuring adherence to laws and regulations',
+        image: `${IMAGE_BASE}/compliance.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/code_of_conduct.png`,
+      title: 'Code of Conduct',
+      description: 'Our commitment to ethical business practices and corporate governance.',
+      cta: 'View Policy',
+      features: ['Ethical Standards', 'Compliance', 'Transparency']
+    }
+  },
+  facilities: {
+    items: [
+      {
+        name: 'Kolkata Headquarters',
+        description: 'Our corporate office and main facility',
+        image: 'https://images.unsplash.com/photo-1536421469767-80559bb6f5e1?...'
+      },
+      {
+        name: 'Manufacturing Plants',
+        description: 'State-of-the-art production facilities',
+        image: `${IMAGE_BASE}/plants.jpg`
+      },
+      {
+        name: 'R&D Centers',
+        description: 'Innovation hubs driving product development',
+        image: `${IMAGE_BASE}/rd-centers.jpg`
+      },
+      {
+        name: 'Regional Offices',
+        description: 'Our presence across India',
+        image: `${IMAGE_BASE}/regional-offices.jpg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/facilities.jpg`,
+      title: 'Our Facilities',
+      description: 'World-class manufacturing plants and offices supporting our operations.',
+      cta: 'Virtual Tour',
+      features: ['Modern Infrastructure', 'Advanced Equipment', 'Sustainable Design']
+    }
+  }
+};
+
 
   // Initialize right panel content
   useEffect(() => {
@@ -617,106 +621,107 @@ const ProductsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     }
   ];
 
-  const submenuData = {
-    'all-products': {
-      products: [
-        {
-          name: 'Truck Cranes',
-          description: 'High-capacity cranes ideal for tall construction sites',
-          image: '/TIL/truck-cranes.jpeg',
-          features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
-        },
-        {
-          name: 'Pick n Carry Cranes',
-          description: 'Mobile cranes suitable for fast on-site operations',
-          image: '/TIL/pick-n-carry.png',
-          features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
-        },
-        {
-          name: 'Rough Terrain Cranes',
-          description: 'Designed for challenging job site conditions',
-          image: '/TIL/rough-terrain.png',
-          features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
-        },
-        {
-          name: 'Articulating Cranes',
-          description: 'Flexible, jointed cranes ideal for tight spaces',
-          image: '/TIL/articulating.jpg',
-          features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
-        }
-      ],
-      media: {
-        image: '/TIL/articulating.jpg',
-        title: 'TIL Product Range',
-        description: 'Comprehensive lifting solutions for all your construction needs.',
-        cta: 'View All Products',
-        features: ['Durable Construction', 'Advanced Safety', 'Easy Maintenance']
+ const submenuData = {
+  'all-products': {
+    products: [
+      {
+        name: 'Truck Cranes',
+        description: 'High-capacity cranes ideal for tall construction sites',
+        image: `${IMAGE_BASE}/truck-cranes.jpeg`,
+        features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
+      },
+      {
+        name: 'Pick n Carry Cranes',
+        description: 'Mobile cranes suitable for fast on-site operations',
+        image: `${IMAGE_BASE}/pick-n-carry.png`,
+        features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
+      },
+      {
+        name: 'Rough Terrain Cranes',
+        description: 'Designed for challenging job site conditions',
+        image: `${IMAGE_BASE}/rough-terrain.png`,
+        features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
+      },
+      {
+        name: 'Articulating Cranes',
+        description: 'Flexible, jointed cranes ideal for tight spaces',
+        image: `${IMAGE_BASE}/articulating.jpg`,
+        features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
       }
-    },
-    'new-arrivals': {
-      products: [
-        {
-          name: 'Grove Range',
-          description: 'Smart lifting solutions engineered for precision and durability',
-          image: '/TIL/grove-range.png',
-          features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
-        },
-        {
-          name: 'Crawler Cranes',
-          description: 'Robust tracked cranes for heavy-duty lifting',
-          image: '/TIL/crawler-cranes.png',
-          features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
-        }
-      ],
-      media: {
-        image: '/TIL/crawler-cranes.png',
-        title: 'Latest Innovations',
-        description: 'Cutting-edge technology and smart features for enhanced productivity.',
-        cta: 'Explore New Tech',
-        features: ['Smart Telematics', 'Eco-Friendly Powertrain', 'IoT Integration']
-      }
-    },
-    'best-sellers': {
-      products: [
-        {
-          name: 'Forklift Trucks',
-          description: 'Efficient material handling for warehouses and logistics',
-          image: '/TIL/forklift.png',
-          features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
-        },
-        {
-          name: 'Reachstackers',
-          description: 'Container handling equipment for ports and yards',
-          image: '/TIL/reachstackers.png',
-          features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
-        }
-      ],
-      media: {
-        image: '/TIL/forklift.png',
-        title: 'Proven Performers',
-        description: 'Most trusted equipment by businesses across India.',
-        cta: 'Request Demo',
-        features: ['Uptime Guarantee', 'Nationwide Service', 'Spare Part Availability']
-      }
-    },
-    'services': {
-      products: [
-        {
-          name: 'Boom Lifts',
-          description: 'Elevated work platforms for maintenance and construction',
-          image: '/TIL/boomlifts.png',
-          features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
-        }
-      ],
-      media: {
-        image: '/TIL/boomlifts.png',
-        title: 'Complete Support',
-        description: 'Comprehensive after-sales support and services.',
-        cta: 'Service Support',
-        features: ['Certified Engineers', 'Rapid On-Site Service', 'OEM Spare Assurance']
-      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/articulating.jpg`,
+      title: 'TIL Product Range',
+      description: 'Comprehensive lifting solutions for all your construction needs.',
+      cta: 'View All Products',
+      features: ['Durable Construction', 'Advanced Safety', 'Easy Maintenance']
     }
-  };
+  },
+  'new-arrivals': {
+    products: [
+      {
+        name: 'Grove Range',
+        description: 'Smart lifting solutions engineered for precision and durability',
+        image: `${IMAGE_BASE}/grove-range.png`,
+        features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
+      },
+      {
+        name: 'Crawler Cranes',
+        description: 'Robust tracked cranes for heavy-duty lifting',
+        image: `${IMAGE_BASE}/crawler-cranes.png`,
+        features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/crawler-cranes.png`,
+      title: 'Latest Innovations',
+      description: 'Cutting-edge technology and smart features for enhanced productivity.',
+      cta: 'Explore New Tech',
+      features: ['Smart Telematics', 'Eco-Friendly Powertrain', 'IoT Integration']
+    }
+  },
+  'best-sellers': {
+    products: [
+      {
+        name: 'Forklift Trucks',
+        description: 'Efficient material handling for warehouses and logistics',
+        image: `${IMAGE_BASE}/forklift.png`,
+        features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
+      },
+      {
+        name: 'Reachstackers',
+        description: 'Container handling equipment for ports and yards',
+        image: `${IMAGE_BASE}/reachstackers.png`,
+        features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/forklift.png`,
+      title: 'Proven Performers',
+      description: 'Most trusted equipment by businesses across India.',
+      cta: 'Request Demo',
+      features: ['Uptime Guarantee', 'Nationwide Service', 'Spare Part Availability']
+    }
+  },
+  'services': {
+    products: [
+      {
+        name: 'Boom Lifts',
+        description: 'Elevated work platforms for maintenance and construction',
+        image: `${IMAGE_BASE}/boomlifts.png`,
+        features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/boomlifts.png`,
+      title: 'Complete Support',
+      description: 'Comprehensive after-sales support and services.',
+      cta: 'Service Support',
+      features: ['Certified Engineers', 'Rapid On-Site Service', 'OEM Spare Assurance']
+    }
+  }
+};
+
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
   const activeMedia = activeProduct || currentSubmenu?.media;
@@ -988,68 +993,69 @@ const InvestorRelationsMegamenu: React.FC<{ onClose: () => void }> = ({ onClose 
     { id: 'notice', name: 'Notice' },
   ];
 
-  const submenuData = {
-    'corporate-governance': {
-      points: [
-        { name: 'Board of Directors', description: 'Overview of board members and their roles' },
-        { name: 'Committee Charters', description: 'Governance committees and their mandates' },
-        { name: 'Policies', description: 'Corporate policies and guidelines' },
-        { name: 'Annual Reports', description: 'Download annual reports and disclosures' },
-      ],
-      media: {
-        image: '/TIL/corporate-governance.jpg',
-        title: 'Corporate Governance',
-        description:
-          'TIL is committed to maintaining the highest standards of corporate governance and ethics, ensuring transparency and accountability to our stakeholders.',
-        cta: 'Learn More',
-      },
+const submenuData = {
+  'corporate-governance': {
+    points: [
+      { name: 'Board of Directors', description: 'Overview of board members and their roles' },
+      { name: 'Committee Charters', description: 'Governance committees and their mandates' },
+      { name: 'Policies', description: 'Corporate policies and guidelines' },
+      { name: 'Annual Reports', description: 'Download annual reports and disclosures' },
+    ],
+    media: {
+      image: `${IMAGE_BASE}/corporate-governance.jpg`,
+      title: 'Corporate Governance',
+      description:
+        'TIL is committed to maintaining the highest standards of corporate governance and ethics, ensuring transparency and accountability to our stakeholders.',
+      cta: 'Learn More',
     },
-    'shareholders-information': {
-      points: [
-        { name: 'Shareholding Pattern', description: 'Current shareholding distribution' },
-        { name: 'Dividend History', description: 'Details of dividend payouts' },
-        { name: 'Annual General Meeting', description: 'Information on upcoming and past AGMs' },
-        { name: 'Registrar & Transfer Agent', description: 'Contact info for shareholder services' },
-      ],
-      media: {
-        image: '/TIL/shareholders.jpg',
-        title: 'Shareholders Information',
-        description:
-          'Access detailed information for shareholders including ownership patterns, dividends, and investor services.',
-        cta: 'Investor Services',
-      },
+  },
+  'shareholders-information': {
+    points: [
+      { name: 'Shareholding Pattern', description: 'Current shareholding distribution' },
+      { name: 'Dividend History', description: 'Details of dividend payouts' },
+      { name: 'Annual General Meeting', description: 'Information on upcoming and past AGMs' },
+      { name: 'Registrar & Transfer Agent', description: 'Contact info for shareholder services' },
+    ],
+    media: {
+      image: `${IMAGE_BASE}/shareholders.jpg`,
+      title: 'Shareholders Information',
+      description:
+        'Access detailed information for shareholders including ownership patterns, dividends, and investor services.',
+      cta: 'Investor Services',
     },
-    financials: {
-      points: [
-        { name: 'Quarterly Results', description: 'Latest quarterly financial statements' },
-        { name: 'Audited Financials', description: 'Annual audited financial reports' },
-        { name: 'Stock Price Information', description: 'Historical and current stock prices' },
-        { name: 'Credit Ratings', description: 'Credit rating details and reports' },
-      ],
-      media: {
-        image: '/TIL/financials.jpg',
-        title: 'Financials',
-        description:
-          'Stay updated with TIL’s financial performance through detailed reports and market data.',
-        cta: 'View Reports',
-      },
+  },
+  financials: {
+    points: [
+      { name: 'Quarterly Results', description: 'Latest quarterly financial statements' },
+      { name: 'Audited Financials', description: 'Annual audited financial reports' },
+      { name: 'Stock Price Information', description: 'Historical and current stock prices' },
+      { name: 'Credit Ratings', description: 'Credit rating details and reports' },
+    ],
+    media: {
+      image: `${IMAGE_BASE}/financials.jpg`,
+      title: 'Financials',
+      description:
+        'Stay updated with TIL’s financial performance through detailed reports and market data.',
+      cta: 'View Reports',
     },
-    notice: {
-      points: [
-        { name: 'Regulatory Filings', description: 'Important statutory filings and disclosures' },
-        { name: 'Press Releases', description: 'Latest news and announcements' },
-        { name: 'Corporate Announcements', description: 'Updates on company developments' },
-        { name: 'Investor Alerts', description: 'Alerts and notifications for investors' },
-      ],
-      media: {
-        image: '/TIL/notice.jpg',
-        title: 'Notice',
-        description:
-          'Keep track of important notices, press releases, and official communications from TIL.',
-        cta: 'View Notices',
-      },
+  },
+  notice: {
+    points: [
+      { name: 'Regulatory Filings', description: 'Important statutory filings and disclosures' },
+      { name: 'Press Releases', description: 'Latest news and announcements' },
+      { name: 'Corporate Announcements', description: 'Updates on company developments' },
+      { name: 'Investor Alerts', description: 'Alerts and notifications for investors' },
+    ],
+    media: {
+      image: `${IMAGE_BASE}/notice.jpg`,
+      title: 'Notice',
+      description:
+        'Keep track of important notices, press releases, and official communications from TIL.',
+      cta: 'View Notices',
     },
-  };
+  },
+};
+
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
 
@@ -1275,132 +1281,135 @@ const CustomerSupportMegamenu: React.FC<{ onClose: () => void }> = ({ onClose })
   ];
 
   const submenuData = {
-    'heavy-industries': {
-      points: [
-        {
-          name: 'Annual Service Contracts',
-          description: 'Minimize downtime and ensure preventive care with our comprehensive contracts'
-        },
-        {
-          name: 'Pre-Purchase Consultancy',
-          description: 'Expert guidance for optimal equipment investment decisions'
-        },
-        {
-          name: 'Quick Parts Delivery',
-          description: 'Wide and responsive supply network for fast delivery'
-        },
-        {
-          name: 'Pan-India On-Site Support',
-          description: 'Qualified engineers available on call across India'
-        },
-        {
-          name: 'Rebuild & Refurbishment',
-          description: 'Services to extend your equipment lifecycle'
-        }
-      ],
-      media: {
-        image: '/TIL/maintenance.jpg',
-        title: 'Maintenance Contracts',
-        description: 'Keep your machines in peak condition with our comprehensive annual maintenance services. Our expert technicians provide preventive care, emergency support, and lifecycle management to maximize your equipment uptime and ROI.',
-        cta: 'Download Brochure'
+  'heavy-industries': {
+    points: [
+      {
+        name: 'Annual Service Contracts',
+        description: 'Minimize downtime and ensure preventive care with our comprehensive contracts'
+      },
+      {
+        name: 'Pre-Purchase Consultancy',
+        description: 'Expert guidance for optimal equipment investment decisions'
+      },
+      {
+        name: 'Quick Parts Delivery',
+        description: 'Wide and responsive supply network for fast delivery'
+      },
+      {
+        name: 'Pan-India On-Site Support',
+        description: 'Qualified engineers available on call across India'
+      },
+      {
+        name: 'Rebuild & Refurbishment',
+        description: 'Services to extend your equipment lifecycle'
       }
-    },
-    'infrastructure': {
-      points: [
-        {
-          name: 'Authentic TIL Parts',
-          description: 'Genuine parts for safety, reliability, and longer equipment life'
-        },
-        {
-          name: 'Real-Time Inventory',
-          description: 'Advanced Warehouse Management System for parts tracking'
-        },
-        {
-          name: 'Wide Range Availability',
-          description: 'Filters, oils, fluids, undercarriage components & more'
-        },
-        {
-          name: 'Expert Support',
-          description: 'Trained product specialists for the right-fit solutions'
-        },
-        {
-          name: 'ERP-Enabled Warehouse',
-          description: 'Central warehouse at Dankuni for nationwide fulfillment'
-        }
-      ],
-      media: {
-        image: '/TIL/parts-banner.jpg',
-        title: 'Parts & Warehouse',
-        description: 'Rapid access to critical parts with optimized logistics and warehouse coverage. Our centralized inventory system ensures authentic TIL parts are available when you need them most.',
-        cta: 'Check Availability'
-      }
-    },
-    'specialized': {
-      points: [
-        {
-          name: 'Operator Training',
-          description: 'Boost ROI & Safety with skilled operators who unlock full machine potential'
-        },
-        {
-          name: 'Hands-On Training',
-          description: 'Practical sessions in basic operations and scheduled maintenance'
-        },
-        {
-          name: 'Customized Modules',
-          description: 'Training tailored to operator and maintenance staff needs'
-        },
-        {
-          name: 'Downtime Prevention',
-          description: 'Minimize downtime through better handling and issue prevention'
-        },
-        {
-          name: 'Competitive Edge',
-          description: 'Enhanced knowledge, confidence, and efficiency for your team'
-        }
-      ],
-      media: {
-        image: '/TIL/training-banner.jpg',
-        title: 'Training Programs',
-        description: 'Empower your workforce with certified technical and operator training. Our comprehensive modules cover safety protocols, operational efficiency, and maintenance best practices.',
-        cta: 'Training Calendar'
-      }
-    },
-    'energy': {
-      points: [
-        {
-          name: 'Kolkata Service Center',
-          description: 'Full-service support for Eastern India operations',
-          image: '/TIL/Kolkata.avif'
-        },
-        {
-          name: 'Chennai Service Center',
-          description: 'Comprehensive support for Southern region',
-          image: '/TIL/chennai.avif'
-        },
-        {
-          name: 'Delhi NCR Service Center',
-          description: 'Strategic support hub for Northern India',
-          image: '/TIL/delhi.avif'
-        },
-        {
-          name: 'Mumbai Service Center',
-          description: 'West zone operational support center',
-          image: '/TIL/mumbai.avif'
-        },
-        {
-          name: 'Singrauli Service Depot',
-          description: 'Industrial logistics and support in central India',
-          image: '/TIL/singrauli.jpeg'
-        }
-      ],
-      media: {
-        image: '/TIL/location-banner.png',
-        title: 'Service Locations',
-        description: 'Our nationwide network of service centers and support facilities ensures prompt response times and local expertise across all major industrial regions in India.',
-        cta: 'View Network'
-      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/maintenance.jpg`,
+      title: 'Maintenance Contracts',
+      description: 'Keep your machines in peak condition with our comprehensive annual maintenance services. Our expert technicians provide preventive care, emergency support, and lifecycle management to maximize your equipment uptime and ROI.',
+      cta: 'Download Brochure'
     }
-  };
+  },
+
+  'infrastructure': {
+    points: [
+      {
+        name: 'Authentic TIL Parts',
+        description: 'Genuine parts for safety, reliability, and longer equipment life'
+      },
+      {
+        name: 'Real-Time Inventory',
+        description: 'Advanced Warehouse Management System for parts tracking'
+      },
+      {
+        name: 'Wide Range Availability',
+        description: 'Filters, oils, fluids, undercarriage components & more'
+      },
+      {
+        name: 'Expert Support',
+        description: 'Trained product specialists for the right-fit solutions'
+      },
+      {
+        name: 'ERP-Enabled Warehouse',
+        description: 'Central warehouse at Dankuni for nationwide fulfillment'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/parts-banner.jpg`,
+      title: 'Parts & Warehouse',
+      description: 'Rapid access to critical parts with optimized logistics and warehouse coverage. Our centralized inventory system ensures authentic TIL parts are available when you need them most.',
+      cta: 'Check Availability'
+    }
+  },
+
+  'specialized': {
+    points: [
+      {
+        name: 'Operator Training',
+        description: 'Boost ROI & Safety with skilled operators who unlock full machine potential'
+      },
+      {
+        name: 'Hands-On Training',
+        description: 'Practical sessions in basic operations and scheduled maintenance'
+      },
+      {
+        name: 'Customized Modules',
+        description: 'Training tailored to operator and maintenance staff needs'
+      },
+      {
+        name: 'Downtime Prevention',
+        description: 'Minimize downtime through better handling and issue prevention'
+      },
+      {
+        name: 'Competitive Edge',
+        description: 'Enhanced knowledge, confidence, and efficiency for your team'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/training-banner.jpg`,
+      title: 'Training Programs',
+      description: 'Empower your workforce with certified technical and operator training. Our comprehensive modules cover safety protocols, operational efficiency, and maintenance best practices.',
+      cta: 'Training Calendar'
+    }
+  },
+
+  'energy': {
+    points: [
+      {
+        name: 'Kolkata Service Center',
+        description: 'Full-service support for Eastern India operations',
+        image: `${IMAGE_BASE}/Kolkata.avif`
+      },
+      {
+        name: 'Chennai Service Center',
+        description: 'Comprehensive support for Southern region',
+        image: `${IMAGE_BASE}/chennai.avif`
+      },
+      {
+        name: 'Delhi NCR Service Center',
+        description: 'Strategic support hub for Northern India',
+        image: `${IMAGE_BASE}/delhi.avif`
+      },
+      {
+        name: 'Mumbai Service Center',
+        description: 'West zone operational support center',
+        image: `${IMAGE_BASE}/mumbai.avif`
+      },
+      {
+        name: 'Singrauli Service Depot',
+        description: 'Industrial logistics and support in central India',
+        image: `${IMAGE_BASE}/singrauli.jpeg`
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/location-banner.png`,
+      title: 'Service Locations',
+      description: 'Our nationwide network of service centers and support facilities ensures prompt response times and local expertise across all major industrial regions in India.',
+      cta: 'View Network'
+    }
+  }
+};
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
   
@@ -1708,327 +1717,331 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   ];
 
   const submenuData = {
-    'blogs': {
-      items: [
-        {
-          title: 'How to Buy a Reachstacker? 6 Factors to Consider',
-          description: 'When comparing reachstackers, the specifications listed on paper are only the first step. If you..',
-          image: '/TIL/blog1.png',
-          link: '/blogs/reachstacker-buying-guide',
-          type: 'blog',
-          date: '2024-12-15'
-        },
-        {
-          title: '6 Powerful Cranes Used in Modern Construction',
-          description: 'Let\'s be real—on any serious construction site, cranes aren\'t treated as just any other machine...',
-          image: '/TIL/blog2.jpg',
-          link: '/blogs/modern-construction-cranes',
-          type: 'blog',
-          date: '2024-12-10'
-        },
-        {
-          title: '7 Proven Ways Rough Terrain Cranes Power Up Business Efficiency',
-          description: 'In the world of construction and heavy lifting, the right equipment isn\'t just helpful—it\'s business critical...',
-          image: '/TIL/blog3.jpg',
-          link: '/blogs/rough-terrain-crane-efficiency',
-          type: 'blog',
-          date: '2024-12-05'
-        },
-        {
-          title: 'The Ultimate Rough Terrain Cranes Guide in 2025 For Your Next Project',
-          description: 'When you picture a Rough Terrain crane, you probably imagine a beastly machine...',
-          image: '/TIL/blog4.jpg',
-          link: '/blogs/rough-terrain-cranes-guide-2025',
-          type: 'blog',
-          date: '2024-11-28'
-        },
-      ],
-      media: {
-        image: '/TIL/Media-page.jpg',
-        title: 'Industry Insights',
-        description: 'Stay ahead with our expert analysis, equipment guides, and industry best practices.',
-        cta: 'Read All Blogs',
-        features: ['Expert Analysis', 'Equipment Guides', 'Industry Trends']
+  blogs: {
+    items: [
+      {
+        title: 'How to Buy a Reachstacker? 6 Factors to Consider',
+        description: 'When comparing reachstackers, the specifications listed on paper are only the first step. If you..',
+        image: `${IMAGE_BASE}/blog1.png`,
+        link: '/blogs/reachstacker-buying-guide',
+        type: 'blog',
+        date: '2024-12-15'
+      },
+      {
+        title: '6 Powerful Cranes Used in Modern Construction',
+        description: 'Let\'s be real—on any serious construction site, cranes aren\'t treated as just any other machine...',
+        image: `${IMAGE_BASE}/blog2.jpg`,
+        link: '/blogs/modern-construction-cranes',
+        type: 'blog',
+        date: '2024-12-10'
+      },
+      {
+        title: '7 Proven Ways Rough Terrain Cranes Power Up Business Efficiency',
+        description: 'In the world of construction and heavy lifting, the right equipment isn\'t just helpful—it\'s business critical...',
+        image: `${IMAGE_BASE}/blog3.jpg`,
+        link: '/blogs/rough-terrain-crane-efficiency',
+        type: 'blog',
+        date: '2024-12-05'
+      },
+      {
+        title: 'The Ultimate Rough Terrain Cranes Guide in 2025 For Your Next Project',
+        description: 'When you picture a Rough Terrain crane, you probably imagine a beastly machine...',
+        image: `${IMAGE_BASE}/blog4.jpg`,
+        link: '/blogs/rough-terrain-cranes-guide-2025',
+        type: 'blog',
+        date: '2024-11-28'
       }
-    },
-    'video': {
-      items: [
-        {
-          title: 'Why Operators Prefer Hyster TIL ReachStackers',
-          description: 'What’s it like to operate a Hyster TIL ReachStacker in one of India’s busiest logistics hubs?',
-          videoId: 'RDgU-xTDyZc',
-          embedUrl: 'https://www.youtube.com/embed/RDgU-xTDyZc',
-          thumbnail: '/TIL/video1.jpg',
-          link: 'https://youtu.be/RDgU-xTDyZc',
-          type: 'youtube',
-          duration: '4:32'
-        },
-        {
-          title: 'How Hyster-TIL’s Reach Stacker Revolutionizing Material Handling | TIL Limited',
-          description: 'Join us as Mr. Rajesh Wazarkar, MD of Hyster India, shares his favorite features of TIL’s new High Series Reach Stacker...',
-          videoId: 'ABC123XYZ',
-          embedUrl: 'https://www.youtube.com/embed/ABC123XYZ',
-          thumbnail: '/TIL/video2.jpg',
-          link: 'https://youtu.be/wavwFvrs128',
-          type: 'youtube',
-          duration: '8:15'
-        },
-        {
-          title: 'How TIL Built India’s First Mobile Crane | Factory Tour',
-          description: 'In this exclusive conversation with Mr. Jayanta Kumar Patra, Production Head at TIL Limited, we trace the incredible journey of our factory...',
-          videoId: 'DEF456GHI',
-          embedUrl: 'https://www.youtube.com/embed/DEF456GHI',
-          thumbnail: '/TIL/video3.jpg',
-          link: 'https://youtu.be/omGk8PMTtX8',
-          type: 'youtube',
-          duration: '6:45'
-        },
-        {
-          title: 'How TIL Hyster ReachStacker Redefines Material Handling ft Ben Newey',
-          description: 'Revolutionizing Material Handling! In this exclusive interview, Ben Newey, VP of Sales & Marketing APIC at Hyster-Yale Materials Handling...',
-          videoId: 'JKL789MNO',
-          embedUrl: 'https://www.youtube.com/embed/JKL789MNO',
-          thumbnail: '/TIL/video4.jpg',
-          link: 'https://youtu.be/aAM7PIMA25k',
-          type: 'youtube',
-          duration: '5:20'
-        }
-      ],
-      media: {
-        image: '/TIL/Media-page.jpg',
-        title: 'Video Library',
-        description: 'Comprehensive collection of product demos, training videos, and customer testimonials.',
-        cta: 'Watch All Videos',
-        features: ['HD Quality', 'Multiple Languages', 'Mobile Optimized']
-      }
-    },
-    'news': {
-      items: [
-        {
-          title: 'Smart Manufacturing and Enterprises',
-          description: 'We will launch new cranes and forklifts in next 4 years',
-          image: '/TIL/news1.png',
-          link: '/news/new-manufacturing-facility',
-          type: 'news',
-          date: '2024-12-20'
-        },
-        {
-          title: 'NDTV',
-          description: 'TIL Forms Strategic Business Unit Supporting Its Defence Portfolio Read mo...',
-          image: '/TIL/news2.jpg',
-          link: '/news/strategic-partnership',
-          type: 'news',
-          date: '2024-12-18'
-        },
-        {
-          title: 'EPC&I',
-          description: 'Built to Meet the Toughest Demands',
-          image: '/TIL/news3.png',
-          link: '/news/innovation-award',
-          type: 'news',
-          date: '2024-12-15'
-        },
-        {
-          title: 'Equipment Times',
-          description: 'Handling The Future! MHE\'s Role in Construction & Infrastructure',
-          image: '/TIL/news4.png',
-          link: '/news/q4-2024-results',
-          type: 'news',
-          date: '2024-12-12'
-        }
-      ],
-      media: {
-        image: '/TIL/Media-page.jpg',
-        title: 'Latest News',
-        description: 'Stay informed with our latest announcements, partnerships, and industry developments.',
-        cta: 'Read All News',
-        features: ['Breaking News', 'Industry Analysis', 'Market Insights']
-      }
-    },
-    'til': {
-      items: [
-        {
-          title: 'Construction And Architecture Magazine',
-          description: 'FUELING INNOVATION AND GROWTH IN INDIA\'S MATERIAL HANDLING AND CONSTRUCTION...',
-          image: '/TIL/til1.png',
-          link: '/til/bauma-2024-highlights',
-          type: 'event',
-          date: '2024-10-15'
-        },
-        {
-          title: 'Construction And Architecture Magazine',
-          description: 'TIL: A LEGACY OF INNOVATION AND STRATEGIC GROWTH IN MATERIAL HANDLING AT BA...',
-          image: '/TIL/til2.jpeg',
-          link: '/til/smart-crane-controls',
-          type: 'event',
-          date: '2024-10-12'
-        },
-        {
-          title: 'BAUMA 2024',
-          description: 'We are committed to increasing local manufacturing in India.',
-          image: '/TIL/til3.jpg',
-          link: '/til/sustainability-initiatives',
-          type: 'event',
-          date: '2024-10-10'
-        },
-        {
-          title: 'Construction Week',
-          description: 'Bauma ConExpo India 2024: TIL debuts Snorkel A62JRT articulating boom lift',
-          image: '/TIL/til4.jpg',
-          link: '/til/customer-experience-center',
-          type: 'event',
-          date: '2024-10-08'
-        }
-      ],
-      media: {
-        image: '/TIL/Media-page.jpg',
-        title: 'TIL@bauma2024',
-        description: 'Discover innovations and highlights from Bauma 2024 and our ongoing technology initiatives.',
-        cta: 'Explore TIL',
-        features: ['Innovation Showcase', 'Live Demos', 'Expert Talks']
-      }
-    },
-    'events': {
-      items: [
-        {
-          title: 'TIL Annual Picnic',
-          image: '/TIL/event1.jpeg',
-          link: '/events/conexpo-2025',
-          date: '2025-03-14',
-        },
-        {
-          title: 'Republic day 2025 celebration at TIL',
-          image: '/TIL/event2.jpeg',
-          link: '/events/operator-training-workshop',
-    
-          date: '2025-02-20',
-        },
-        {
-          title: 'TIL 49th AGM',
-          image: '/TIL/event3.jpg',
-          link: '/events/infrastructure-summit',
-
-          date: '2025-02-15',
-        },
-        {
-          title: 'Viswakarma Puja 2024',
-          image: '/TIL/event4.jpg',
-          link: '/events/customer-appreciation',
-          date: '2025-01-30',
-        }
-      ],
-      media: {
-        image: '/TIL/Media-page.jpg',
-        title: 'Upcoming Events',
-        description: 'Join us at our upcoming events, trade shows, and training sessions worldwide.',
-        cta: 'View All Events',
-        features: ['Global Events', 'Expert Sessions', 'Networking']
-      }
-    },
-    'press': {
-      items: [
-        {
-          title: 'TIL Limited Reports Record Q4 2024 Performance',
-          description: 'Official press release detailing financial results and growth milestones.',
-          image: '/TIL/press1.jpg',
-          link: '/press/q4-2024-performance',
-          type: 'press',
-          date: '2024-12-22'
-        },
-        {
-          title: 'New CEO Appointment Announcement',
-          description: 'Leadership transition and strategic vision for the company\'s future.',
-          image: '/TIL/press2.jpg',
-          link: '/press/new-ceo-appointment',
-          type: 'press',
-          date: '2024-12-20'
-        },
-        {
-          title: 'Environmental Sustainability Initiative Launch',
-          description: 'Commitment to carbon neutrality and sustainable manufacturing practices.',
-          image: '/TIL/press3.jpg',
-          link: '/press/sustainability-initiative',
-          type: 'press',
-          date: '2024-12-18'
-        },
-        {
-          title: 'International Expansion Plans Revealed',
-          description: 'Strategic expansion into new markets and establishment of regional offices.',
-          image: '/TIL/press4.jpg',
-          link: '/press/international-expansion',
-          type: 'press',
-          date: '2024-12-15'
-        }
-      ],
-      media: {
-        image: '/TIL/media.jpg',
-        title: 'Press Releases',
-        description: 'Official company announcements, press statements, and media resources.',
-        cta: 'View All Press',
-        features: ['Official News', 'Media Kit', 'Contact Info']
-      }
-    },
-    'downloads': {
-      items: [
-        {
-          title: 'Rough Terrain Cranes',
-          image: '/TIL/rough-terrain.png',
-          link: '/downloads/product-catalog-2025.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Truck Cranes',
-          image: '/TIL/truck-cranes.jpeg',
-          link: '/TIL/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Pick-n-Carry Crane',
-          image: '/TIL/pick-n-carry.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Grove™ Range',
-          image: '/TIL/grove-range.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Crawler Crane',
-          image: '/TIL/crawler-cranes.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'ReachStacker',
-          image: '/TIL/reachstackers.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Forklift Truck',
-          image: '/TIL/forklift.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        },
-        {
-          title: 'Boom Lift',
-          image: '/TIL/boomlifts.png',
-          link: '/downloads/crane-safety-manual.pdf',
-          fileType: 'PDF'
-        }
-        
-      ],
-      media: {
-        image: '/TIL/free.jpeg',
-        title: 'TIL Coffee Table Book',
-        description: 'Access our comprehensive library of brochures, manuals, and technical documents.',
-        cta: 'Browse All Downloads',
-        features: ['Product Specs', 'User Manuals', 'Technical Guides']
-      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/Media-page.jpg`,
+      title: 'Industry Insights',
+      description: 'Stay ahead with our expert analysis, equipment guides, and industry best practices.',
+      cta: 'Read All Blogs',
+      features: ['Expert Analysis', 'Equipment Guides', 'Industry Trends']
     }
-  };
+  },
+
+  video: {
+    items: [
+      {
+        title: 'Why Operators Prefer Hyster TIL ReachStackers',
+        description: 'What’s it like to operate a Hyster TIL ReachStacker in one of India’s busiest logistics hubs?',
+        videoId: 'RDgU-xTDyZc',
+        embedUrl: 'https://www.youtube.com/embed/RDgU-xTDyZc',
+        thumbnail: `${IMAGE_BASE}/video1.jpg`,
+        link: 'https://youtu.be/RDgU-xTDyZc',
+        type: 'youtube',
+        duration: '4:32'
+      },
+      {
+        title: 'How Hyster-TIL’s Reach Stacker Revolutionizing Material Handling | TIL Limited',
+        description: 'Join us as Mr. Rajesh Wazarkar, MD of Hyster India, shares his favorite features of TIL’s new High Series Reach Stacker...',
+        videoId: 'ABC123XYZ',
+        embedUrl: 'https://www.youtube.com/embed/ABC123XYZ',
+        thumbnail: `${IMAGE_BASE}/video2.jpg`,
+        link: 'https://youtu.be/wavwFvrs128',
+        type: 'youtube',
+        duration: '8:15'
+      },
+      {
+        title: 'How TIL Built India’s First Mobile Crane | Factory Tour',
+        description: 'In this exclusive conversation with Mr. Jayanta Kumar Patra, Production Head at TIL Limited, we trace the incredible journey of our factory...',
+        videoId: 'DEF456GHI',
+        embedUrl: 'https://www.youtube.com/embed/DEF456GHI',
+        thumbnail: `${IMAGE_BASE}/video3.jpg`,
+        link: 'https://youtu.be/omGk8PMTtX8',
+        type: 'youtube',
+        duration: '6:45'
+      },
+      {
+        title: 'How TIL Hyster ReachStacker Redefines Material Handling ft Ben Newey',
+        description: 'Revolutionizing Material Handling! In this exclusive interview, Ben Newey, VP of Sales & Marketing APIC at Hyster-Yale Materials Handling...',
+        videoId: 'JKL789MNO',
+        embedUrl: 'https://www.youtube.com/embed/JKL789MNO',
+        thumbnail: `${IMAGE_BASE}/video4.jpg`,
+        link: 'https://youtu.be/aAM7PIMA25k',
+        type: 'youtube',
+        duration: '5:20'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/Media-page.jpg`,
+      title: 'Video Library',
+      description: 'Comprehensive collection of product demos, training videos, and customer testimonials.',
+      cta: 'Watch All Videos',
+      features: ['HD Quality', 'Multiple Languages', 'Mobile Optimized']
+    }
+  },
+
+  news: {
+    items: [
+      {
+        title: 'Smart Manufacturing and Enterprises',
+        description: 'We will launch new cranes and forklifts in next 4 years',
+        image: `${IMAGE_BASE}/news1.png`,
+        link: '/news/new-manufacturing-facility',
+        type: 'news',
+        date: '2024-12-20'
+      },
+      {
+        title: 'NDTV',
+        description: 'TIL Forms Strategic Business Unit Supporting Its Defence Portfolio Read mo...',
+        image: `${IMAGE_BASE}/news2.jpg`,
+        link: '/news/strategic-partnership',
+        type: 'news',
+        date: '2024-12-18'
+      },
+      {
+        title: 'EPC&I',
+        description: 'Built to Meet the Toughest Demands',
+        image: `${IMAGE_BASE}/news3.png`,
+        link: '/news/innovation-award',
+        type: 'news',
+        date: '2024-12-15'
+      },
+      {
+        title: 'Equipment Times',
+        description: 'Handling The Future! MHE\'s Role in Construction & Infrastructure',
+        image: `${IMAGE_BASE}/news4.png`,
+        link: '/news/q4-2024-results',
+        type: 'news',
+        date: '2024-12-12'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/Media-page.jpg`,
+      title: 'Latest News',
+      description: 'Stay informed with our latest announcements, partnerships, and industry developments.',
+      cta: 'Read All News',
+      features: ['Breaking News', 'Industry Analysis', 'Market Insights']
+    }
+  },
+
+  til: {
+    items: [
+      {
+        title: 'Construction And Architecture Magazine',
+        description: 'FUELING INNOVATION AND GROWTH IN INDIA\'S MATERIAL HANDLING AND CONSTRUCTION...',
+        image: `${IMAGE_BASE}/til1.png`,
+        link: '/til/bauma-2024-highlights',
+        type: 'event',
+        date: '2024-10-15'
+      },
+      {
+        title: 'Construction And Architecture Magazine',
+        description: 'TIL: A LEGACY OF INNOVATION AND STRATEGIC GROWTH IN MATERIAL HANDLING AT BA...',
+        image: `${IMAGE_BASE}/til2.jpeg`,
+        link: '/til/smart-crane-controls',
+        type: 'event',
+        date: '2024-10-12'
+      },
+      {
+        title: 'BAUMA 2024',
+        description: 'We are committed to increasing local manufacturing in India.',
+        image: `${IMAGE_BASE}/til3.jpg`,
+        link: '/til/sustainability-initiatives',
+        type: 'event',
+        date: '2024-10-10'
+      },
+      {
+        title: 'Construction Week',
+        description: 'Bauma ConExpo India 2024: TIL debuts Snorkel A62JRT articulating boom lift',
+        image: `${IMAGE_BASE}/til4.jpg`,
+        link: '/til/customer-experience-center',
+        type: 'event',
+        date: '2024-10-08'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/Media-page.jpg`,
+      title: 'TIL@bauma2024',
+      description: 'Discover innovations and highlights from Bauma 2024 and our ongoing technology initiatives.',
+      cta: 'Explore TIL',
+      features: ['Innovation Showcase', 'Live Demos', 'Expert Talks']
+    }
+  },
+
+  events: {
+    items: [
+      {
+        title: 'TIL Annual Picnic',
+        image: `${IMAGE_BASE}/event1.jpeg`,
+        link: '/events/conexpo-2025',
+        date: '2025-03-14'
+      },
+      {
+        title: 'Republic day 2025 celebration at TIL',
+        image: `${IMAGE_BASE}/event2.jpeg`,
+        link: '/events/operator-training-workshop',
+        date: '2025-02-20'
+      },
+      {
+        title: 'TIL 49th AGM',
+        image: `${IMAGE_BASE}/event3.jpg`,
+        link: '/events/infrastructure-summit',
+        date: '2025-02-15'
+      },
+      {
+        title: 'Viswakarma Puja 2024',
+        image: `${IMAGE_BASE}/event4.jpg`,
+        link: '/events/customer-appreciation',
+        date: '2025-01-30'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/Media-page.jpg`,
+      title: 'Upcoming Events',
+      description: 'Join us at our upcoming events, trade shows, and training sessions worldwide.',
+      cta: 'View All Events',
+      features: ['Global Events', 'Expert Sessions', 'Networking']
+    }
+  },
+
+  press: {
+    items: [
+      {
+        title: 'TIL Limited Reports Record Q4 2024 Performance',
+        description: 'Official press release detailing financial results and growth milestones.',
+        image: `${IMAGE_BASE}/press1.jpg`,
+        link: '/press/q4-2024-performance',
+        type: 'press',
+        date: '2024-12-22'
+      },
+      {
+        title: 'New CEO Appointment Announcement',
+        description: 'Leadership transition and strategic vision for the company\'s future.',
+        image: `${IMAGE_BASE}/press2.jpg`,
+        link: '/press/new-ceo-appointment',
+        type: 'press',
+        date: '2024-12-20'
+      },
+      {
+        title: 'Environmental Sustainability Initiative Launch',
+        description: 'Commitment to carbon neutrality and sustainable manufacturing practices.',
+        image: `${IMAGE_BASE}/press3.jpg`,
+        link: '/press/sustainability-initiative',
+        type: 'press',
+        date: '2024-12-18'
+      },
+      {
+        title: 'International Expansion Plans Revealed',
+        description: 'Strategic expansion into new markets and establishment of regional offices.',
+        image: `${IMAGE_BASE}/press4.jpg`,
+        link: '/press/international-expansion',
+        type: 'press',
+        date: '2024-12-15'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/media.jpg`,
+      title: 'Press Releases',
+      description: 'Official company announcements, press statements, and media resources.',
+      cta: 'View All Press',
+      features: ['Official News', 'Media Kit', 'Contact Info']
+    }
+  },
+
+  downloads: {
+    items: [
+      {
+        title: 'Rough Terrain Cranes',
+        image: `${IMAGE_BASE}/rough-terrain.png`,
+        link: '/downloads/product-catalog-2025.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Truck Cranes',
+        image: `${IMAGE_BASE}/truck-cranes.jpeg`,
+        link: '/TIL/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Pick-n-Carry Crane',
+        image: `${IMAGE_BASE}/pick-n-carry.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Grove™ Range',
+        image: `${IMAGE_BASE}/grove-range.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Crawler Crane',
+        image: `${IMAGE_BASE}/crawler-cranes.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'ReachStacker',
+        image: `${IMAGE_BASE}/reachstackers.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Forklift Truck',
+        image: `${IMAGE_BASE}/forklift.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      },
+      {
+        title: 'Boom Lift',
+        image: `${IMAGE_BASE}/boomlifts.png`,
+        link: '/downloads/crane-safety-manual.pdf',
+        fileType: 'PDF'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/free.jpeg`,
+      title: 'TIL Coffee Table Book',
+      description: 'Access our comprehensive library of brochures, manuals, and technical documents.',
+      cta: 'Browse All Downloads',
+      features: ['Product Specs', 'User Manuals', 'Technical Guides']
+    }
+  }
+};
+
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
   console.log('Current submenu data:', currentSubmenu);
@@ -2513,130 +2526,138 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   ];
 
   const submenuData = {
-    'life': {
-      points: [
-        {
-          name: 'Inclusive Culture',
-          description: 'Collaborative work environment that values diversity'
-        },
-        {
-          name: 'Flexible Work',
-          description: 'Hybrid options and adaptable working hours'
-        },
-        {
-          name: 'Wellness Programs',
-          description: 'Initiatives supporting mental and physical health'
-        },
-        {
-          name: 'Recognition',
-          description: 'Programs celebrating employee achievements'
-        }
-      ],
-      media: {
-        image: '/TIL/life.jpg',
-        title: 'Life @TIL',
-        description: 'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
-        cta: 'Explore Culture'
+  life: {
+    points: [
+      {
+        name: 'Inclusive Culture',
+        description: 'Collaborative work environment that values diversity'
+      },
+      {
+        name: 'Flexible Work',
+        description: 'Hybrid options and adaptable working hours'
+      },
+      {
+        name: 'Wellness Programs',
+        description: 'Initiatives supporting mental and physical health'
+      },
+      {
+        name: 'Recognition',
+        description: 'Programs celebrating employee achievements'
       }
-    },
-    'team': {
-      members: [
-        {
-          name: 'Pinaki Niyogy',
-          title: 'Chief Executive Officer',
-          image: '/TIL/pinaki.jpg'
-        },
-        {
-          name: 'Arvind Rishi',
-          title: 'AVP- Sales & After Market',
-          image: '/TIL/arvind.jpeg'
-        },
-        {
-          name: 'Mr. Kanhaiya Gupta',
-          title: 'Chief Financial Officer',
-          image: '/TIL/Kanhaiya.png'
-        },
-        {
-          name: 'Ms. Shamita Nandi',
-          title: 'Chief Human Resource Officer',
-          image: '/TIL/Shamita.png'
-        },
-        {
-          name: 'Chandrani Chatterjee',
-          title: 'Company Secretary',
-          image: '/TIL/chandrani.jpg'
-        },
-        {
-          name: 'Mr. Saikat Bagchi',
-          title: 'Head - Supply Chain & Commercial',
-          image: '/TIL/saiket.png'
-        },
-        {
-          name: 'Rishabh P Nair',
-          title: 'Head Of Brand, Content & PR',
-          image: '/TIL/Risabh.png'
-        }
-      ],
-      media: {
-        image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
-        title: 'Meet Our Team',
-        description: 'Get to know the passionate minds building the future of infrastructure. Our leadership team brings decades of experience and innovation.',
-        cta: 'Meet the Team'
-      }
-    },
-    'vacant': {
-      points: [
-        {
-          name: 'Open Roles',
-          description: 'Positions across engineering, sales, and operations'
-        },
-        {
-          name: 'Campus Programs',
-          description: 'Placement and intern opportunities for students'
-        },
-        {
-          name: 'Hiring Process',
-          description: 'Quick and transparent recruitment journey'
-        },
-        {
-          name: 'Career Growth',
-          description: 'Structured learning and development paths'
-        }
-      ],
-      media: {
-        image: '/job.jpg',
-        title: 'Current Openings',
-        description: "Explore vacancies and apply to be a part of TIL's next chapter. We offer competitive packages and growth opportunities across all departments.",
-        cta: 'View Jobs'
-      }
-    },
-    'equal': {
-      points: [
-        {
-          name: 'Diversity & Inclusion',
-          description: 'Commitment across all departments and levels'
-        },
-        {
-          name: 'Zero Tolerance',
-          description: 'Against discrimination or bias of any kind'
-        },
-        {
-          name: 'Women Leadership',
-          description: 'Initiatives to promote gender equality'
-        },
-        {
-          name: 'Accessibility',
-          description: 'Inclusive workplace policies and facilities'
-        }
-      ],
-      media: {
-        image: '/TIL/equal.jpg',
-        title: 'Equal Opportunity',
-        description: 'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
-        cta: 'Our Policy'
-      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/life.jpg`,
+      title: 'Life @TIL',
+      description:
+        'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
+      cta: 'Explore Culture'
     }
-  };
+  },
+
+  team: {
+    members: [
+      {
+        name: 'Pinaki Niyogy',
+        title: 'Chief Executive Officer',
+        image: `${IMAGE_BASE}/pinaki.jpg`
+      },
+      {
+        name: 'Arvind Rishi',
+        title: 'AVP- Sales & After Market',
+        image: `${IMAGE_BASE}/arvind.jpeg`
+      },
+      {
+        name: 'Mr. Kanhaiya Gupta',
+        title: 'Chief Financial Officer',
+        image: `${IMAGE_BASE}/Kanhaiya.png`
+      },
+      {
+        name: 'Ms. Shamita Nandi',
+        title: 'Chief Human Resource Officer',
+        image: `${IMAGE_BASE}/Shamita.png`
+      },
+      {
+        name: 'Chandrani Chatterjee',
+        title: 'Company Secretary',
+        image: `${IMAGE_BASE}/chandrani.jpg`
+      },
+      {
+        name: 'Mr. Saikat Bagchi',
+        title: 'Head - Supply Chain & Commercial',
+        image: `${IMAGE_BASE}/saiket.png`
+      },
+      {
+        name: 'Rishabh P Nair',
+        title: 'Head Of Brand, Content & PR',
+        image: `${IMAGE_BASE}/Risabh.png`
+      }
+    ],
+    media: {
+      image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
+      title: 'Meet Our Team',
+      description:
+        'Get to know the passionate minds building the future of infrastructure. Our leadership team brings decades of experience and innovation.',
+      cta: 'Meet the Team'
+    }
+  },
+
+  vacant: {
+    points: [
+      {
+        name: 'Open Roles',
+        description: 'Positions across engineering, sales, and operations'
+      },
+      {
+        name: 'Campus Programs',
+        description: 'Placement and intern opportunities for students'
+      },
+      {
+        name: 'Hiring Process',
+        description: 'Quick and transparent recruitment journey'
+      },
+      {
+        name: 'Career Growth',
+        description: 'Structured learning and development paths'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/job.jpg`,
+      title: 'Current Openings',
+      description:
+        "Explore vacancies and apply to be a part of TIL's next chapter. We offer competitive packages and growth opportunities across all departments.",
+      cta: 'View Jobs'
+    }
+  },
+
+  equal: {
+    points: [
+      {
+        name: 'Diversity & Inclusion',
+        description: 'Commitment across all departments and levels'
+      },
+      {
+        name: 'Zero Tolerance',
+        description: 'Against discrimination or bias of any kind'
+      },
+      {
+        name: 'Women Leadership',
+        description: 'Initiatives to promote gender equality'
+      },
+      {
+        name: 'Accessibility',
+        description: 'Inclusive workplace policies and facilities'
+      }
+    ],
+    media: {
+      image: `${IMAGE_BASE}/equal.jpg`,
+      title: 'Equal Opportunity',
+      description:
+        'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
+      cta: 'Our Policy'
+    }
+  }
+};
+
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
 
@@ -2901,81 +2922,83 @@ const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   ];
 
   const submenuData = {
-    'locations': {
-      points: [
-        {
-          name: 'Kolkata',
-          image: '/TIL/Kolkata.avif',
-          title: 'Kolkata',
-          description: 'Corporate headquarters of TIL, located in the heart of the city.',
-          cta: 'View Kolkata Office'
-        },
-        {
-          name: 'Chennai',
-          image: '/TIL/chennai.avif',
-          title: 'Chennai',
-          description: 'Serving the southern region with excellence.',
-          cta: 'View Chennai Office'
-        },
-        {
-          name: 'Delhi NCR',
-          image: '/TIL/delhi.avif',
-          title: 'Delhi NCR ',
-          description: 'Our strategic presence in the capital region.',
-          cta: 'View Delhi NCR Office'
-        },
-        {
-          name: 'Mumbai',
-          image: '/TIL/mumbai.avif',
-          title: 'Mumbai',
-          description: 'West zone operational hub for TIL.',
-          cta: 'View Mumbai Office'
-        },
-        {
-          name: 'Singrauli',
-          image: '/TIL/singrauli.jpeg',
-          title: 'Singrauli',
-          description: 'Industrial logistics and support in central India.',
-          cta: 'View Singrauli Depot'
-        }
-      ],
-      media: {}
-    },
-    'inquiry': {
-      contacts: [
-        { 
-          label: 'WhatsApp', 
-          value: '+91 89815 30153', 
-          icon: <MessageCircle className="w-5 h-5 text-green-400" />,
-          description: 'Quick messaging and support'
-        },
-        { 
-          label: 'Email', 
-          value: 'mktg-til@tilindia.com', 
-          icon: <Mail className="w-5 h-5 text-blue-400" />,
-          description: 'Business inquiries and detailed communications'
-        },
-        { 
-          label: 'Phone', 
-          value: '+91 033 6633 2000', 
-          icon: <Phone className="w-5 h-5 text-[#fbb53d]" />,
-          description: 'Direct phone support during business hours'
-        },
-        { 
-          label: 'LinkedIn', 
-          value: 'https://www.linkedin.com/company/til-limited-ind/', 
-          icon: <Linkedin className="w-5 h-5 text-[#0A66C2]" />,
-          description: 'Professional networking and company updates'
-        }
-      ],
-      media: {
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
-        title: 'Get In Touch',
-        description: 'Reach out to our team through your preferred channel. We\'re here to help.',
-        cta: 'Contact Us'
+  locations: {
+    points: [
+      {
+        name: 'Kolkata',
+        image: `${IMAGE_BASE}/Kolkata.avif`,
+        title: 'Kolkata',
+        description: 'Corporate headquarters of TIL, located in the heart of the city.',
+        cta: 'View Kolkata Office'
+      },
+      {
+        name: 'Chennai',
+        image: `${IMAGE_BASE}/chennai.avif`,
+        title: 'Chennai',
+        description: 'Serving the southern region with excellence.',
+        cta: 'View Chennai Office'
+      },
+      {
+        name: 'Delhi NCR',
+        image: `${IMAGE_BASE}/delhi.avif`,
+        title: 'Delhi NCR ',
+        description: 'Our strategic presence in the capital region.',
+        cta: 'View Delhi NCR Office'
+      },
+      {
+        name: 'Mumbai',
+        image: `${IMAGE_BASE}/mumbai.avif`,
+        title: 'Mumbai',
+        description: 'West zone operational hub for TIL.',
+        cta: 'View Mumbai Office'
+      },
+      {
+        name: 'Singrauli',
+        image: `${IMAGE_BASE}/singrauli.jpeg`,
+        title: 'Singrauli',
+        description: 'Industrial logistics and support in central India.',
+        cta: 'View Singrauli Depot'
       }
+    ],
+    media: {}
+  },
+
+  inquiry: {
+    contacts: [
+      { 
+        label: 'WhatsApp', 
+        value: '+91 89815 30153', 
+        icon: <MessageCircle className="w-5 h-5 text-green-400" />,
+        description: 'Quick messaging and support'
+      },
+      { 
+        label: 'Email', 
+        value: 'mktg-til@tilindia.com', 
+        icon: <Mail className="w-5 h-5 text-blue-400" />,
+        description: 'Business inquiries and detailed communications'
+      },
+      { 
+        label: 'Phone', 
+        value: '+91 033 6633 2000', 
+        icon: <Phone className="w-5 h-5 text-[#fbb53d]" />,
+        description: 'Direct phone support during business hours'
+      },
+      { 
+        label: 'LinkedIn', 
+        value: 'https://www.linkedin.com/company/til-limited-ind/', 
+        icon: <Linkedin className="w-5 h-5 text-[#0A66C2]" />,
+        description: 'Professional networking and company updates'
+      }
+    ],
+    media: {
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=240&fit=crop&crop=center',
+      title: 'Get In Touch',
+      description: "Reach out to our team through your preferred channel. We're here to help.",
+      cta: 'Contact Us'
     }
-  };
+  }
+};
+
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
   const activeMedia = activeCategory === 'locations'

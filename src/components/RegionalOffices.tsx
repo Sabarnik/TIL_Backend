@@ -16,10 +16,10 @@ interface OfficeInfo {
 }
 
 const OFFICES: Record<string, OfficeInfo> = {
-  Kolkata: {
+   Kolkata: {
     location: 'Kolkata',
     address: '1 Taratala Road, Garden Reach, Kolkata 700024, West Bengal',
-    image: 'kolkata.jpg',
+    image: `${__IMAGE_BASE_PATH__}/kolkata.jpg`,
     contacts: [
       {
         name: 'Amal Pal',
@@ -38,7 +38,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Chennai: {
     location: 'Chennai',
     address: 'Jhaver Plaza, 7th Floor 1-A, Nungambakkam High Road, Chennai 600 034, Tamil Nadu',
-    image: 'chennai.jpg',
+    image: `${__IMAGE_BASE_PATH__}/chennai.jpg`,
     contacts: [
       {
         name: 'K.Maruthi Prasad',
@@ -57,12 +57,12 @@ const OFFICES: Record<string, OfficeInfo> = {
   'Delhi NCR': {
     location: 'Delhi NCR',
     address: 'TIL Limited 801-802, 8th Floor, Kalbash Building, 26, Kasturba Gandhi Marg, New Delhi 110 001',
-    image: '/TIL/delhi.jpg',
+    image: `${__IMAGE_BASE_PATH__}/delhi.jpg`,
     contacts: [
       {
         name: 'Laxmi Chandra Shukla',
         position: 'Sales & Marketing',
-        phone: '+91 99560097048',
+        phone: '+91 9956009704',
         email: 'laxmi.shukla@tilindia.com'
       },
       {
@@ -76,7 +76,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Mumbai: {
     location: 'Mumbai',
     address: '702, The Affaires, Sector – 17, Sanpada New Mumbai, Maharashtra – 400705',
-    image: '/TIL/mumbai.jpg',
+    image: `${__IMAGE_BASE_PATH__}/mumbai.jpg`,
     contacts: [
       {
         name: 'Sibasish Mohapatra',
@@ -87,7 +87,7 @@ const OFFICES: Record<string, OfficeInfo> = {
       {
         name: 'Surajit Dey',
         position: 'Customer Support',
-        phone: '+91 993001962',
+        phone: '+91 9930019620',
         email: 'surajit.Dey@tilindia.com'
       }
     ]
@@ -95,12 +95,12 @@ const OFFICES: Record<string, OfficeInfo> = {
   Singrauli: {
     location: 'Singrauli',
     address: 'Behind Shiv Mandir, Near Reliance Infrastructure, UG Colony, Singrauli 486 888, Dist Singrauli, M.P.',
-    image: '/TIL/singrauli.jpg',
+    image: `${__IMAGE_BASE_PATH__}/singrauli.jpg`,
     contacts: [
       {
         name: 'Shailesh Pratap Singh',
         position: 'Customer Support',
-        phone: '+91 7878403811, 7275776484',
+        phone: '+91 7878403811',
         email: 'Shailesh.PratapSingh@tilindla.com'
       }
     ]

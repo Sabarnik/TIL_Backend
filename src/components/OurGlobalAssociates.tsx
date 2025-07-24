@@ -1,7 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+
+// Make sure global.d.ts has:
+// declare const __IMAGE_BASE_PATH__: string;
 
 const OurGlobalAssociates = () => {
   const ref = useRef(null);
@@ -28,7 +30,7 @@ const OurGlobalAssociates = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
@@ -40,25 +42,25 @@ const OurGlobalAssociates = () => {
       scale: 1,
       transition: {
         duration: 0.4,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
 
   const logos = [
-    { name: 'GROVE', src: '/TIL/clogo1.png' },
-    { name: 'HYSTER', src: '/TIL/clogo2.png' },
-    { name: 'MANITOWOC', src: '/TIL/clogo3.png' },
-    { name: 'SNORKEL', src: '/TIL/clogo4.png' },
+    { name: 'GROVE', src: `${__IMAGE_BASE_PATH__}/clogo1.png` },
+    { name: 'HYSTER', src: `${__IMAGE_BASE_PATH__}/clogo2.png` },
+    { name: 'MANITOWOC', src: `${__IMAGE_BASE_PATH__}/clogo3.png` },
+    { name: 'SNORKEL', src: `${__IMAGE_BASE_PATH__}/clogo4.png` },
   ];
 
   return (
     <section className="relative bg-cover bg-center py-16 overflow-hidden">
       {/* Background Image with Fixed Parallax Effect */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/TIL/global.jpg')",
+          backgroundImage: `url('${__IMAGE_BASE_PATH__}/global.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -66,11 +68,11 @@ const OurGlobalAssociates = () => {
           willChange: 'transform',
         }}
       />
-      
+
       {/* Lighter Dark Overlay */}
       <div className="absolute inset-0 bg-black/30 z-0" />
-      
-      {/* Lighter Gradient Overlay for Better Text Contrast */}
+
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 z-0" />
 
       {/* Content Container */}
@@ -79,11 +81,9 @@ const OurGlobalAssociates = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isInView ? 'visible' : 'hidden'}
           className="text-center"
         >
-
-          {/* Section Heading */}
           <motion.h2
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
@@ -91,30 +91,28 @@ const OurGlobalAssociates = () => {
             Our <span className="text-yellow-400">Global</span> Associates
           </motion.h2>
 
-          {/* Divider */}
           <motion.div
             variants={itemVariants}
             className="w-12 h-0.5 bg-yellow-400 rounded-full mx-auto mb-5"
           />
 
-          {/* Paragraph */}
           <motion.p
             variants={itemVariants}
             className="max-w-2xl mx-auto text-base text-white/90 leading-relaxed mb-12"
           >
-            We strive to uphold excellence in design and manufacturing by partnering 
-            with internationally renowned associates, enabling us to elevate our 
-            infra-equipment manufacturing capabilities to a global scale. With our 
-            steadfast commitment to quality and customer centricity, we aim to deliver 
+            We strive to uphold excellence in design and manufacturing by partnering
+            with internationally renowned associates, enabling us to elevate our
+            infra-equipment manufacturing capabilities to a global scale. With our
+            steadfast commitment to quality and customer centricity, we aim to deliver
             exceptional solutions that meet the demands of the global market.
           </motion.p>
 
-          {/* Logo Grid - Lighter glass effect */}
+          {/* Logo Grid */}
           <motion.div
             variants={containerVariants}
             className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
           >
-            {logos.map((logo, index) => (
+            {logos.map((logo) => (
               <motion.div
                 key={logo.name}
                 variants={logoVariants}
@@ -122,7 +120,7 @@ const OurGlobalAssociates = () => {
                 style={{
                   width: '140px',
                   height: '100px',
-                  margin: '0 auto'
+                  margin: '0 auto',
                 }}
               >
                 <div className="flex items-center justify-center w-full h-full p-4">
@@ -130,15 +128,15 @@ const OurGlobalAssociates = () => {
                     src={logo.src}
                     alt={`${logo.name} logo`}
                     className={`max-w-full max-h-full object-contain transition-all duration-300 ${
-                      logo.name === 'HYSTER' 
-                        ? 'filter grayscale brightness-75' 
+                      logo.name === 'HYSTER'
+                        ? 'filter grayscale brightness-75'
                         : 'filter brightness-0 invert'
                     } group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0`}
                     style={{
                       width: 'auto',
                       height: 'auto',
                       maxWidth: '120px',
-                      maxHeight: '80px'
+                      maxHeight: '80px',
                     }}
                   />
                 </div>
@@ -148,7 +146,7 @@ const OurGlobalAssociates = () => {
         </motion.div>
       </div>
 
-      {/* Optional: Subtle bottom fade */}
+      {/* Subtle bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/10 to-transparent z-0" />
     </section>
   );

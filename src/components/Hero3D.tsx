@@ -4,28 +4,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Hero3D: React.FC = () => {
   const images = [
     {
-      src: '/TIL/rough-terrain-crane.png',
-      className: 'filter brightness-110 contrast-110 saturate-110'
+      src: `${__IMAGE_BASE_PATH__}/rough-terrain-crane.png`,
+      height: 'h-[73.75vh]',
+      maxWidth: 'max-w-[106.25vw]',
     },
     {
-      src: '/TIL/Grove_Range.png',
-      className: 'filter brightness-110 contrast-110 saturate-110'
+      src: `${__IMAGE_BASE_PATH__}/Grove_Range.png`,
+      height: 'h-[47.5vh]',
+      maxWidth: 'max-w-[66.5vw]',
     },
     {
-      src: '/TIL/ok3.png',
-      className: 'filter brightness-110 contrast-110 saturate-110'
+      src: `${__IMAGE_BASE_PATH__}/ok3.png`,
+      height: 'h-[65.5vh]',
+      maxWidth: 'max-w-[115.5vw]',
     },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const currentImage = images[currentImageIndex];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
+      setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 5000);
-
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -43,54 +44,35 @@ const Hero3D: React.FC = () => {
             className="absolute inset-0 flex items-center justify-center"
           >
             <div className="relative flex items-center justify-center">
-              {/* Subtle blurred shadow behind image */}
+              {/* Blurred background shadow */}
               <div
                 className="absolute z-0 blur-3xl opacity-40"
                 style={{
-                  width: 'w-full',
-                  height: 
-                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '93.75vh' : // 75vh + 25%
-                    images[currentImageIndex].src === '/TIL/ok3.png' ? '82.5vh' : // 66vh + 25%
-                    '47.5vh',
-                  backgroundImage: `url(${images[currentImageIndex].src})`,
+                  height: currentImage.height.replace('h-[', '').replace(']', ''),
+                  width: '100%',
+                  backgroundImage: `url(${currentImage.src})`,
                   backgroundSize: 'contain',
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                   filter: 'blur(60px)',
                 }}
               />
-              <img 
-                src={images[currentImageIndex].src} 
+
+              {/* Foreground Image */}
+              <img
+                src={currentImage.src}
                 alt="Heavy Equipment"
-                className={`w-auto object-contain pr-6 relative z-10 ${
-                  images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' 
-                    ? 'h-[93.75vh] max-w-[106.25vw]' // 85vw + 25%
-                    : images[currentImageIndex].src === '/TIL/ok3.png'
-                    ? 'h-[82.5vh] max-w-[115.5vw]' // 92.4vw + 25%
-                    : 'h-[47.5vh] max-w-[66.5vw]'
-                } ${images[currentImageIndex].className}`}
-                style={{
-                  paddingLeft: '1.5rem',
-                  height: 
-                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '73.75vh' : 
-                    images[currentImageIndex].src === '/TIL/ok3.png' ? '65.5vh' : 
-                    '47.5vh',
-                  maxWidth: 
-                    images[currentImageIndex].src === '/TIL/rough-terrain-crane.png' ? '106.25vw' : 
-                    images[currentImageIndex].src === '/TIL/ok3.png' ? '115.5vw' : 
-                    '66.5vw',
-                  objectFit: 'contain'
-                }}
+                className={`relative z-10 object-contain pr-6 ${currentImage.height} ${currentImage.maxWidth} filter brightness-110 contrast-110 saturate-110`}
               />
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Enhanced shadow effect */}
+        {/* Gradient Shadow */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-8 bg-gradient-to-r from-yellow-500/20 via-transparent to-yellow-500/20 blur-xl rounded-full" />
       </div>
 
-      {/* Floating elements with enhanced animation */}
+      {/* Floating Animated Elements */}
       <div className="absolute top-1/4 right-10 w-20 h-20 border border-white/20 rotate-45 animate-spin-slow" />
       <div className="absolute bottom-1/3 right-20 w-12 h-12 border border-yellow-500/30 rotate-12 animate-float" />
       <div className="absolute top-1/2 right-32 w-6 h-6 bg-yellow-500/20 rounded-full animate-pulse" />
