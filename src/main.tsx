@@ -7,8 +7,8 @@ import { SearchProvider } from './context/SearchContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter> {/* ✅ Required for React Router */}
-      <SearchProvider> {/* Wrap it just once here */}
+    <BrowserRouter basename="/TIL"> {/* ✅ CRITICAL */}
+      <SearchProvider>
         <App />
       </SearchProvider>
     </BrowserRouter>

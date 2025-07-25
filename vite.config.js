@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-const BASE_PATH = '/TIL';
+const BASE_PATH = '/til';
 
 export default defineConfig({
   base: BASE_PATH,

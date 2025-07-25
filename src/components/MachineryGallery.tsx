@@ -17,7 +17,7 @@ const MACHINES: Machine[] = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: '/TIL/rough-terrain.png',
+    img: `${__IMAGE_BASE_PATH__}/rough-terrain.png`,
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -25,7 +25,7 @@ const MACHINES: Machine[] = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: '/TIL/truck-cranes.jpeg',
+    img: `${__IMAGE_BASE_PATH__}/truck-cranes.jpeg`,
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -33,7 +33,7 @@ const MACHINES: Machine[] = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: '/TIL/pick-n-carry.png',
+    img: `${__IMAGE_BASE_PATH__}/pick-n-carry.png`,
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -41,7 +41,7 @@ const MACHINES: Machine[] = [
   {
     id: 'grove',
     title: 'Grove™ Range',
-    img: '/TIL/grove-range.png',
+    img: `${__IMAGE_BASE_PATH__}/grove-range.png`,
     specs: ['Telescopic boom', 'Full-power lift', '300 t max'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -49,7 +49,7 @@ const MACHINES: Machine[] = [
   {
     id: 'crawler',
     title: 'Crawler Crane',
-    img: '/TIL/crawler-cranes.png',
+    img: `${__IMAGE_BASE_PATH__}/crawler-cranes.png`,
     specs: ['Mud-friendly', '400 t max', 'Wide tracks'],
     price: '$420,000',
     tag: 'POPULAR',
@@ -57,7 +57,7 @@ const MACHINES: Machine[] = [
   {
     id: 'reachstacker',
     title: 'ReachStacker',
-    img: '/TIL/reachstackers.png',
+    img: `${__IMAGE_BASE_PATH__}/reachstackers.png`,
     specs: ['Container lift', '45 t', 'Port-grade power'],
     price: '$150,000',
     tag: 'POPULAR',
@@ -65,7 +65,7 @@ const MACHINES: Machine[] = [
   {
     id: 'forklift',
     title: 'Forklift Truck',
-    img: '/TIL/forklift.png',
+    img: `${__IMAGE_BASE_PATH__}/forklift.png`,
     specs: ['Warehouse pro', '3 t lift', 'Electric / Diesel'],
     price: '$45,000',
     tag: 'POPULAR',
@@ -73,7 +73,7 @@ const MACHINES: Machine[] = [
   {
     id: 'boom-lift',
     title: 'Boom Lift',
-    img: '/TIL/boomlifts.png',
+    img: `${__IMAGE_BASE_PATH__}/boomlifts.png`,
     specs: ['45 m reach', 'Hybrid drive', '360° rotation'],
     price: '$75,000',
     tag: 'NEW',

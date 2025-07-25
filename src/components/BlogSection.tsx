@@ -15,14 +15,16 @@ const BlogSection: React.FC = () => {
         name: 'Rajesh Kumar',
         role: 'Chief Engineer',
         bio: 'With 15 years experience in heavy machinery development and innovation',
-        avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+        avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80'
       },
       column: 'Industry Insights',
       date: '2024-04-05',
       readTime: '10 min',
       likes: '7K',
       comments: '426',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
+      thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
+      featuredImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
     },
     {
       id: 2,
@@ -32,14 +34,16 @@ const BlogSection: React.FC = () => {
         name: 'Priya Sharma',
         role: 'Sustainability Officer',
         bio: 'Head of Environmental Initiatives at TIL with a focus on green manufacturing',
-        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+        avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80'
       },
       column: 'Green Tech',
       date: '2024-05-21',
       readTime: '15 min',
       likes: '3.9K',
       comments: '116',
-      image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
+      thumbnail: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
+      featuredImage: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
     },
     {
       id: 3,
@@ -49,14 +53,16 @@ const BlogSection: React.FC = () => {
         name: 'Amit Patel',
         role: 'Safety Director',
         bio: 'Developed award-winning safety protocols for heavy machinery operations',
-        avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+        avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80'
       },
       column: 'Safety First',
       date: '2024-06-15',
       readTime: '8 min',
       likes: '5.2K',
       comments: '342',
-      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
+      thumbnail: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
+      featuredImage: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
     }
   ];
 
@@ -146,6 +152,8 @@ const BlogSection: React.FC = () => {
                           <img 
                             src={post.author.avatar} 
                             alt={post.author.name}
+                            width={32}
+                            height={32}
                             className="w-8 h-8 rounded-full object-cover hover:ring-2 hover:ring-[#F1B434] transition-all"
                           />
                         </button>
@@ -169,6 +177,8 @@ const BlogSection: React.FC = () => {
                             <img 
                               src={post.author.avatar} 
                               alt={post.author.name}
+                              width={40}
+                              height={40}
                               className="w-10 h-10 rounded-full object-cover"
                             />
                             <div>
@@ -201,8 +211,15 @@ const BlogSection: React.FC = () => {
                         </div>
                         
                         <div className="flex items-center gap-3">
-                          <button className="flex items-center gap-1 text-xs text-gray-500 hover:text-[#F1B434]">
-                            <Heart size={14} />
+                          <button 
+                            className="flex items-center gap-1 text-xs text-gray-500 hover:text-[#F1B434]"
+                            onClick={() => toggleSavePost(post.id)}
+                          >
+                            <Heart 
+                              size={14} 
+                              fill={savedPosts.includes(post.id) ? "#F1B434" : "none"} 
+                              className={savedPosts.includes(post.id) ? "text-[#F1B434]" : ""}
+                            />
                             <span>{post.likes}</span>
                           </button>
                           <button className="flex items-center gap-1 text-xs text-gray-500 hover:text-[#F1B434]">
@@ -218,6 +235,8 @@ const BlogSection: React.FC = () => {
                       <img 
                         src={post.image} 
                         alt={post.title}
+                        width={800}
+                        height={600}
                         className="absolute w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
@@ -236,8 +255,10 @@ const BlogSection: React.FC = () => {
               <a href="/blog/featured" className="block group relative">
                 <div className="relative w-full h-48 overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80" 
                     alt="Featured Blog Post"
+                    width={1200}
+                    height={628}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-5">
@@ -260,10 +281,13 @@ const BlogSection: React.FC = () => {
                 <div className="space-y-4 mb-6">
                   {featuredPosts.slice(0, 3).map((post) => (
                     <div key={`recent-${post.id}`} className="flex gap-3 items-start pb-3 border-b border-gray-100">
+                      {/* Thumbnail */}
                       <div className="flex-shrink-0 w-16 h-16 rounded overflow-hidden relative">
                         <img 
-                          src={post.image} 
+                          src={post.thumbnail} 
                           alt={post.title}
+                          width={150}
+                          height={150}
                           className="absolute w-full h-full object-cover"
                         />
                       </div>
@@ -308,13 +332,14 @@ const BlogSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <motion.a
-            href="/blog"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
-            whileHover={{ scale: 1.05 }}
-          >
-            View All Articles
-          </motion.a>
+         <motion.a
+  href={`${__BASE_PATH__}/blog`}
+  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+  whileHover={{ scale: 1.05 }}
+>
+  View All Articles
+</motion.a>
+
         </motion.div>
       </div>
     </section>

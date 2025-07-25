@@ -371,7 +371,7 @@ const submenuData = {
     transition={{ duration: 0.2, ease: "easeOut" }}
     className="overflow-hidden"
   >
-        <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
+        <div className={`bg-[#0f1419]/100 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
           isMobile ? 'mobile-menu-height' : 'mega-menu-height'
         } overflow-y-auto scroll-hover`}>
           
