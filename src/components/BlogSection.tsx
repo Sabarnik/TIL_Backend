@@ -333,12 +333,12 @@ const BlogSection: React.FC = () => {
           viewport={{ once: true }}
         >
          <motion.a
-  href={`${__BASE_PATH__}/blog`}
-  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
-  whileHover={{ scale: 1.05 }}
->
-  View All Articles
-</motion.a>
+        href={`${__BASE_PATH__}/media/blog`}
+        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-white rounded-lg font-semibold shadow-md hover:shadow-lg transition-all"
+        whileHover={{ scale: 1.05 }}
+      >
+        View All Articles
+      </motion.a>
 
         </motion.div>
       </div>

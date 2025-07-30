@@ -5,26 +5,33 @@ import { useEffect } from 'react';
 
 const Testimonials: React.FC = () => {
   const [hovered, setHovered] = useState(false);
-  const [expandedCard, setExpandedCard] = useState<{ id: number; row: 'top' | 'bottom'; position: { left: number; top: number } } | null>(null);
+  const [expandedCard, setExpandedCard] = useState<{ 
+    id: number; 
+    row: 'top' | 'bottom'; 
+    direction: 'up' | 'down';
+    position: { left: number; top: number; height: number } 
+  } | null>(null);
 
   const topRowRef = useRef<HTMLDivElement>(null);
   const bottomRowRef = useRef<HTMLDivElement>(null);
   const hoverCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
         expandedCard &&
         hoverCardRef.current &&
-        !hoverCardRef.current.contains(event.target as Node)
+        !hoverCardRef.current.contains((event.target as Node))
       ) {
         setExpandedCard(null);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [expandedCard]);
 
@@ -45,99 +52,97 @@ const Testimonials: React.FC = () => {
   const doubledTop = [...topTestimonials, ...topTestimonials];
   const doubledBottom = [...bottomTestimonials, ...bottomTestimonials];
 
- const handleReadMoreClick = (
-  e: React.MouseEvent,
-  testimonial: any,
-  row: 'top' | 'bottom'
-) => {
-  e.stopPropagation();
+  const handleReadMoreClick = (
+    e: React.MouseEvent | React.TouchEvent,
+    testimonial: any,
+    row: 'top' | 'bottom'
+  ) => {
+    e.stopPropagation();
 
-  const rect = (e.currentTarget as HTMLDivElement)
-    .closest('.testimonial-card')
-    ?.getBoundingClientRect();
-  if (!rect) return;
+    const target = e.currentTarget as HTMLDivElement;
+    const rect = target.closest('.testimonial-card')?.getBoundingClientRect();
+    if (!rect) return;
 
-  const hoverCardHeight = 208; // approximate height of HoverCardContent
-  const spaceAbove = rect.top;
-  const spaceBelow =
-    window.innerHeight - (rect.top + rect.height);
+    const hoverCardHeight = 208; // approximate height of HoverCardContent
+    const spaceAbove = rect.top;
+    const spaceBelow = window.innerHeight - (rect.top + rect.height);
 
-  let direction: 'up' | 'down';
-  if (spaceBelow >= hoverCardHeight) {
-    direction = 'down';
-  } else if (spaceAbove >= hoverCardHeight) {
-    direction = 'up';
-  } else {
-    direction =
-      spaceBelow > spaceAbove ? 'down' : 'up';
-  }
+    let direction: 'up' | 'down';
+    if (spaceBelow >= hoverCardHeight) {
+      direction = 'down';
+    } else if (spaceAbove >= hoverCardHeight) {
+      direction = 'up';
+    } else {
+      direction = spaceBelow > spaceAbove ? 'down' : 'up';
+    }
 
-  const alreadyExpanded =
-    expandedCard?.id === testimonial.id;
-  if (alreadyExpanded) {
-    setExpandedCard(null);
-  } else {
-    setExpandedCard({
-      id: testimonial.id,
-      row,
-      direction,
-      position: {
-        left: rect.left,
-        top: rect.top,
-        height: rect.height,
-      },
-    });
-  }
-};
+    const alreadyExpanded = expandedCard?.id === testimonial.id;
+    if (alreadyExpanded) {
+      setExpandedCard(null);
+    } else {
+      setExpandedCard({
+        id: testimonial.id,
+        row,
+        direction,
+        position: {
+          left: rect.left,
+          top: rect.top,
+          height: rect.height,
+        },
+      });
+    }
+  };
 
   const shouldPause = hovered || expandedCard !== null;
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white py-16 w-full overflow-hidden relative" style={{ fontFamily: 'Arial, sans-serif' }}>
-       <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+    <section className="bg-gradient-to-b from-gray-50 to-white py-8 md:py-16 w-full overflow-hidden relative" style={{ fontFamily: 'Arial, sans-serif' }}>
+      <motion.div
+        className="text-center mb-8 md:mb-12 px-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <motion.span
+          className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
+          initial={{ 
+            opacity: 0,
+            letterSpacing: "-0.05em"
+          }}
+          whileInView={{
+            opacity: 1,
+            letterSpacing: "0.02em",
+          }}
+          transition={{ 
+            duration: 0.8,
+            delay: 0.2,
+            ease: [0.16, 0.77, 0.47, 0.97]
+          }}
+          viewport={{ once: true, margin: "-20%" }}
         >
-          <motion.span
-            className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#F1B434] to-[#FFE352] text-lg font-bold tracking-tight"
-            initial={{ 
-              opacity: 0,
-              letterSpacing: "-0.05em"
-            }}
-            whileInView={{
-              opacity: 1,
-              letterSpacing: "0.02em",
-            }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.2,
-              ease: [0.16, 0.77, 0.47, 0.97]
-            }}
-            viewport={{ once: true, margin: "-20%" }}
-          >
-            A LEGACY OF EXCELLENCE
-          </motion.span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-            What Our <span className="text-[#F1B434]">Clients Say</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
-          <p className="mt-6 mx-auto max-w-2xl text-lg text-gray-600 leading-relaxed">
-            Find our offices across India with dedicated support teams ready to assist you.
-          </p>
-        </motion.div>
+          A LEGACY OF EXCELLENCE
+        </motion.span>
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+          What Our <span className="text-[#F1B434]">Clients Say</span>
+        </h2>
+        <div className="w-24 h-1.5 bg-gradient-to-r from-[#F1B434] to-[#FFE352] mx-auto rounded-full mb-6"></div>
+        <p className="mt-4 md:mt-6 mx-auto max-w-2xl text-base md:text-lg text-gray-600 leading-relaxed">
+          Find our offices across India with dedicated support teams ready to assist you.
+        </p>
+      </motion.div>
 
       {/* Top Row */}
       <div
         className="relative w-full overflow-hidden mb-4"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onTouchStart={() => setHovered(true)}
+        onTouchEnd={() => setHovered(false)}
       >
         <div
           ref={topRowRef}
-          className={`flex gap-6 w-max animate-scroll-left whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
+          className={`flex gap-4 md:gap-6 w-max animate-scroll-left whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
         >
           {doubledTop.map((testimonial, i) => (
             <div key={`top-${i}`} className="relative h-auto">
@@ -155,10 +160,12 @@ const Testimonials: React.FC = () => {
         className="relative w-full overflow-hidden mt-4"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onTouchStart={() => setHovered(true)}
+        onTouchEnd={() => setHovered(false)}
       >
         <div
           ref={bottomRowRef}
-          className={`flex gap-6 w-max animate-scroll-right whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
+          className={`flex gap-4 md:gap-6 w-max animate-scroll-right whitespace-nowrap px-4 ${shouldPause ? 'pause' : ''}`}
         >
           {doubledBottom.map((testimonial, i) => (
             <div key={`bottom-${i}`} className="relative h-auto">
@@ -180,14 +187,13 @@ const Testimonials: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: expandedCard.row === 'top' ? -10 : 10 }}
             transition={{ duration: 0.2 }}
-            className="fixed z-30 w-[380px]"
+            className="fixed z-30 w-[calc(100%-2rem)] md:w-[380px] mx-4 md:mx-0"
             style={{
-              left: expandedCard.position.left,
+              left: window.innerWidth < 768 ? '1rem' : expandedCard.position.left,
               top:
-              expandedCard.direction === 'down'
-                ? expandedCard.position.top + expandedCard.position.height
-                : expandedCard.position.top - 208,
-
+                expandedCard.direction === 'down'
+                  ? expandedCard.position.top + expandedCard.position.height
+                  : expandedCard.position.top - 208,
             }}
           >
             <HoverCardContent
@@ -215,36 +221,39 @@ const Testimonials: React.FC = () => {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
+        @media (max-width: 768px) {
+          .animate-scroll-left, .animate-scroll-right {
+            animation-duration: 40s;
+          }
+        }
       `}</style>
     </section>
   );
 };
 
-const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseEvent) => void }> = ({ testimonial, onReadMore }) => (
+const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseEvent | React.TouchEvent) => void }> = ({ testimonial, onReadMore }) => (
   <div 
-    className="testimonial-card w-[380px] bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+    className="testimonial-card w-[300px] md:w-[380px] bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300"
     style={{ fontFamily: 'Arial, sans-serif' }}
   >
-    <div className="flex items-center mb-4">
-      <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-yellow-100" />
+    <div className="flex items-center mb-3 md:mb-4">
+      <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mr-3 border-2 border-yellow-100" />
       <div className="text-left">
-        <h3 className="font-bold text-gray-800" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
-        <p className="text-sm text-yellow-600 font-medium">{testimonial.position} | {testimonial.company}</p>
+        <h3 className="font-bold text-gray-800 text-sm md:text-base" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
+        <p className="text-xs md:text-sm text-yellow-600 font-medium">{testimonial.position} | {testimonial.company}</p>
       </div>
     </div>
-    <div className="flex mb-3">
+    <div className="flex mb-2 md:mb-3">
       {Array(testimonial.rating).fill(0).map((_, j) => (
-        <Star key={j} size={16} className="text-yellow-500 fill-current" />
+        <Star key={j} size={14} className="text-yellow-500 fill-current" />
       ))}
     </div>
-    <p className="text-gray-700 text-base mb-4 leading-relaxed line-clamp-3 overflow-hidden">
+    <p className="text-gray-700 text-sm md:text-base mb-3 md:mb-4 leading-relaxed line-clamp-3 overflow-hidden">
       "{testimonial.text}"
     </p>
     <div 
-      onClick={(e) => {
-        e.stopPropagation();
-        onReadMore(e);
-      }} 
+      onClick={(e) => onReadMore(e)}
+      onTouchStart={(e) => onReadMore(e)}
       className="text-xs text-yellow-600 font-medium cursor-pointer select-none hover:text-yellow-700 transition-colors"
     >
       Read full review →
@@ -254,28 +263,28 @@ const TestimonialCard: React.FC<{ testimonial: any; onReadMore: (e: React.MouseE
 
 const HoverCardContent: React.FC<{ testimonial: any }> = ({ testimonial }) => (
   <div 
-    className="bg-gradient-to-r from-[#0f1419] to-[#1a2233] border border-yellow-500/20 rounded-xl p-6 shadow-lg"
+    className="bg-gradient-to-r from-[#0f1419] to-[#1a2233] border border-yellow-500/20 rounded-xl p-4 md:p-6 shadow-lg"
     style={{ fontFamily: 'Arial, sans-serif' }}
   >
-    <div className="flex items-center mb-4">
+    <div className="flex items-center mb-3 md:mb-4">
       <img 
         src={testimonial.image} 
         alt={testimonial.name} 
-        className="w-12 h-12 rounded-full object-cover mr-3 border-2 border-yellow-400/30" 
+        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover mr-3 border-2 border-yellow-400/30" 
       />
       <div className="text-left">
-        <h3 className="font-bold text-white" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
-        <p className="text-sm text-yellow-400/80 font-medium">
+        <h3 className="font-bold text-white text-sm md:text-base" style={{ fontFamily: 'Arial Narrow, sans-serif' }}>{testimonial.name}</h3>
+        <p className="text-xs md:text-sm text-yellow-400/80 font-medium">
           {testimonial.position} | {testimonial.company}
         </p>
       </div>
     </div>
-    <div className="flex mb-3">
+    <div className="flex mb-2 md:mb-3">
       {Array(testimonial.rating).fill(0).map((_, j) => (
-        <Star key={j} size={16} className="text-yellow-400 fill-current" />
+        <Star key={j} size={14} className="text-yellow-400 fill-current" />
       ))}
     </div>
-    <p className="text-gray-300 text-base mb-4 leading-relaxed whitespace-normal">
+    <p className="text-gray-300 text-sm md:text-base mb-3 md:mb-4 leading-relaxed whitespace-normal">
       "{testimonial.text}"
     </p>
   </div>

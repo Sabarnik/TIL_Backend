@@ -1906,25 +1906,25 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       {
         title: 'TIL Annual Picnic',
         image: `${IMAGE_BASE}/event1.jpeg`,
-        link: '/events/conexpo-2025',
+        link: '/media/events/conexpo-2025',
         date: '2025-03-14'
       },
       {
         title: 'Republic day 2025 celebration at TIL',
         image: `${IMAGE_BASE}/event2.jpeg`,
-        link: '/events/operator-training-workshop',
+        link: '/media/events/operator-training-workshop',
         date: '2025-02-20'
       },
       {
         title: 'TIL 49th AGM',
         image: `${IMAGE_BASE}/event3.jpg`,
-        link: '/events/infrastructure-summit',
+        link: '/media/events/infrastructure-summit',
         date: '2025-02-15'
       },
       {
         title: 'Viswakarma Puja 2024',
         image: `${IMAGE_BASE}/event4.jpg`,
-        link: '/events/customer-appreciation',
+        link: '/media/events/customer-appreciation',
         date: '2025-01-30'
       }
     ],

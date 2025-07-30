@@ -7,7 +7,7 @@ import { SearchProvider } from './context/SearchContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/TIL"> {/* ✅ CRITICAL */}
+    <BrowserRouter basename="/til"> {/* ✅ CRITICAL */}
       <SearchProvider>
         <App />
       </SearchProvider>
