@@ -3,6 +3,8 @@
 import { type FC, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 
 export interface Machine {
   id: string
@@ -17,7 +19,7 @@ const MACHINES: Machine[] = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: `${__IMAGE_BASE_PATH__}/rough-terrain.png`,
+    img: `${basePath}/rough-terrain.png`,
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -25,7 +27,7 @@ const MACHINES: Machine[] = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: `${__IMAGE_BASE_PATH__}/truck-cranes.jpeg`,
+    img: `${basePath}/truck-cranes.jpeg`,
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -33,7 +35,7 @@ const MACHINES: Machine[] = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: `${__IMAGE_BASE_PATH__}/pick-n-carry.png`,
+    img: `${basePath}/pick-n-carry.png`,
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -41,7 +43,7 @@ const MACHINES: Machine[] = [
   {
     id: 'grove',
     title: 'Grove™ Range',
-    img: `${__IMAGE_BASE_PATH__}/grove-range.png`,
+    img: `${basePath}/grove-range.png`,
     specs: ['Telescopic boom', 'Full-power lift', '300 t max'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -49,7 +51,7 @@ const MACHINES: Machine[] = [
   {
     id: 'crawler',
     title: 'Crawler Crane',
-    img: `${__IMAGE_BASE_PATH__}/crawler-cranes.png`,
+    img: `${basePath}/crawler-cranes.png`,
     specs: ['Mud-friendly', '400 t max', 'Wide tracks'],
     price: '$420,000',
     tag: 'POPULAR',
@@ -57,7 +59,7 @@ const MACHINES: Machine[] = [
   {
     id: 'reachstacker',
     title: 'ReachStacker',
-    img: `${__IMAGE_BASE_PATH__}/reachstackers.png`,
+    img: `${basePath}/reachstackers.png`,
     specs: ['Container lift', '45 t', 'Port-grade power'],
     price: '$150,000',
     tag: 'POPULAR',
@@ -65,7 +67,7 @@ const MACHINES: Machine[] = [
   {
     id: 'forklift',
     title: 'Forklift Truck',
-    img: `${__IMAGE_BASE_PATH__}/forklift.png`,
+    img: `${basePath}/forklift.png`,
     specs: ['Warehouse pro', '3 t lift', 'Electric / Diesel'],
     price: '$45,000',
     tag: 'POPULAR',
@@ -73,7 +75,7 @@ const MACHINES: Machine[] = [
   {
     id: 'boom-lift',
     title: 'Boom Lift',
-    img: `${__IMAGE_BASE_PATH__}/boomlifts.png`,
+    img: `${basePath}/boomlifts.png`,
     specs: ['45 m reach', 'Hybrid drive', '360° rotation'],
     price: '$75,000',
     tag: 'NEW',
@@ -379,7 +381,6 @@ const MachineryGallery: FC<{ products?: Machine[] }> = ({
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
-              onMouseLeaveCapture={handleMouseUp}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}

@@ -1,7 +1,9 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, FileText } from 'lucide-react';
 import Hero3D from './Hero3D';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const Hero: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,7 +21,7 @@ const Hero: React.FC = () => {
   return (
     <div
       className="relative h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ backgroundImage: `url('${__IMAGE_BASE_PATH__}/hero-bg.jpg')` }}
+      style={{ backgroundImage: `url('${basePath}/hero-bg.jpg')` }}
     >
       {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-[#355d73]/50 to-black/50 z-10 pointer-events-none" />

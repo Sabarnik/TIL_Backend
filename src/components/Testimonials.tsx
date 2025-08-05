@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useState } from 'react';
 import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

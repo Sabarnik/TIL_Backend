@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -12,8 +13,7 @@ import {
   Youtube,
   ArrowRight
 } from 'lucide-react';
-
-declare const __BASE_PATH__: string;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const SleekFooter: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -116,7 +116,7 @@ const SleekFooter: React.FC = () => {
             >
               <a href="/" className="mb-6 inline-block">
                 <img
-                  src={`${__BASE_PATH__}/logo1.png`}
+                  src={`${basePath}/logo1.png`}
                   alt="TIL India"
                   className="h-15 w-auto brightness-0 invert"
                 />

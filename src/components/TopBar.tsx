@@ -1,7 +1,10 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSearch } from '../context/SearchContext';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 
 const TopBar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +39,7 @@ const TopBar: React.FC = () => {
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             <img
-              src={`${__BASE_PATH__}/logo1.png`}
+              src={`${basePath}/logo1.png`}
               alt="Logo"
               className="h-15 w-auto"
             />

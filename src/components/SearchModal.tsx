@@ -1,15 +1,17 @@
-import React, { useEffect, useState, useRef, KeyboardEvent } from 'react';
+'use client';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSearch } from '../context/SearchContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search } from 'lucide-react';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-const IMAGE_BASE = __IMAGE_BASE_PATH__; // Safe because Vite replaces this at build time
+
 
 export const MACHINES = [
   {
     id: 'rough-terrain',
     title: 'Rough-Terrain Crane',
-    img: `${IMAGE_BASE}/rough-terrain.png`,
+    img: `${basePath}/rough-terrain.png`,
     specs: ['Off-road ready', '32 m boom', '80 t capacity'],
     price: '$185,000',
     tag: 'POPULAR',
@@ -18,7 +20,7 @@ export const MACHINES = [
   {
     id: 'truck-crane',
     title: 'Truck Crane',
-    img: `${IMAGE_BASE}/truck-cranes.jpeg`,
+    img: `${basePath}/truck-cranes.jpeg`,
     specs: ['High mobility', '200 t max', 'Long-reach boom'],
     price: '$220,000',
     tag: 'POPULAR',
@@ -27,7 +29,7 @@ export const MACHINES = [
   {
     id: 'pick-carry',
     title: 'Pick-n-Carry Crane',
-    img: `${IMAGE_BASE}/pick-n-carry.png`,
+    img: `${basePath}/pick-n-carry.png`,
     specs: ['Compact design', '25 t capacity', 'Tight radius'],
     price: '$95,000',
     tag: 'NEW',
@@ -36,7 +38,7 @@ export const MACHINES = [
   {
     id: 'all-terrain',
     title: 'All-Terrain Crane',
-    img: `${IMAGE_BASE}/grove-range.png`,
+    img: `${basePath}/grove-range.png`,
     specs: ['High speed', '120 t capacity', '60 m boom'],
     price: '$350,000',
     tag: 'FEATURED',
@@ -45,7 +47,7 @@ export const MACHINES = [
   {
     id: 'crawler-crane',
     title: 'Crawler Crane',
-    img: `${IMAGE_BASE}/crawler-cranes.png`,
+    img: `${basePath}/crawler-cranes.png`,
     specs: ['Heavy lifting', '400 t capacity', 'Stable platform'],
     price: '$500,000',
     tag: 'FEATURED',
@@ -54,7 +56,7 @@ export const MACHINES = [
   {
     id: 'tower-crane',
     title: 'Tower Crane',
-    img: `${IMAGE_BASE}/tower-crane.jpg`,
+    img: `${basePath}/tower-crane.jpg`,
     specs: ['High rise', '20 t capacity', '80 m reach'],
     price: '$280,000',
     tag: 'NEW',
@@ -344,12 +346,14 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
 
       // Apply keyword filter only if searchQuery has text
     if (query !== '' && !keywordMap[rawQuery]) {
-      filteredData = filteredData.filter(item =>
-        item.title.toLowerCase().includes(query) ||
-        (item.excerpt && item.excerpt.toLowerCase().includes(query)) ||
-        (item.specs && item.specs.some((spec: string) => spec.toLowerCase().includes(query))) ||
-        (item.category && item.category.toLowerCase().includes(query))
-      );
+   filteredData = filteredData.filter((item) => {
+      const titleMatch = item.title?.toLowerCase().includes(query);
+      const excerptMatch = 'excerpt' in item && item.excerpt?.toLowerCase().includes(query);
+      const specsMatch = 'specs' in item && Array.isArray(item.specs) && item.specs.some(spec => spec.toLowerCase().includes(query));
+      const categoryMatch = 'category' in item && item.category?.toLowerCase().includes(query);
+      return titleMatch || excerptMatch || specsMatch || categoryMatch;
+    });
+
     }
 
 
@@ -360,9 +364,10 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
     return () => clearTimeout(timer);
   }, [searchQuery, activeFilter]);
 
-  const handleKey = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') close();
-  };
+ const handleKey = (e: globalThis.KeyboardEvent) => {
+  if (e.key === 'Escape') close();
+};
+
 
   useEffect(() => {
     window.addEventListener('keydown', handleKey);
@@ -398,9 +403,11 @@ const SearchModal: React.FC<SearchModalProps> = ({ placeholder = "Search product
     }));
   };
 
+ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const viewAllItems = (type: string) => {
-    window.location.href = `/${type}`;
-  };
+  window.location.href = `${basePath}/${type}`; // ✅
+};
+
 
   const displayedResults = showAllResults ? searchResults : searchResults.slice(0, 3);
 

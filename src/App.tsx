@@ -13,15 +13,15 @@ import RegionalOffices from './components/RegionalOffices';
 import Testimonials from './components/Testimonials';
 import SleekFooter from './components/SleekFooter';
 import SearchModal from './components/SearchModal';
-import Events from './pages/media/events/page';
-import About from './pages/About';
-import BlogListPage from './pages/media/blog/Page';
-import BlogViewPage from './pages/media/blog/[title]/Page';
-import NewsPage from './pages/media/news/page';
-import NewsArticlePage from './pages/media/news/[title]/page';
-import PressReleasesPage from './pages/media/press/page';
-import EventDetail from './pages/media/events/[title]/page';
-import InvestorRelations from './pages/InvestorRelations';
+import Events from './custompages/media/events/page';
+import About from './custompages/About';
+import BlogListPage from './custompages/media/blog/Page';
+import BlogViewPage from './custompages/media/blog/[title]/Page';
+import NewsPage from './custompages/media/news/page';
+import NewsArticlePage from './custompages/media/news/[title]/page';
+import PressReleasesPage from './custompages/media/press/page';
+import EventDetail from './custompages/media/events/[title]/page';
+import InvestorRelations from './custompages/InvestorRelations';
 
 function HomePage() {
   return (

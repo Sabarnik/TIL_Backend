@@ -1,3 +1,5 @@
+'use client'; // ✅ THIS IS REQUIRED
+
 import React, { createContext, useContext, useState } from 'react';
 
 const SearchContext = createContext({

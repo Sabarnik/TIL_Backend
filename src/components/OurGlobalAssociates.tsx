@@ -1,9 +1,50 @@
-import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+'use client';
+import React, { useRef } from 'react';
+import { motion, useInView, cubicBezier } from 'framer-motion';
 
-// Make sure global.d.ts has:
-// declare const __IMAGE_BASE_PATH__: string;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: cubicBezier(0.42, 0, 1, 1), // ✅ Strongly typed easing
+    },
+  },
+};
+
+const logoVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: cubicBezier(0.42, 0, 1, 1), // ✅ Strongly typed easing
+    },
+  },
+};
+
+const logos = [
+  { name: 'GROVE', src: `${basePath}/clogo1.png` },
+  { name: 'HYSTER', src: `${basePath}/clogo2.png` },
+  { name: 'MANITOWOC', src: `${basePath}/clogo3.png` },
+  { name: 'SNORKEL', src: `${basePath}/clogo4.png` },
+];
 
 const OurGlobalAssociates = () => {
   const ref = useRef(null);
@@ -12,55 +53,13 @@ const OurGlobalAssociates = () => {
     once: true,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const logos = [
-    { name: 'GROVE', src: `${__IMAGE_BASE_PATH__}/clogo1.png` },
-    { name: 'HYSTER', src: `${__IMAGE_BASE_PATH__}/clogo2.png` },
-    { name: 'MANITOWOC', src: `${__IMAGE_BASE_PATH__}/clogo3.png` },
-    { name: 'SNORKEL', src: `${__IMAGE_BASE_PATH__}/clogo4.png` },
-  ];
-
   return (
     <section className="relative bg-cover bg-center py-16 overflow-hidden">
       {/* Background Image with Fixed Parallax Effect */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url('${__IMAGE_BASE_PATH__}/global.jpg')`,
+          backgroundImage: `url('${basePath}/global.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

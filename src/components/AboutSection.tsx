@@ -1,6 +1,9 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Shield, Building2, Globe } from 'lucide-react';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 
 const AboutSection: React.FC = () => {
   const achievements = [
@@ -107,7 +110,7 @@ const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-xl overflow-hidden shadow-xl h-64 sm:h-80 md:h-96 lg:h-full">
               <motion.img
-                src={`${__IMAGE_BASE_PATH__}/about.jpg`}
+                src={`${basePath}/about.jpg`}
                 alt="TIL Limited heavy equipment"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.05 }}

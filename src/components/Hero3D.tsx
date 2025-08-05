@@ -1,20 +1,21 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const Hero3D: React.FC = () => {
   const images = [
     {
-      src: `${__IMAGE_BASE_PATH__}/rough-terrain-crane.png`,
+      src: `${basePath}/rough-terrain-crane.png`,
       height: 'h-[73.75vh]',
       maxWidth: 'max-w-[106.25vw]',
     },
     {
-      src: `${__IMAGE_BASE_PATH__}/Grove_Range.png`,
+      src: `${basePath}/Grove_Range.png`,
       height: 'h-[47.5vh]',
       maxWidth: 'max-w-[66.5vw]',
     },
     {
-      src: `${__IMAGE_BASE_PATH__}/ok3.png`,
+      src: `${basePath}/ok3.png`,
       height: 'h-[65.5vh]',
       maxWidth: 'max-w-[115.5vw]',
     },

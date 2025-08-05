@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 
 interface OfficeInfo {
   location: string
@@ -14,12 +16,11 @@ interface OfficeInfo {
     email: string
   }[]
 }
-
 const OFFICES: Record<string, OfficeInfo> = {
    Kolkata: {
     location: 'Kolkata',
     address: '1 Taratala Road, Garden Reach, Kolkata 700024, West Bengal',
-    image: `${__IMAGE_BASE_PATH__}/kolkata.jpg`,
+    image: `${basePath}/kolkata.jpg`,
     contacts: [
       {
         name: 'Amal Pal',
@@ -38,7 +39,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Chennai: {
     location: 'Chennai',
     address: 'Jhaver Plaza, 7th Floor 1-A, Nungambakkam High Road, Chennai 600 034, Tamil Nadu',
-    image: `${__IMAGE_BASE_PATH__}/chennai.jpg`,
+    image: `${basePath}/chennai.jpg`,
     contacts: [
       {
         name: 'K.Maruthi Prasad',
@@ -57,7 +58,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   'Delhi NCR': {
     location: 'Delhi NCR',
     address: 'TIL Limited 801-802, 8th Floor, Kalbash Building, 26, Kasturba Gandhi Marg, New Delhi 110 001',
-    image: `${__IMAGE_BASE_PATH__}/delhi.jpg`,
+    image: `${basePath}/delhi.jpg`,
     contacts: [
       {
         name: 'Laxmi Chandra Shukla',
@@ -76,7 +77,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Mumbai: {
     location: 'Mumbai',
     address: '702, The Affaires, Sector – 17, Sanpada New Mumbai, Maharashtra – 400705',
-    image: `${__IMAGE_BASE_PATH__}/mumbai.jpg`,
+    image: `${basePath}/mumbai.jpg`,
     contacts: [
       {
         name: 'Sibasish Mohapatra',
@@ -95,7 +96,7 @@ const OFFICES: Record<string, OfficeInfo> = {
   Singrauli: {
     location: 'Singrauli',
     address: 'Behind Shiv Mandir, Near Reliance Infrastructure, UG Colony, Singrauli 486 888, Dist Singrauli, M.P.',
-    image: `${__IMAGE_BASE_PATH__}/singrauli.jpg`,
+    image: `${basePath}/singrauli.jpg`,
     contacts: [
       {
         name: 'Shailesh Pratap Singh',
