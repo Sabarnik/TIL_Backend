@@ -13,15 +13,12 @@ import RegionalOffices from './components/RegionalOffices';
 import Testimonials from './components/Testimonials';
 import SleekFooter from './components/SleekFooter';
 import SearchModal from './components/SearchModal';
-import Events from './custompages/media/events/page';
-import About from './custompages/About';
-import BlogListPage from './custompages/media/blog/Page';
-import BlogViewPage from './custompages/media/blog/[title]/Page';
-import NewsPage from './custompages/media/news/page';
-import NewsArticlePage from './custompages/media/news/[title]/page';
-import PressReleasesPage from './custompages/media/press/page';
-import EventDetail from './custompages/media/events/[title]/page';
-import InvestorRelations from './custompages/InvestorRelations';
+
+import BlogListPage from './app/media/blog/page';
+import BlogViewPage from './app/media/blog/[title]/page';
+import NewsPage from './app/media/news/page';
+import NewsArticlePage from './app/media/news/[title]/page';
+import InvestorRelations from './app/investor-relations/page';
 
 function HomePage() {
   return (
@@ -51,14 +48,11 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* ✅ About page */}
-          <Route path="/about" element={<About />} />
+   
           <Route path="/media/blog" element={<BlogListPage />} />
           <Route path="/media/blog/:postTitle" element={<BlogViewPage />} />
           <Route path="/media/news" element={<NewsPage />} />
           <Route path="/media/news/:title" element={<NewsArticlePage />} />
-          <Route path="/media/events" element={<Events />} />
-          <Route path="/media/press" element={<PressReleasesPage />} />
-          <Route path="/media/events/:title" element={<EventDetail />} />
           <Route path="/investor-relations" element={<InvestorRelations />} />
           
           {/* ✅ Catch-all for 404 */}
