@@ -11,7 +11,7 @@ import SleekFooter from '../components/SleekFooter';
 import { SearchProvider } from '../context/SearchContext'; // ✅
 
 export const metadata: Metadata = {
-  title: 'TIL',
+  title: 'tilindia.in',
   description: 'Your site description goes here.',
 };
 

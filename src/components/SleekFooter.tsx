@@ -38,12 +38,10 @@ const SleekFooter: React.FC = () => {
 
   const footerLinks: Record<string, string[]> = {
     Products: [
-      'Excavators',
-      'Cranes',
-      'Bulldozers',
-      'Loaders',
-      'Dump Trucks',
-      'Motor Graders'
+      'TIL Range',
+      'Manitowoc Range',
+      'Hyster TIL Range',
+      'Snorkel Range',
     ],
     Services: [
       'Equipment Rental',

@@ -2,16 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Heart, MessageCircle, Share2, Bookmark, ChevronLeft } from 'lucide-react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 const Page: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const { postTitle } = useParams<{ postTitle: string }>();
   const [savedPosts, setSavedPosts] = useState<number[]>([]);
   const [likedPosts, setLikedPosts] = useState<number[]>([]);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState<{id: number, text: string, author: string, date: string}[]>([]);
+  const [comments, setComments] = useState<{ id: number, text: string, author: string, date: string }[]>([]);
   const [isCommenting, setIsCommenting] = useState(false);
 
   // Mock data - in a real app, this would come from an API
@@ -184,29 +186,29 @@ const Page: React.FC = () => {
 
   // Find the current post based on URL parameter
   const currentPost = allPosts.find(post => post.title === postTitle);
-  
+
   // If post not found, redirect to blog list
   useEffect(() => {
     if (!currentPost && postTitle) {
-      navigate('/media/blog');
+      navigate.push('/media/blog');
     }
   }, [currentPost, postTitle, navigate]);
 
   // Get related posts (same tags or same author)
-  const relatedPosts = currentPost 
-    ? allPosts.filter(post => 
-        post.id !== currentPost.id && 
-        (post.tags.some(tag => currentPost.tags.includes(tag)) || 
-         post.author.name === currentPost.author.name)
-      ).slice(0, 3)
+  const relatedPosts = currentPost
+    ? allPosts.filter(post =>
+      post.id !== currentPost.id &&
+      (post.tags.some(tag => currentPost.tags.includes(tag)) ||
+        post.author.name === currentPost.author.name)
+    ).slice(0, 3)
     : [];
 
   // Get other posts by the same author
-  const authorPosts = currentPost 
-    ? allPosts.filter(post => 
-        post.id !== currentPost.id && 
-        post.author.name === currentPost.author.name
-      ).slice(0, 2)
+  const authorPosts = currentPost
+    ? allPosts.filter(post =>
+      post.id !== currentPost.id &&
+      post.author.name === currentPost.author.name
+    ).slice(0, 2)
     : [];
 
   const formatDate = (dateString: string) => {
@@ -218,17 +220,17 @@ const Page: React.FC = () => {
   };
 
   const toggleSavePost = (postId: number) => {
-    setSavedPosts(prev => 
-      prev.includes(postId) 
-        ? prev.filter(id => id !== postId) 
+    setSavedPosts(prev =>
+      prev.includes(postId)
+        ? prev.filter(id => id !== postId)
         : [...prev, postId]
     );
   };
 
   const toggleLikePost = (postId: number) => {
-    setLikedPosts(prev => 
-      prev.includes(postId) 
-        ? prev.filter(id => id !== postId) 
+    setLikedPosts(prev =>
+      prev.includes(postId)
+        ? prev.filter(id => id !== postId)
         : [...prev, postId]
     );
   };
@@ -248,7 +250,7 @@ const Page: React.FC = () => {
     let url = '';
     const shareUrl = encodeURIComponent(window.location.href);
     const shareText = encodeURIComponent(currentPost?.displayTitle || 'Check out this article');
-    
+
     switch (platform) {
       case 'twitter':
         url = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
@@ -262,7 +264,7 @@ const Page: React.FC = () => {
       default:
         break;
     }
-    
+
     window.open(url, '_blank', 'width=600,height=400');
     setIsShareOpen(false);
   };
@@ -292,8 +294,8 @@ const Page: React.FC = () => {
     <div className="bg-gradient-to-b from-[#f8f9fa] to-white min-h-screen">
       <main className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-12">
         {/* Back Button */}
-        <button 
-          onClick={() => navigate('/media/blog')}
+        <button
+          onClick={() => navigate.push('/media/blog')}
           className="flex items-center text-[#F1B434] hover:text-[#d89c2a] mb-8 transition-colors"
         >
           <ChevronLeft size={18} className="mr-1" />
@@ -310,19 +312,21 @@ const Page: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <Link 
-                  to={`/media/blog?category=${currentPost.column.toLowerCase().replace(' ', '-')}`}
+
+                <Link
+                  href={`/media/blog?category=${currentPost.column.toLowerCase().replace(' ', '-')}`}
                   className="text-xs font-semibold text-[#F1B434] hover:underline"
                 >
                   {currentPost.column}
                 </Link>
                 <span className="text-gray-400">•</span>
                 <span className="text-xs text-gray-600">
-                  By <Link 
-                    to={`/media/blog?author=${currentPost.author.name.toLowerCase().replace(' ', '-')}`}
-                    className="font-medium text-gray-700 hover:text-[#F1B434]"
+                  By
+                  <Link
+                    href={`/media/blog?category=${currentPost.column.toLowerCase().replace(' ', '-')}`}
+                    className="text-xs font-semibold text-[#F1B434] hover:underline"
                   >
-                    {currentPost.author.name}
+                    {currentPost.column}
                   </Link>
                 </span>
               </div>
@@ -344,56 +348,56 @@ const Page: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <button 
+                  <button
                     className="flex items-center gap-1 text-sm text-gray-600 hover:text-[#F1B434]"
                     onClick={() => toggleLikePost(currentPost.id)}
                   >
-                    <Heart 
-                      size={16} 
-                      fill={likedPosts.includes(currentPost.id) ? "#F1B434" : "none"} 
+                    <Heart
+                      size={16}
+                      fill={likedPosts.includes(currentPost.id) ? "#F1B434" : "none"}
                       className={likedPosts.includes(currentPost.id) ? "text-[#F1B434]" : ""}
                     />
                     <span>{currentPost.likes}</span>
                   </button>
-                  
-                  <button 
+
+                  <button
                     className="flex items-center gap-1 text-sm text-gray-600 hover:text-[#F1B434]"
                     onClick={() => setIsCommenting(true)}
                   >
                     <MessageCircle size={16} />
                     <span>{currentPost.comments}</span>
                   </button>
-                  
+
                   <div className="relative">
-                    <button 
+                    <button
                       className="flex items-center gap-1 text-sm text-gray-600 hover:text-[#F1B434]"
                       onClick={handleShare}
                     >
                       <Share2 size={16} />
                       <span>Share</span>
                     </button>
-                    
+
                     {isShareOpen && (
                       <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-                        <button 
+                        <button
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           onClick={() => shareOnSocialMedia('twitter')}
                         >
                           Twitter
                         </button>
-                        <button 
+                        <button
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           onClick={() => shareOnSocialMedia('facebook')}
                         >
                           Facebook
                         </button>
-                        <button 
+                        <button
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           onClick={() => shareOnSocialMedia('linkedin')}
                         >
                           LinkedIn
                         </button>
-                        <button 
+                        <button
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           onClick={copyToClipboard}
                         >
@@ -402,14 +406,14 @@ const Page: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  
-                  <button 
+
+                  <button
                     className="text-gray-600 hover:text-[#F1B434]"
                     onClick={() => toggleSavePost(currentPost.id)}
                   >
-                    <Bookmark 
-                      size={16} 
-                      fill={savedPosts.includes(currentPost.id) ? "#F1B434" : "none"} 
+                    <Bookmark
+                      size={16}
+                      fill={savedPosts.includes(currentPost.id) ? "#F1B434" : "none"}
                       className={savedPosts.includes(currentPost.id) ? "text-[#F1B434]" : ""}
                     />
                   </button>
@@ -424,8 +428,8 @@ const Page: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img 
-                src={currentPost.image} 
+              <img
+                src={currentPost.image}
                 alt={currentPost.displayTitle}
                 className="w-full h-auto rounded-lg object-cover"
               />
@@ -444,23 +448,24 @@ const Page: React.FC = () => {
             <div className="mb-12">
               <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Tags</h3>
               <div className="flex flex-wrap gap-2">
-                {currentPost.tags.map(tag => (
+                {currentPost.tags.map((tag) => (
                   <Link
                     key={tag}
-                    to={`/media/blog?tag=${tag.toLowerCase()}`}
+                    href={`/media/blog?tag=${encodeURIComponent(tag.toLowerCase())}`}
                     className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-[#F1B434] hover:text-white transition-colors"
                   >
                     {tag}
                   </Link>
                 ))}
+
               </div>
             </div>
 
             {/* Author Bio */}
             <div className="bg-gray-50 p-6 rounded-xl mb-12">
               <div className="flex items-start gap-4">
-                <img 
-                  src={currentPost.author.avatar} 
+                <img
+                  src={currentPost.author.avatar}
                   alt={currentPost.author.name}
                   className="w-16 h-16 rounded-full object-cover"
                 />
@@ -468,12 +473,13 @@ const Page: React.FC = () => {
                   <h3 className="text-lg font-bold text-gray-900">{currentPost.author.name}</h3>
                   <p className="text-sm text-[#F1B434] mb-2">{currentPost.author.role}</p>
                   <p className="text-gray-600 text-sm mb-3">{currentPost.author.bio}</p>
-                  <Link 
-                    to={`/media/blog?author=${currentPost.author.name.toLowerCase().replace(' ', '-')}`}
+                  <Link
+                    href={`/media/blog?author=${encodeURIComponent(currentPost.author.name.toLowerCase().replace(/\s+/g, '-'))}`}
                     className="text-sm font-medium text-[#F1B434] hover:underline"
                   >
                     View all articles by {currentPost.author.name.split(' ')[0]}
                   </Link>
+
                 </div>
               </div>
             </div>
@@ -481,7 +487,7 @@ const Page: React.FC = () => {
             {/* Comments Section */}
             <div className="mb-12">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Comments ({currentPost.comments})</h3>
-              
+
               {isCommenting ? (
                 <form onSubmit={handleCommentSubmit} className="mb-6">
                   <textarea
@@ -492,14 +498,14 @@ const Page: React.FC = () => {
                     rows={4}
                   />
                   <div className="flex justify-end gap-3">
-                    <button 
+                    <button
                       type="button"
                       onClick={() => setIsCommenting(false)}
                       className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
                     >
                       Cancel
                     </button>
-                    <button 
+                    <button
                       type="submit"
                       className="px-4 py-2 text-sm font-medium text-white bg-[#F1B434] rounded-md hover:bg-[#d89c2a]"
                     >
@@ -508,14 +514,14 @@ const Page: React.FC = () => {
                   </div>
                 </form>
               ) : (
-                <button 
+                <button
                   onClick={() => setIsCommenting(true)}
                   className="w-full px-4 py-3 text-left border border-gray-300 rounded-lg hover:border-[#F1B434] mb-6 transition-colors"
                 >
                   <p className="text-gray-500">Share your thoughts...</p>
                 </button>
               )}
-              
+
               <div className="space-y-6">
                 {comments.length > 0 ? (
                   comments.map(comment => (
@@ -550,14 +556,14 @@ const Page: React.FC = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-6">Related Articles</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {relatedPosts.map(post => (
-                    <Link 
+                    <Link
                       key={post.id}
-                      to={`/media/blog/${post.title}`}
+                      href={`/media/blog/${encodeURIComponent(post.title.toLowerCase().replace(/\s+/g, '-'))}`}
                       className="group block bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow"
                     >
                       <div className="mb-3 relative h-40 rounded overflow-hidden">
-                        <img 
-                          src={post.thumbnail} 
+                        <img
+                          src={post.thumbnail}
                           alt={post.displayTitle}
                           className="absolute w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
@@ -572,6 +578,7 @@ const Page: React.FC = () => {
                         <span>{post.readTime}</span>
                       </div>
                     </Link>
+
                   ))}
                 </div>
               </div>
@@ -584,15 +591,15 @@ const Page: React.FC = () => {
                   More from {currentPost.author.name.split(' ')[0]}
                 </h3>
                 <div className="space-y-6">
-                  {authorPosts.map(post => (
-                    <Link 
+                  {authorPosts.map((post) => (
+                    <Link
                       key={post.id}
-                      to={`/media/blog/${post.title}`}
+                      href={`/media/blog/${encodeURIComponent(post.title.toLowerCase().replace(/\s+/g, '-'))}`}
                       className="group flex gap-4 items-start"
                     >
                       <div className="flex-shrink-0 w-20 h-20 rounded overflow-hidden">
-                        <img 
-                          src={post.thumbnail} 
+                        <img
+                          src={post.thumbnail}
                           alt={post.displayTitle}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
@@ -611,6 +618,8 @@ const Page: React.FC = () => {
                       </div>
                     </Link>
                   ))}
+
+
                 </div>
               </div>
             )}
@@ -642,14 +651,14 @@ const Page: React.FC = () => {
                   .sort((a, b) => parseInt(b.likes.replace('K', '000')) - parseInt(a.likes.replace('K', '000')))
                   .slice(0, 3)
                   .map(post => (
-                    <Link 
+                    <Link
                       key={post.id}
-                      to={`/media/blog/${post.title}`}
+                      href={`/media/blog/${encodeURIComponent(post.title.toLowerCase().replace(/\s+/g, '-'))}`}
                       className="group flex gap-3 items-start pb-3 border-b border-gray-100 last:border-0"
                     >
                       <div className="flex-shrink-0 w-12 h-12 rounded overflow-hidden">
-                        <img 
-                          src={post.thumbnail} 
+                        <img
+                          src={post.thumbnail}
                           alt={post.displayTitle}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
@@ -663,6 +672,7 @@ const Page: React.FC = () => {
                         </div>
                       </div>
                     </Link>
+
                   ))}
               </div>
             </div>
@@ -674,11 +684,12 @@ const Page: React.FC = () => {
                 {Array.from(new Set(allPosts.map(post => post.column))).map(category => (
                   <Link
                     key={category}
-                    to={`/media/blog?category=${category.toLowerCase().replace(' ', '-')}`}
+                    href={`/media/blog?category=${encodeURIComponent(category.toLowerCase().replace(/\s+/g, '-'))}`}
                     className="block py-2 px-3 text-gray-700 hover:bg-gray-50 hover:text-[#F1B434] rounded-md transition-colors"
                   >
                     {category}
                   </Link>
+
                 ))}
               </div>
             </div>

@@ -2537,9 +2537,19 @@ const MediaMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   );
 };
 
+
 const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('life');
   const [isMobile, setIsMobile] = useState(false);
+
+  // Type guards for submenu data
+  function hasPoints(data: any): data is { points: Array<{ name: string; description: string }> } {
+    return 'points' in data;
+  }
+
+  function hasMembers(data: any): data is { members: Array<{ name: string; title: string; image: string }> } {
+    return 'members' in data;
+  }
 
   // Mobile detection hook
   useEffect(() => {
@@ -2553,6 +2563,14 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Preload images
+  useEffect(() => {
+    Object.values(submenuData).forEach((item) => {
+      const img = new Image();
+      img.src = item.media.image;
+    });
+  }, []);
+
   const primaryCategories = [
     { id: 'life', name: 'Life @TIL', icon: <Mountain className="w-4 h-4" /> },
     { id: 'team', name: 'Meet our Team', icon: <Building className="w-4 h-4" /> },
@@ -2561,144 +2579,140 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   ];
 
   const submenuData = {
-  life: {
-    points: [
-      {
-        name: 'Inclusive Culture',
-        description: 'Collaborative work environment that values diversity'
-      },
-      {
-        name: 'Flexible Work',
-        description: 'Hybrid options and adaptable working hours'
-      },
-      {
-        name: 'Wellness Programs',
-        description: 'Initiatives supporting mental and physical health'
-      },
-      {
-        name: 'Recognition',
-        description: 'Programs celebrating employee achievements'
+    life: {
+      points: [
+        {
+          name: 'Inclusive Culture',
+          description: 'Collaborative work environment that values diversity'
+        },
+        {
+          name: 'Flexible Work',
+          description: 'Hybrid options and adaptable working hours'
+        },
+        {
+          name: 'Wellness Programs',
+          description: 'Initiatives supporting mental and physical health'
+        },
+        {
+          name: 'Recognition',
+          description: 'Programs celebrating employee achievements'
+        }
+      ],
+      media: {
+        image: `${basePath}/life.jpg`,
+        title: 'Life @TIL',
+        description:
+          'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
+        cta: 'Explore Culture'
       }
-    ],
-    media: {
-      image: `${basePath}/life.jpg`,
-      title: 'Life @TIL',
-      description:
-        'Work-life balance, diversity, and innovation thrive in our dynamic culture. We foster an environment where every team member can grow personally and professionally.',
-      cta: 'Explore Culture'
-    }
-  },
-
-  team: {
-    members: [
-      {
-        name: 'Pinaki Niyogy',
-        title: 'Chief Executive Officer',
-        image: `${basePath}/pinaki.jpg`
-      },
-      {
-        name: 'Arvind Rishi',
-        title: 'AVP- Sales & After Market',
-        image: `${basePath}/arvind.jpeg`
-      },
-      {
-        name: 'Mr. Kanhaiya Gupta',
-        title: 'Chief Financial Officer',
-        image: `${basePath}/Kanhaiya.png`
-      },
-      {
-        name: 'Ms. Shamita Nandi',
-        title: 'Chief Human Resource Officer',
-        image: `${basePath}/Shamita.png`
-      },
-      {
-        name: 'Chandrani Chatterjee',
-        title: 'Company Secretary',
-        image: `${basePath}/chandrani.jpg`
-      },
-      {
-        name: 'Mr. Saikat Bagchi',
-        title: 'Head - Supply Chain & Commercial',
-        image: `${basePath}/saiket.png`
-      },
-      {
-        name: 'Rishabh P Nair',
-        title: 'Head Of Brand, Content & PR',
-        image: `${basePath}/Risabh.png`
+    },
+    team: {
+      members: [
+        {
+          name: 'Pinaki Niyogy',
+          title: 'Chief Executive Officer',
+          image: `${basePath}/pinaki.jpg`
+        },
+        {
+          name: 'Arvind Rishi',
+          title: 'AVP- Sales & After Market',
+          image: `${basePath}/arvind.jpeg`
+        },
+        {
+          name: 'Mr. Kanhaiya Gupta',
+          title: 'Chief Financial Officer',
+          image: `${basePath}/Kanhaiya.png`
+        },
+        {
+          name: 'Ms. Shamita Nandi',
+          title: 'Chief Human Resource Officer',
+          image: `${basePath}/Shamita.png`
+        },
+        {
+          name: 'Chandrani Chatterjee',
+          title: 'Company Secretary',
+          image: `${basePath}/chandrani.jpg`
+        },
+        {
+          name: 'Mr. Saikat Bagchi',
+          title: 'Head - Supply Chain & Commercial',
+          image: `${basePath}/saiket.png`
+        },
+        {
+          name: 'Rishabh P Nair',
+          title: 'Head Of Brand, Content & PR',
+          image: `${basePath}/Risabh.png`
+        }
+      ],
+      media: {
+        image: `${basePath}/team-placeholder.jpg`,
+        title: 'Meet Our Team',
+        description:
+          'Get to know the passionate minds building the future of infrastructure. Our leadership team brings decades of experience and innovation.',
+        cta: 'Meet the Team'
       }
-    ],
-    media: {
-      image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400&h=240&fit=crop&crop=center',
-      title: 'Meet Our Team',
-      description:
-        'Get to know the passionate minds building the future of infrastructure. Our leadership team brings decades of experience and innovation.',
-      cta: 'Meet the Team'
-    }
-  },
-
-  vacant: {
-    points: [
-      {
-        name: 'Open Roles',
-        description: 'Positions across engineering, sales, and operations'
-      },
-      {
-        name: 'Campus Programs',
-        description: 'Placement and intern opportunities for students'
-      },
-      {
-        name: 'Hiring Process',
-        description: 'Quick and transparent recruitment journey'
-      },
-      {
-        name: 'Career Growth',
-        description: 'Structured learning and development paths'
+    },
+    vacant: {
+      points: [
+        {
+          name: 'Open Roles',
+          description: 'Positions across engineering, sales, and operations'
+        },
+        {
+          name: 'Campus Programs',
+          description: 'Placement and intern opportunities for students'
+        },
+        {
+          name: 'Hiring Process',
+          description: 'Quick and transparent recruitment journey'
+        },
+        {
+          name: 'Career Growth',
+          description: 'Structured learning and development paths'
+        }
+      ],
+      media: {
+        image: `${basePath}/job.jpg`,
+        title: 'Current Openings',
+        description:
+          "Explore vacancies and apply to be a part of TIL's next chapter. We offer competitive packages and growth opportunities across all departments.",
+        cta: 'View Jobs'
       }
-    ],
-    media: {
-      image: `${basePath}/job.jpg`,
-      title: 'Current Openings',
-      description:
-        "Explore vacancies and apply to be a part of TIL's next chapter. We offer competitive packages and growth opportunities across all departments.",
-      cta: 'View Jobs'
-    }
-  },
-
-  equal: {
-    points: [
-      {
-        name: 'Diversity & Inclusion',
-        description: 'Commitment across all departments and levels'
-      },
-      {
-        name: 'Zero Tolerance',
-        description: 'Against discrimination or bias of any kind'
-      },
-      {
-        name: 'Women Leadership',
-        description: 'Initiatives to promote gender equality'
-      },
-      {
-        name: 'Accessibility',
-        description: 'Inclusive workplace policies and facilities'
+    },
+    equal: {
+      points: [
+        {
+          name: 'Diversity & Inclusion',
+          description: 'Commitment across all departments and levels'
+        },
+        {
+          name: 'Zero Tolerance',
+          description: 'Against discrimination or bias of any kind'
+        },
+        {
+          name: 'Women Leadership',
+          description: 'Initiatives to promote gender equality'
+        },
+        {
+          name: 'Accessibility',
+          description: 'Inclusive workplace policies and facilities'
+        }
+      ],
+      media: {
+        image: `${basePath}/equal.jpg`,
+        title: 'Equal Opportunity',
+        description:
+          'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
+        cta: 'Our Policy'
       }
-    ],
-    media: {
-      image: `${basePath}/equal.jpg`,
-      title: 'Equal Opportunity',
-      description:
-        'We are committed to an inclusive, safe, and diverse work environment. Every individual deserves equal opportunities to succeed and thrive.',
-      cta: 'Our Policy'
     }
-  }
-};
-
+  };
 
   const currentSubmenu = submenuData[activeCategory as keyof typeof submenuData];
 
   return (
     <>
-      <style>{`
+      <style jsx>{`
         .mega-menu-height {
           height: 60vh;
           max-height: 60vh;
@@ -2727,218 +2741,221 @@ const CareersMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         }
       `}</style>
 
- <div onMouseLeave={onClose}>
-  <motion.div
-    initial={{ opacity: 0, y: -10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.2, ease: "easeOut" }}
-    className="overflow-hidden"
-  >
-        <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
-          isMobile ? 'mobile-menu-height' : 'mega-menu-height'
-        } overflow-y-auto scroll-hover`}>
-          
-          {/* Mobile View - Clean Simple List */}
-          {isMobile ? (
-            <div className="p-4">
-              <div className="space-y-2">
-                {primaryCategories.map((category) => (
-                  <motion.button
-                    key={category.id}
-                    className="w-full text-left px-4 py-3 rounded-lg bg-gray-800/40 hover:bg-yellow-500/10 border-l-4 border-yellow-500 transition-all duration-200"
-                    onClick={() => {
-                      // Handle category selection
-                      console.log(`Selected: ${category.name}`);
-                    }}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="text-[#fbb53d]">
-                          {category.icon}
-                        </div>
-                        <span className="text-gray-200 font-medium">
-                          {category.name}
-                        </span>
-                      </div>
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          ) : (
-            /* Desktop View - Full Mega Menu */
-            <div className="grid grid-cols-12 w-full h-full min-h-0">
-              
-              {/* Left: Categories */}
-              <div className="col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
-                <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                    Career Focus
-                  </h3>
-                </div>
-                <div className="p-4 pt-0">
-                  <div className="space-y-1">
-                    {primaryCategories.map((category) => (
-                      <motion.div
-                        key={category.id}
-                        className={`cursor-pointer transition-all duration-200 rounded w-full
-                          ${activeCategory === category.id
-                            ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                            : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
-                          }`}
-                        onMouseEnter={() => setActiveCategory(category.id)}
-                        whileHover={{ x: 2 }}
-                      >
-                        <div className="flex items-center space-x-3 px-3 py-2.5">
-                          <div className={`p-1.5 rounded flex-shrink-0 ${
-                            activeCategory === category.id 
-                              ? 'bg-yellow-500 text-black' 
-                              : 'bg-gray-700 text-[#fbb53d]'
-                          }`}>
+      <div onMouseLeave={onClose}>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <div className={`bg-[#0f1419]/95 backdrop-blur-md shadow-2xl border-t border-yellow-500/20 ${
+            isMobile ? 'mobile-menu-height' : 'mega-menu-height'
+          } overflow-y-auto scroll-hover`}>
+            
+            {/* Mobile View - Clean Simple List */}
+            {isMobile ? (
+              <div className="p-4">
+                <div className="space-y-2">
+                  {primaryCategories.map((category) => (
+                    <motion.button
+                      key={category.id}
+                      className="w-full text-left px-4 py-3 rounded-lg bg-gray-800/40 hover:bg-yellow-500/10 border-l-4 border-yellow-500 transition-all duration-200"
+                      onClick={() => setActiveCategory(category.id)}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="text-[#fbb53d]">
                             {category.icon}
                           </div>
-                          <span className={`font-semibold text-sm ${
-                            activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
-                          }`}>
+                          <span className="text-gray-200 font-medium">
                             {category.name}
                           </span>
                         </div>
-                      </motion.div>
-                    ))}
+                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              /* Desktop View - Full Mega Menu */
+              <div className="grid grid-cols-12 w-full h-full min-h-0">
+                
+                {/* Left: Categories */}
+                <div className="col-span-3 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      Career Focus
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    <div className="space-y-1">
+                      {primaryCategories.map((category) => (
+                        <motion.div
+                          key={category.id}
+                          className={`cursor-pointer transition-all duration-200 rounded w-full
+                            ${activeCategory === category.id
+                              ? 'bg-yellow-500/8 shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                              : 'hover:bg-yellow-500/8 hover:shadow-[0_0_15px_rgba(255,193,7,0.08)]'
+                            }`}
+                          onMouseEnter={() => setActiveCategory(category.id)}
+                          whileHover={{ x: 2 }}
+                        >
+                          <div className="flex items-center space-x-3 px-3 py-2.5">
+                            <div className={`p-1.5 rounded flex-shrink-0 ${
+                              activeCategory === category.id 
+                                ? 'bg-yellow-500 text-black' 
+                                : 'bg-gray-700 text-[#fbb53d]'
+                            }`}>
+                              {category.icon}
+                            </div>
+                            <span className={`font-semibold text-sm ${
+                              activeCategory === category.id ? 'text-[#fbb53d]' : 'text-gray-200'
+                            }`}>
+                              {category.name}
+                            </span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Middle: Content */}
+                <div className="col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Details'}
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    {activeCategory === 'team' ? (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        {hasMembers(currentSubmenu) && currentSubmenu.members.map((member, index) => (
+                          <motion.div 
+                            key={index} 
+                            className="text-center p-3 rounded-lg bg-gray-800/40 hover:bg-yellow-500/10 transition-all duration-200"
+                            whileHover={{ y: -5 }}
+                          >
+                            <div className="relative w-20 h-20 mx-auto mb-3">
+                              <img
+                                src={member.image}
+                                alt={member.name}
+                                className="rounded-full object-cover w-full h-full shadow-lg border-2 border-yellow-500"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src = `${basePath}/placeholder.jpg`;
+                                }}
+                              />
+                            </div>
+                            <h4 className="text-sm font-semibold text-[#fbb53d]">{member.name}</h4>
+                            <p className="text-xs text-gray-400 mt-1">{member.title}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    ) : (
+                      <ul className="space-y-4">
+                        {hasPoints(currentSubmenu) && currentSubmenu.points.map((point, index) => (
+                          <li
+                            key={index}
+                            className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20"
+                          >
+                            <div className="pt-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={1.5}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
+                                />
+                              </svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-gray-100">
+                                {point.name}
+                              </p>
+                              <p className="text-xs text-gray-400 mt-1">{point.description}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right: Media Panel */}
+                <div className="col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
+                  <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
+                    <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
+                      Highlights
+                    </h3>
+                  </div>
+                  <div className="p-4 pt-0">
+                    <motion.div
+                      key={activeCategory}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col h-full"
+                    >
+                      <div className="relative mb-3 overflow-hidden rounded-lg aspect-video bg-gray-800/50">
+                        <div className="w-full h-full relative">
+                          <img
+                            src={currentSubmenu.media.image}
+                            alt={currentSubmenu.media.title}
+                            className="object-cover w-full h-full"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = `${basePath}/placeholder.jpg`;
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-base text-[#fbb53d] mb-2">
+                          {currentSubmenu.media.title}
+                        </h4>
+                        <p className="text-gray-300 mb-4 leading-relaxed text-xs">
+                          {currentSubmenu.media.description}
+                        </p>
+                        
+                        <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
+                          <motion.button 
+                            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            {currentSubmenu.media.cta}
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
-
-              {/* Middle: Content */}
-              <div className="col-span-6 border-r border-gray-700/50 min-w-0 h-full overflow-y-auto scroll-hover">
-                <div className="p-4 sticky top-0 bg-[#0f1419] z-10">
-                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                    {primaryCategories.find(cat => cat.id === activeCategory)?.name || 'Details'}
-                  </h3>
-                </div>
-                <div className="p-4 pt-0">
-                  {activeCategory === 'team' ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {hasMembers(currentSubmenu) && (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                        {currentSubmenu.members.map((member, index) => (
-                          <div key={index} className="text-center">
-                            <img
-                              src={member.image}
-                              alt={member.name}
-                              className="w-20 h-20 mx-auto rounded-full object-cover shadow-lg border-2 border-yellow-500"
-                            />
-                            <h4 className="mt-3 text-sm font-semibold text-[#fbb53d]">{member.name}</h4>
-                            <p className="text-xs text-gray-400">{member.title}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    </div>
-                  ) : (
-                    <ul className="space-y-4">{hasPoints(currentSubmenu) &&
-                         currentSubmenu.points.map((point, index) => (
-
-                        <li
-                          key={index}
-                          className="flex items-start gap-3 border border-gray-700/40 p-3 rounded hover:border-yellow-500 transition duration-200 bg-gray-800/20"
-                        >
-                          <div className="pt-1">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="w-5 h-5 text-yellow-500 flex-shrink-0"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth={1.5}
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M12 11.5a2 2 0 100-4 2 2 0 000 4z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 10c0 6-7.5 11.5-7.5 11.5S4.5 16 4.5 10a7.5 7.5 0 1115 0z"
-                              />
-                            </svg>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-100">
-                              {point.name}
-                            </p>
-                            <p className="text-xs text-gray-400 mt-1">{point.description}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-
-              {/* Right: Media Panel */}
-              <div className="col-span-3 bg-gradient-to-br from-[#0f1419] to-[#1a2233] min-w-0 h-full overflow-y-auto scroll-hover">
-                <div className="p-4 sticky top-0 bg-[#1a2233] z-10">
-                  <h3 className="text-sm font-bold text-[#fbb53d] mb-4 border-b border-yellow-700/30 pb-2 uppercase tracking-wider">
-                    Highlights
-                  </h3>
-                </div>
-                <div className="p-4 pt-0">
-                  <motion.div
-                    key={activeCategory}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex flex-col h-full"
-                  >
-                    <div className="relative mb-3 overflow-hidden rounded">
-                      <img
-                        src={currentSubmenu?.media?.image}
-                        alt={currentSubmenu?.media?.title}
-                        className="w-full h-32 object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-[#fbb53d] mb-2">
-                        {currentSubmenu?.media?.title}
-                      </h4>
-                      <p className="text-gray-300 mb-4 leading-relaxed text-xs">
-                        {currentSubmenu?.media?.description}
-                      </p>
-                      
-                      <div className="space-y-2 sticky bottom-0 bg-[#1a2233]/80 backdrop-blur-sm py-2 -mx-4 px-4">
-                        <motion.button 
-                          className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-[#fbb53d] hover:to-yellow-500 text-black py-2 px-3 rounded font-bold text-xs transition-all duration-200 shadow-lg"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          {currentSubmenu?.media?.cta}
-                        </motion.button>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </motion.div>
+            )}
+          </div>
+        </motion.div>
       </div>
     </>
   );
 };
-
-
 
 const ContactMegamenu: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeCategory, setActiveCategory] = useState('locations');

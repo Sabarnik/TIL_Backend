@@ -11,6 +11,7 @@
     "preview": "next preview"
   },
   "dependencies": {
+    "@prisma/client": "^6.13.0",
     "@react-three/drei": "^10.4.2",
     "@react-three/fiber": "^9.2.0",
     "@types/dat.gui": "^0.7.13",
@@ -38,6 +39,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
     "postcss": "^8.5.6",
+    "prisma": "^6.13.0",
     "tailwindcss": "^3.4.17",
     "typescript": "5.9.2",
     "vite": "^7.0.0"

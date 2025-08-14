@@ -1,3 +1,12 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about-us/page": "app/about-us/page.js",
+  "/category/page": "app/category/page.js",
+  "/home/page": "app/home/page.js",
+  "/investor-relations/page": "app/investor-relations/page.js",
+  "/media/blog/[title]/page": "app/media/blog/[title]/page.js",
+  "/media/news/[title]/page": "app/media/news/[title]/page.js",
+  "/media/blog/page": "app/media/blog/page.js",
+  "/media/news/page": "app/media/news/page.js",
   "/page": "app/page.js"
 }
