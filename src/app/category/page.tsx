@@ -2,12 +2,17 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Package, Zap, Star, Settings, ChevronRight, ChevronLeft } from 'lucide-react';
+import BrochureDownloadModal from '../../components/BrochureDownload';
+import Link from 'next/link';
+
+
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const Page: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all-products');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   // Categories with TIL brand colors from guidelines
@@ -17,7 +22,7 @@ const Page: React.FC = () => {
       name: 'TIL Range',
       icon: <Package className="w-4 h-4" />,
       description: 'Reliable lifting and handling for Indian industries',
-      color: 'from-[#F1B434] to-[#FFE352]', // Pantone 143C to 100C
+      color: 'from-[#F1B434] to-[#FFE352]',
       textColor: 'text-[#F1B434]'
     },
     {
@@ -25,7 +30,7 @@ const Page: React.FC = () => {
       name: 'Manitowoc Range',
       icon: <Zap className="w-4 h-4" />,
       description: 'Heavy-duty cranes with global performance',
-      color: 'from-[#F1B434] to-[#FFE352]', // Complementary color
+      color: 'from-[#F1B434] to-[#FFE352]',
       textColor: 'text-[#F1B434]'
     },
     {
@@ -33,7 +38,7 @@ const Page: React.FC = () => {
       name: 'Hyster TIL Range',
       icon: <Star className="w-4 h-4" />,
       description: 'Reliable forklifts and handling systems from Hyster-TIL',
-      color: 'from-[#F1B434] to-[#FFE352]', // Complementary color
+      color: 'from-[#F1B434] to-[#FFE352]',
       textColor: 'text-[#F1B434]'
     },
     {
@@ -41,74 +46,92 @@ const Page: React.FC = () => {
       name: 'Snorkel Range',
       icon: <Settings className="w-4 h-4" />,
       description: 'Aerial work platforms and access equipment by Snorkel',
-      color: 'from-[#F1B434] to-[#FFE352]', // Complementary color
+      color: 'from-[#F1B434] to-[#FFE352]',
       textColor: 'text-[#F1B434]'
     }
   ];
 
   const allProducts = [
     {
+      id: 'truck-cranes',
       category: 'all-products',
       name: 'Truck Cranes',
       description: 'High-capacity cranes ideal for tall construction sites',
       image: `${basePath}/truck-cranes.jpeg`,
-      features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility']
+      features: ['Telescopic Boom', 'High Lifting Range', 'On-road Mobility'],
+      brochure: `${basePath}/brochures/truck-cranes.pdf`
     },
     {
+      id: 'pick-n-carry-cranes',
       category: 'all-products',
       name: 'Pick n Carry Cranes',
       description: 'Mobile cranes suitable for fast on-site operations',
       image: `${basePath}/pick-n-carry.png`,
-      features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling']
+      features: ['360° Mobility', 'Operator Cabin Comfort', 'Quick Load Handling'],
+      brochure: `${basePath}/brochures/pick-n-carry.pdf`
     },
     {
+      id: 'rough-terrain-cranes',
       category: 'all-products',
       name: 'Rough Terrain Cranes',
       description: 'Designed for challenging job site conditions',
       image: `${basePath}/rough-terrain.png`,
-      features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers']
+      features: ['All-Terrain Tyres', 'Four-Wheel Steering', 'Hydraulic Outriggers'],
+      brochure: `${basePath}/brochures/rough-terrain.pdf`
     },
     {
+      id: 'articulating-cranes',
       category: 'all-products',
       name: 'Articulating Cranes',
       description: 'Flexible, jointed cranes ideal for tight spaces',
       image: `${basePath}/articulating.jpg`,
-      features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control']
+      features: ['Knuckle Boom Design', 'Compact Operation', 'Remote Control'],
+      brochure: `${basePath}/brochures/articulating.pdf`
     },
     {
+      id: 'grove-range',
       category: 'new-arrivals',
       name: 'Grove Range',
       description: 'Smart lifting solutions engineered for precision and durability',
       image: `${basePath}/grove-range.png`,
-      features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring']
+      features: ['Advanced Safety Systems', 'Optimized Weight Distribution', 'Digital Load Monitoring'],
+      brochure: `${basePath}/brochures/grove-range.pdf`
     },
     {
+      id: 'crawler-cranes',
       category: 'new-arrivals',
       name: 'Crawler Cranes',
       description: 'Robust tracked cranes for heavy-duty lifting',
       image: `${basePath}/crawler-cranes.png`,
-      features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity']
+      features: ['Track Mobility', 'High Stability', 'Heavy Lifting Capacity'],
+      brochure: `${basePath}/brochures/crawler-cranes.pdf`
     },
     {
+      id: 'forklift-trucks',
       category: 'best-sellers',
       name: 'Forklift Trucks',
       description: 'Efficient material handling for warehouses and logistics',
       image: `${basePath}/forklift.png`,
-      features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius']
+      features: ['Precision Steering', 'High Load Capacity', 'Compact Turning Radius'],
+      brochure: `${basePath}/brochures/forklift.pdf`
     },
     {
+      id: 'reachstackers',
       category: 'best-sellers',
       name: 'Reachstackers',
       description: 'Container handling equipment for ports and yards',
       image: `${basePath}/reachstackers.png`,
-      features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency']
+      features: ['Extended Reach', 'Twistlock Compatibility', 'High Stack Efficiency'],
+      brochure: `${basePath}/brochures/reachstackers.pdf`
     },
     {
+      id: 'boom-lifts',
       category: 'services',
       name: 'Boom Lifts',
       description: 'Elevated work platforms for maintenance and construction',
       image: `${basePath}/boomlifts.png`,
-      features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform']
+      features: ['Articulating Arm', 'Vertical and Horizontal Reach', 'Safe Cage Platform'],
+      brochure: `${basePath}/brochures/boomlifts.pdf`
     }
   ];
 
@@ -160,8 +183,14 @@ const Page: React.FC = () => {
           alt="TIL Products"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
-        <div className="absolute inset-0 z-20 flex items-center pt-6">
+
+        {/* Left-to-right overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-10" />
+
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-transparent z-20" />
+
+        <div className="absolute inset-0 z-30 flex items-center pt-6">
           <div className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 w-full">
             <motion.div
               className="max-w-2xl"
@@ -206,6 +235,8 @@ const Page: React.FC = () => {
           </div>
         </div>
       </div>
+
+
 
       <main className="max-w-7xl mx-auto px-6 md:px-10 xl:px-20 py-16 -mt-6 relative z-10">
         {/* Top Section - Introduction and Quick Links */}
@@ -278,7 +309,6 @@ const Page: React.FC = () => {
                 ref={(el: HTMLDivElement | null) => {
                   categoryRefs.current[category.id] = el;
                 }}
-
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -353,8 +383,10 @@ const Page: React.FC = () => {
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">{product.description}</p>
                     <div className="flex items-center text-sm text-[#F1B434] font-medium">
-                      <span>Explore Product</span>
-                      <ChevronRight className="w-4 h-4 ml-1" />
+                      <Link href={`/category/${product.id}`}>
+                        <span>Explore Product</span>
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                      </Link>
                     </div>
                   </div>
                 </motion.div>
@@ -503,11 +535,19 @@ const Page: React.FC = () => {
                       className="flex flex-wrap gap-3"
                     >
                       <button className="px-6 py-3 bg-[#F1B434] text-white font-medium rounded-lg hover:bg-[#d89c2a] transition-colors shadow-md">
-                        Request Quote
+                        <Link
+                          href={`/category/${categoryProducts[activeCategory as keyof typeof categoryProducts][currentSlide].id}`}
+                        >
+                          View Details
+                        </Link>
                       </button>
-                      <button className="px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                      >
                         Download Brochure
                       </button>
+
                     </motion.div>
                   </div>
                 </div>
@@ -588,6 +628,11 @@ const Page: React.FC = () => {
           </div>
         </motion.section>
       </main>
+      <BrochureDownloadModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+
     </div>
   );
 };

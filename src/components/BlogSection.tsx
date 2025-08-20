@@ -11,8 +11,8 @@ const BlogSection: React.FC = () => {
   const featuredPosts = [
     {
       id: 1,
-      title: 'The Future of Heavy Machinery in Construction',
-      excerpt: 'Exploring how innovative technologies are transforming the construction equipment industry',
+      title: 'How to Buy a Reachstacker? 6 Factors to Consider',
+      excerpt: 'When comparing reachstackers, the specifications listed on paper are only the first step. If you..',
       author: {
         name: 'Rajesh Kumar',
         role: 'Chief Engineer',
@@ -24,14 +24,14 @@ const BlogSection: React.FC = () => {
       readTime: '10 min',
       likes: '7K',
       comments: '426',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
-      featuredImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
+      image: `${basePath}/blog1.png`,
+      thumbnail: `${basePath}/blog1.png`,
+      featuredImage: `${basePath}/blog1.png`
     },
     {
       id: 2,
-      title: 'Sustainable Practices in Equipment Manufacturing',
-      excerpt: 'How TIL is leading the way in eco-friendly heavy equipment production',
+      title: '6 Powerful Cranes Used in Modern Construction',
+      excerpt: 'Let\'s be real—on any serious construction site, cranes aren\'t treated as just any other machine...',
       author: {
         name: 'Priya Sharma',
         role: 'Sustainability Officer',
@@ -43,14 +43,14 @@ const BlogSection: React.FC = () => {
       readTime: '15 min',
       likes: '3.9K',
       comments: '116',
-      image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
-      featuredImage: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
+      image: `${basePath}/blog2.jpg`,
+      thumbnail: `${basePath}/blog2.jpg`,
+      featuredImage: `${basePath}/blog2.jpg`
     },
     {
       id: 3,
-      title: 'Safety Innovations in Heavy Equipment Operation',
-      excerpt: 'New technologies making construction sites safer for operators and workers',
+      title: '7 Proven Ways Rough Terrain Cranes Power Up Business Efficiency',
+      excerpt: 'In the world of construction and heavy lifting, the right equipment isn\'t just helpful—it\'s business critical...',
       author: {
         name: 'Amit Patel',
         role: 'Safety Director',
@@ -62,12 +62,12 @@ const BlogSection: React.FC = () => {
       readTime: '8 min',
       likes: '5.2K',
       comments: '342',
-      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80',
-      featuredImage: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=628&q=80'
+      image: `${basePath}/blog3.jpg`,
+      thumbnail: `${basePath}/blog3.jpg`,
+      featuredImage: `${basePath}/blog3.jpg`
     }
   ];
-
+  
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       month: 'short',

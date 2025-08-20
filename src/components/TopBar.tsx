@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useSearch } from '../context/SearchContext';
+import GetQuoteModal from '../components/GetQuote';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 

@@ -5,47 +5,47 @@ import { ArrowRight } from 'lucide-react';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 const NewsInsights: React.FC = () => {
-  const news = [
+const news = [
     // Featured News (Left Column - Vertical Split)
     {
       id: 1,
-      title: 'TIL Launches Revolutionary Electric Excavator Series',
-      excerpt: 'Our new electric excavator line delivers 40% more efficiency while reducing emissions by 90%, setting new industry standards.',
-      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      title: 'TIL Announces Major Expansion with New Manufacturing Facility in Gujarat',
+      excerpt: 'Company to invest ₹500 crore in new plant, expected to create 1,200 jobs',
+      image: `${basePath}/news1.png`,
       date: '2024-01-15',
       readTime: '5 min read',
-      category: 'Product Launch',
+      category: 'Business',
       featured: true,
       position: 'top'
     },
     {
       id: 2,
-      title: 'Global Expansion: New TIL Manufacturing Facility in Southeast Asia',
-      excerpt: 'Strategic investment of $200M in our new facility will serve growing Asian markets with locally manufactured equipment.',
-      image: 'https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      title: 'TIL Defence Secures ₹1,200 Crore Order from Indian Army',
+      excerpt: 'Largest defence contract in company history for specialized material handling equipment',
+      image: `${basePath}/news2.jpg`,
       date: '2024-01-10',
       readTime: '3 min read',
-      category: 'Company News',
+      category: 'Defence',
       featured: true,
       position: 'bottom'
     },
     // Right Column News (Now 3 blocks)
     {
       id: 3,
-      title: 'TIL Partners with Leading Construction Giants',
-      excerpt: 'Strategic partnerships with top construction companies to deliver innovative solutions for mega infrastructure projects.',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'TIL Reports Record Q1 FY26 Results: Revenue Up 275% YoY',
+      excerpt: 'Company announces dividend of ₹5 per share amid strong financial performance',
+      image: `${basePath}/news3.png`,
       date: '2024-01-05',
       readTime: '4 min read',
-      category: 'Partnerships',
+      category: 'Financial',
       featured: false,
       size: 'medium'
     },
     {
       id: 4,
-      title: 'Industry 4.0: TIL Smart Machinery with IoT Integration',
-      excerpt: 'Advanced IoT sensors and AI-powered analytics transform equipment monitoring and predictive maintenance.',
-      image: 'https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      title: 'TIL Launches India\'s First Hydrogen-Powered Forklift',
+      excerpt: 'Eco-friendly alternative to conventional forklifts with zero emissions',
+      image: `${basePath}/news4.png`,
       date: '2023-12-28',
       readTime: '6 min read',
       category: 'Technology',
@@ -54,23 +54,23 @@ const NewsInsights: React.FC = () => {
     },
     {
       id: 5,
-      title: 'TIL Achieves Sustainability Milestone: Carbon Neutral Certification',
-      excerpt: 'TIL achieves carbon neutral status across all European operations ahead of schedule.',
-      image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      title: 'TIL Partners with IIT Kharagpur for AI in Material Handling',
+      excerpt: 'Five-year research collaboration to develop smart equipment solutions',
+      image: `${basePath}/news5.jpg`,
       date: '2023-12-15',
       readTime: '3 min read',
-      category: 'Sustainability',
+      category: 'Education',
       featured: false,
       size: 'small'
     },
     {
       id: 6,
-      title: 'TIL Launches Employee Innovation Program',
-      excerpt: 'New $10M initiative to fund employee-driven R&D projects with potential for commercialization.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      title: 'TIL Wins "Best Employer Brand" Award for Third Consecutive Year',
+      excerpt: 'Company recognized for employee development and workplace culture',
+      image: `${basePath}/news6.jpg`,
       date: '2023-12-10',
       readTime: '4 min read',
-      category: 'Company News',
+      category: 'Corporate',
       featured: false,
       size: 'medium'
     }

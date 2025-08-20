@@ -9,7 +9,7 @@ const SearchContext = createContext({
   toggle: () => {},
 });
 
-export const SearchProvider = ({ children }) => {
+export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => setIsOpen(true);
